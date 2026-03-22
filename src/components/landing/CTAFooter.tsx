@@ -1,47 +1,23 @@
 'use client'
-
 import Link from 'next/link'
 import GlowButton from '@/components/ui/GlowButton'
 
 export function CTA() {
   return (
-    <section className="relative px-6 md:px-12 py-32 overflow-hidden" style={{ background: 'var(--bg-surface)' }}>
-      {/* Glow */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full opacity-20 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(0,204,255,0.4) 0%, transparent 70%)' }}
-      />
-
-      <div className="relative z-10 max-w-3xl mx-auto text-center">
-        <h2
-          className="font-display font-800 mb-6 leading-tight"
-          style={{ fontSize: 'clamp(2rem, 5vw, 4rem)', color: 'var(--text-primary)' }}
-        >
-          Your next move
-          <br />
-          <span style={{ color: 'var(--cyan)' }} className="text-glow">is on-chain</span>
+    <section style={{ padding:'100px 52px', textAlign:'center', position:'relative', overflow:'hidden', background:'linear-gradient(180deg,var(--bg) 0%,#0a0a1a 100%)', borderTop:'1px solid rgba(255,255,255,.05)' }}>
+      <div style={{ position:'absolute', top:'50%', left:'50%', transform:'translate(-50%,-50%)', width:600, height:300, borderRadius:'50%', background:'radial-gradient(ellipse,rgba(0,204,255,.09) 0%,transparent 70%)', pointerEvents:'none' }}/>
+      <div style={{ position:'relative', zIndex:2 }}>
+        <h2 style={{ fontFamily:'var(--fd)', fontWeight:900, fontSize:'clamp(36px,5vw,52px)', lineHeight:1.0, letterSpacing:'-.03em', marginBottom:20, color:'var(--t1)' }}>
+          Your next move<br/><span style={{ color:'var(--c)', textShadow:'0 0 50px rgba(0,204,255,.4)' }}>is on-chain</span>
         </h2>
-        <p className="text-lg mb-10 max-w-md mx-auto" style={{ color: 'var(--text-secondary)' }}>
+        <p style={{ fontSize:15, color:'var(--t2)', maxWidth:400, margin:'0 auto 40px', lineHeight:1.7, fontWeight:300 }}>
           Connect your wallet, claim free CHESS tokens, and start your first wager game in under two minutes.
         </p>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <Link href="/app/lobby">
-            <GlowButton size="lg">Open the App</GlowButton>
-          </Link>
-          <Link href="/app/faucet">
-            <GlowButton variant="ghost" size="lg">Get Free CHESS</GlowButton>
-          </Link>
+        <div style={{ display:'flex', gap:14, justifyContent:'center', marginBottom:64, flexWrap:'wrap' }}>
+          <Link href="/app/lobby"><GlowButton size="lg">Open the App</GlowButton></Link>
+          <Link href="/app/faucet"><GlowButton variant="ghost" size="lg">Get Free CHESS</GlowButton></Link>
         </div>
-
-        {/* Built by badge */}
-        <div className="mt-16 flex items-center justify-center gap-2 opacity-40">
-          <span className="text-sm font-display" style={{ color: 'var(--text-secondary)' }}>
-            Built by
-          </span>
-          <span className="text-sm font-display font-700" style={{ color: 'var(--text-primary)' }}>
-            Velocity Labs
-          </span>
-        </div>
+        <div style={{ fontFamily:'var(--fd)', fontSize:9, fontWeight:600, letterSpacing:'.14em', color:'var(--t3)' }}>BUILT BY VELOCITY LABS</div>
       </div>
     </section>
   )
@@ -49,34 +25,19 @@ export function CTA() {
 
 export function Footer() {
   return (
-    <footer className="px-6 md:px-12 py-8 border-t" style={{ borderColor: 'var(--border)', background: 'var(--bg-base)' }}>
-      <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-2">
-          <span className="font-display font-800 text-sm" style={{ color: 'var(--cyan)' }}>CHESSIFY</span>
-          <span className="text-xs" style={{ color: 'var(--text-tertiary)' }}>by Velocity Labs</span>
+    <footer style={{ padding:'24px 52px', display:'flex', alignItems:'center', justifyContent:'space-between', borderTop:'1px solid rgba(255,255,255,.05)', flexWrap:'wrap', gap:16, background:'var(--bg)' }}>
+      <div style={{ display:'flex', alignItems:'center', gap:10 }}>
+        <span style={{ fontFamily:'var(--fd)', fontWeight:800, fontSize:12, color:'var(--c)', letterSpacing:'.1em' }}>CHESSIFY</span>
+        <div className="vel-pill">
+          <span style={{ fontFamily:'var(--fd)', fontSize:9, fontWeight:600, color:'rgba(0,204,255,.7)', letterSpacing:'.12em' }}>BY VELOCITY LABS</span>
         </div>
-
-        <div className="flex gap-6">
-          {[
-            { label: 'App', href: '/app/lobby' },
-            { label: 'Faucet', href: '/app/faucet' },
-            { label: 'Leaderboard', href: '/app/leaderboard' },
-          ].map(({ label, href }) => (
-            <Link
-              key={label}
-              href={href}
-              className="text-sm font-display transition-colors hover:text-accent"
-              style={{ color: 'var(--text-tertiary)' }}
-            >
-              {label}
-            </Link>
-          ))}
-        </div>
-
-        <p className="text-xs font-display" style={{ color: 'var(--text-tertiary)' }}>
-          CHESS Protocol — Stacks Blockchain
-        </p>
       </div>
+      <div style={{ display:'flex', gap:24 }}>
+        {[{l:'App',h:'/app/lobby'},{l:'Faucet',h:'/app/faucet'},{l:'Leaderboard',h:'/app/leaderboard'}].map(({l,h}) => (
+          <Link key={l} href={h} style={{ fontFamily:'var(--fd)', fontSize:10, color:'var(--t3)', textDecoration:'none', letterSpacing:'.06em' }}>{l}</Link>
+        ))}
+      </div>
+      <span style={{ fontFamily:'var(--fd)', fontSize:10, color:'var(--t3)', letterSpacing:'.06em' }}>CHESS PROTOCOL — STACKS BLOCKCHAIN</span>
     </footer>
   )
 }

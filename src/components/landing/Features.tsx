@@ -1,172 +1,128 @@
 'use client'
 
-import ClayCard from '@/components/ui/ClayCard'
+const iconBox = (children: React.ReactNode) => (
+  <div className="icon-box" style={{ marginBottom:18 }}>{children}</div>
+)
 
 const features = [
   {
-    id: 'wager',
-    title: 'Real Wagers',
-    desc: 'Stake CHESS tokens before each game. Winner takes the full pot — no middleman, no delay.',
-    icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>,
+    id:'wager', big:true, tag:'CORE FEATURE', title:'Real Wagers', desc:'Stake CHESS tokens before each game. Winner takes the full pot — on-chain, instant, zero middlemen.',
+    metrics:[{v:'2×',l:'PAYOUT'},{v:'0%',l:'FEES'},{v:'∞',l:'GAMES'}],
+    icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="rgba(0,204,255,.3)" strokeWidth="1"/><path d="M12 3a9 9 0 0 1 9 9" stroke="#00ccff" strokeWidth="2" strokeLinecap="round"/><circle cx="12" cy="12" r="3" fill="rgba(0,204,255,.2)" stroke="#00ccff" strokeWidth="1"/></svg>,
   },
   {
-    id: 'onchain',
-    title: 'Every Move On-Chain',
-    desc: 'Each move is a Stacks transaction. Provably fair, forever recorded.',
-    icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>,
+    id:'onchain', title:'Every Move On-Chain', desc:'Each move is a Stacks transaction. Provably fair, permanently recorded.',
+    icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#00ccff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="rgba(0,204,255,.08)"/></svg>,
   },
   {
-    id: 'elo',
-    title: 'Elo Rankings',
-    desc: 'Win to climb. Lose to fall. Your on-chain Elo is yours forever.',
-    icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>,
+    id:'elo', title:'Elo Rankings', desc:'Win to climb. Lose to fall. Your on-chain Elo rating is permanent.',
+    icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17" stroke="#00ccff" strokeWidth="1.5" strokeLinecap="round" fill="none"/><polyline points="16 7 22 7 22 13" stroke="#00ccff" strokeWidth="1.5" strokeLinecap="round" fill="none"/></svg>,
   },
   {
-    id: 'faucet',
-    title: 'Daily Faucet',
-    desc: 'Claim 1,000 CHESS tokens daily — free. Start playing immediately.',
-    icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>,
+    id:'faucet', title:'Daily Faucet', desc:'Claim 1,000 CHESS tokens every day — completely free. Start playing immediately.',
+    icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" stroke="#00ccff" strokeWidth="1.5" fill="rgba(0,204,255,.08)"/></svg>,
   },
   {
-    id: 'timeout',
-    title: 'Timeout Protection',
-    desc: 'Opponent ghosted? Claim a timeout win after 10 days. Your wager stays safe.',
-    icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
+    id:'timeout', title:'Timeout Protection', desc:'Opponent ghosted? Claim the win after 10 days. Your wager is always protected.',
+    icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#00ccff" strokeWidth="1.5" fill="rgba(0,204,255,.08)"/></svg>,
   },
   {
-    id: 'wallets',
-    title: 'Leather & Xverse',
-    desc: 'Connect with both leading Stacks wallets. Mobile and desktop ready.',
-    icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>,
+    id:'wallets', title:'Leather & Xverse', desc:'Both leading Stacks wallets supported. Mobile and desktop ready.',
+    icon:<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="7" width="20" height="14" rx="3" stroke="#00ccff" strokeWidth="1.5" fill="rgba(0,204,255,.08)"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" stroke="#00ccff" strokeWidth="1.5"/></svg>,
   },
 ]
 
-function IconBox({ icon }: { icon: React.ReactNode }) {
-  return (
-    <div style={{
-      width: '48px', height: '48px',
-      borderRadius: 'var(--radius-md)',
-      background: 'var(--cyan-soft)',
-      border: '1px solid var(--border-hover)',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      flexShrink: 0,
-    }}>
-      {icon}
-    </div>
-  )
+const card: React.CSSProperties = {
+  padding:32, borderRadius:24,
+  background:'linear-gradient(145deg,#161628 0%,#0e0e1f 60%,#0a0a16 100%)',
+  border:'1px solid rgba(255,255,255,.07)',
+  boxShadow:'0 1px 0 rgba(255,255,255,.07) inset,0 -1px 0 rgba(0,0,0,.5) inset,0 20px 50px rgba(0,0,0,.6),0 4px 12px rgba(0,0,0,.35)',
+  transition:'transform .25s ease,box-shadow .25s ease',
 }
+const cardHero: React.CSSProperties = {
+  padding:36, borderRadius:24, position:'relative', overflow:'hidden',
+  background:'linear-gradient(145deg,#0d1a2a 0%,#091018 100%)',
+  border:'1px solid rgba(0,204,255,.2)',
+  boxShadow:'0 1px 0 rgba(0,204,255,.14) inset,0 -1px 0 rgba(0,0,0,.5) inset,0 20px 60px rgba(0,204,255,.12),0 4px 16px rgba(0,0,0,.5)',
+  transition:'transform .25s',
+}
+const h3: React.CSSProperties = { fontFamily:'var(--fd)', fontWeight:700, fontSize:17, color:'var(--t1)', marginBottom:8, letterSpacing:'-.01em' }
+const p: React.CSSProperties  = { fontSize:13, color:'var(--t2)', lineHeight:1.65, fontWeight:300 }
 
 export default function Features() {
-  return (
-    <section id="how-it-works" style={{ background: 'var(--bg-base)', padding: '96px 24px' }}>
+  const hover = (e: React.MouseEvent<HTMLDivElement>, on: boolean) => {
+    (e.currentTarget as HTMLElement).style.transform = on ? 'translateY(-3px)' : ''
+  }
 
+  return (
+    <section id="how-it-works" style={{ padding:'80px 52px', background:'var(--bg)' }}>
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-        <div className="clay" style={{ display: 'inline-flex', alignItems: 'center', padding: '6px 14px', marginBottom: '16px' }}>
-          <span style={{ fontSize: '11px', fontFamily: 'var(--font-display)', letterSpacing: '0.15em', color: 'var(--cyan)' }}>WHY CHESSIFY</span>
+      <div style={{ textAlign:'center', marginBottom:64 }}>
+        <div style={{ display:'inline-flex', alignItems:'center', background:'linear-gradient(145deg,rgba(0,204,255,.1),rgba(0,204,255,.04))', border:'1px solid rgba(0,204,255,.18)', borderRadius:999, padding:'6px 18px', marginBottom:20 }}>
+          <span style={{ fontFamily:'var(--fd)', fontSize:9, fontWeight:600, color:'var(--c)', letterSpacing:'.15em' }}>WHY CHESSIFY</span>
         </div>
-        <h2 style={{
-          fontFamily: 'var(--font-display)', fontWeight: 800, lineHeight: 1.1,
-          fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: 'var(--text-primary)',
-          marginBottom: '16px',
-        }}>
-          Chess, rewired<br/>
-          <span style={{ color: 'var(--cyan)' }}>for the chain</span>
+        <h2 style={{ fontFamily:'var(--fd)', fontWeight:900, fontSize:'clamp(32px,4vw,44px)', lineHeight:1.05, letterSpacing:'-.03em', marginBottom:16, color:'var(--t1)' }}>
+          Chess, rewired<br/><span style={{ color:'var(--c)' }}>for the chain</span>
         </h2>
-        <p style={{ fontSize: '18px', color: 'var(--text-secondary)', maxWidth: '480px', margin: '0 auto' }}>
-          Everything you love about chess — plus real stakes, verifiable moves, and on-chain reputation.
+        <p style={{ fontSize:15, color:'var(--t2)', maxWidth:420, margin:'0 auto', lineHeight:1.7, fontWeight:300 }}>
+          Everything you love about chess — plus real stakes, verifiable moves, and permanent on-chain reputation.
         </p>
       </div>
 
-      {/* Bento grid - all inline styles, no Tailwind grid */}
-      <div style={{ maxWidth: '960px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <div style={{ maxWidth:960, margin:'0 auto', display:'flex', flexDirection:'column', gap:16 }}>
 
-        {/* Row 1: Large wager card + on-chain card */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
-
-          {/* Wager - large */}
-          <div style={{ gridColumn: 'span 1' }}>
-            <div className="clay-cyan" style={{
-              padding: '32px', minHeight: '220px',
-              display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-              position: 'relative', overflow: 'hidden',
-              borderRadius: 'var(--radius-lg)',
-            }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-                <IconBox icon={features[0].icon} />
-                <span style={{
-                  fontSize: '10px', fontFamily: 'var(--font-display)', letterSpacing: '0.12em',
-                  padding: '4px 10px', borderRadius: 'var(--radius-pill)',
-                  background: 'var(--cyan-soft)', color: 'var(--cyan)', border: '1px solid var(--border)',
-                }}>CORE</span>
-              </div>
-              <div>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '24px', color: 'var(--text-primary)', marginBottom: '8px' }}>
-                  {features[0].title}
-                </h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '15px', lineHeight: 1.6 }}>{features[0].desc}</p>
-              </div>
-              {/* Decorative glow */}
-              <div style={{
-                position: 'absolute', bottom: '-40px', right: '-40px',
-                width: '140px', height: '140px', borderRadius: '50%',
-                background: 'radial-gradient(circle, var(--cyan), transparent)',
-                opacity: 0.08, pointerEvents: 'none',
-              }} />
+        {/* Row 1: wager hero + two stacked */}
+        <div style={{ display:'grid', gridTemplateColumns:'2fr 1fr', gap:16 }}>
+          <div style={cardHero} onMouseEnter={e=>hover(e,true)} onMouseLeave={e=>hover(e,false)}>
+            <div style={{ position:'absolute', bottom:-40, right:-40, width:180, height:180, borderRadius:'50%', background:'radial-gradient(circle,rgba(0,204,255,.14),transparent)', pointerEvents:'none' }}/>
+            <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:20 }}>
+              {iconBox(features[0].icon)}
+              <span style={{ fontFamily:'var(--fd)', fontSize:9, letterSpacing:'.12em', color:'var(--c)', background:'rgba(0,204,255,.08)', border:'1px solid rgba(0,204,255,.15)', borderRadius:999, padding:'3px 10px' }}>
+                CORE FEATURE
+              </span>
+            </div>
+            <div style={{ ...h3, fontSize:26, marginBottom:12 }}>{features[0].title}</div>
+            <div style={{ ...p, fontSize:14 }}>{features[0].desc}</div>
+            <div style={{ display:'flex', gap:24, marginTop:24, paddingTop:20, borderTop:'1px solid rgba(255,255,255,.06)' }}>
+              {features[0].metrics!.map(m => (
+                <div key={m.l}>
+                  <div style={{ fontFamily:'var(--fd)', fontWeight:700, fontSize:22, color:'var(--c)' }}>{m.v}</div>
+                  <div style={{ fontFamily:'var(--fd)', fontSize:9, color:'var(--t3)', letterSpacing:'.12em', marginTop:2 }}>{m.l}</div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* On-chain */}
-          <div>
-            <ClayCard padding="lg" hover style={{ minHeight: '220px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-              <IconBox icon={features[1].icon} />
-              <div>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '20px', color: 'var(--text-primary)', marginBottom: '8px' }}>
-                  {features[1].title}
-                </h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '14px', lineHeight: 1.6 }}>{features[1].desc}</p>
+          <div style={{ display:'flex', flexDirection:'column', gap:16 }}>
+            {features.slice(1,3).map(f => (
+              <div key={f.id} style={{ ...card, flex:1 }} onMouseEnter={e=>hover(e,true)} onMouseLeave={e=>hover(e,false)}>
+                {iconBox(f.icon)}
+                <div style={h3}>{f.title}</div>
+                <div style={p}>{f.desc}</div>
               </div>
-            </ClayCard>
-          </div>
-        </div>
-
-        {/* Row 2: Three equal cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px' }}>
-          {features.slice(2, 5).map((f) => (
-            <ClayCard key={f.id} padding="lg" hover style={{ minHeight: '180px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-              <IconBox icon={f.icon} />
-              <div>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '18px', color: 'var(--text-primary)', marginBottom: '6px' }}>
-                  {f.title}
-                </h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '13px', lineHeight: 1.6 }}>{f.desc}</p>
-              </div>
-            </ClayCard>
-          ))}
-        </div>
-
-        {/* Row 3: Wallets full width */}
-        <ClayCard padding="lg" hover style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}>
-          <IconBox icon={features[5].icon} />
-          <div style={{ flex: 1, minWidth: '200px' }}>
-            <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '18px', color: 'var(--text-primary)', marginBottom: '4px' }}>
-              {features[5].title}
-            </h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '13px' }}>{features[5].desc}</p>
-          </div>
-          <div style={{ display: 'flex', gap: '10px' }}>
-            {['Leather', 'Xverse'].map((w) => (
-              <span key={w} style={{
-                padding: '8px 18px', borderRadius: 'var(--radius-pill)', fontSize: '13px',
-                fontFamily: 'var(--font-display)', fontWeight: 600,
-                background: 'var(--bg-surface)', border: '1px solid var(--border-hover)',
-                color: 'var(--text-primary)',
-              }}>
-                {w}
-              </span>
             ))}
           </div>
-        </ClayCard>
+        </div>
+
+        {/* Row 2: three equal */}
+        <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:16 }}>
+          {features.slice(3,6).map(f => (
+            <div key={f.id} style={card} onMouseEnter={e=>hover(e,true)} onMouseLeave={e=>hover(e,false)}>
+              {iconBox(f.icon)}
+              <div style={h3}>{f.title}</div>
+              <div style={p}>{f.desc}</div>
+              {f.id === 'wallets' && (
+                <div style={{ display:'flex', gap:10, marginTop:16 }}>
+                  {['Leather','Xverse'].map(w => (
+                    <span key={w} style={{ fontFamily:'var(--fd)', fontSize:11, fontWeight:600, color:'var(--t1)', padding:'7px 18px', background:'linear-gradient(145deg,#1a1a32,#0e0e20)', border:'1px solid rgba(255,255,255,.1)', borderRadius:999, boxShadow:'0 1px 0 rgba(255,255,255,.07) inset,0 -1px 0 rgba(0,0,0,.4) inset' }}>
+                      {w}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
