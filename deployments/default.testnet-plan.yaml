@@ -11,70 +11,70 @@ plan:
         - contract-publish:
             contract-name: chess-escrow
             expected-sender: ST6X0MXEEGZX14ZTK7XQXJ76W35ZJDP9NZ00NN8H
-            cost: 2720760
+            cost: 35750
             path: contracts/chess-escrow.clar
             anchor-block-only: true
             clarity-version: 4
         - contract-publish:
             contract-name: chess-token
             expected-sender: ST6X0MXEEGZX14ZTK7XQXJ76W35ZJDP9NZ00NN8H
-            cost: 2724759
+            cost: 56380
             path: contracts/chess-token.clar
             anchor-block-only: true
             clarity-version: 4
         - contract-publish:
             contract-name: chess-token_v2
             expected-sender: ST6X0MXEEGZX14ZTK7XQXJ76W35ZJDP9NZ00NN8H
-            cost: 2726980
+            cost: 65480
             path: contracts/chess-token_v2.clar
             anchor-block-only: true
             clarity-version: 4
         - contract-publish:
             contract-name: logic
             expected-sender: ST6X0MXEEGZX14ZTK7XQXJ76W35ZJDP9NZ00NN8H
-            cost: 2719427
+            cost: 30050
             path: contracts/logic.clar
             anchor-block-only: true
             clarity-version: 4
         - contract-publish:
             contract-name: ranking
             expected-sender: ST6X0MXEEGZX14ZTK7XQXJ76W35ZJDP9NZ00NN8H
-            cost: 2723426
+            cost: 49460
             path: contracts/ranking.clar
             anchor-block-only: true
             clarity-version: 4
         - contract-publish:
             contract-name: registry
             expected-sender: ST6X0MXEEGZX14ZTK7XQXJ76W35ZJDP9NZ00NN8H
-            cost: 2724314
+            cost: 53920
             path: contracts/registry.clar
             anchor-block-only: true
             clarity-version: 4
         - contract-publish:
             contract-name: timer
             expected-sender: ST6X0MXEEGZX14ZTK7XQXJ76W35ZJDP9NZ00NN8H
-            cost: 2721649
+            cost: 40240
             path: contracts/timer.clar
             anchor-block-only: true
             clarity-version: 4
         - contract-publish:
             contract-name: gateway
             expected-sender: ST6X0MXEEGZX14ZTK7XQXJ76W35ZJDP9NZ00NN8H
-            cost: 2732311
+            cost: 90940
             path: contracts/gateway.clar
             anchor-block-only: true
             clarity-version: 2
         - contract-publish:
             contract-name: gateway_v2
             expected-sender: ST6X0MXEEGZX14ZTK7XQXJ76W35ZJDP9NZ00NN8H
-            cost: 2730978
+            cost: 83960
             path: contracts/gateway_v2.clar
             anchor-block-only: true
             clarity-version: 4
         - contract-publish:
             contract-name: router
             expected-sender: ST6X0MXEEGZX14ZTK7XQXJ76W35ZJDP9NZ00NN8H
-            cost: 2727424
+            cost: 68530
             path: contracts/router.clar
             anchor-block-only: true
             clarity-version: 4
