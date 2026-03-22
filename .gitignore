@@ -2,7 +2,7 @@
 **/settings/Testnet.toml
 .cache/**
 history.txt
-
+Elite.cjs
 logs
 *.log
 npm-debug.log*
@@ -47,3 +47,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+ELite.js

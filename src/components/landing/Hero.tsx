@@ -10,8 +10,8 @@ function Navbar() {
       {/* Logo group */}
       <div style={{ display:'flex', alignItems:'center', gap:10 }}>
         <div className="sku-pill" style={{ height:40, padding:'0 14px', borderRadius:999, display:'flex', alignItems:'center', gap:10 }}>
-          <Image src="/piece.png" alt="Chessify" width={22} height={22} style={{ objectFit:'contain', borderRadius:4 }} />
-          <Image src="/chessify.png" alt="Chessify" width={80} height={18} style={{ objectFit:'contain' }} />
+          {/* <Image src="/Piece.png" alt="Chessify" width={22} height={22} style={{ objectFit:'contain', borderRadius:4 }} /> */}
+          <Image src="/Chessify.png" alt="Chessify" width={80} height={18} style={{ objectFit:'contain' }} />
         </div>
         <div className="vel-pill">
           <span style={{ fontFamily:'var(--fd)', fontSize:9, fontWeight:600, color:'rgba(0,204,255,.7)', letterSpacing:'.12em' }}>BY VELOCITY LABS</span>
@@ -27,7 +27,7 @@ function Navbar() {
             onMouseLeave={e => { (e.target as HTMLElement).style.color='var(--t2)' }}
           >{l}</a>
         ))}
-      </div>
+      </div>  
 
       {/* Right */}
       <div style={{ display:'flex', alignItems:'center', gap:10 }}>
