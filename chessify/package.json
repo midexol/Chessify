@@ -1,16 +1,12 @@
 {
-  "name": "chessify-protocol",
+  "name": "chessify",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "test": "vitest run",
-    "test:report": "vitest run -- --coverage --costs",
-    "test:watch": "chokidar \"tests/**/*.ts\" \"contracts/**/*.clar\" -c \"npm run test:report\""
+    "lint": "eslint"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
@@ -30,18 +26,14 @@
     "zustand": "^5.0.12"
   },
   "devDependencies": {
-    "@stacks/clarinet-sdk": "^3.9.0",
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^24.4.0",
+    "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
-    "chokidar-cli": "^3.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.1",
     "tailwindcss": "^4",
-    "typescript": "^5",
-    "vitest": "^4.0.7",
-    "vitest-environment-clarinet": "^3.0.0"
+    "typescript": "^5"
   }
 }

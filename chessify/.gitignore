@@ -1,14 +1,6 @@
-**/settings/Mainnet.toml
-**/settings/Testnet.toml
-.cache/**
-history.txt
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-logs
-*.log
-npm-debug.log*
-coverage
-*.info
-costs-reports.json
+# dependencies
 /node_modules
 /.pnp
 .pnp.*
