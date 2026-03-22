@@ -1,23 +1,17 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import GlowButton from '@/components/ui/GlowButton'
 
-export function CTA() {
+export function FreeCTA() {
   return (
-    <section style={{ padding:'100px 52px', textAlign:'center', position:'relative', overflow:'hidden', background:'linear-gradient(180deg,var(--bg) 0%,#0a0a1a 100%)', borderTop:'1px solid rgba(255,255,255,.05)' }}>
-      <div style={{ position:'absolute', top:'50%', left:'50%', transform:'translate(-50%,-50%)', width:600, height:300, borderRadius:'50%', background:'radial-gradient(ellipse,rgba(0,204,255,.09) 0%,transparent 70%)', pointerEvents:'none' }}/>
+    <section style={{ padding:'72px 52px', textAlign:'center', background:'linear-gradient(180deg,var(--bg),#0a0a1a)', borderTop:'1px solid rgba(255,255,255,.04)', position:'relative', overflow:'hidden' }}>
+      <div style={{ position:'absolute', top:'50%', left:'50%', transform:'translate(-50%,-50%)', width:500, height:250, borderRadius:'50%', background:'radial-gradient(ellipse,rgba(0,204,255,.08),transparent 70%)', pointerEvents:'none' }}/>
       <div style={{ position:'relative', zIndex:2 }}>
-        <h2 style={{ fontFamily:'var(--fd)', fontWeight:900, fontSize:'clamp(36px,5vw,52px)', lineHeight:1.0, letterSpacing:'-.03em', marginBottom:20, color:'var(--t1)' }}>
-          Your next move<br/><span style={{ color:'var(--c)', textShadow:'0 0 50px rgba(0,204,255,.4)' }}>is on-chain</span>
-        </h2>
-        <p style={{ fontSize:15, color:'var(--t2)', maxWidth:400, margin:'0 auto 40px', lineHeight:1.7, fontWeight:300 }}>
-          Connect your wallet, claim free CHESS tokens, and start your first wager game in under two minutes.
-        </p>
-        <div style={{ display:'flex', gap:14, justifyContent:'center', marginBottom:64, flexWrap:'wrap' }}>
-          <Link href="/app/lobby"><GlowButton size="lg">Open the App</GlowButton></Link>
-          <Link href="/app/faucet"><GlowButton variant="ghost" size="lg">Get Free CHESS</GlowButton></Link>
-        </div>
-        <div style={{ fontFamily:'var(--fd)', fontSize:9, fontWeight:600, letterSpacing:'.14em', color:'var(--t3)' }}>BUILT BY VELOCITY LABS</div>
+        <p style={{ fontFamily:'var(--fd)', fontSize:11, letterSpacing:'.12em', color:'rgba(255,255,255,.28)', marginBottom:24 }}>START FOR FREE</p>
+        <Link href="/app/faucet">
+          <GlowButton variant="ghost" size="lg">Get Free CHESS Tokens</GlowButton>
+        </Link>
       </div>
     </section>
   )
@@ -25,19 +19,25 @@ export function CTA() {
 
 export function Footer() {
   return (
-    <footer style={{ padding:'24px 52px', display:'flex', alignItems:'center', justifyContent:'space-between', borderTop:'1px solid rgba(255,255,255,.05)', flexWrap:'wrap', gap:16, background:'var(--bg)' }}>
+    <footer style={{ padding:'20px 52px', display:'flex', alignItems:'center', justifyContent:'space-between', borderTop:'1px solid rgba(255,255,255,.05)', background:'var(--bg)', flexWrap:'wrap', gap:12 }}>
       <div style={{ display:'flex', alignItems:'center', gap:10 }}>
-        <span style={{ fontFamily:'var(--fd)', fontWeight:800, fontSize:12, color:'var(--c)', letterSpacing:'.1em' }}>CHESSIFY</span>
-        <div className="vel-pill">
-          <span style={{ fontFamily:'var(--fd)', fontSize:9, fontWeight:600, color:'rgba(0,204,255,.7)', letterSpacing:'.12em' }}>BY VELOCITY LABS</span>
-        </div>
+        <Image src="/chessify.png" alt="Chessify" width={80} height={18} style={{ objectFit:'contain' }} />
+        <span style={{ fontFamily:'var(--fd)', fontSize:9, color:'rgba(255,255,255,.2)', letterSpacing:'.06em' }}>© 2025 CHESS PROTOCOL</span>
       </div>
-      <div style={{ display:'flex', gap:24 }}>
-        {[{l:'App',h:'/app/lobby'},{l:'Faucet',h:'/app/faucet'},{l:'Leaderboard',h:'/app/leaderboard'}].map(({l,h}) => (
-          <Link key={l} href={h} style={{ fontFamily:'var(--fd)', fontSize:10, color:'var(--t3)', textDecoration:'none', letterSpacing:'.06em' }}>{l}</Link>
-        ))}
+      <div style={{ display:'flex', alignItems:'center', gap:18 }}>
+        <a href="https://github.com" target="_blank" rel="noreferrer" style={{ color:'rgba(255,255,255,.3)', transition:'color .2s', display:'flex' }}
+          onMouseEnter={e=>(e.currentTarget as HTMLElement).style.color='#fff'}
+          onMouseLeave={e=>(e.currentTarget as HTMLElement).style.color='rgba(255,255,255,.3)'}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+        <a href="https://twitter.com" target="_blank" rel="noreferrer" style={{ color:'rgba(255,255,255,.3)', transition:'color .2s', display:'flex' }}
+          onMouseEnter={e=>(e.currentTarget as HTMLElement).style.color='#fff'}
+          onMouseLeave={e=>(e.currentTarget as HTMLElement).style.color='rgba(255,255,255,.3)'}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
       </div>
-      <span style={{ fontFamily:'var(--fd)', fontSize:10, color:'var(--t3)', letterSpacing:'.06em' }}>CHESS PROTOCOL — STACKS BLOCKCHAIN</span>
     </footer>
   )
 }
