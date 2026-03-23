@@ -10,64 +10,126 @@ interface GlowButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: ReactNode
 }
 
-const sizeMap = {
-  sm: { fontSize: '11px', padding: '10px 22px' },
-  md: { fontSize: '12px', padding: '11px 26px' },
-  lg: { fontSize: '14px', padding: '18px 56px' },
+/* ── shared brand colours (work in both themes via CSS vars) ── */
+const BRAND_FACE_DARK  = 'linear-gradient(180deg,#33eeff 0%,#00ccff 40%,#00b8e8 75%,#009acc 100%)'
+const BRAND_FACE_LIGHT = 'linear-gradient(180deg,#00aadd 0%,#0088bb 40%,#007aaa 75%,#006699 100%)'
+
+/* We detect the theme via data-theme on <html> at render time — but since this is
+   a client component we read it safely from the DOM. We use CSS custom properties
+   instead so the button adapts automatically without JS reads. */
+
+const btnBase: React.CSSProperties = {
+  fontFamily: 'var(--fd)',
+  fontWeight: 800,
+  letterSpacing: '.08em',
+  color: 'var(--btn-text, #001a22)',
+  background: 'var(--btn-face)',
+  border: 'none',
+  cursor: 'pointer',
+  boxShadow: 'var(--btn-shadow)',
+  transition: 'all .15s ease',
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  position: 'relative' as const,
+}
+
+const pillSize: Record<string, React.CSSProperties> = {
+  sm: { fontSize: '11px', padding: '10px 22px', borderRadius: 999 },
+  md: { fontSize: '12px', padding: '11px 26px', borderRadius: 999 },
+  lg: { fontSize: '13px', padding: '15px 34px', borderRadius: 999 },
+}
+
+const ghostBase: React.CSSProperties = {
+  fontFamily: 'var(--fd)',
+  fontWeight: 700,
+  fontSize: '13px',
+  letterSpacing: '.07em',
+  color: 'var(--c)',
+  background: 'transparent',
+  border: 'none',
+  borderRadius: 999,
+  padding: '16px 40px',
+  cursor: 'pointer',
+  display: 'inline-block',
+  boxShadow: '0 0 0 1px var(--b2), 0 4px 0 rgba(0,50,70,.5), 0 8px 24px rgba(0,204,255,.1)',
+  transition: 'all .18s ease',
 }
 
 const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
   (
-    {
-      variant = 'brand',
-      size = 'md',
-      parallelogram = false,
-      loading = false,
-      fullWidth = false,
-      icon,
-      className = '',
-      children,
-      disabled,
-      style,
-      ...props
-    },
+    { variant = 'brand', size = 'md', parallelogram = false, loading = false,
+      fullWidth = false, icon, className = '', children, disabled, style, ...props },
     ref
   ) => {
-    const isGhost = variant === 'ghost'
-    const baseClass = isGhost
-      ? 'btn-ghost-brand'
-      : parallelogram
-      ? 'btn-brand btn-brand-para'
-      : 'btn-brand btn-brand-pill'
+    const isDisabled = disabled || loading
 
-    const inlineStyle: React.CSSProperties = {
-      opacity: disabled || loading ? 0.45 : 1,
-      cursor: disabled || loading ? 'not-allowed' : 'pointer',
+    if (variant === 'ghost') {
+      return (
+        <button
+          ref={ref}
+          disabled={isDisabled}
+          style={{ ...ghostBase, opacity: isDisabled ? .45 : 1, width: fullWidth ? '100%' : undefined, ...style }}
+          onMouseEnter={e => { if (!isDisabled) { const el = e.currentTarget; el.style.background = 'rgba(0,204,255,.05)'; el.style.boxShadow = '0 0 0 1px rgba(0,204,255,.55), 0 4px 0 rgba(0,50,70,.5), 0 16px 40px rgba(0,204,255,.2)'; el.style.transform = 'translateY(-1px)' }}}
+          onMouseLeave={e => { const el = e.currentTarget; el.style.background = 'transparent'; el.style.boxShadow = '0 0 0 1px var(--b2), 0 4px 0 rgba(0,50,70,.5), 0 8px 24px rgba(0,204,255,.1)'; el.style.transform = '' }}
+          onMouseDown={e => { e.currentTarget.style.transform = 'translateY(2px)' }}
+          onMouseUp={e => { e.currentTarget.style.transform = 'translateY(-1px)' }}
+          className={className}
+          {...props}
+        >
+          {loading && <span style={{ width:13, height:13, border:'2px solid currentColor', borderTopColor:'transparent', borderRadius:'50%', display:'inline-block', animation:'spin .6s linear infinite', marginRight:8 }}/>}
+          {children}
+        </button>
+      )
+    }
+
+    /* Brand button */
+    const paraStyle: React.CSSProperties = parallelogram ? {
+      fontSize: '14px',
+      padding: '18px 56px',
+      borderRadius: 0,
+      clipPath: 'polygon(16px 0%, 100% 0%, calc(100% - 16px) 100%, 0% 100%)',
+    } : pillSize[size]
+
+    const combined: React.CSSProperties = {
+      ...btnBase,
+      ...paraStyle,
+      opacity: isDisabled ? .45 : 1,
+      cursor: isDisabled ? 'not-allowed' : 'pointer',
       width: fullWidth ? '100%' : undefined,
-      ...(size !== 'md' && !parallelogram ? sizeMap[size] : {}),
+      /* shadow + face via CSS vars so light/dark theme work */
+      background: 'var(--btn-face)',
+      boxShadow: 'var(--btn-shadow)',
+      color: 'var(--btn-text, #001a22)',
       ...style,
     }
 
     return (
       <button
         ref={ref}
-        disabled={disabled || loading}
-        className={`${baseClass} ${className}`}
-        style={inlineStyle}
+        disabled={isDisabled}
+        style={combined}
+        onMouseEnter={e => {
+          if (isDisabled) return
+          const el = e.currentTarget
+          el.style.transform = 'translateY(-2px)'
+          el.style.boxShadow = 'var(--btn-shadow-hover)'
+          el.style.filter = 'brightness(1.04)'
+        }}
+        onMouseLeave={e => {
+          if (isDisabled) return
+          const el = e.currentTarget
+          el.style.transform = ''
+          el.style.boxShadow = 'var(--btn-shadow)'
+          el.style.filter = ''
+        }}
+        onMouseDown={e => { e.currentTarget.style.transform = 'translateY(3px)'; e.currentTarget.style.boxShadow = 'var(--btn-shadow-press)' }}
+        onMouseUp={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--btn-shadow-hover)' }}
+        className={className}
         {...props}
       >
-        {loading && (
-          <span style={{
-            width: 13, height: 13,
-            border: '2px solid currentColor',
-            borderTopColor: 'transparent',
-            borderRadius: '50%',
-            display: 'inline-block',
-            animation: 'spin .6s linear infinite',
-            marginRight: 8,
-          }}/>
-        )}
-        {icon && !loading && <span style={{ marginRight: 8, display: 'inline-flex', alignItems: 'center' }}>{icon}</span>}
+        {loading && <span style={{ width:13, height:13, border:'2px solid currentColor', borderTopColor:'transparent', borderRadius:'50%', display:'inline-block', animation:'spin .6s linear infinite', marginRight:8 }}/>}
+        {icon && !loading && <span style={{ marginRight:8, display:'inline-flex', alignItems:'center' }}>{icon}</span>}
         {children}
       </button>
     )

@@ -315,3 +315,13 @@ body {
   50%{transform:translate(44px,-46px)}
   75%{transform:translate(44px,0)}
 }
+
+/* ── HERO TEXT SHADOWS ── */
+:root {
+  --hero-text-shadow: 0 4px 40px rgba(0,0,0,.7);
+  --king-text-shadow: 0 0 80px rgba(0,204,255,.45), 0 0 160px rgba(0,204,255,.15);
+}
+[data-theme="light"] {
+  --hero-text-shadow: none;
+  --king-text-shadow: none;
+}
