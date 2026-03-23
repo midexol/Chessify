@@ -4,6 +4,10 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'CHESSIFY — Play Chess on Stacks',
   description: 'Wager CHESS tokens, play on-chain. Built by Velocity Labs.',
+  icons: {
+    icon: '/piece.png',
+    apple: '/piece.png',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
