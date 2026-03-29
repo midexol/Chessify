@@ -58,11 +58,3 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
 ClayCard.displayName = 'ClayCard'
 
 export default ClayCard
-
-
-// ⟳ echo · src/components/landing/Hero.tsx
-//       // style={{
-//       //   height: 40,
-//       //   padding: "0 16px",
-//       //   borderRadius: 999,
-//       //   display: "flex",

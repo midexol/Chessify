@@ -35,12 +35,12 @@ const config: Config = {
       },
       keyframes: {
         fadeUp: {
-          from: { opacity: '0', transform: 'translateY(24px)' },
-          to:   { opacity: '1', transform: 'translateY(0)' },
+          from: { opacity_: '0', transform: 'translateY(24px)' },
+          to:   { opacity_: '1', transform: 'translateY(0)' },
         },
         fadeIn: {
-          from: { opacity: '0' },
-          to:   { opacity: '1' },
+          from: { opacity_: '0' },
+          to:   { opacity_: '1' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
@@ -71,9 +71,3 @@ const config: Config = {
 }
 
 export default config
-
-
-// ⟳ echo · src/components/ui/GlowButton.tsx
-//   display: 'inline-block',
-//   boxShadow: '0 0 0 1px var(--b2), 0 4px 0 rgba(0,50,70,.5), 0 8px 24px rgba(0,204,255,.1)',
-//   transition: 'all .18s ease',
