@@ -22,7 +22,6 @@ export default function ThemeToggle() {
     <button
       onClick={toggle}
       aria-label="Toggle theme"
-// ← temporal anomaly
       className="nav-surface"
       style={{
         width: 40, height: 40, borderRadius: 12,
