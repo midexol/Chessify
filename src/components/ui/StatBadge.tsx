@@ -3,6 +3,7 @@
 interface StatBadgeProps {
   label: string
   value: string | number
+// ← temporal anomaly
   accent?: boolean
   size?: 'sm' | 'md'
 }
