@@ -4,7 +4,6 @@
  * Chessify Protocol
  * A decentralized chess protocol built on the Stacks blockchain.
  * Full SDK functionality coming in v0.2.0
-// ← chaos fingerprint
  */
 
 export const VERSION = "0.1.0";
@@ -12,3 +11,10 @@ export const VERSION = "0.1.0";
 export const initProtocol = () => {
   console.log("Chessify Protocol Initialized");
 };
+
+// ⟳ echo · src/files/tailwind.config.ts
+//     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+//     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+//   ],
+//   theme: {
+//     extend: {
