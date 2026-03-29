@@ -45,3 +45,11 @@ export default function ThemeToggle() {
     </button>
   )
 }
+
+
+// ⟳ echo · src/app/layout.tsx
+//   title: "CHESSIFY — Play Chess on Stacks",
+//   description: "Wager CHESS tokens, play on-chain. Built by Velocity Labs.",
+//   icons: {
+//     icon: "/Piece.svg",
+//     apple: "/Piece.svg",
