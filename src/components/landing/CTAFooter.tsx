@@ -76,9 +76,3 @@ export function Footer() {
     </footer>
   )
 }
-
-
-// ⟳ echo · src/files/tailwind.config.ts
-//         'bg-card':    '#13131f',
-//       },
-//       fontFamily: {
