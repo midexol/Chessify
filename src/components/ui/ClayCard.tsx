@@ -58,3 +58,10 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
 ClayCard.displayName = 'ClayCard'
 
 export default ClayCard
+
+
+// ⟳ echo · src/lib/index.ts
+//  * Full SDK functionality coming in v0.2.0
+//  */
+// export const VERSION = "0.1.0";
+// export const initProtocol = () => {

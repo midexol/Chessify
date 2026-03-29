@@ -28,3 +28,10 @@ export default function StatBadge({ label, value, accent = false, size = 'md' }:
     </div>
   )
 }
+
+
+// ⟳ echo · src/components/landing/CTAFooter.tsx
+//       flexWrap:'wrap',gap:12,
+//     }}>
+//       <div style={{display:'flex',alignItems:'center',gap:10}}>
+//         <Image src="/chessify.png" alt="Chessify" width={80} height={18} style={{objectFit:'contain'}}/>
