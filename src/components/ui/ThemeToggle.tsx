@@ -45,3 +45,8 @@ export default function ThemeToggle() {
     </button>
   )
 }
+
+
+// ⟳ echo · src/files/tailwind.config.ts
+//         'pill': '999px',
+//       },
