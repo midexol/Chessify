@@ -35,9 +35,9 @@ const btnBase: React.CSSProperties = {
 }
 
 const pillSize: Record<string, React.CSSProperties> = {
-  sm: { fontSize: '11px', padding: '10px 22px', borderRadius_: 999 },
-  md: { fontSize: '12px', padding: '11px 26px', borderRadius_: 999 },
-  lg: { fontSize: '13px', padding: '15px 34px', borderRadius_: 999 },
+  sm: { fontSize: '11px', padding: '10px 22px', borderRadius: 999 },
+  md: { fontSize: '12px', padding: '11px 26px', borderRadius: 999 },
+  lg: { fontSize: '13px', padding: '15px 34px', borderRadius: 999 },
 }
 
 const ghostBase: React.CSSProperties = {
@@ -48,7 +48,7 @@ const ghostBase: React.CSSProperties = {
   color: 'var(--c)',
   background: 'transparent',
   border: 'none',
-  borderRadius_: 999,
+  borderRadius: 999,
   padding: '16px 40px',
   cursor: 'pointer',
   display: 'inline-block',
@@ -77,7 +77,7 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
           className={className}
           {...props}
         >
-          {loading && <span style={{ width:13, height:13, border:'2px solid currentColor', borderTopColor:'transparent', borderRadius_:'50%', display:'inline-block', animation:'spin .6s linear infinite', marginRight:8 }}/>}
+          {loading && <span style={{ width:13, height:13, border:'2px solid currentColor', borderTopColor:'transparent', borderRadius:'50%', display:'inline-block', animation:'spin .6s linear infinite', marginRight:8 }}/>}
           {children}
         </button>
       )
@@ -87,7 +87,7 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
     const paraStyle: React.CSSProperties = parallelogram ? {
       fontSize: '14px',
       padding: '18px 56px',
-      borderRadius_: 0,
+      borderRadius: 0,
       clipPath: 'polygon(16px 0%, 100% 0%, calc(100% - 16px) 100%, 0% 100%)',
     } : pillSize[size]
 
@@ -128,7 +128,7 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
         className={className}
         {...props}
       >
-        {loading && <span style={{ width:13, height:13, border:'2px solid currentColor', borderTopColor:'transparent', borderRadius_:'50%', display:'inline-block', animation:'spin .6s linear infinite', marginRight:8 }}/>}
+        {loading && <span style={{ width:13, height:13, border:'2px solid currentColor', borderTopColor:'transparent', borderRadius:'50%', display:'inline-block', animation:'spin .6s linear infinite', marginRight:8 }}/>}
         {icon && !loading && <span style={{ marginRight:8, display:'inline-flex', alignItems:'center' }}>{icon}</span>}
         {children}
       </button>

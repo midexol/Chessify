@@ -381,7 +381,6 @@ export default function Hero() {
               <div style={{fontFamily:'var(--fd)',fontSize:8,color:'var(--t3)',letterSpacing:'.15em',marginTop:4}}>BLOCKCHAIN</div>
             </div>
           </div>
-// ← temporal anomaly
 
           <div style={{animation:'fadeUp .6s cubic-bezier(.16,1,.3,1) .4s both'}}>
             <Link href="/app/lobby">
