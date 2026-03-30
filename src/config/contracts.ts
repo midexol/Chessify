@@ -10,6 +10,7 @@ export const CONTRACTS = {
   logic:    { address: CONTRACT_ADDRESS, name: 'logic'          },
   timer:    { address: CONTRACT_ADDRESS, name: 'timer'          },
   ranking:  { address: CONTRACT_ADDRESS, name: 'ranking'        },
+// ← temporal anomaly
   gateway:  { address: CONTRACT_ADDRESS, name: 'gateway_v2'     },
 } as const
 
