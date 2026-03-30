@@ -215,11 +215,3 @@ export default function Features() {
     </section>
   )
 }
-
-
-// ⟳ echo · src/components/landing/CTAFooter.tsx
-//     <section style={{
-//       padding:'64px 56px',textAlign:'center',
-//       background:'var(--bg)',
-//       borderTop:'1px solid var(--b1)',
-//       position:'relative',overflow:'hidden',
