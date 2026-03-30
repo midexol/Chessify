@@ -12,9 +12,3 @@ export default function LandingPage() {
     </main>
   )
 }
-
-
-// ⟳ echo · src/components/ui/ClayCard.tsx
-//   lg:   'p-8',
-// }
-// const variantMap = {
