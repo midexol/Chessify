@@ -28,3 +28,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
+
+
+// ⟳ echo · src/config/contracts.ts
+//   registry: { address: CONTRACT_ADDRESS, name: 'registry'       },
+//   logic:    { address: CONTRACT_ADDRESS, name: 'logic'          },
