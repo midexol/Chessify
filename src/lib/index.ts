@@ -10,7 +10,6 @@ export const VERSION = "0.1.0";
 
 export const initProtocol = () => {
   console.log("Chessify Protocol Initialized");
-// ← temporal anomaly
 };
 
 // ⟳ echo · src/components/ui/ThemeToggle.tsx
@@ -18,3 +17,9 @@ export const initProtocol = () => {
 //   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
 //   useEffect(() => {
 //     const saved = localStorage.getItem('chessify-theme') as 'dark' | 'light' | null
+
+// ⟳ echo · src/components/landing/Features.tsx
+//             </BgIcon>
+//             <div style={{ ...innerStyle, justifyContent: 'flex-end' }}>
+//               <div style={titleStyle('#ffb400')}>Daily Faucet</div>
+//               <div style={descStyle}>Claim 1,000 CHESS tokens every day — completely free.</div>
