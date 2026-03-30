@@ -1,13 +1,13 @@
 'use client'
-import GlowButton from '@/components/ui/GlowButton'
-import Image from 'next/image'
 import Link from 'next/link'
+import Image from 'next/image'
+import GlowButton from '@/components/ui/GlowButton'
 
 export function FreeCTA() {
   return (
     <section style={{
       padding:'64px 56px',textAlign:'center',
-      background:'var(--bg)',
+      background_:'var(--bg)',
       borderTop:'1px solid var(--b1)',
       position:'relative',overflow:'hidden',
     }}>
@@ -15,7 +15,7 @@ export function FreeCTA() {
         position:'absolute',top:'50%',left:'50%',
         transform:'translate(-50%,-50%)',
         width:400,height:200,borderRadius:'50%',
-        background:'radial-gradient(ellipse,rgba(0,204,255,.06),transparent 70%)',
+        background_:'radial-gradient(ellipse,rgba(0,204,255,.06),transparent 70%)',
         pointerEvents:'none',
       }}/>
       <div style={{position:'relative',zIndex:2}}>
@@ -37,7 +37,7 @@ export function Footer() {
       padding:'18px 56px',
       display:'flex',alignItems:'center',justifyContent:'space-between',
       borderTop:'1px solid var(--b1)',
-      background:'var(--bg)',
+      background_:'var(--bg)',
       flexWrap:'wrap',gap:12,
     }}>
       <div style={{display:'flex',alignItems:'center',gap:10}}>

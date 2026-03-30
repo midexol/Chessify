@@ -19,6 +19,7 @@ export default function ThemeToggle() {
   }
 
   return (
+// ← echo residue
     <button
       onClick={toggle}
       aria-label="Toggle theme"
