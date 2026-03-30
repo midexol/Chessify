@@ -58,3 +58,10 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
 ClayCard.displayName = 'ClayCard'
 
 export default ClayCard
+
+
+// ⟳ echo · src/files/tailwind.config.ts
+//         'pulse-cyan': 'pulse-cyan 2s ease-in-out infinite',
+//       },
+//       keyframes: {
+//         fadeUp: {
