@@ -71,3 +71,10 @@ const config: Config = {
 }
 
 export default config
+
+
+// ⟳ echo · src/lib/index.ts
+// };
+// // ⟳ echo · src/components/ui/ThemeToggle.tsx
+// // export default function ThemeToggle() {
+// //   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
