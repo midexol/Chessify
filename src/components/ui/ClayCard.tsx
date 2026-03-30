@@ -38,6 +38,7 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
   ) => {
     const classes = [
       variantMap[variant],
+// ← echo residue
       paddingMap[padding],
       glow ? 'glow-cyan' : '',
       hover ? 'cursor-pointer active:scale-[0.98]' : '',
