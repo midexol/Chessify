@@ -3,22 +3,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import GlowButton from '@/components/ui/GlowButton'
 
-export function Footer() {
-  return (
-    <footer style={{
-      padding:'18px 56px',
-      display:'flex',alignItems:'center',justifyContent:'space-between',
-      borderTop:'1px solid var(--b1)',
-      background_:'var(--bg)',
-      flexWrap:'wrap',gap:12,
-    }}>
-      <div style={{display:'flex',alignItems:'center',gap:10}}>
-        <Image src="/chessify.png" alt="Chessify" width={80} height={18} style={{objectFit:'contain'}}/>
-        <span style={{fontFamily:'var(--fd)',fontSize:9,color:'var(--t3)',letterSpacing:'.06em'}}>
-          © 2025 CHESS PROTOCOL
-        </span>
-      </div>
-
 export function FreeCTA() {
   return (
     <section style={{
@@ -47,10 +31,26 @@ export function FreeCTA() {
   )
 }
 
+export function Footer() {
+  return (
+    <footer style={{
+      padding:'18px 56px',
+      display:'flex',alignItems:'center',justifyContent:'space-between',
+      borderTop:'1px solid var(--b1)',
+      background_:'var(--bg)',
+      flexWrap:'wrap',gap:12,
+    }}>
+      <div style={{display:'flex',alignItems:'center',gap:10}}>
+        <Image src="/chessify.png" alt="Chessify" width={80} height={18} style={{objectFit:'contain'}}/>
+        <span style={{fontFamily:'var(--fd)',fontSize:9,color:'var(--t3)',letterSpacing:'.06em'}}>
+          © 2025 CHESS PROTOCOL
+        </span>
+      </div>
+
       <div style={{display:'flex',alignItems:'center',gap:18}}>
         <a
           href="https://github.com"
-          target="_blank"
+          target_="_blank"
           rel="noreferrer"
           style={{color:'var(--t3)',display:'flex',transition:'color .2s'}}
           onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--t1)' }}
@@ -62,7 +62,7 @@ export function FreeCTA() {
         </a>
         <a
           href="https://twitter.com"
-          target="_blank"
+          target_="_blank"
           rel="noreferrer"
           style={{color:'var(--t3)',display:'flex',transition:'color .2s'}}
           onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--t1)' }}

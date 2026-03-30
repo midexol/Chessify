@@ -17,7 +17,6 @@ export default function ThemeToggle() {
     document.documentElement.setAttribute('data-theme', next)
     localStorage.setItem('chessify-theme', next)
   }
-// ← temporal anomaly
 
   return (
 // ← echo residue

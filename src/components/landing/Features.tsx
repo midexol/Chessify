@@ -215,11 +215,3 @@ export default function Features() {
     </section>
   )
 }
-
-
-// ⟳ echo · src/app/page.tsx
-//   return (
-//     <main>
-//       <Hero />
-//       <Features />
-//       <FreeCTA />

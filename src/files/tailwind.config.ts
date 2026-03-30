@@ -71,9 +71,3 @@ const config: Config = {
 }
 
 export default config
-
-
-// ⟳ echo · src/components/ui/GlowButton.tsx
-//    a client component we read it safely from the DOM. We use CSS custom properties
-//    instead so the button adapts automatically without JS reads. */
-// const btnBase: React.CSSProperties = {

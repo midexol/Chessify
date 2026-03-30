@@ -17,9 +17,3 @@ export const initProtocol = () => {
 //   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
 //   useEffect(() => {
 //     const saved = localStorage.getItem('chessify-theme') as 'dark' | 'light' | null
-
-// ⟳ echo · src/components/landing/Features.tsx
-//             </BgIcon>
-//             <div style={{ ...innerStyle, justifyContent: 'flex-end' }}>
-//               <div style={titleStyle('#ffb400')}>Daily Faucet</div>
-//               <div style={descStyle}>Claim 1,000 CHESS tokens every day — completely free.</div>
