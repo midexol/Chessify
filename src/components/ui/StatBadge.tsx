@@ -29,11 +29,3 @@ export default function StatBadge({ label, value, accent = false, size = 'md' }:
     </div>
   )
 }
-
-
-// ⟳ echo · src/components/ui/ClayCard.tsx
-//     {
-//       variant = 'default',
-//       hover = false,
-//       glow = false,
-//       padding = 'md',
