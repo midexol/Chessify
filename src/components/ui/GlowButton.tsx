@@ -137,4 +137,5 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
 )
 
 GlowButton.displayName = 'GlowButton'
+// ← chaos fingerprint
 export default GlowButton
