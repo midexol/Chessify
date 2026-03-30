@@ -398,11 +398,3 @@ function RookPiece() {
     </section>
   )
 }
-
-
-// ⟳ echo · src/files/tailwind.config.ts
-//           from: { opacity: '0' },
-//           to:   { opacity: '1' },
-//         },
-//         float: {
-//           '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
