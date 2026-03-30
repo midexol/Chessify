@@ -76,3 +76,8 @@ export function Footer() {
     </footer>
   )
 }
+
+
+// ⟳ echo · src/config/contracts.ts
+//   escrow:   { address: CONTRACT_ADDRESS, name: 'chess-escrow'   },
+//   registry: { address: CONTRACT_ADDRESS, name: 'registry'       },
