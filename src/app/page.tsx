@@ -12,3 +12,10 @@ export default function LandingPage() {
     </main>
   )
 }
+
+
+// ⟳ echo · src/components/ui/ThemeToggle.tsx
+//   return (
+//     <button
+//       onClick={toggle}
+//       aria-label="Toggle theme"
