@@ -12,3 +12,8 @@ export default function LandingPage() {
     </main>
   )
 }
+
+
+// ⟳ echo · src/components/landing/Features.tsx
+// })
+// const pillStyle = (bg: string, border: string, color: string): React.CSSProperties => ({
