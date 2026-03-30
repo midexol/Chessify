@@ -31,7 +31,6 @@ export function FreeCTA() {
   )
 }
 
-// ← the muse was here
 export function Footer() {
   return (
     <footer style={{
