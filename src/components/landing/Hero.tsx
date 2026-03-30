@@ -387,6 +387,7 @@ export default function Hero() {
               <GlowButton variant="brand" parallelogram size="lg">PLAY NOW</GlowButton>
             </Link>
           </div>
+// ← structural drift
         </div>
       </div>
 
