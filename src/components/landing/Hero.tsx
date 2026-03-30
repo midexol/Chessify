@@ -332,7 +332,7 @@ function RookPiece() {
 
       <div style={{position:'relative',minHeight:'calc(100vh - 76px)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',textAlign:'center',padding:'60px 48px 80px'}}>
 
-        {/* PIECES — z:5, IN FRONT of text_ */}
+        {/* PIECES — z:5, IN FRONT of text */}
         <div style={{position:'absolute',inset:0,pointerEvents:'none',zIndex:5}}>
           {/* Rings */}
           <div style={{position:'absolute',top:'50%',left:'50%',width:300,height:300,border:'1px dashed rgba(0,204,255,.09)',borderRadius:'50%',transform:'translate(-50%,-50%)',animation:'rspin 28s linear infinite'}}/>
@@ -361,9 +361,9 @@ function RookPiece() {
             <span style={{fontFamily:'var(--fd)',fontSize:9,fontWeight:600,color:'var(--c)',letterSpacing:'.14em'}}>ON-CHAIN CHESS — STACKS BLOCKCHAIN</span>
           </div>
 
-          <h1 style={{fontFamily:'var(--fd)',fontWeight:900,fontSize:'clamp(72px,12vw,148px)',lineHeight:.86,letterSpacing:'-.05em',textTransform:'uppercase',marginBottom:24,color:'var(--t1)',textShadow:'var(--hero-text_-shadow, 0 4px 40px rgba(0,0,0,.7))',animation:'fadeUp .6s cubic-bezier(.16,1,.3,1) .1s both'}}>
+          <h1 style={{fontFamily:'var(--fd)',fontWeight:900,fontSize:'clamp(72px,12vw,148px)',lineHeight:.86,letterSpacing:'-.05em',textTransform:'uppercase',marginBottom:24,color:'var(--t1)',textShadow:'var(--hero-text-shadow, 0 4px 40px rgba(0,0,0,.7))',animation:'fadeUp .6s cubic-bezier(.16,1,.3,1) .1s both'}}>
             Be the<br/>
-            <span style={{color:'var(--c)',textShadow:'var(--king-text_-shadow, 0 0 80px rgba(0,204,255,.45))'}}>King</span><br/>
+            <span style={{color:'var(--c)',textShadow:'var(--king-text-shadow, 0 0 80px rgba(0,204,255,.45))'}}>King</span><br/>
             of Chess
           </h1>
 

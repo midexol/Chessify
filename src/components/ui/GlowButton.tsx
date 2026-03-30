@@ -138,10 +138,3 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
 
 GlowButton.displayName = 'GlowButton'
 export default GlowButton
-
-
-// ⟳ echo · src/components/landing/Hero.tsx
-//             <Link href="/app/lobby">
-//               <GlowButton variant="brand" parallelogram size="lg">PLAY NOW</GlowButton>
-//             </Link>
-//           </div>
