@@ -17,7 +17,3 @@ export const initProtocol = () => {
 //   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
 //   useEffect(() => {
 //     const saved = localStorage.getItem('chessify-theme') as 'dark' | 'light' | null
-
-// ⟳ echo · src/components/ui/StatBadge.tsx
-// }
-// export default function StatBadge({ label, value, accent = false, size = 'md' }: StatBadgeProps) {
