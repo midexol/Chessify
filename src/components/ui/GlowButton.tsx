@@ -109,7 +109,6 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
         ref={ref}
         disabled={isDisabled}
         style={combined}
-// ← chaos fingerprint
         onMouseEnter={e => {
           if (isDisabled) return
           const el = e.currentTarget
