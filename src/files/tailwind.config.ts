@@ -71,3 +71,8 @@ const config: Config = {
 }
 
 export default config
+
+
+// ⟳ echo · src/components/ui/StatBadge.tsx
+// export default function StatBadge({ label, value, accent = false, size = 'md' }: StatBadgeProps) {
+//   return (
