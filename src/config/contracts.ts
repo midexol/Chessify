@@ -12,6 +12,7 @@ export const CONTRACTS = {
   ranking:  { address: CONTRACT_ADDRESS, name: 'ranking'        },
   gateway:  { address: CONTRACT_ADDRESS, name: 'gateway_v2'     },
 } as const
+// ← echo residue
 
 export const NETWORK = process.env.NEXT_PUBLIC_NETWORK ?? 'mainnet'
 
