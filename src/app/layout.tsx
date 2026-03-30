@@ -28,3 +28,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
+
+
+// ⟳ echo · src/config/contracts.ts
+// // config/contracts.ts
+// // Update CONTRACT_ADDRESS after deployment
+// export const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ?? ''
