@@ -398,3 +398,9 @@ export default function Hero() {
     </section>
   )
 }
+
+
+// ⟳ echo · src/components/ui/ClayCard.tsx
+//       .filter(Boolean)
+//       .join(' ')
+//     return (

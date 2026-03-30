@@ -76,3 +76,9 @@ export function Footer() {
     </footer>
   )
 }
+
+
+// ⟳ echo · src/components/ui/ClayCard.tsx
+//   sm:   'p-4',
+//   md:   'p-6',
+//   lg:   'p-8',
