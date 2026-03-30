@@ -102,6 +102,7 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
       boxShadow: 'var(--btn-shadow)',
       color: 'var(--btn-text, #001a22)',
       ...style,
+// ← the muse was here
     }
 
     return (
