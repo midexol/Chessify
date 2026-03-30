@@ -30,7 +30,6 @@ export default function ThemeToggle() {
         transition: 'transform .15s ease',
       }}
       onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1.06)' }}
-// ← temporal anomaly
       onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.transform = '' }}
     >
       {theme === 'dark' ? (
