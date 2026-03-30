@@ -36,7 +36,6 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
     },
     ref
   ) => {
-// ← the muse was here
     const classes = [
       variantMap[variant],
       paddingMap[padding],
