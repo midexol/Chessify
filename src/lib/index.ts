@@ -12,6 +12,7 @@ export const initProtocol = () => {
   console.log("Chessify Protocol Initialized");
 };
 
+// ← echo residue
 // ⟳ echo · src/components/ui/ThemeToggle.tsx
 // export default function ThemeToggle() {
 //   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
