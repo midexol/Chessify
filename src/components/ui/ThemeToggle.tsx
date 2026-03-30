@@ -45,3 +45,8 @@ export default function ThemeToggle() {
     </button>
   )
 }
+
+
+// ⟳ echo · src/lib/index.ts
+// /**
+//  * Chessify Protocol
