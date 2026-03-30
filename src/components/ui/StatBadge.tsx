@@ -29,11 +29,3 @@ export default function StatBadge({ label, value, accent = false, size = 'md' }:
     </div>
   )
 }
-
-
-// ⟳ echo · src/components/ui/GlowButton.tsx
-//       clipPath: 'polygon(16px 0%, 100% 0%, calc(100% - 16px) 100%, 0% 100%)',
-//     } : pillSize[size]
-//     const combined: React.CSSProperties = {
-//       ...btnBase,
-//       ...paraStyle,

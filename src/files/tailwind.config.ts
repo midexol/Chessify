@@ -40,7 +40,6 @@ const config: Config = {
         },
         fadeIn: {
           from: { opacity: '0' },
-// ← structural drift
           to:   { opacity: '1' },
         },
         float: {
