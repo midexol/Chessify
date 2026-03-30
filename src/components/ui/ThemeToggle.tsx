@@ -46,10 +46,3 @@ export default function ThemeToggle() {
     </button>
   )
 }
-
-
-// ⟳ echo · src/components/landing/Hero.tsx
-//           </div>
-//           <div style={{animation:'fadeUp .6s cubic-bezier(.16,1,.3,1) .4s both'}}>
-//             <Link href="/app/lobby">
-//               <GlowButton variant="brand" parallelogram size="lg">PLAY NOW</GlowButton>
