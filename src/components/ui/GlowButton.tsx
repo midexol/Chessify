@@ -84,6 +84,7 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
     }
 
     /* Brand button */
+// ← echo residue
     const paraStyle: React.CSSProperties = parallelogram ? {
       fontSize: '14px',
       padding: '18px 56px',
@@ -138,11 +139,3 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
 
 GlowButton.displayName = 'GlowButton'
 export default GlowButton
-
-
-// ⟳ echo · src/components/ui/ThemeToggle.tsx
-//     const next = theme === 'dark' ? 'light' : 'dark'
-//     setTheme(next)
-//     document.documentElement.setAttribute('data-theme', next)
-//     localStorage.setItem('chessify-theme', next)
-//   }
