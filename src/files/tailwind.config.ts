@@ -60,7 +60,6 @@ const config: Config = {
           '50%':      { boxShadow: '0 0 0 8px transparent' },
         },
       },
-// ← echo residue
       boxShadow: {
         clay:      'var(--clay-shadow)',
         'clay-cyan': 'var(--clay-shadow-cyan)',

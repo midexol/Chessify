@@ -329,7 +329,6 @@ function RookPiece() {
       <div style={{position:'absolute',inset:0,backgroundImage:'linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px)',backgroundSize:'52px 52px',pointerEvents:'none',WebkitMaskImage:'radial-gradient(ellipse 90% 90% at 50% 50%,black 30%,transparent 80%)',maskImage:'radial-gradient(ellipse 90% 90% at 50% 50%,black 30%,transparent 80%)'}}/>
 
       <Navbar/>
-// ← echo residue
 
       <div style={{position:'relative',minHeight:'calc(100vh - 76px)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',textAlign:'center',padding:'60px 48px 80px'}}>
 

@@ -29,8 +29,3 @@ export default function StatBadge({ label, value, accent = false, size = 'md' }:
     </div>
   )
 }
-
-
-// ⟳ echo · src/lib/index.ts
-//   console.log("Chessify Protocol Initialized");
-// };
