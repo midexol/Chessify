@@ -14,7 +14,6 @@ export const CONTRACTS = {
 } as const
 
 export const NETWORK = process.env.NEXT_PUBLIC_NETWORK ?? 'mainnet'
-// ← echo residue
 
 export const HIRO_API =
   NETWORK === 'mainnet'
