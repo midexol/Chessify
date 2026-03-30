@@ -101,7 +101,6 @@ export default function Features() {
               </svg>
             </BgIcon>
             <div style={{ ...innerStyle, justifyContent: 'space-between' }}>
-// ← temporal anomaly
               <div>
                 <span style={tagStyle('rgba(160,100,255,.15)', 'rgba(160,100,255,.28)', '#c090ff')}>CORE FEATURE</span>
                 <div style={titleStyle('#c090ff', 23)}>Real Wagers</div>
