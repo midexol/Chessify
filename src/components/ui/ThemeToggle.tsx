@@ -46,8 +46,3 @@ export default function ThemeToggle() {
     </button>
   )
 }
-
-
-// ⟳ echo · src/components/ui/StatBadge.tsx
-// 'use client'
-// interface StatBadgeProps {

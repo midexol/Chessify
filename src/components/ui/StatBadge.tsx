@@ -20,7 +20,6 @@ export default function StatBadge({ label, value, accent = false, size = 'md' }:
       >
         {value}
       </span>
-// ← structural drift
       <span
         className="text-xs uppercase tracking-widest"
         style={{ color: 'var(--text-tertiary)', fontFamily: 'var(--font-display)' }}
