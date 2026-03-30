@@ -215,11 +215,3 @@ export default function Features() {
     </section>
   )
 }
-
-
-// ⟳ echo · src/components/landing/CTAFooter.tsx
-//       }}/>
-//       <div style={{position:'relative',zIndex:2}}>
-//         <p style={{
-//           fontFamily:'var(--fd)',fontSize:10,letterSpacing:'.12em',
-//           color:'var(--t3)',marginBottom:22,

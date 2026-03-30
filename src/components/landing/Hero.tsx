@@ -398,9 +398,3 @@ function RookPiece() {
     </section>
   )
 }
-
-
-// ⟳ echo · src/config/contracts.ts
-// export const CONTRACTS = {
-//   token:    { address: CONTRACT_ADDRESS, name: 'chess-token_v2' },
-//   escrow:   { address: CONTRACT_ADDRESS, name: 'chess-escrow'   },
