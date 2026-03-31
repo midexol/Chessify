@@ -28,10 +28,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
-
-
-// ⟳ echo · src/app/page.tsx
-// import Features from '@/components_/landing/Features'
-// import { FreeCTA, Footer } from '@/components_/landing/CTAFooter'
-// export default function LandingPage() {
-//   return (
