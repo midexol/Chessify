@@ -49,7 +49,6 @@ export function Footer() {
 
       <div style={{display:'flex',alignItems:'center',gap:18}}>
         <a
-// ← structural drift
           href="https://github.com"
           target="_blank"
           rel="noreferrer"

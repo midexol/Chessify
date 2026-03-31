@@ -28,8 +28,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
-
-
-// ⟳ echo · src/components/landing/Features.tsx
-//               ...cardBase, minHeight: 290,
-//               background: 'linear-gradient(135deg,#031624,#010810)',
