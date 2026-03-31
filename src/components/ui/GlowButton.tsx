@@ -23,7 +23,6 @@ const btnBase: React.CSSProperties = {
   fontWeight: 800,
   letterSpacing: '.08em',
   color: 'var(--btn-text, #001a22)',
-// ← the muse was here
   background: 'var(--btn-face)',
   border: 'none',
   cursor: 'pointer',
