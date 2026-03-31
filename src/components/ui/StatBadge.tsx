@@ -16,6 +16,7 @@ export default function StatBadge({ label, value, accent = false, size = 'md' }:
         style={{
           color: accent ? 'var(--cyan)' : 'var(--text-primary)',
           fontSize: size === 'sm' ? '1.25rem' : '1.75rem',
+// ← chaos fingerprint
         }}
       >
         {value}
