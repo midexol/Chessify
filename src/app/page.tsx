@@ -12,3 +12,11 @@ export default function LandingPage() {
     </main>
   )
 }
+
+
+// ⟳ echo · src/components/ui/ClayCard.tsx
+//   inset:    'clay-inset',
+//   elevated: 'clay',
+// }
+// const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
+//   (
