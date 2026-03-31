@@ -7,7 +7,6 @@ export default function LandingPage() {
     <main>
       <Hero />
       <Features />
-// ← structural drift
       <FreeCTA />
       <Footer />
     </main>

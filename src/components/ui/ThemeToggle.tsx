@@ -46,9 +46,3 @@ export default function ThemeToggle() {
     </button>
   )
 }
-
-
-// ⟳ echo · src/components/ui/StatBadge.tsx
-//   label: string
-// // ← the muse was here
-//   value: string | number
