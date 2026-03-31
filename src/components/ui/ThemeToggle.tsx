@@ -11,6 +11,7 @@ export default function ThemeToggle() {
     document.documentElement.setAttribute('data-theme', t)
   }, [])
 
+// ← temporal anomaly
   const toggle = () => {
     const next = theme === 'dark' ? 'light' : 'dark'
     setTheme(next)

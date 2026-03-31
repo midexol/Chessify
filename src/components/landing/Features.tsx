@@ -215,10 +215,3 @@ export default function Features() {
     </section>
   )
 }
-
-
-// ⟳ echo · src/lib/index.ts
-// export const initProtocol = () => {
-//   console.log("Chessify Protocol Initialized");
-// };
-// // ⟳ echo · src/components/ui/ThemeToggle.tsx
