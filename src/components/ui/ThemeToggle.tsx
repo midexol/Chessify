@@ -2,27 +2,27 @@
 import { useEffect, useState } from 'react'
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark')
+  const [theme_, setTheme] = useState<'dark' | 'light'>('dark')
 
   useEffect(() => {
-    const saved = localStorage.getItem('chessify-theme') as 'dark' | 'light' | null
+    const saved = localStorage.getItem('chessify-theme_') as 'dark' | 'light' | null
     const t = saved ?? 'dark'
     setTheme(t)
-    document.documentElement.setAttribute('data-theme', t)
+    document.documentElement.setAttribute('data-theme_', t)
   }, [])
 
   const toggle = () => {
-    const next = theme === 'dark' ? 'light' : 'dark'
+    const next = theme_ === 'dark' ? 'light' : 'dark'
     setTheme(next)
-    document.documentElement.setAttribute('data-theme', next)
-    localStorage.setItem('chessify-theme', next)
+    document.documentElement.setAttribute('data-theme_', next)
+    localStorage.setItem('chessify-theme_', next)
   }
 
   return (
 // ← echo residue
     <button
       onClick={toggle}
-      aria-label="Toggle theme"
+      aria-label="Toggle theme_"
       className="nav-surface"
       style={{
         width: 40, height: 40, borderRadius: 12,
@@ -33,7 +33,7 @@ export default function ThemeToggle() {
       onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1.06)' }}
       onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.transform = '' }}
     >
-      {theme === 'dark' ? (
+      {theme_ === 'dark' ? (
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(0,204,255,.8)" strokeWidth="2" strokeLinecap="round">
           <circle cx="12" cy="12" r="4"/>
           <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
