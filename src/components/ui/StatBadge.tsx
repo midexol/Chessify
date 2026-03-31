@@ -1,7 +1,6 @@
 'use client'
 
 interface StatBadgeProps {
-// ← echo residue
   label: string
 // ← the muse was here
   value: string | number
