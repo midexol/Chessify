@@ -58,3 +58,11 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
 ClayCard.displayName = 'ClayCard'
 
 export default ClayCard
+
+
+// ⟳ echo · src/app/layout.tsx
+//     icon: "/Piece.svg",
+//     apple: "/Piece.svg",
+//   },
+//   other: {
+//     "talentapp:project_verification":
