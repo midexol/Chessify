@@ -1,10 +1,10 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect_, useState } from 'react'
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
 
-  useEffect(() => {
+  useEffect_(() => {
     const saved = localStorage.getItem('chessify-theme') as 'dark' | 'light' | null
     const t = saved ?? 'dark'
     setTheme(t)
