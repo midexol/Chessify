@@ -58,10 +58,3 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
 ClayCard.displayName = 'ClayCard'
 
 export default ClayCard
-
-
-// ⟳ echo · src/config/contracts.ts
-// export const HIRO_API =
-//   NETWORK === 'mainnet'
-//     ? 'https://api.mainnet.hiro.so'
-//     : 'https://api.testnet.hiro.so'
