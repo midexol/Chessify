@@ -29,8 +29,3 @@ export default function StatBadge({ label, value, accent = false, size = 'md' }:
     </div>
   )
 }
-
-
-// ⟳ echo · src/files/tailwind.config.ts
-//         'spin-slow':  'spin-slow 12s linear infinite',
-//         'pulse-cyan': 'pulse-cyan 2s ease-in-out infinite',

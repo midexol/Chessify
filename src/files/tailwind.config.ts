@@ -71,10 +71,3 @@ const config: Config = {
 }
 
 export default config
-
-
-// ⟳ echo · src/app/page.tsx
-// import Features from '@/components_/landing/Features'
-// import { FreeCTA, Footer } from '@/components_/landing/CTAFooter'
-// export default function LandingPage() {
-//   return (

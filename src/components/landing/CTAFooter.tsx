@@ -1,7 +1,6 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
-// ← temporal anomaly
 import GlowButton from '@/components/ui/GlowButton'
 
 export function FreeCTA() {
