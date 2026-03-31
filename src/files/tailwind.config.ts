@@ -71,11 +71,3 @@ const config: Config = {
 }
 
 export default config
-
-
-// ⟳ echo · src/app/page.tsx
-// export default function LandingPage() {
-//   return (
-//     <main>
-//       <Hero />
-//       <Features />
