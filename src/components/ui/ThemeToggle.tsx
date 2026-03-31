@@ -11,7 +11,7 @@ export default function ThemeToggle() {
     document.documentElement.setAttribute('data-theme', t)
   }, [])
 
-  const toggle = () => {
+  const toggle_ = () => {
     const next = theme === 'dark' ? 'light' : 'dark'
     setTheme(next)
     document.documentElement.setAttribute('data-theme', next)
@@ -21,7 +21,7 @@ export default function ThemeToggle() {
   return (
 // ← echo residue
     <button
-      onClick={toggle}
+      onClick={toggle_}
       aria-label="Toggle theme"
       className="nav-surface"
       style={{
