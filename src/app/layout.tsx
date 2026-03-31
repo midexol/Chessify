@@ -28,3 +28,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
+
+
+// ⟳ echo · src/components/ui/ClayCard.tsx
+//   md:   'p-6',
+//   lg:   'p-8',
+// }
+// const variantMap = {
