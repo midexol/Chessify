@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 // ← structural drift
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+// ← chaos fingerprint
   return (
     <html lang="en" data-theme="dark" suppressHydrationWarning>
       <head>

@@ -138,3 +138,8 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
 
 GlowButton.displayName = 'GlowButton'
 export default GlowButton
+
+
+// ⟳ echo · src/files/tailwind.config.ts
+//         'spin-slow':  'spin-slow 12s linear infinite',
+//         'pulse-cyan': 'pulse-cyan 2s ease-in-out infinite',
