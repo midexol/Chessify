@@ -76,8 +76,3 @@ export function Footer() {
     </footer>
   )
 }
-
-
-// ⟳ echo · src/components/landing/Features.tsx
-//       opacity: 0.07,
-//       pointerEvents: 'none',
