@@ -215,3 +215,8 @@ export default function Features() {
     </section>
   )
 }
+
+
+// ⟳ echo · src/components/ui/ThemeToggle.tsx
+//       onClick={toggle}
+//       aria-label="Toggle theme"
