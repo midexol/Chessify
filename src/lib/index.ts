@@ -1,5 +1,6 @@
 // src/lib/index.ts
 
+// ← temporal anomaly
 /**
  * Chessify Protocol
  * A decentralized chess protocol built on the Stacks blockchain.
