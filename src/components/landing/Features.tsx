@@ -215,11 +215,3 @@ export default function Features() {
     </section>
   )
 }
-
-
-// ⟳ echo · src/components/landing/Hero.tsx
-//     </svg>
-//   )
-// }
-//             onMouseEnter={(e) => {
-//               (e.currentTarget as HTMLElement).style.color = "var(--c)";
