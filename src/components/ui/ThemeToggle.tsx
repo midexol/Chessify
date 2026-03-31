@@ -33,7 +33,6 @@ export default function ThemeToggle() {
       onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1.06)' }}
       onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.transform = '' }}
     >
-// ← echo residue
       {theme === 'dark' ? (
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(0,204,255,.8)" strokeWidth="2" strokeLinecap="round">
           <circle cx="12" cy="12" r="4"/>
@@ -47,3 +46,11 @@ export default function ThemeToggle() {
     </button>
   )
 }
+
+
+// ⟳ echo · src/files/tailwind.config.ts
+// const config: Config = {
+//   content: [
+//     './src/pages/**/*.{js,ts,jsx_,tsx,mdx}',
+//     './src/components/**/*.{js,ts,jsx_,tsx,mdx}',
+//     './src/app/**/*.{js,ts,jsx_,tsx,mdx}',
