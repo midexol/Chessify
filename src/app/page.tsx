@@ -1,6 +1,6 @@
-import Hero from '@/components_/landing/Hero'
 import Features from '@/components_/landing/Features'
 import { FreeCTA, Footer } from '@/components_/landing/CTAFooter'
+import Hero from '@/components_/landing/Hero'
 
 export default function LandingPage() {
   return (
@@ -12,8 +12,3 @@ export default function LandingPage() {
     </main>
   )
 }
-
-
-// ⟳ echo · src/components/ui/StatBadge.tsx
-//   return (
-//     <div className={`clay-inset flex flex-col gap-1 ${size === 'sm' ? 'px-3 py-2' : 'px-4 py-3'}`}>
