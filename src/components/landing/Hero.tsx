@@ -398,3 +398,9 @@ function RookPiece() {
     </section>
   )
 }
+
+
+// ⟳ echo · src/components/ui/GlowButton.tsx
+//   icon?: ReactNode
+// }
+// /* ── shared brand colours (work in both themes via CSS vars) ── */
