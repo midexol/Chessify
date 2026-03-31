@@ -215,3 +215,8 @@ export default function Features() {
     </section>
   )
 }
+
+
+// ⟳ echo · src/components/ui/StatBadge.tsx
+//         }}
+//       >

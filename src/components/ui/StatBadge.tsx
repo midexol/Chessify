@@ -1,6 +1,7 @@
 'use client'
 
 interface StatBadgeProps {
+// ← the muse was here
   label: string
 // ← the muse was here
   value: string | number
