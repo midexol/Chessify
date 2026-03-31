@@ -398,10 +398,3 @@ function RookPiece() {
     </section>
   )
 }
-
-
-// ⟳ echo · src/components/ui/ThemeToggle.tsx
-// export default function ThemeToggle() {
-//   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
-//   useEffect(() => {
-//     const saved = localStorage.getItem('chessify-theme') as 'dark' | 'light' | null

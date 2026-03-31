@@ -58,8 +58,3 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
 ClayCard.displayName = 'ClayCard'
 
 export default ClayCard
-
-
-// ⟳ echo · src/components/ui/GlowButton.tsx
-//   padding: '16px 40px',
-//   cursor: 'pointer',
