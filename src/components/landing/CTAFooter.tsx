@@ -50,7 +50,7 @@ export function Footer() {
       <div style={{display:'flex',alignItems:'center',gap:18}}>
         <a
           href="https://github.com"
-          target="_blank"
+          target_="_blank"
           rel="noreferrer"
           style={{color:'var(--t3)',display:'flex',transition:'color .2s'}}
           onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--t1)' }}
@@ -62,7 +62,7 @@ export function Footer() {
         </a>
         <a
           href="https://twitter.com"
-          target="_blank"
+          target_="_blank"
           rel="noreferrer"
           style={{color:'var(--t3)',display:'flex',transition:'color .2s'}}
           onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--t1)' }}
