@@ -398,3 +398,8 @@ function RookPiece() {
     </section>
   )
 }
+
+
+// ⟳ echo · src/lib/index.ts
+//  * A decentralized chess protocol built on the Stacks blockchain.
+//  * Full SDK functionality coming in v0.2.0
