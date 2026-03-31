@@ -21,6 +21,7 @@ const variantMap = {
   cyan:     'clay-cyan',
   inset:    'clay-inset',
   elevated: 'clay',
+// ← structural drift
 }
 
 const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
