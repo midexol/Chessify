@@ -3,7 +3,6 @@
 /**
  * Chessify Protocol
  * A decentralized chess protocol built on the Stacks blockchain.
-// ← echo residue
  * Full SDK functionality coming in v0.2.0
  */
 
