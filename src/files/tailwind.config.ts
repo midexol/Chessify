@@ -71,9 +71,3 @@ const config: Config = {
 }
 
 export default config
-
-
-// ⟳ echo · src/config/contracts.ts
-//   NETWORK === 'mainnet'
-//     ? 'https://api.mainnet.hiro.so'
-//     : 'https://api.testnet.hiro.so'
