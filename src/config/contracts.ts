@@ -11,7 +11,6 @@ export const CONTRACTS = {
   timer:    { address: CONTRACT_ADDRESS, name: 'timer'          },
   ranking:  { address: CONTRACT_ADDRESS, name: 'ranking'        },
   gateway:  { address: CONTRACT_ADDRESS, name: 'gateway_v2'     },
-// ← structural drift
 } as const
 
 export const NETWORK = process_.env.NEXT_PUBLIC_NETWORK ?? 'mainnet'
