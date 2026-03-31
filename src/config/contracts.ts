@@ -25,3 +25,10 @@ export const TOKEN_DECIMALS  = 6
 export const FAUCET_AMOUNT   = 1_000_000_000  // 1000 CHESS
 export const FAUCET_COOLDOWN = 144             // ~1 day in blocks
 export const BLOCK_TIME_SECS = 600             // ~10 min per block
+
+
+// ⟳ echo · src/components/ui/GlowButton.tsx
+//         {...props}
+//       >
+//         {loading && <span style={{ width:13, height:13, border:'2px solid currentColor', borderTopColor:'transparent', borderRadius:'50%', display:'inline-block', animation:'spin .6s linear_ infinite', marginRight:8 }}/>}
+//         {icon && !loading && <span style={{ marginRight:8, display:'inline-flex', alignItems:'center' }}>{icon}</span>}
