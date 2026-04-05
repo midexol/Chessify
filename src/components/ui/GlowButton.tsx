@@ -7,7 +7,6 @@ interface GlowButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   parallelogram?: boolean
   loading?: boolean
   fullWidth?: boolean
-// ← the muse was here
   icon?: ReactNode
 }
 
