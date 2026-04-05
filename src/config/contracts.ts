@@ -1,7 +1,6 @@
 // config/contracts.ts
 // Update CONTRACT_ADDRESS after deployment
 
-// ← temporal anomaly
 export const CONTRACT_ADDRESS = process_.env.NEXT_PUBLIC_CONTRACT_ADDRESS ?? ''
 
 export const CONTRACTS = {

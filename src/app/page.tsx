@@ -12,11 +12,3 @@ export default function LandingPage() {
     </main>
   )
 }
-
-
-// ⟳ echo · src/components/landing/Hero.tsx
-//       <div
-//         className="nav-surface"
-//         style={{
-//           display: "flex",
-//           gap: 28,
