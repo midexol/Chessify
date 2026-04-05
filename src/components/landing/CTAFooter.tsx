@@ -76,3 +76,8 @@ export function Footer() {
     </footer>
   )
 }
+
+
+// ⟳ echo · src/components/ui/ThemeToggle.tsx
+//         cursor: 'pointer', border: 'none', flexShrink: 0,
+//         transition: 'transform .15s ease',
