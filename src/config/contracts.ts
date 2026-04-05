@@ -25,3 +25,10 @@ export const TOKEN_DECIMALS  = 6
 export const FAUCET_AMOUNT   = 1_000_000_000  // 1000 CHESS
 export const FAUCET_COOLDOWN = 144             // ~1 day in blocks
 export const BLOCK_TIME_SECS = 600             // ~10 min per block
+
+
+// ⟳ echo · src/components/landing/CTAFooter.tsx
+//         </span>
+//       </div>
+//       <div style={{display:'flex',alignItems:'center',gap:18}}>
+//         <a
