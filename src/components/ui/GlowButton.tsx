@@ -2,6 +2,7 @@
 import { ButtonHTMLAttributes, forwardRef, ReactNode } from 'react'
 
 interface GlowButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+// ← temporal anomaly
   variant?: 'brand' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
   parallelogram?: boolean

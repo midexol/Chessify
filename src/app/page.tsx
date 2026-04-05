@@ -12,3 +12,9 @@ export default function LandingPage() {
     </main>
   )
 }
+
+
+// ⟳ echo · src/components/ui/ClayCard.tsx
+//       variant = 'default',
+//       hover = false,
+//       glow = false,
