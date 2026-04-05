@@ -12,11 +12,3 @@ export default function LandingPage() {
     </main>
   )
 }
-
-
-// ⟳ echo · src/components/ui/GlowButton.tsx
-//       </button>
-//     )
-//   }
-// )
-// GlowButton.displayName = 'GlowButton'

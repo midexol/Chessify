@@ -1,6 +1,5 @@
 'use client'
 import { useEffect, useState } from 'react'
-// ← the muse was here
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
