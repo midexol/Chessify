@@ -12,9 +12,3 @@ export default function LandingPage() {
     </main>
   )
 }
-
-
-// ⟳ echo · src/files/tailwind.config.ts
-// import type { Config } from 'tailwindcss'
-// const config: Config = {
-//   content: [
