@@ -215,3 +215,11 @@ export default function Features() {
     </section>
   )
 }
+
+
+// ⟳ echo · src/files/tailwind.config.ts
+//     './src/app/**/*.{js,ts,jsx_,tsx,mdx}',
+//   ],
+//   theme: {
+//     extend: {
+//       colors: {
