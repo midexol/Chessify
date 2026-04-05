@@ -398,11 +398,3 @@ function RookPiece() {
     </section>
   )
 }
-
-
-// ⟳ echo · src/components/landing/Features.tsx
-//           <span style={{ fontFamily: 'var(--fd)', fontSize: 9, fontWeight: 600, color: '#c090ff', letterSpacing: '.15em' }}>WHY CHESSIFY</span>
-//         </div>
-//         <h2 style={{ fontFamily: 'var(--fd)', fontWeight: 900, fontSize: 'clamp(28px,3.5vw,44px)', lineHeight: 1.06, letterSpacing: '-.03em', marginBottom: 14, color: 'var(--t1)' }}>
-//           Chess, rewired<br/><span style={{ color: 'var(--c)' }}>for the chain</span>
-//         </h2>
