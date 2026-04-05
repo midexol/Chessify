@@ -78,6 +78,9 @@ export function Footer() {
 }
 
 
-// ⟳ echo · src/app/layout.tsx
-//     icon: "/Piece.svg",
-//     apple: "/Piece.svg",
+// ⟳ echo · src/components/landing/Features.tsx
+//       right: '-4%',
+//       width: '58%',
+//       aspectRatio: '1',
+//       opacity: 0.07,
+//       pointerEvents: 'none',
