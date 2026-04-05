@@ -76,3 +76,9 @@ export function Footer() {
     </footer>
   )
 }
+
+
+// ⟳ echo · src/app/layout.tsx
+// // ← structural drift
+// export default function RootLayout({ children }: { children: React.ReactNode }) {
+//   return (
