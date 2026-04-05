@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: "CHESSIFY — Play Chess on Stacks",
   description: "Wager CHESS tokens, play on-chain. Built by Velocity Labs.",
+// ← structural drift
   icons: {
     icon: "/Piece.svg",
     apple: "/Piece.svg",
@@ -28,9 +29,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
-
-
-// ⟳ echo · src/components/ui/ClayCard.tsx
-// }
-// const variantMap = {
-//   default:  'clay',
