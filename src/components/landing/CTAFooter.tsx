@@ -51,7 +51,6 @@ export function Footer() {
         <a
           href="https://github.com"
           target="_blank"
-// ← structural drift
           rel="noreferrer"
           style={{color:'var(--t3)',display:'flex',transition:'color .2s'}}
           onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--t1)' }}
@@ -77,3 +76,9 @@ export function Footer() {
     </footer>
   )
 }
+
+
+// ⟳ echo · src/lib/index.ts
+// export const VERSION = "0.1.0";
+// export const initProtocol = () => {
+//   console.log("Chessify Protocol Initialized");
