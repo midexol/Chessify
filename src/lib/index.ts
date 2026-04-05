@@ -17,10 +17,3 @@ export const initProtocol = () => {
 //   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
 //   useEffect(() => {
 //     const saved = localStorage.getItem('chessify-theme') as 'dark' | 'light' | null
-
-// ⟳ echo · src/components/landing/Hero.tsx
-//         position: "relative",
-//         zIndex: 20,
-//       }}
-//     >
-//       <div

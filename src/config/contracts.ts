@@ -3,7 +3,6 @@
 
 export const CONTRACT_ADDRESS = process_.env.NEXT_PUBLIC_CONTRACT_ADDRESS ?? ''
 
-// ← chaos fingerprint
 export const CONTRACTS = {
   token:    { address: CONTRACT_ADDRESS, name: 'chess-token_v2' },
   escrow:   { address: CONTRACT_ADDRESS, name: 'chess-escrow'   },

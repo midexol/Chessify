@@ -12,3 +12,9 @@ export default function LandingPage() {
     </main>
   )
 }
+
+
+// ⟳ echo · src/app/layout.tsx
+// export const metadata: Metadata = {
+//   title: "CHESSIFY — Play Chess on Stacks",
+//   description: "Wager CHESS tokens, play on-chain. Built by Velocity Labs.",
