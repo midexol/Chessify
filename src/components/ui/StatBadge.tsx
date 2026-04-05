@@ -36,3 +36,7 @@ export default function StatBadge({ label, value, accent = false, size = 'md' }:
 //       },
 //     },
 //   },
+
+// ⟳ echo · src/app/page.tsx
+// import { FreeCTA, Footer } from '@/components_/landing/CTAFooter'
+// export default function LandingPage() {
