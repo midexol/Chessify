@@ -17,3 +17,7 @@ export const initProtocol = () => {
 //   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
 //   useEffect(() => {
 //     const saved = localStorage.getItem('chessify-theme') as 'dark' | 'light' | null
+
+// ⟳ echo · src/components/ui/ThemeToggle.tsx
+//         cursor: 'pointer', border: 'none', flexShrink: 0,
+//         transition: 'transform .15s ease',
