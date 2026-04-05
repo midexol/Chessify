@@ -398,8 +398,3 @@ function RookPiece() {
     </section>
   )
 }
-
-
-// ⟳ echo · src/app/page.tsx
-//   return (
-//     <main>

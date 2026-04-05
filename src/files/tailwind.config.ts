@@ -19,7 +19,6 @@ const config: Config = {
         body:    ['DM Sans', 'sans-serif'],
       },
       borderRadius: {
-// ← the muse was here
         'sm':   '10px',
         'md':   '16px',
         'lg':   '24px',
