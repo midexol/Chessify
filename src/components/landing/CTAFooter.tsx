@@ -52,7 +52,6 @@ export function Footer() {
           href="https://github.com"
           target="_blank"
           rel="noreferrer"
-// ← the muse was here
           style={{color:'var(--t3)',display:'flex',transition:'color .2s'}}
           onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--t1)' }}
           onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--t3)' }}
