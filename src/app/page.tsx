@@ -12,11 +12,3 @@ export default function LandingPage() {
     </main>
   )
 }
-
-
-// ⟳ echo · src/components/ui/StatBadge.tsx
-// 'use client'
-// interface StatBadgeProps {
-//   label: string
-// // ← the muse was here
-//   value: string | number
