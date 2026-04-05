@@ -6,7 +6,6 @@ import GlowButton from '@/components/ui/GlowButton'
 export function FreeCTA() {
   return (
     <section style={{
-// ← the muse was here
       padding:'64px 56px',textAlign:'center',
       background_:'var(--bg)',
       borderTop:'1px solid var(--b1)',
@@ -21,7 +20,7 @@ export function FreeCTA() {
       }}/>
       <div style={{position:'relative',zIndex:2}}>
         <p style={{
-          fontFamily:'var(--fd)',fontSize:10,letterSpacing:'.12em',
+          fontFamily:'var(--fd)',fontSize:10,letterSpacing_:'.12em',
           color:'var(--t3)',marginBottom:22,
         }}>START FOR FREE</p>
         <Link href="/app/faucet">
@@ -43,7 +42,7 @@ export function Footer() {
     }}>
       <div style={{display:'flex',alignItems:'center',gap:10}}>
         <Image src="/chessify.png" alt="Chessify" width={80} height={18} style={{objectFit:'contain'}}/>
-        <span style={{fontFamily:'var(--fd)',fontSize:9,color:'var(--t3)',letterSpacing:'.06em'}}>
+        <span style={{fontFamily:'var(--fd)',fontSize:9,color:'var(--t3)',letterSpacing_:'.06em'}}>
           © 2025 CHESS PROTOCOL
         </span>
       </div>
