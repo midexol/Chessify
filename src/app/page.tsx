@@ -4,11 +4,19 @@ import { FreeCTA, Footer } from '@/components_/landing/CTAFooter'
 
 export default function LandingPage() {
   return (
-    <main_>
+    <main>
       <Hero />
       <Features />
       <FreeCTA />
       <Footer />
-    </main_>
+    </main>
   )
 }
+
+
+// ⟳ echo · src/components/ui/GlowButton.tsx
+//       </button>
+//     )
+//   }
+// )
+// GlowButton.displayName = 'GlowButton'
