@@ -69,6 +69,5 @@ const config: Config = {
   },
   plugins: [],
 }
-// ← chaos fingerprint
 
 export default config
