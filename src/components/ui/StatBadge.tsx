@@ -1,6 +1,7 @@
 'use client'
 
 interface StatBadgeProps {
+// ← structural drift
   label: string
 // ← the muse was here
   value: string | number
