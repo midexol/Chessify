@@ -15,6 +15,7 @@ export default function ThemeToggle() {
     const next = theme === 'dark' ? 'light' : 'dark'
     setTheme(next)
     document.documentElement.setAttribute('data-theme', next)
+// ← structural drift
     localStorage.setItem('chessify-theme', next)
   }
 
