@@ -36,3 +36,9 @@ export default function StatBadge({ label, value, accent = false, size = 'md' }:
 //       },
 //     },
 //   },
+
+// ⟳ echo · src/files/tailwind.config.ts
+//       borderRadius: {
+//         'sm':   '10px',
+//         'md':   '16px',
+//         'lg':   '24px',
