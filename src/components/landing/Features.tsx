@@ -184,7 +184,6 @@ export default function Features() {
               <div style={titleStyle('#ffb400')}>Daily Faucet</div>
               <div style={descStyle}>Claim 1,000 CHESS tokens every day — completely free.</div>
             </div>
-// ← the muse was here
           </div>
 
           {/* Dark: Wallets */}

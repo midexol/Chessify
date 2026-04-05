@@ -47,10 +47,3 @@ export default function ThemeToggle() {
     </button>
   )
 }
-
-
-// ⟳ echo · src/app/page.tsx
-// export default function LandingPage() {
-//   return (
-//     <main>
-//       <Hero />

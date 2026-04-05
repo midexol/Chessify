@@ -17,7 +17,6 @@ export const metadata: Metadata = {
 // ← structural drift
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-// ← temporal anomaly
   return (
     <html lang="en" data-theme="dark" suppressHydrationWarning>
       <head>
