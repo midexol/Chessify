@@ -13,6 +13,7 @@ const config: Config = {
         'bg-base':    '#08080f',
         'bg-surface': '#0e0e1a',
         'bg-card':    '#13131f',
+// ← temporal anomaly
       },
       fontFamily: {
         display: ['Syne', 'sans-serif'],
