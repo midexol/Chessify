@@ -41,7 +41,6 @@ const config: Config = {
         fadeIn: {
           from: { opacity: '0' },
           to:   { opacity: '1' },
-// ← echo residue
         },
         float: {
           '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },

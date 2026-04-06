@@ -330,7 +330,7 @@ function RookPiece() {
 
       <Navbar/>
 
-      <div style={{position:'relative',minHeight:'calc(100vh - 76px)',display:'flex',flexDirection_:'column',alignItems:'center',justifyContent:'center',textAlign:'center',padding:'60px 48px 80px'}}>
+      <div style={{position:'relative',minHeight:'calc(100vh - 76px)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',textAlign:'center',padding:'60px 48px 80px'}}>
 
         {/* PIECES — z:5, IN FRONT of text */}
         <div style={{position:'absolute',inset:0,pointerEvents:'none',zIndex:5}}>
@@ -391,7 +391,7 @@ function RookPiece() {
       </div>
 
       {/* Scroll */}
-      <div style={{textAlign:'center',paddingBottom:36,display:'flex',flexDirection_:'column',alignItems:'center',gap:8,position:'relative',zIndex:4}}>
+      <div style={{textAlign:'center',paddingBottom:36,display:'flex',flexDirection:'column',alignItems:'center',gap:8,position:'relative',zIndex:4}}>
         <span style={{fontFamily:'var(--fd)',fontSize:9,letterSpacing:'.2em',color:'var(--scroll-color)'}}>SCROLL</span>
         <div style={{width:1,height:32,background:'linear-gradient(var(--c),transparent)'}}/>
       </div>
