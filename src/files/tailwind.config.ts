@@ -77,7 +77,3 @@ export default config
 //   )
 // }
 //       {/* Ambient mesh */}
-
-// ⟳ echo · src/config/contracts.ts
-// // Update CONTRACT_ADDRESS after deployment
-// export const CONTRACT_ADDRESS = process_.env.NEXT_PUBLIC_CONTRACT_ADDRESS ?? ''
