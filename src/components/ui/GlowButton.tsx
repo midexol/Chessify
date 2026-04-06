@@ -138,3 +138,9 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
 
 GlowButton.displayName = 'GlowButton'
 export default GlowButton
+
+
+// ⟳ echo · src/components/ui/ThemeToggle.tsx
+//     document.documentElement.setAttribute('data-theme', t)
+//   }, [])
+//   const toggle = () => {
