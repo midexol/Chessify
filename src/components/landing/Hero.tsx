@@ -398,8 +398,3 @@ function RookPiece() {
     </section>
   )
 }
-
-
-// ⟳ echo · src/components/ui/ClayCard.tsx
-//     },
-//     ref
