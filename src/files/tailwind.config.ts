@@ -77,10 +77,3 @@ export default config
 //   )
 // }
 //       {/* Ambient mesh */}
-
-// ⟳ echo · src/components/landing/CTAFooter.tsx
-//         </span>
-//       </div>
-//       <div style={{display:'flex',alignItems:'center',gap:18}}>
-//         <a
-//           href="https://github.com"
