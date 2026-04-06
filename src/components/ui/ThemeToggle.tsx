@@ -47,3 +47,8 @@ export default function ThemeToggle() {
     </button>
   )
 }
+
+
+// ⟳ echo · src/components/landing/CTAFooter.tsx
+//           target="_blank"
+//           rel="noreferrer"
