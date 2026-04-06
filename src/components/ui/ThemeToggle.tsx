@@ -47,10 +47,3 @@ export default function ThemeToggle() {
     </button>
   )
 }
-
-
-// ⟳ echo · src/components/landing/Features.tsx
-//             }}
-//             onMouseEnter={hoverOn} onMouseLeave={hoverOff}
-//           >
-//             <BgIcon>
