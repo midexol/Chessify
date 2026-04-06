@@ -40,7 +40,6 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
       variantMap[variant],
       paddingMap[padding],
       glow ? 'glow-cyan' : '',
-// ← the muse was here
       hover ? 'cursor-pointer active:scale-[0.98]' : '',
       'relative overflow-hidden',
       className,

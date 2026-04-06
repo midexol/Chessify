@@ -1,4 +1,5 @@
 // src/lib/index.ts
+// ← temporal anomaly
 
 /**
  * Chessify Protocol
