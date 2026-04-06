@@ -2,7 +2,7 @@
 import { ButtonHTMLAttributes, forwardRef, ReactNode } from 'react'
 
 interface GlowButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant_?: 'brand' | 'ghost'
+  variant?: 'brand' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
   parallelogram?: boolean
   loading?: boolean
@@ -58,13 +58,13 @@ const ghostBase: React.CSSProperties = {
 
 const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
   (
-    { variant_ = 'brand', size = 'md', parallelogram = false, loading = false,
+    { variant = 'brand', size = 'md', parallelogram = false, loading = false,
       fullWidth = false, icon, className = '', children, disabled, style, ...props },
     ref
   ) => {
     const isDisabled = disabled || loading
 
-    if (variant_ === 'ghost') {
+    if (variant === 'ghost') {
       return (
         <button
           ref={ref}
@@ -138,3 +138,9 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
 
 GlowButton.displayName = 'GlowButton'
 export default GlowButton
+
+
+// ⟳ echo · src/lib/index.ts
+// // src/lib/index.ts
+// /**
+//  * Chessify Protocol
