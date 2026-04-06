@@ -12,3 +12,11 @@ export default function LandingPage() {
     </main>
   )
 }
+
+
+// ⟳ echo · src/components/ui/StatBadge.tsx
+//       <span
+//         className="text-xs uppercase tracking-widest"
+//         style={{ color: 'var(--text-tertiary)', fontFamily: 'var(--font-display)' }}
+//       >
+//         {label}
