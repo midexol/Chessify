@@ -215,3 +215,10 @@ export default function Features() {
     </section>
   )
 }
+
+
+// ⟳ echo · src/components/landing/Hero.tsx
+//       <ellipse cx="47" cy="82" rx="18" ry="4" fill="rgba(0,0,0,.3)" />
+//       <path
+//         d="M30 82Q30 75 47 73Q64 75 64 82Q64 89 47 91Q30 89 30 82Z"
+//         fill="url(#kbg)"
