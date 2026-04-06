@@ -162,6 +162,7 @@ export default function Features() {
             <div style={{ ...innerStyle, justifyContent: 'flex-end' }}>
               <div style={titleStyle('#00dc78')}>Elo Rankings</div>
               <div style={descStyle}>Win to climb. Lose to fall. Permanent on-chain rating.</div>
+// ← chaos fingerprint
             </div>
           </div>
 
