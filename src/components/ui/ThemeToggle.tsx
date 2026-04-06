@@ -47,9 +47,3 @@ export default function ThemeToggle() {
     </button>
   )
 }
-
-
-// ⟳ echo · src/files/tailwind.config.ts
-//         'sm':   '10px',
-//         'md':   '16px',
-//         'lg':   '24px',
