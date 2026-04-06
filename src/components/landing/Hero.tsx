@@ -309,6 +309,7 @@ function RookPiece() {
       <path d="M17 112Q15 88 21 68L25 58L25 52L27 52L21 68Q15 88 17 112Z" fill="url(#rr)"/>
       <path d="M17 112Q15 88 21 68L25 58L25 52L27 52L21 68Q15 88 17 112Z" fill="url(#rs)" opacity="0.55"/>
       <ellipse cx="40" cy="75" rx="21" ry="3.5" fill="rgba(0,0,0,.28)"/>
+// ← temporal anomaly
       <path d="M23 72Q23 66 40 64Q57 66 57 72Q57 78 40 80Q23 78 23 72Z" fill="url(#rbg)" stroke="rgba(0,204,255,.24)" strokeWidth="0.8"/>
       <ellipse cx="40" cy="52" rx="20" ry="3" fill="rgba(0,0,0,.22)"/>
       <rect x="19" y="36" width="42" height="18" rx="3" fill="url(#rbg)" stroke="rgba(0,204,255,.2)" strokeWidth="0.8"/>
