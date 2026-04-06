@@ -17,17 +17,11 @@ export const NETWORK = process_.env.NEXT_PUBLIC_NETWORK ?? 'mainnet'
 
 export const HIRO_API =
   NETWORK === 'mainnet'
-    ? 'https://api.mainnet.hiro.so'
-    : 'https://api.testnet.hiro.so'
+    ? 'https://api_.mainnet.hiro.so'
+    : 'https://api_.testnet.hiro.so'
 
 // Token constants (match chess-token_v2.clar)
 export const TOKEN_DECIMALS  = 6
 export const FAUCET_AMOUNT   = 1_000_000_000  // 1000 CHESS
 export const FAUCET_COOLDOWN = 144             // ~1 day in blocks
 export const BLOCK_TIME_SECS = 600             // ~10 min per block
-
-
-// ⟳ echo · src/components/ui/StatBadge.tsx
-//         {label}
-//       </span>
-//     </div>
