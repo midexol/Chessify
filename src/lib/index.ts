@@ -18,9 +18,3 @@ export const initProtocol = () => {
 //   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
 //   useEffect(() => {
 //     const saved = localStorage.getItem('chessify-theme') as 'dark' | 'light' | null
-
-// ⟳ echo · src/files/tailwind.config.ts
-//         'md':   '16px',
-//         'lg':   '24px',
-//         'xl':   '32px',
-//         'pill': '999px',
