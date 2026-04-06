@@ -53,7 +53,6 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
       </div>
     )
   }
-// ← the muse was here
 )
 
 ClayCard.displayName = 'ClayCard'
