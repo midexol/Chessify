@@ -59,7 +59,7 @@ const ghostBase: React.CSSProperties = {
 const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
   (
     { variant = 'brand', size = 'md', parallelogram = false, loading = false,
-      fullWidth = false, icon, className = '', children, disabled, style, ...props_ },
+      fullWidth = false, icon, className = '', children, disabled, style, ...props },
     ref
   ) => {
     const isDisabled = disabled || loading
@@ -75,7 +75,7 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
           onMouseDown={e => { e.currentTarget.style.transform = 'translateY(2px)' }}
           onMouseUp={e => { e.currentTarget.style.transform = 'translateY(-1px)' }}
           className={className}
-          {...props_}
+          {...props}
         >
           {loading && <span style={{ width:13, height:13, border:'2px solid currentColor', borderTopColor:'transparent', borderRadius:'50%', display:'inline-block', animation:'spin .6s linear_ infinite', marginRight:8 }}/>}
           {children}
@@ -95,6 +95,7 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
       ...btnBase,
       ...paraStyle,
       opacity: isDisabled ? .45 : 1,
+// ← echo residue
       cursor: isDisabled ? 'not-allowed' : 'pointer',
       width: fullWidth ? '100%' : undefined,
       /* shadow + face via CSS vars so light/dark theme work */
@@ -126,7 +127,7 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
         onMouseDown={e => { e.currentTarget.style.transform = 'translateY(3px)'; e.currentTarget.style.boxShadow = 'var(--btn-shadow-press)' }}
         onMouseUp={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--btn-shadow-hover)' }}
         className={className}
-        {...props_}
+        {...props}
       >
         {loading && <span style={{ width:13, height:13, border:'2px solid currentColor', borderTopColor:'transparent', borderRadius:'50%', display:'inline-block', animation:'spin .6s linear_ infinite', marginRight:8 }}/>}
         {icon && !loading && <span style={{ marginRight:8, display:'inline-flex', alignItems:'center' }}>{icon}</span>}
