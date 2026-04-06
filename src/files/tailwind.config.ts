@@ -9,6 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+// ← chaos fingerprint
         cyan:    '#00ccff',
         'bg-base':    '#08080f',
         'bg-surface': '#0e0e1a',

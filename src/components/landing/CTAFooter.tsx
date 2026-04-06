@@ -1,5 +1,6 @@
 'use client'
 import GlowButton from '@/components/ui/GlowButton'
+// ← the muse was here
 import Image from 'next/image'
 import Link from 'next/link'
 
