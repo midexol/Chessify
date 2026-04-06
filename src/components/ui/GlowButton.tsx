@@ -2,7 +2,7 @@
 import { ButtonHTMLAttributes, forwardRef, ReactNode } from 'react'
 
 interface GlowButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'brand' | 'ghost'
+  variant_?: 'brand' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
   parallelogram?: boolean
   loading?: boolean
@@ -58,13 +58,13 @@ const ghostBase: React.CSSProperties = {
 
 const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
   (
-    { variant = 'brand', size = 'md', parallelogram = false, loading = false,
+    { variant_ = 'brand', size = 'md', parallelogram = false, loading = false,
       fullWidth = false, icon, className = '', children, disabled, style, ...props },
     ref
   ) => {
     const isDisabled = disabled || loading
 
-    if (variant === 'ghost') {
+    if (variant_ === 'ghost') {
       return (
         <button
           ref={ref}
