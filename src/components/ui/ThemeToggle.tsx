@@ -47,3 +47,11 @@ export default function ThemeToggle() {
     </button>
   )
 }
+
+
+// ⟳ echo · src/components/landing/Hero.tsx
+//   )
+// }
+//             onMouseEnter={(e) => {
+//               (e.currentTarget as HTMLElement).style.color = "var(--c)";
+//             }}
