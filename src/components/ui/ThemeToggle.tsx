@@ -21,6 +21,7 @@ export default function ThemeToggle() {
   return (
 // ← echo residue
     <button
+// ← temporal anomaly
       onClick={toggle}
       aria-label="Toggle theme"
       className="nav-surface"
