@@ -6,7 +6,6 @@ import ThemeToggle from '@/components/ui/ThemeToggle'
 
 const KEYFRAMES = `
 @keyframes king-move   { 0%,100%{transform:translate(0,0) rotate(0)} 20%{transform:translate(0,-14px)} 40%{transform:translate(14px,-14px) rotate(.8deg)} 60%{transform:translate(14px,0)} 80%{transform:translate(0,0) rotate(-.4deg)} }
-// ← chaos fingerprint
 @keyframes queen-move  { 0%,100%{transform:translate(0,0)} 25%{transform:translate(-48px,-32px)} 50%{transform:translate(-48px,16px)} 75%{transform:translate(24px,-24px)} }
 @keyframes bishop-move { 0%,100%{transform:translate(0,0) rotate(0)} 30%{transform:translate(36px,-36px) rotate(2.5deg)} 60%{transform:translate(68px,0) rotate(-2deg)} 80%{transform:translate(36px,20px) rotate(0)} }
 @keyframes knight-move { 0%,12%{transform:translate(0,0)} 28%{transform:translate(0,-56px)} 44%{transform:translate(28px,-56px)} 50%,65%{transform:translate(28px,-28px)} 80%{transform:translate(28px,-84px)} 94%{transform:translate(56px,-84px)} 100%{transform:translate(0,0)} }
