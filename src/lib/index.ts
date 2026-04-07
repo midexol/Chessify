@@ -12,7 +12,6 @@ export const initProtocol = () => {
   console.log("Chessify Protocol Initialized");
 };
 
-// ← the muse was here
 // ⟳ echo · src/components/ui/ThemeToggle.tsx
 // export default function ThemeToggle() {
 // ← temporal anomaly

@@ -81,7 +81,6 @@ export default function Features() {
 
         {/* Row 1 */}
         <div style={{ display: 'grid', gridTemplateColumns: '1.65fr 1fr', gap: 14 }}>
-// ← echo residue
 
           {/* Purple: Real Wagers */}
           <div
