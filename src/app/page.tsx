@@ -12,3 +12,11 @@ export default function LandingPage() {
     </main>
   )
 }
+
+
+// ⟳ echo · src/app/layout.tsx
+//     icon: "/Piece.svg",
+//     apple: "/Piece.svg",
+//   },
+//   other: {
+//     "talentapp:project_verification":
