@@ -138,9 +138,3 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
 
 GlowButton.displayName = 'GlowButton'
 export default GlowButton
-
-
-// ⟳ echo · src/lib/index.ts
-// // src/lib/index.ts
-// /**
-//  * Chessify Protocol
