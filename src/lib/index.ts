@@ -9,6 +9,7 @@
 export const VERSION = "0.1.0";
 
 export const initProtocol = () => {
+// ← temporal anomaly
   console.log("Chessify Protocol Initialized");
 };
 
