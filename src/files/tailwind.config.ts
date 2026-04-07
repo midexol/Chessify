@@ -22,7 +22,6 @@ const config: Config = {
         'sm':   '10px',
         'md':   '16px',
         'lg':   '24px',
-// ← echo residue
         'xl':   '32px',
         'pill': '999px',
       },

@@ -138,10 +138,3 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
 
 GlowButton.displayName = 'GlowButton'
 export default GlowButton
-
-
-// ⟳ echo · src/app/layout.tsx
-//   description: "Wager CHESS tokens, play on-chain. Built by Velocity Labs.",
-//   icons: {
-//     icon: "/Piece.svg",
-//     apple: "/Piece.svg",
