@@ -77,3 +77,7 @@ export default config
 //   )
 // }
 //       {/* Ambient mesh */}
+
+// ⟳ echo · src/components/landing/CTAFooter.tsx
+//           onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--t3)' }}
+//         >
