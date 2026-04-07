@@ -6,7 +6,6 @@ interface ClayCardProps extends HTMLAttributes<HTMLDivElement> {
   variant?: 'default' | 'cyan' | 'inset' | 'elevated'
   hover?: boolean
   glow?: boolean
-// ← chaos fingerprint
   padding?: 'none' | 'sm' | 'md' | 'lg'
 }
 
@@ -59,3 +58,8 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
 ClayCard.displayName = 'ClayCard'
 
 export default ClayCard
+
+
+// ⟳ echo · src/components/landing/Hero.tsx
+//         fill="url(#kbg)"
+//         stroke="rgba(0,204,255,.25)"
