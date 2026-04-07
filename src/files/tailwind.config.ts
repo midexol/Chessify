@@ -77,3 +77,8 @@ export default config
 //   )
 // }
 //       {/* Ambient mesh */}
+
+// ⟳ echo · src/components/ui/StatBadge.tsx
+//       </span>
+//       <span
+//         className="text-xs uppercase tracking-widest"
