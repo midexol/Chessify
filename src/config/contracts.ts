@@ -25,3 +25,11 @@ export const TOKEN_DECIMALS  = 6
 export const FAUCET_AMOUNT   = 1_000_000_000  // 1000 CHESS
 export const FAUCET_COOLDOWN = 144             // ~1 day in blocks
 export const BLOCK_TIME_SECS = 600             // ~10 min per block
+
+
+// ⟳ echo · src/components/ui/StatBadge.tsx
+// export default function StatBadge({ label, value, accent = false, size = 'md' }: StatBadgeProps) {
+//   return (
+//     <div className={`clay-inset flex flex-col gap-1 ${size === 'sm' ? 'px-3 py-2' : 'px-4 py-3'}`}>
+//       <span
+//         className="font-display font-bold leading-none"
