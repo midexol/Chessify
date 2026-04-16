@@ -3,6 +3,7 @@ import Image from 'next/image'
 import GlowButton from '@/components/ui/GlowButton'
 import ThemeToggle from '@/components/ui/ThemeToggle'
 import Link from 'next/link'
+import { useWallet } from '@/components/wallet-provider'
 
 const KEYFRAMES = `
 @keyframes king-move   { 0%,100%{transform:translate(0,0) rotate(0)} 20%{transform:translate(0,-14px)} 40%{transform:translate(14px,-14px) rotate(.8deg)} 60%{transform:translate(14px,0)} 80%{transform:translate(0,0) rotate(-.4deg)} }
@@ -15,78 +16,67 @@ const KEYFRAMES = `
 @keyframes fadeUp      { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
 `
 
-// const GRADIENTS = {
-//   kbg:   'linear-gradient(160deg,#353566 0%,#1a1a45 40%,#05050f 100%)',
-//   qbg:   'linear-gradient(160deg,#dcdcf8 0%,#aaaacc 30%,#585875 65%,#1e1e32 100%)',
-//   bbg:   'linear-gradient(160deg,#2a2a52 0%,#04040c 100%)',
-//   ngbg:  'linear-gradient(160deg,#d4d4ec 0%,#8c8caa 32%,#444460 72%,#161626 100%)',
-//   rbg:   'linear-gradient(160deg,#242445 0%,#04040c 100%)',
-// }
+export function Navbar() {
+  const { isConnected, address, isMiniPay, connect, disconnect } = useWallet()
 
-export default function Hero() {
-  return (
-    <section style={{background:'var(--bg)',position:'relative',overflow:'hidden'}}>
-      <style>{KEYFRAMES}</style>
+  const formatAddress = (addr: string) => {
+    return `${addr.slice(0, 6)}...${addr.slice(-4)}`
+  }
 
-function Navbar() {
   return (
-    <nav
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: "18px 56px",
-        position: "relative",
-        zIndex: 20,
-      }}
-    >
-      <div
-      // className="nav-surface"
-      // style={{
-      //   height: 40,
-      //   padding: "0 16px",
-      //   borderRadius: 999,
-      //   display: "flex",
-      //   alignItems: "center",
-      //   gap: 10,
-      // }}
-      >
-        <Image
-          src="/chessify.png"
-          alt="Chessify"
-          width={200}
-          height={50}
-          style={{ objectFit: "contain" }}
-        />
+    <nav className="hero-navbar" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "18px 56px", position: "relative", zIndex: 20 }}>
+      <div>
+        <Image src="/chessify.png" alt="Chessify" width={200} height={50} style={{ objectFit: "contain" }} />
       </div>
-      <div
-        className="nav-surface"
-        style={{
-          display: "flex",
-          gap: 28,
-          borderRadius: 999,
-          padding: "10px 28px",
-        }}
-      >
+      <div className="nav-surface hero-nav-links" style={{ display: "flex", gap: 28, borderRadius: 999, padding: "10px 28px" }}>
         {["How it works", "Leaderboard", "Faucet"].map((l) => (
           <a
             key={l}
             href={`#${l.toLowerCase().replace(" ", "-")}`}
-            style={{
-              fontFamily: "var(--fd)",
-              fontSize: 12,
-              fontWeight: 500,
-              color: "var(--t2)",
-              textDecoration: "none",
-              letterSpacing: ".06em",
-              transition: "color .2s",
-            }}
-            // onMouseEnter={(e) => {
-            //   (e.currentTarget as HTMLAnchorElement).style.color = "var(--c)";
-            // }}
-            // onMouseLeave={(e) => {
-            //   (e.currentTarget as HTMLAnchorElement).style.color = "var(--t2)";
-            // }}
+            style={{ fontFamily: "var(--fd)", fontSize: 12, fontWeight: 500, color: "var(--t2)", textDecoration: "none", letterSpacing: ".06em", transition: "color .2s" }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--c)"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--t2)"; }}
+          >
+            {l}
+          </a>
+        ))}
+      </div>
+      <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+        <ThemeToggle />
+        
+        {isConnected && address ? (
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <span style={{ fontFamily: "var(--fb)", fontSize: "12px", color: "var(--t1)", background: "var(--b1)", padding: "8px 12px", borderRadius: 999 }}>
+              {isMiniPay && <span style={{ marginRight: 6, color: "var(--c)" }}>MiniPay</span>}
+              {formatAddress(address)}
+            </span>
+            <button onClick={disconnect} style={{ background: "transparent", border: "1px solid var(--b2)", color: "var(--t2)", padding: "8px 16px", borderRadius: 999, cursor: "pointer", fontSize: 12 }}>
+              Disconnect
+            </button>
+          </div>
+        ) : (
+          !isMiniPay ? (
+            <button
+              onClick={connect}
+              style={{
+                background: "var(--c)",
+                color: "#000",
+                border: "none",
+                fontWeight: "bold",
+                padding: "10px 20px",
+                borderRadius: 999,
+                cursor: "pointer",
+                fontSize: 14,
+              }}
+            >
+              Connect Wallet
+            </button>
+          ) : null
+        )}
+      </div>
+    </nav>
+  )
+}
 
 function QueenPiece() {
   return (
@@ -116,84 +106,44 @@ function QueenPiece() {
   )
 }
 
-        <radialGradient id="ks" cx="30%" cy="20%" r="40%">
-          <stop offset="0%" stopColor="rgba(255,255,255,.16)" />
-          <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-        </radialGradient>
-
-        <linearGradient id="kr" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="rgba(0,204,255,.5)" />
-          <stop offset="30%" stopColor="rgba(0,204,255,.08)" />
-          <stop offset="100%" stopColor="rgba(0,204,255,0)" />
-        </linearGradient>
+function KingPiece() {
+  return (
+    <svg viewBox="0 0 90 160" width="100%">
+      <defs>
+        <linearGradient id="kbg" x1="25%" y1="0%" x2="75%" y2="100%"><stop offset="0%" stopColor="#353566"/><stop offset="40%" stopColor="#1a1a45"/><stop offset="100%" stopColor="#05050f"/></linearGradient>
+        <radialGradient id="ks" cx="26%" cy="16%" r="36%"><stop offset="0%" stopColor="rgba(255,255,255,.22)"/><stop offset="100%" stopColor="rgba(255,255,255,0)"/></radialGradient>
+        <linearGradient id="kr" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stopColor="rgba(0,204,255,.52)"/><stop offset="28%" stopColor="rgba(0,204,255,.1)"/><stop offset="100%" stopColor="rgba(0,204,255,0)"/></linearGradient>
       </defs>
-
       {/* Shadow */}
       <ellipse cx="45" cy="142" rx="26" ry="7" fill="rgba(0,0,0,.55)" />
 
       {/* Base */}
-      <path
-        d="M18 137Q16 132 14 125L22 118L68 118L76 125Q74 132 72 137Z"
-        fill="url(#kbg)"
-        stroke="rgba(0,204,255,.16)"
-        strokeWidth="0.8"
-      />
-      <path
-        d="M18 137Q16 132 14 125L22 118L68 118L76 125Q74 132 72 137Z"
-        fill="url(#ks)"
-      />
+      <path d="M18 137Q16 132 14 125L22 118L68 118L76 125Q74 132 72 137Z" fill="url(#kbg)" stroke="rgba(0,204,255,.16)" strokeWidth="0.8"/>
+      <path d="M18 137Q16 132 14 125L22 118L68 118L76 125Q74 132 72 137Z" fill="url(#ks)"/>
 
       {/* Neck + body */}
-      <path
-        d="M24 118Q22 95 32 75L40 62L55 60L66 75Q72 95 70 118Z"
-        fill="url(#kbg)"
-      />
+      <path d="M24 118Q22 95 32 75L40 62L55 60L66 75Q72 95 70 118Z" fill="url(#kbg)"/>
 
       {/* Mane edge highlight */}
-      <path
-        d="M40 62L35 52L42 48L48 54L52 48L58 52L55 60Z"
-        fill="url(#kr)"
-        opacity="0.7"
-      />
+      <path d="M40 62L35 52L42 48L48 54L52 48L58 52L55 60Z" fill="url(#kr)" opacity="0.7"/>
 
-      {/* Head (sharp, angular horse profile) */}
-      <path
-        d="
-        M40 62
-        L36 48
-        L42 30
-        L52 20
-        L66 26
-        L70 36
-        L66 46
-        L60 52
-        L55 60
-        Z"
-        fill="url(#kbg)"
-        stroke="rgba(0,204,255,.25)"
-        strokeWidth="0.8"
-      />
+      {/* Head */}
+      <path d="M40 62L36 48L42 30L52 20L66 26L70 36L66 46L60 52L55 60Z" fill="url(#kbg)" stroke="rgba(0,204,255,.25)" strokeWidth="0.8"/>
 
-      {/* Jaw cut (gives aggressive silhouette) */}
+      {/* Jaw cut */}
       <path d="M52 20L46 34L58 34Z" fill="rgba(0,0,0,.35)" />
 
       {/* Eye glow */}
-      <circle
-        cx="58"
-        cy="34"
-        r="2.5"
-        fill="#00ccff"
-        style={{
-          filter:
-            "drop-shadow(0 0 6px #00ccff) drop-shadow(0 0 14px rgba(0,204,255,.7))",
-        }}
-      />
+      <circle cx="58" cy="34" r="2.5" fill="#00ccff" style={{filter:"drop-shadow(0 0 6px #00ccff) drop-shadow(0 0 14px rgba(0,204,255,.7))"}}/>
 
       {/* Forehead highlight */}
-      <path d="M42 30L52 20L46 34Z" fill="url(#kr)" opacity="0.6" />
+      <path d="M42 30L52 20L46 34Z" fill="url(#kr)" opacity="0.6"/>
 
       {/* Neck highlight */}
-      <path d="M32 75L36 62L40 62L32 95Z" fill="url(#kr)" opacity="0.5" />
+      <path d="M32 75L36 62L40 62L32 95Z" fill="url(#kr)" opacity="0.5"/>
+    </svg>
+  );
+}
 
 function BishopPiece() {
   return (
@@ -221,79 +171,27 @@ function BishopPiece() {
     </svg>
   )
 }
+
 function KnightPiece() {
   return (
     <svg viewBox="0 0 90 150" width="100%">
       <defs>
-        <linearGradient id="kbg" x1="20%" y1="0%" x2="80%" y2="100%">
+        <linearGradient id="kbgkn" x1="20%" y1="0%" x2="80%" y2="100%">
           <stop offset="0%" stopColor="#2a2a52" />
           <stop offset="100%" stopColor="#04040c" />
         </linearGradient>
-
-function KingPiece() {
-  return (
-    <svg viewBox="0 0 90 160" width="100%">
-      <defs>
-        <linearGradient id="kbg" x1="25%" y1="0%" x2="75%" y2="100%"><stop offset="0%" stopColor="#353566"/><stop offset="40%" stopColor="#1a1a45"/><stop offset="100%" stopColor="#05050f"/></linearGradient>
-        <radialGradient id="ks" cx="26%" cy="16%" r="36%"><stop offset="0%" stopColor="rgba(255,255,255,.22)"/><stop offset="100%" stopColor="rgba(255,255,255,0)"/></radialGradient>
-        <linearGradient id="kr" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stopColor="rgba(0,204,255,.52)"/><stop offset="28%" stopColor="rgba(0,204,255,.1)"/><stop offset="100%" stopColor="rgba(0,204,255,0)"/></linearGradient>
       </defs>
-      <ellipse cx="45" cy="154" rx="28" ry="7.5" fill="rgba(0,0,0,.55)"/>
-      <path d="M16 148Q15 145 13 138L19 130L71 130L77 138Q75 145 74 148Z" fill="url(#kbg)" stroke="rgba(0,204,255,.18)" strokeWidth="0.8"/>
-      <path d="M16 148Q15 145 13 138L19 130L71 130L77 138Q75 145 74 148Z" fill="url(#ks)"/>
-      <path d="M19 130Q17 107 23 88L32 73L58 73L67 88Q73 107 71 130Z" fill="url(#kbg)" stroke="rgba(255,255,255,.06)" strokeWidth="0.5"/>
-      <path d="M19 130Q17 107 23 88L30 80L30 73L32 73L23 88Q17 107 19 130Z" fill="url(#kr)"/>
-      <path d="M19 130Q17 107 23 88L30 80L30 73L32 73L23 88Q17 107 19 130Z" fill="url(#ks)" opacity="0.65"/>
-      <ellipse cx="45" cy="100" rx="23" ry="4" fill="rgba(0,0,0,.35)"/>
-      <path d="M25 97Q25 91 45 89Q65 91 65 97Q65 103 45 105Q25 103 25 97Z" fill="url(#kbg)" stroke="rgba(0,204,255,.4)" strokeWidth="1"/>
-      <path d="M25 97Q25 91 45 89Q35 91 30 97Q35 103 45 105Q25 103 25 97Z" fill="url(#ks)"/>
-      <rect x="34" y="61" width="22" height="15" rx="4.5" fill="url(#kbg)" stroke="rgba(0,204,255,.22)" strokeWidth="0.8"/>
-      <ellipse cx="45" cy="62" rx="12" ry="3" fill="rgba(0,0,0,.28)"/>
-      <path d="M25 61Q25 34 45 27Q65 34 65 61Z" fill="url(#kbg)" stroke="rgba(255,255,255,.07)" strokeWidth="0.5"/>
-      <path d="M25 61Q25 34 45 27Q33 34 29 61Z" fill="url(#ks)"/>
-      <rect x="43" y="4" width="4.5" height="24" rx="2.25" fill="#00ccff" style={{filter:'drop-shadow(0 0 8px #00ccff) drop-shadow(0 0 20px rgba(0,204,255,.6))'}}/>
-      <rect x="33" y="11" width="24" height="4.5" rx="2.25" fill="#00ccff" style={{filter:'drop-shadow(0 0 8px #00ccff) drop-shadow(0 0 20px rgba(0,204,255,.6))'}}/>
-      <circle cx="29" cy="54" r="3.5" fill="#00ccff" style={{filter:'drop-shadow(0 0 7px #00ccff) drop-shadow(0 0 16px rgba(0,204,255,.7))'}}/>
-      <circle cx="45" cy="47" r="3.5" fill="#00ccff" style={{filter:'drop-shadow(0 0 9px #00ccff) drop-shadow(0 0 18px rgba(0,204,255,.7))'}}/>
-      <circle cx="61" cy="54" r="3.5" fill="#00ccff" style={{filter:'drop-shadow(0 0 7px #00ccff) drop-shadow(0 0 16px rgba(0,204,255,.7))'}}/>
-    </svg>
-  )
-}
-
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.color = "var(--c)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.color = "var(--t2)";
-            }}
-          >
-            {l}
-          </a>
-        ))}
-      </div>
-      <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-        <ThemeToggle />
-        <Link href="/app/lobby">
-          <GlowButton variant="brand" size="sm">
-            Launch App
-          </GlowButton>
-        </Link>
-      </div>
-    </nav>
-  );
-}
-
-      {/* Collar ring */}
+      <ellipse cx="45" cy="142" rx="26" ry="7" fill="rgba(0,0,0,.55)" />
+      <path d="M18 137Q16 132 14 125L22 118L68 118L76 125Q74 132 72 137Z" fill="url(#kbgkn)" stroke="rgba(0,204,255,.16)" strokeWidth="0.8"/>
+      <path d="M24 118Q22 95 32 75L40 62L55 60L66 75Q72 95 70 118Z" fill="url(#kbgkn)"/>
+      <path d="M40 62L36 48L42 30L52 20L66 26L70 36L66 46L60 52L55 60Z" fill="url(#kbgkn)" stroke="rgba(0,204,255,.25)" strokeWidth="0.8"/>
+      <circle cx="58" cy="34" r="2.5" fill="#00ccff" style={{filter:"drop-shadow(0 0 6px #00ccff) drop-shadow(0 0 14px rgba(0,204,255,.7))"}}/>
       <ellipse cx="47" cy="82" rx="18" ry="4" fill="rgba(0,0,0,.3)" />
-      <path
-        d="M30 82Q30 75 47 73Q64 75 64 82Q64 89 47 91Q30 89 30 82Z"
-        fill="url(#kbg)"
-        stroke="rgba(0,204,255,.3)"
-        strokeWidth="0.8"
-      />
+      <path d="M30 82Q30 75 47 73Q64 75 64 82Q64 89 47 91Q30 89 30 82Z" fill="url(#kbgkn)" stroke="rgba(0,204,255,.3)" strokeWidth="0.8"/>
     </svg>
   );
 }
+
 function RookPiece() {
   return (
     <svg viewBox="0 0 80 140" width="100%">
@@ -323,6 +221,11 @@ function RookPiece() {
   )
 }
 
+export default function Hero() {
+  return (
+    <section className="hero-section" style={{background:'var(--bg)',position:'relative',overflow:'hidden'}}>
+      <style>{KEYFRAMES}</style>
+      
       {/* Ambient mesh */}
       <div style={{position:'absolute',inset:0,background:'radial-gradient(ellipse 65% 55% at 50% 40%,rgba(0,204,255,.07) 0%,transparent 60%),radial-gradient(ellipse 35% 35% at 18% 80%,rgba(120,60,220,.05) 0%,transparent 60%)',pointerEvents:'none'}}/>
       {/* Grid */}
@@ -330,10 +233,10 @@ function RookPiece() {
 
       <Navbar/>
 
-      <div style={{position:'relative',minHeight:'calc(100vh - 76px)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',textAlign:'center',padding:'60px 48px 80px'}}>
+      <div className="hero-content" style={{position:'relative',minHeight:'calc(100vh - 76px)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',textAlign:'center',padding:'60px 48px 80px'}}>
 
         {/* PIECES — z:5, IN FRONT of text */}
-        <div style={{position:'absolute',inset:0,pointerEvents:'none',zIndex:5}}>
+        <div className="hero-pieces" style={{position:'absolute',inset:0,pointerEvents:'none',zIndex:5}}>
           {/* Rings */}
           <div style={{position:'absolute',top:'50%',left:'50%',width:300,height:300,border:'1px dashed rgba(0,204,255,.09)',borderRadius:'50%',transform:'translate(-50%,-50%)',animation:'rspin 28s linear infinite'}}/>
           <div style={{position:'absolute',top:'50%',left:'50%',width:480,height:480,border:'1px solid rgba(0,204,255,.04)',borderRadius:'50%',transform:'translate(-50%,-50%)'}}/>
@@ -344,11 +247,11 @@ function RookPiece() {
           <div style={{position:'absolute',left:'6%',bottom:'10%',width:128,animation:'knight-move 4.2s ease-in-out infinite',filter:'var(--shadow-piece)'}}><KnightPiece/></div>
           <div style={{position:'absolute',right:'5%',bottom:'12%',width:112,animation:'rook-move 4.6s ease-in-out infinite',filter:'var(--shadow-piece)'}}><RookPiece/></div>
           {/* Float cards */}
-          <div style={{position:'absolute',right:'2%',top:'44%',padding:'12px 18px',borderRadius:16,fontFamily:'var(--fd)',background:'linear-gradient(145deg,#041a2c,#020f1a)',border:'1px solid rgba(0,204,255,.26)',boxShadow:'0 2px 0 rgba(0,204,255,.12) inset,0 14px 36px rgba(0,180,240,.14)'}}>
+          <div className="hero-float-cards" style={{position:'absolute',right:'2%',top:'44%',padding:'12px 18px',borderRadius:16,fontFamily:'var(--fd)',background:'linear-gradient(145deg,#041a2c,#020f1a)',border:'1px solid rgba(0,204,255,.26)',boxShadow:'0 2px 0 rgba(0,204,255,.12) inset,0 14px 36px rgba(0,180,240,.14)'}}>
             <div style={{fontSize:9,letterSpacing:'.12em',color:'rgba(255,255,255,.35)',marginBottom:4}}>CURRENT LEADER</div>
             <div style={{fontWeight:800,fontSize:15,color:'#00ccff'}}>ELO 2,418</div>
           </div>
-          <div style={{position:'absolute',left:'1%',top:'60%',padding:'12px 18px',borderRadius:16,fontFamily:'var(--fd)',background:'linear-gradient(145deg,#14142c,#0c0c1e)',border:'1px solid rgba(255,255,255,.1)',boxShadow:'0 2px 0 rgba(255,255,255,.07) inset,0 14px 36px rgba(0,0,0,.5)'}}>
+          <div className="hero-float-cards" style={{position:'absolute',left:'1%',top:'60%',padding:'12px 18px',borderRadius:16,fontFamily:'var(--fd)',background:'linear-gradient(145deg,#14142c,#0c0c1e)',border:'1px solid rgba(255,255,255,.1)',boxShadow:'0 2px 0 rgba(255,255,255,.07) inset,0 14px 36px rgba(0,0,0,.5)'}}>
             <div style={{fontSize:9,letterSpacing:'.12em',color:'rgba(255,255,255,.35)',marginBottom:4}}>PRIZE POOL</div>
             <div style={{fontWeight:800,fontSize:15,color:'var(--t1)'}}>1,000 CHESS</div>
           </div>
@@ -356,12 +259,12 @@ function RookPiece() {
 
         {/* TEXT — z:3, BEHIND pieces */}
         <div style={{position:'relative',zIndex:3}}>
-          <div style={{display:'inline-flex',alignItems:'center',gap:8,background:'var(--badge-bg)',border:'1px solid var(--b1)',borderRadius:999,padding:'7px 18px',marginBottom:24,animation:'fadeUp .6s cubic-bezier(.16,1,.3,1) both'}}>
+          <div className="hero-badge" style={{display:'inline-flex',alignItems:'center',gap:8,background:'var(--badge-bg)',border:'1px solid var(--b1)',borderRadius:999,padding:'7px 18px',marginBottom:24,animation:'fadeUp .6s cubic-bezier(.16,1,.3,1) both'}}>
             <span style={{width:6,height:6,borderRadius:'50%',background:'var(--c)',animation:'pulseDot 2s ease-in-out infinite',flexShrink:0}}/>
-            <span style={{fontFamily:'var(--fd)',fontSize:9,fontWeight:600,color:'var(--c)',letterSpacing:'.14em'}}>ON-CHAIN CHESS — STACKS BLOCKCHAIN</span>
+            <span style={{fontFamily:'var(--fd)',fontSize:9,fontWeight:600,color:'var(--c)',letterSpacing:'.14em'}}>ON-CHAIN CHESS — MULTI-CHAIN</span>
           </div>
 
-          <h1 style={{fontFamily:'var(--fd)',fontWeight:900,fontSize:'clamp(72px,12vw,148px)',lineHeight:.86,letterSpacing:'-.05em',textTransform:'uppercase',marginBottom:24,color:'var(--t1)',textShadow:'var(--hero-text-shadow, 0 4px 40px rgba(0,0,0,.7))',animation:'fadeUp .6s cubic-bezier(.16,1,.3,1) .1s both'}}>
+          <h1 className="hero-headline" style={{fontFamily:'var(--fd)',fontWeight:900,fontSize:'clamp(72px,12vw,148px)',lineHeight:.86,letterSpacing:'-.05em',textTransform:'uppercase',marginBottom:24,color:'var(--t1)',textShadow:'var(--hero-text-shadow, 0 4px 40px rgba(0,0,0,.7))',animation:'fadeUp .6s cubic-bezier(.16,1,.3,1) .1s both'}}>
             Be the<br/>
             <span style={{color:'var(--c)',textShadow:'var(--king-text-shadow, 0 0 80px rgba(0,204,255,.45))'}}>King</span><br/>
             of Chess
@@ -371,20 +274,24 @@ function RookPiece() {
             Wager CHESS tokens, play on-chain.<br/>Every move permanently recorded. Your rating, your winnings — provably yours.
           </p>
 
-          <div style={{display:'flex',justifyContent:'center',marginBottom:46,animation:'fadeUp .6s cubic-bezier(.16,1,.3,1) .3s both'}}>
+          <div className="hero-stats" style={{display:'flex',justifyContent:'center',marginBottom:46,animation:'fadeUp .6s cubic-bezier(.16,1,.3,1) .3s both'}}>
             <div style={{paddingRight:28,borderRight:'1px solid var(--b1)'}}>
               <div style={{fontFamily:'var(--fd)',fontWeight:800,fontSize:18,color:'var(--c)'}}>CHESS</div>
               <div style={{fontFamily:'var(--fd)',fontSize:8,color:'var(--t3)',letterSpacing:'.15em',marginTop:4}}>TOKEN</div>
             </div>
-            <div style={{paddingLeft:28}}>
+            <div style={{paddingLeft:28, paddingRight:28, borderRight:'1px solid var(--b1)'}}>
               <div style={{fontFamily:'var(--fd)',fontWeight:800,fontSize:18,color:'var(--c)'}}>Stacks</div>
               <div style={{fontFamily:'var(--fd)',fontSize:8,color:'var(--t3)',letterSpacing:'.15em',marginTop:4}}>BLOCKCHAIN</div>
+            </div>
+            <div style={{paddingLeft:28}}>
+              <div style={{fontFamily:'var(--fd)',fontWeight:800,fontSize:18,color:'var(--c)'}}>Celo</div>
+              <div style={{fontFamily:'var(--fd)',fontSize:8,color:'var(--t3)',letterSpacing:'.15em',marginTop:4}}>MAINNET</div>
             </div>
           </div>
 
           <div style={{animation:'fadeUp .6s cubic-bezier(.16,1,.3,1) .4s both'}}>
             <Link href="/app/lobby">
-              <GlowButton variant="brand" parallelogram size="lg">PLAY NOW</GlowButton>
+              <GlowButton variant="brand" parallelogram size="lg" className="btn-brand-para-mobile">PLAY NOW</GlowButton>
             </Link>
           </div>
         </div>

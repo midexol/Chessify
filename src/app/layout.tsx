@@ -1,8 +1,9 @@
 import './globals.css'
 import type { Metadata } from 'next'
+import { Providers } from './providers'
 
 export const metadata: Metadata = {
-  title: "CHESSIFY — Play Chess on Stacks",
+  title: "CHESSIFY — Play Chess on Stacks and Celo",
   description: "Wager CHESS tokens, play on-chain. Built by Velocity Labs.",
   icons: {
     icon: "/Piece.svg",
@@ -14,8 +15,6 @@ export const metadata: Metadata = {
   },
 };
 
-// ← structural drift
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" data-theme="dark" suppressHydrationWarning>
@@ -24,13 +23,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           __html: `try{const t=localStorage.getItem('chessify-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}`
         }}/>
       </head>
-      <body>{children}</body>
-// ← echo residue
+      <body>
+        <Providers>
+          {children}
+        </Providers>
+      </body>
     </html>
   )
 }
-
-
-// ⟳ echo · src/components/ui/ThemeToggle.tsx
-//           <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
-//         </svg>

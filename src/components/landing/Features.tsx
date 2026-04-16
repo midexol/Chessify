@@ -57,7 +57,7 @@ const innerStyle: React.CSSProperties = {
 
 export default function Features() {
   return (
-    <section id="how-it-works" style={{ padding: '80px 56px', background: 'var(--bg)' }}>
+    <section id="how-it-works" className="features-section" style={{ padding: '80px 56px', background: 'var(--bg)' }}>
 
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: 54 }}>
@@ -80,7 +80,7 @@ export default function Features() {
       <div style={{ maxWidth: 960, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 14 }}>
 
         {/* Row 1 */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1.65fr 1fr', gap: 14 }}>
+        <div className="features-row-1" style={{ display: 'grid', gridTemplateColumns: '1.65fr 1fr', gap: 14 }}>
 
           {/* Purple: Real Wagers */}
           <div
@@ -133,15 +133,15 @@ export default function Features() {
               </svg>
             </BgIcon>
             <div style={{ ...innerStyle, justifyContent: 'flex-end' }}>
-              <span style={tagStyle('rgba(0,204,255,.1)', 'rgba(0,204,255,.24)', '#00ccff')}>ON-CHAIN</span>
+              <span style={tagStyle('rgba(0,204,255,.1)', 'rgba(0,204,255,.24)', '#00ccff')}>MULTI-CHAIN</span>
               <div style={titleStyle('var(--c)', 19)}>Every Move Recorded</div>
-              <div style={descStyle}>Each move is a Stacks transaction. Provably fair, permanently on-chain.</div>
+              <div style={descStyle}>Each move is a verifiable transaction. Provably fair, permanently on-chain.</div>
             </div>
           </div>
         </div>
 
         {/* Row 2 */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 14 }}>
+        <div className="features-row-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 14 }}>
 
           {/* Green: Elo */}
           <div
@@ -202,9 +202,10 @@ export default function Features() {
               </svg>
             </BgIcon>
             <div style={{ ...innerStyle, justifyContent: 'flex-end' }}>
-              <div style={titleStyle('var(--t1)')}>Protected</div>
-              <div style={descStyle}>Leather & Xverse supported. Mobile & desktop ready.</div>
+              <div style={titleStyle('var(--t1)')}>Supported</div>
+              <div style={descStyle}>MiniPay, Leather & Xverse supported. Multi-chain ready.</div>
               <div style={{ marginTop: 12 }}>
+                <span style={pillStyle('rgba(0,220,120,.12)', 'rgba(0,220,120,.28)', '#00dc78')}>MiniPay</span>
                 <span style={pillStyle('rgba(0,204,255,.12)', 'rgba(0,204,255,.28)', 'var(--c)')}>Leather</span>
                 <span style={pillStyle('rgba(255,255,255,.07)', 'rgba(255,255,255,.14)', 'var(--t2)')}>Xverse</span>
               </div>
@@ -215,3 +216,4 @@ export default function Features() {
     </section>
   )
 }
+
