@@ -356,7 +356,7 @@ contract ChessGame is ReentrancyGuard, Ownable {
 
     /// @dev End a game with a winner and loser. Transfers pot + updates Elo.
     function _endGame(
-        uint256 gameId,
+        uint256 /* gameId */,
         Game storage game,
         GameStatus status,
         GameResult result,
