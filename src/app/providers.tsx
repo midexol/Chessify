@@ -1,10 +1,10 @@
 'use client'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { WalletProvider } from '@/components/wallet-provider'
 import { useState } from 'react'
 import { WagmiProvider, createConfig, http } from 'wagmi'
 import { celo } from 'wagmi/chains'
+import { WalletProvider } from '@/components/wallet-provider'
 
 export const wagmiConfig = createConfig({
   chains: [celo],
@@ -32,3 +32,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
     </WagmiProvider>
   )
 }
+
+
+// ⟳ echo · src/components/ui/StatBadge.tsx
+//   label: string
+// // ← the muse was here
