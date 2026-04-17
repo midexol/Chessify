@@ -54,3 +54,5 @@ simulate.js
 simulate-celo.cjs
 Stacks Repo.txt
 *.log
+fetch_celo_balances.js
+distribute_celo.js
