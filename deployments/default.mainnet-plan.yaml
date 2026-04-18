@@ -1,32 +1,24 @@
----
 id: 0
 name: Mainnet deployment
 network: mainnet
-stacks-node: "https://api.hiro.so"
-bitcoin-node: "http://blockstack:blockstacksystem@bitcoin.blockstack.com:8332"
+stacks-node: https://api.hiro.so
+bitcoin-node: http://blockstack:blockstacksystem@bitcoin.blockstack.com:8332
 plan:
   batches:
-    - id: 0
-      transactions:
-        - contract-publish:
-            contract-name: chess-token_v2
-            expected-sender: SP6X0MXEEGZX14ZTK7XQXJ76W35ZJDP9NZBT6F39
-            cost: 65480
-            path: contracts/chess-token_v2.clar
-            anchor-block-only: true
-            clarity-version: 4
-        - contract-publish:
-            contract-name: gateway
-            expected-sender: SP6X0MXEEGZX14ZTK7XQXJ76W35ZJDP9NZBT6F39
-            cost: 90940
-            path: contracts/gateway.clar
-            anchor-block-only: true
-            clarity-version: 2
-        - contract-publish:
-            contract-name: gateway_v2
-            expected-sender: SP6X0MXEEGZX14ZTK7XQXJ76W35ZJDP9NZBT6F39
-            cost: 83960
-            path: contracts/gateway_v2.clar
-            anchor-block-only: true
-            clarity-version: 4
-      epoch: "3.3"
+  - id: 0
+    transactions:
+    - transaction-type: contract-publish
+      contract-name: chess-token
+      expected-sender: SP6X0MXEEGZX14ZTK7XQXJ76W35ZJDP9NZBT6F39
+      cost: 72400
+      path: contracts/chess-token-v3.clar
+      anchor-block-only: true
+      clarity-version: 2
+    - transaction-type: contract-publish
+      contract-name: chess-game
+      expected-sender: SP6X0MXEEGZX14ZTK7XQXJ76W35ZJDP9NZBT6F39
+      cost: 250700
+      path: contracts/chess-game.clar
+      anchor-block-only: true
+      clarity-version: 2
+    epoch: '3.4'

@@ -53,7 +53,7 @@
       {
         player: player,
         move: move-str,
-        timestamp: stacks-block-height
+        timestamp: block-height
       }
     )
     (ok true)
@@ -69,7 +69,7 @@
     (map-set resignations game-id
       {
         player: player,
-        timestamp: stacks-block-height
+        timestamp: block-height
       }
     )
     (ok true)

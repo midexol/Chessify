@@ -1,0 +1,54 @@
+note[case_const]: constant `CONTRACT-OWNER` is not SCREAMING_SNAKE_CASE: contains illegal character '-'
+(define-constant CONTRACT-OWNER tx-sender)
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+note[case_const]: constant `TOKEN-NAME` is not SCREAMING_SNAKE_CASE: contains illegal character '-'
+(define-constant TOKEN-NAME     "Chess Token")
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+note[case_const]: constant `TOKEN-SYMBOL` is not SCREAMING_SNAKE_CASE: contains illegal character '-'
+(define-constant TOKEN-SYMBOL   "CHESS")
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+note[case_const]: constant `TOKEN-DECIMALS` is not SCREAMING_SNAKE_CASE: contains illegal character '-'
+(define-constant TOKEN-DECIMALS u6)
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+note[case_const]: constant `TOKEN-URI` is not SCREAMING_SNAKE_CASE: contains illegal character '-'
+(define-constant TOKEN-URI      u"https://chessify.protocol/token-metadata.json")
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+note[case_const]: constant `FAUCET-AMOUNT` is not SCREAMING_SNAKE_CASE: contains illegal character '-'
+(define-constant FAUCET-AMOUNT   u1000000000) ;; 1,000 CHESS (with 6 decimals)
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+note[case_const]: constant `FAUCET-COOLDOWN` is not SCREAMING_SNAKE_CASE: contains illegal character '-'
+(define-constant FAUCET-COOLDOWN u144)        ;; ~1 day at ~144 Stacks blocks/day
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+note[case_const]: constant `ERR-NOT-AUTHORIZED` is not SCREAMING_SNAKE_CASE: contains illegal character '-'
+(define-constant ERR-NOT-AUTHORIZED  (err u100))
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+note[case_const]: constant `ERR-MINT-DISABLED` is not SCREAMING_SNAKE_CASE: contains illegal character '-'
+(define-constant ERR-MINT-DISABLED   (err u101))
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+note[case_const]: constant `ERR-INVALID-AMOUNT` is not SCREAMING_SNAKE_CASE: contains illegal character '-'
+(define-constant ERR-INVALID-AMOUNT  (err u102))
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+note[case_const]: constant `ERR-FAUCET-COOLDOWN` is not SCREAMING_SNAKE_CASE: contains illegal character '-'
+(define-constant ERR-FAUCET-COOLDOWN (err u105))
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+note[case_const]: constant `ERR-SAME-SENDER` is not SCREAMING_SNAKE_CASE: contains illegal character '-'
+(define-constant ERR-SAME-SENDER     (err u106))
+^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+error: use of unresolved variable 'stacks-block-height'
+--> /home/jadonamite/Projects/chess-protocol/contracts/chess-game.clar:352:24
+      created-at:      stacks-block-height,
+                       ^~~~~~~~~~~~~~~~~~~
+x 1 error detected
+
+----------------------------
+Hint: what's next?
+Once you are ready to write TypeScript unit tests for your contract, run the following command:
+
+  $ npm install
+  $ npm test
+    Run all run tests in the ./tests folder.
+
+Find more information on testing with Clarinet here: https://docs.stacks.co/clarinet/testing-with-clarinet-sdk
+These hints can be disabled in the /home/jadonamite/.clarinet/clarinetrc.toml file.
+  $ mkdir -p ~/.clarinet; echo "enable_hints = false" >> /home/jadonamite/.clarinet/clarinetrc.toml
+----------------------------

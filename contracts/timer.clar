@@ -37,7 +37,7 @@
   (begin
     (map-set game-timeouts game-id {
       timeout-duration: DEFAULT-TIMEOUT,
-      last-move-block: stacks-block-height
+      last-move-block: block-height
     })
     (ok true)
   )
@@ -53,7 +53,7 @@
       (timer-data (unwrap! (map-get? game-timeouts game-id) ERR-GAME-NOT-FOUND))
     )
     (map-set game-timeouts game-id
-      (merge timer-data { last-move-block: stacks-block-height })
+      (merge timer-data { last-move-block: block-height })
     )
     (ok true)
   )
@@ -67,7 +67,7 @@
   (let
     (
       (timer-data (unwrap! (map-get? game-timeouts game-id) ERR-GAME-NOT-FOUND))
-      (blocks-elapsed (- stacks-block-height (get last-move-block timer-data)))
+      (blocks-elapsed (- block-height (get last-move-block timer-data)))
       (timeout-limit (get timeout-duration timer-data))
     )
     (asserts! (>= blocks-elapsed timeout-limit) ERR-TIMEOUT-NOT-REACHED)
@@ -108,7 +108,7 @@
   (let
     (
       (timer-data (unwrap! (map-get? game-timeouts game-id) ERR-GAME-NOT-FOUND))
-      (blocks-elapsed (- stacks-block-height (get last-move-block timer-data)))
+      (blocks-elapsed (- block-height (get last-move-block timer-data)))
       (timeout-limit (get timeout-duration timer-data))
     )
     (if (>= blocks-elapsed timeout-limit)
@@ -126,7 +126,7 @@
   (let
     (
       (timer-data (unwrap! (map-get? game-timeouts game-id) ERR-GAME-NOT-FOUND))
-      (blocks-elapsed (- stacks-block-height (get last-move-block timer-data)))
+      (blocks-elapsed (- block-height (get last-move-block timer-data)))
       (timeout-limit (get timeout-duration timer-data))
     )
     (ok (>= blocks-elapsed timeout-limit))

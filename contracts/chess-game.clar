@@ -1,7 +1,7 @@
 ;; ============================================================
 ;; chess-game.clar
-;; On-chain Chess Protocol — Game Engine, Escrow, Elo
-;; Contract 2 of 2 — Chessify Protocol on Stacks
+;; On-chain Chess Protocol -- Game Engine, Escrow, Elo
+;; Contract 2 of 2 -- Chessify Protocol on Stacks
 ;;
 ;; MIRRORS: ChessGame.sol (Celo)
 ;;
@@ -17,19 +17,19 @@
 ;;   OUT (payout / refund):
 ;;       chess-game calls chess-token.gateway-release(amount, recipient)
 ;;       chess-token.gateway-release uses ft-transfer? internally,
-;;       which runs in chess-token's context — no as-contract needed.
+;;       which runs in chess-token's context -- no as-contract needed.
 ;;
 ;; GAME LIFECYCLE:
-;;   create-game  → status: waiting (0)
-;;   join-game    → status: active  (1)
-;;   [moves]      → submit-move (turn flip + timeout reset)
+;;   create-game  -> status: waiting (0)
+;;   join-game    -> status: active  (1)
+;;   [moves]      -> submit-move (turn flip + timeout reset)
 ;;   end via one of:
-;;     resign        → caller loses, opponent wins
-;;     report-win    → caller claims checkmate win
-;;     propose-draw  → caller offers draw
-;;     accept-draw   → opponent accepts, both refunded
-;;     claim-timeout → opponent missed their move window
-;;     cancel-game   → creator cancels before anyone joins
+;;     resign        -> caller loses, opponent wins
+;;     report-win    -> caller claims checkmate win
+;;     propose-draw  -> caller offers draw
+;;     accept-draw   -> opponent accepts, both refunded
+;;     claim-timeout -> opponent missed their move window
+;;     cancel-game   -> creator cancels before anyone joins
 ;;
 ;; TRUST MODEL:
 ;;   - resign():        caller can only hurt themselves
@@ -44,13 +44,13 @@
 ;;   Standard expected-score formula (integer approximation).
 ;;   Mirrors the Solidity _updateElo() implementation exactly.
 ;;     K = 32, diff capped at 400
-;;     winner_change = K * (400 ± diff) / 800
-;;     loser_change  = K * (400 ∓ diff) / 800
+;;     winner_change = K * (400 + diff) / 800
+;;     loser_change  = K * (400 - diff) / 800
 ;;     min change = 1, min rating = 100
 ;; ============================================================
 
 ;; -------------------------------------------------------
-;; Constants — Status Codes  (mirrors Solidity GameStatus enum)
+;; Constants -- Status Codes  (mirrors Solidity GameStatus enum)
 ;; -------------------------------------------------------
 
 (define-constant STATUS-WAITING   u0) ;; created, waiting for opponent
@@ -60,7 +60,7 @@
 (define-constant STATUS-DRAW      u4) ;; agreed draw
 
 ;; -------------------------------------------------------
-;; Constants — Elo  (mirrors Solidity)
+;; Constants -- Elo  (mirrors Solidity)
 ;; -------------------------------------------------------
 
 (define-constant STARTING-ELO u1200)
@@ -69,7 +69,7 @@
 (define-constant ELO-DIFF-CAP  u400) ;; max diff used in formula
 
 ;; -------------------------------------------------------
-;; Constants — Timeout
+;; Constants -- Timeout
 ;; ~30 min on Stacks at 10-min block time = 3 blocks.
 ;; Set to 432 for ~3 days (conservative default, owner can adjust).
 ;; -------------------------------------------------------
@@ -77,7 +77,7 @@
 (define-constant DEFAULT-TIMEOUT u432)
 
 ;; -------------------------------------------------------
-;; Constants — Owner
+;; Constants -- Owner
 ;; -------------------------------------------------------
 
 (define-constant CONTRACT-OWNER tx-sender)
@@ -100,19 +100,19 @@
 (define-constant ERR-TRANSFER-FAILED  (err u712))
 
 ;; -------------------------------------------------------
-;; Storage — Game Nonce
+;; Storage -- Game Nonce
 ;; -------------------------------------------------------
 
 (define-data-var game-nonce uint u0)
 
 ;; -------------------------------------------------------
-;; Storage — Timeout Duration (owner-adjustable)
+;; Storage -- Timeout Duration (owner-adjustable)
 ;; -------------------------------------------------------
 
 (define-data-var timeout-blocks uint DEFAULT-TIMEOUT)
 
 ;; -------------------------------------------------------
-;; Storage — Games Map
+;; Storage -- Games Map
 ;;
 ;; Mirrors Solidity Game struct exactly:
 ;;   white, black, wager, status, turn,
@@ -135,7 +135,7 @@
 )
 
 ;; -------------------------------------------------------
-;; Storage — Player Stats
+;; Storage -- Player Stats
 ;;
 ;; Mirrors Solidity PlayerStats struct:
 ;;   wins, losses, draws, rating, games-played
@@ -153,13 +153,13 @@
 )
 
 ;; -------------------------------------------------------
-;; Private — Init Player Stats on First Game
+;; Private -- Init Player Stats on First Game
 ;; Mirrors Solidity _initPlayerIfNeeded()
 ;; -------------------------------------------------------
 
 (define-private (init-player-if-needed (player principal))
   (match (map-get? player-stats player)
-    _existing true  ;; already initialised, no-op
+    existing-stats true  ;; already initialised, no-op
     (map-set player-stats player {
       wins:         u0,
       losses:       u0,
@@ -171,7 +171,7 @@
 )
 
 ;; -------------------------------------------------------
-;; Private — Elo Update
+;; Private -- Elo Update
 ;;
 ;; Mirrors Solidity _updateElo() exactly.
 ;; Uses integer expected-score approximation:
@@ -243,7 +243,7 @@
 )
 
 ;; -------------------------------------------------------
-;; Private — End Game (win/loss path)
+;; Private -- End Game (win/loss path)
 ;;
 ;; Updates status, pays out total pot to winner,
 ;; increments stats, and updates Elo.
@@ -266,7 +266,7 @@
     ;; Mark finished
     (map-set games game-id (merge game { status: STATUS-FINISHED }))
 
-    ;; Pay winner — total pot (both wagers)
+    ;; Pay winner -- total pot (both wagers)
     (if (> total-pot u0)
       (unwrap! (contract-call? .chess-token gateway-release total-pot winner)
                ERR-TRANSFER-FAILED)
@@ -310,7 +310,7 @@
 )
 
 ;; ============================================================
-;; PUBLIC — Game Lifecycle
+;; PUBLIC -- Game Lifecycle
 ;; ============================================================
 
 ;; -------------------------------------------------------
@@ -349,8 +349,8 @@
       status:          STATUS-WAITING,
       turn:            tx-sender,
       move-count:      u0,
-      created-at:      stacks-block-height,
-      last-move-block: stacks-block-height,
+      created-at:      block-height,
+      last-move-block: block-height,
       draw-proposer:   none
     })
 
@@ -390,11 +390,11 @@
     ;; Init player if first game
     (init-player-if-needed tx-sender)
 
-    ;; Activate game — black is now set
+    ;; Activate game -- black is now set
     (map-set games game-id (merge game {
       black:           (some tx-sender),
       status:          STATUS-ACTIVE,
-      last-move-block: stacks-block-height
+      last-move-block: block-height
     }))
 
     (ok true)
@@ -406,7 +406,7 @@
 ;;
 ;; Records that a move was made: flips turn, increments
 ;; move-count, resets timeout clock, clears draw proposal.
-;; No move string stored on-chain — chess.js validates client-side.
+;; No move string stored on-chain -- chess.js validates client-side.
 ;; Mirrors Solidity submitMove().
 ;; -------------------------------------------------------
 
@@ -428,7 +428,7 @@
       (map-set games game-id (merge game {
         turn:            next-turn,
         move-count:      (+ (get move-count game) u1),
-        last-move-block: stacks-block-height,
+        last-move-block: block-height,
         draw-proposer:   none  ;; clear any pending draw proposal on move
       }))
       (ok true)
@@ -439,7 +439,7 @@
 ;; -------------------------------------------------------
 ;; Resign
 ;;
-;; Caller concedes — opponent wins automatically.
+;; Caller concedes -- opponent wins automatically.
 ;; Caller can only hurt themselves: no one can force a resign.
 ;; Payout: total pot (both wagers) goes to winner.
 ;; Mirrors Solidity resign().
@@ -603,7 +603,7 @@
 ;;
 ;; If the player whose turn it is hasn't moved within
 ;; timeout-blocks, their opponent can claim the win.
-;; Timeout is verified on-chain via block height — cannot be faked.
+;; Timeout is verified on-chain via block height -- cannot be faked.
 ;; Mirrors Solidity claimTimeout().
 ;; -------------------------------------------------------
 
@@ -625,7 +625,7 @@
     (asserts! (not (is-eq caller (get turn game))) ERR-NOT-YOUR-TURN)
     ;; Verify timeout has actually elapsed
     (asserts!
-      (>= (- stacks-block-height (get last-move-block game))
+      (>= (- block-height (get last-move-block game))
           (var-get timeout-blocks))
       ERR-TIMEOUT-NOT-MET
     )
@@ -673,10 +673,10 @@
 )
 
 ;; ============================================================
-;; READ-ONLY — Game Queries
+;; READ-ONLY -- Game Queries
 ;; ============================================================
 
-;; Get full game data — mirrors Solidity getGame()
+;; Get full game data -- mirrors Solidity getGame()
 (define-read-only (get-game (game-id uint))
   (ok (map-get? games game-id))
 )
@@ -696,18 +696,18 @@
   (ok (var-get game-nonce))
 )
 
-;; Check if timeout is claimable right now — mirrors Solidity canClaimTimeout()
+;; Check if timeout is claimable right now -- mirrors Solidity canClaimTimeout()
 (define-read-only (can-claim-timeout (game-id uint))
   (match (map-get? games game-id)
     game (ok (and
                (is-eq (get status game) STATUS-ACTIVE)
-               (>= (- stacks-block-height (get last-move-block game))
+               (>= (- block-height (get last-move-block game))
                    (var-get timeout-blocks))))
     (ok false)
   )
 )
 
-;; Blocks remaining until timeout is claimable — mirrors Solidity blocksUntilTimeout()
+;; Blocks remaining until timeout is claimable -- mirrors Solidity blocksUntilTimeout()
 (define-read-only (get-blocks-until-timeout (game-id uint))
   (match (map-get? games game-id)
     game
@@ -715,7 +715,7 @@
         (ok u0)
         (let
           (
-            (elapsed  (- stacks-block-height (get last-move-block game)))
+            (elapsed  (- block-height (get last-move-block game)))
             (limit    (var-get timeout-blocks))
           )
           (if (>= elapsed limit)
@@ -729,10 +729,10 @@
 )
 
 ;; ============================================================
-;; READ-ONLY — Player Queries
+;; READ-ONLY -- Player Queries
 ;; ============================================================
 
-;; Get full player stats — mirrors Solidity getPlayerStats()
+;; Get full player stats -- mirrors Solidity getPlayerStats()
 (define-read-only (get-player-stats (player principal))
   (ok (default-to
     { wins: u0, losses: u0, draws: u0, rating: STARTING-ELO, games-played: u0 }
@@ -752,7 +752,7 @@
 ;; OWNER ADMIN
 ;; ============================================================
 
-;; Adjust timeout window — mirrors Solidity setTimeoutBlocks()
+;; Adjust timeout window -- mirrors Solidity setTimeoutBlocks()
 (define-public (set-timeout-blocks (blocks uint))
   (begin
     (asserts! (is-eq tx-sender CONTRACT-OWNER) ERR-NOT-AUTHORIZED)
@@ -762,7 +762,7 @@
 )
 
 ;; ============================================================
-;; PRIVATE — Utility
+;; PRIVATE -- Utility
 ;; ============================================================
 
 ;; Helper: returns (some principal) if opt matches target, else none

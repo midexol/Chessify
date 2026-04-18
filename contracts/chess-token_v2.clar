@@ -142,7 +142,7 @@
   (let
     (
       (last-claim (default-to u0 (map-get? faucet-last-claim tx-sender)))
-      (current-height stacks-block-height)
+      (current-height block-height)
     )
     (asserts! (var-get mint-enabled) ERR-MINT-DISABLED)
     (asserts! (>= (- current-height last-claim) FAUCET-COOLDOWN) ERR-FAUCET-COOLDOWN)
@@ -195,7 +195,7 @@
     (
       (last-claim (default-to u0 (map-get? faucet-last-claim account)))
       (next-eligible (+ last-claim FAUCET-COOLDOWN))
-      (current-height stacks-block-height)
+      (current-height block-height)
     )
     (if (>= current-height next-eligible)
       (ok u0)

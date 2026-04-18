@@ -1,15 +1,15 @@
 ;; ============================================================
 ;; chess-token.clar
-;; SIP-010 Fungible Token — CHESS
-;; Contract 1 of 2 — Chessify Protocol on Stacks
+;; SIP-010 Fungible Token -- CHESS
+;; Contract 1 of 2 -- Chessify Protocol on Stacks
 ;;
 ;; DEPLOYMENT ORDER:
 ;;   1. Deploy chess-token.clar
 ;;   2. Deploy chess-game.clar (pass .chess-token address as vault)
 ;;
 ;; CLARITY 4 TOKEN FLOW (no as-contract needed):
-;;   IN  (user → vault):  user calls transfer, recipient = .chess-token
-;;   OUT (vault → user):  chess-game calls gateway-release
+;;   IN  (user -> vault):  user calls transfer, recipient = .chess-token
+;;   OUT (vault -> user):  chess-game calls gateway-release
 ;;       ft-transfer? runs inside this contract's context,
 ;;       so it can move tokens from .chess-token's own balance
 ;;       without needing as-contract.
@@ -86,7 +86,7 @@
 
 ;; -------------------------------------------------------
 ;; SIP-010 Transfer
-;; Standard user-initiated transfer — tx-sender must be sender.
+;; Standard user-initiated transfer -- tx-sender must be sender.
 ;; -------------------------------------------------------
 
 (define-public (transfer
@@ -106,33 +106,33 @@
 )
 
 ;; -------------------------------------------------------
-;; Gateway Release — Clarity 4 privileged outflow
+;; Gateway Release -- Clarity 4 privileged outflow
 ;;
 ;; Only .chess-game may call this function.
 ;; ft-transfer? runs inside this contract's context so it
 ;; can spend tokens held in .chess-token's own balance
 ;; with no as-contract required.
 ;;
-;; Token flow: .chess-token vault → recipient (winner/refund)
+;; Token flow: .chess-token vault -> recipient (winner/refund)
 ;; -------------------------------------------------------
 
 (define-public (gateway-release (amount uint) (recipient principal))
   (begin
-    (asserts! (is-eq contract-caller .chess-game) ERR-NOT-AUTHORIZED)
+    (asserts! (is-eq contract-caller .chess-game-v3) ERR-NOT-AUTHORIZED)
     (asserts! (> amount u0)                       ERR-INVALID-AMOUNT)
     (ft-transfer? chess-token amount .chess-token recipient)
   )
 )
 
 ;; -------------------------------------------------------
-;; Faucet — 1,000 CHESS per wallet per day
+;; Faucet -- 1,000 CHESS per wallet per day
 ;; -------------------------------------------------------
 
 (define-public (faucet-claim)
   (let
     (
       (last-claim     (default-to u0 (map-get? faucet-last-claim tx-sender)))
-      (current-height stacks-block-height)
+      (current-height block-height)
     )
     (asserts! (var-get mint-enabled) ERR-MINT-DISABLED)
     (asserts!
@@ -146,7 +146,7 @@
 )
 
 ;; -------------------------------------------------------
-;; Mint — Owner Only
+;; Mint -- Owner Only
 ;; Used to seed tournaments and reward pools.
 ;; -------------------------------------------------------
 
@@ -161,7 +161,7 @@
 )
 
 ;; -------------------------------------------------------
-;; Batch Mint — Owner seeds up to 10 recipients at once
+;; Batch Mint -- Owner seeds up to 10 recipients at once
 ;; -------------------------------------------------------
 
 (define-public (batch-mint
@@ -199,7 +199,7 @@
 )
 
 (define-read-only (get-vault-balance)
-  (ok (ft-get-balance chess-token .chess-token))
+  (ok (ft-get-balance chess-token .chess-token-v3))
 )
 
 (define-read-only (get-faucet-cooldown-remaining (account principal))
@@ -207,7 +207,7 @@
     (
       (last-claim     (default-to u0 (map-get? faucet-last-claim account)))
       (next-eligible  (+ last-claim FAUCET-COOLDOWN))
-      (current-height stacks-block-height)
+      (current-height block-height)
     )
     (if (>= current-height next-eligible)
       (ok u0)

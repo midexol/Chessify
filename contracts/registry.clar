@@ -61,8 +61,8 @@
       status: STATUS-WAITING,
       turn: white,
       move-count: u0,
-      created-at: stacks-block-height,
-      last-move-at: stacks-block-height,
+      created-at: block-height,
+      last-move-at: block-height,
       winner: none
     })
     (var-set game-nonce (+ game-id u1))
@@ -104,7 +104,7 @@
     (map-set games game-id
       (merge game { 
         status: STATUS-ACTIVE,
-        last-move-at: stacks-block-height
+        last-move-at: block-height
       })
     )
     (ok true)
@@ -126,7 +126,7 @@
       (merge game {
         turn: next-player,
         move-count: (+ (get move-count game) u1),
-        last-move-at: stacks-block-height
+        last-move-at: block-height
       })
     )
     (ok true)
