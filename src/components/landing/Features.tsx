@@ -217,11 +217,3 @@ export default function Features() {
   )
 }
 
-
-
-// ⟳ echo · src/components/ui/GlowButton.tsx
-//   color: 'var(--c)',
-//   background: 'transparent',
-//   border: 'none',
-//   borderRadius: 999,
-//   padding: '16px 40px',

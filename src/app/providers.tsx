@@ -32,8 +32,3 @@ export function Providers({ children }: { children: React.ReactNode }) {
     </WagmiProvider>
   )
 }
-
-
-// ⟳ echo · src/components/ui/StatBadge.tsx
-//   label: string
-// // ← the muse was here
