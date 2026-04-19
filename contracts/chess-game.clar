@@ -11,9 +11,9 @@
 ;;
 ;; CLARITY 4 TOKEN FLOW:
 ;;   IN  (wager deposit):
-;;       Player calls chess-token.transfer with recipient = .chess-token
+;;       Player calls chess-token.transfer with recipient = .chess-token-v3
 ;;       This happens inside create-game and join-game below by
-;;       passing .chess-token as the recipient of ft-transfer.
+;;       passing .chess-token-v3 as the recipient of ft-transfer.
 ;;   OUT (payout / refund):
 ;;       chess-game calls chess-token.gateway-release(amount, recipient)
 ;;       chess-token.gateway-release uses ft-transfer? internally,
@@ -268,7 +268,7 @@
 
     ;; Pay winner -- total pot (both wagers)
     (if (> total-pot u0)
-      (unwrap! (contract-call? .chess-token gateway-release total-pot winner)
+      (unwrap! (contract-call? .chess-token-v3 gateway-release total-pot winner)
                ERR-TRANSFER-FAILED)
       true
     )
@@ -317,8 +317,8 @@
 ;; Create Game
 ;;
 ;; White player creates the game.
-;; If wager > 0, white transfers CHESS into the .chess-token
-;; vault by calling chess-token.transfer with recipient = .chess-token.
+;; If wager > 0, white transfers CHESS into the .chess-token-v3
+;; vault by calling chess-token.transfer with recipient = .chess-token-v3.
 ;; Mirrors Solidity createGame().
 ;; -------------------------------------------------------
 
@@ -329,10 +329,10 @@
     )
     ;; Lock white wager into token vault
     (if (> wager u0)
-      (try! (contract-call? .chess-token transfer
+      (try! (contract-call? .chess-token-v3 transfer
         wager
         tx-sender
-        .chess-token
+        .chess-token-v3
         none
       ))
       true
@@ -378,10 +378,10 @@
 
     ;; Lock black's matching wager into token vault
     (if (> (get wager game) u0)
-      (try! (contract-call? .chess-token transfer
+      (try! (contract-call? .chess-token-v3 transfer
         (get wager game)
         tx-sender
-        .chess-token
+        .chess-token-v3
         none
       ))
       true
@@ -565,8 +565,8 @@
       ;; Refund both players their individual wagers
       (if (> wager u0)
         (begin
-          (try! (contract-call? .chess-token gateway-release wager (get white game)))
-          (try! (contract-call? .chess-token gateway-release wager black-player))
+          (try! (contract-call? .chess-token-v3 gateway-release wager (get white game)))
+          (try! (contract-call? .chess-token-v3 gateway-release wager black-player))
         )
         true
       )
@@ -661,7 +661,7 @@
 
     ;; Refund white's wager
     (if (> (get wager game) u0)
-      (try! (contract-call? .chess-token gateway-release
+      (try! (contract-call? .chess-token-v3 gateway-release
         (get wager game)
         (get white game)
       ))

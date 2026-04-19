@@ -8,16 +8,16 @@ plan:
   - id: 0
     transactions:
     - transaction-type: contract-publish
-      contract-name: chess-token
+      contract-name: chess-token-v3
       expected-sender: SP6X0MXEEGZX14ZTK7XQXJ76W35ZJDP9NZBT6F39
       cost: 72400
       path: contracts/chess-token-v3.clar
       anchor-block-only: true
       clarity-version: 2
     - transaction-type: contract-publish
-      contract-name: chess-game
+      contract-name: chess-game-v3
       expected-sender: SP6X0MXEEGZX14ZTK7XQXJ76W35ZJDP9NZBT6F39
-      cost: 250700
+      cost: 251060
       path: contracts/chess-game.clar
       anchor-block-only: true
       clarity-version: 2

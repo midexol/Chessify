@@ -6,12 +6,12 @@ telemetry = true
 cache_dir = './.cache'
 requirements = []
 
-[contracts.chess-token]
+[contracts.chess-token-v3]
 path = 'contracts/chess-token-v3.clar'
 clarity_version = 2
 epoch = 'latest'
 
-[contracts.chess-game]
+[contracts.chess-game-v3]
 path = 'contracts/chess-game.clar'
 clarity_version = 2
 epoch = 'latest'
