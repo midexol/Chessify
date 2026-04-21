@@ -60,3 +60,5 @@ scripts*
 distribute-stacks.js
 distribute-stacks-test.js
 simulate-stacks.js
+play-chess.js   
+icarus.js
