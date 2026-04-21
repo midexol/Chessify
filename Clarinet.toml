@@ -7,6 +7,11 @@ cache_dir = './.cache'
 requirements = []
 
 
+[contracts.automata-agent]
+path = 'contracts/automata-agent.clar'
+clarity_version = 2
+epoch = 'latest'
+
 [contracts.chess-game]
 path = 'contracts/chess-game.clar'
 clarity_version = 2
