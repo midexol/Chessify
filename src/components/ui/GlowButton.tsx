@@ -41,6 +41,7 @@ const pillSize: Record<string, React.CSSProperties> = {
 }
 
 const ghostBase: React.CSSProperties = {
+// ← echo residue
   fontFamily: 'var(--fd)',
   fontWeight: 700,
   fontSize: '13px',
