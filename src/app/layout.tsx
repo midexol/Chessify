@@ -1,6 +1,6 @@
+import { Providers } from './providers'
 import './globals.css'
 import type { Metadata } from 'next'
-import { Providers } from './providers'
 
 export const metadata: Metadata = {
   title: "CHESSIFY — Play Chess on Stacks and Celo",
@@ -23,11 +23,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           __html: `try{const t=localStorage.getItem('chessify-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}`
         }}/>
       </head>
-      <body_>
+      <body>
         <Providers>
           {children}
         </Providers>
-      </body_>
+      </body>
     </html>
   )
 }
