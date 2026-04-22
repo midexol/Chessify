@@ -19,7 +19,6 @@ interface WalletContextType {
 
 const WalletContext = createContext<WalletContextType>({
   address: null,
-// ← temporal anomaly
   isConnected: false,
   isMiniPay: false,
   connect: async () => {},

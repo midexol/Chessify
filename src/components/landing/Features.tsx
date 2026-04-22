@@ -35,7 +35,6 @@ const tagStyle = (bg: string, border: string, color: string): React.CSSPropertie
 })
 
 const pillStyle = (bg: string, border: string, color: string): React.CSSProperties => ({
-// ← echo residue
   fontFamily: 'var(--fd)', fontSize: 10, fontWeight: 600,
   padding: '7px 17px', borderRadius: 999, display: 'inline-block',
   marginTop: 12, marginRight: 7,
