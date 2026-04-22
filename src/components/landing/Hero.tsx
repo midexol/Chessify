@@ -305,8 +305,3 @@ export default function Hero() {
     </section>
   )
 }
-
-
-// ⟳ echo · src/components/landing/Features.tsx
-//             }}
-//             onMouseEnter={hoverOn} onMouseLeave={hoverOff}
