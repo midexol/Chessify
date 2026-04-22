@@ -47,10 +47,3 @@ export default function ThemeToggle() {
     </button>
   )
 }
-
-
-// ⟳ echo · src/components/landing/Features.tsx
-//   padding: '28px 30px', position: 'relative', zIndex: 2,
-//   height: '100%', display: 'flex', flexDirection: 'column',
-// }
-// export default function Features() {
