@@ -31,3 +31,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
+
+// ⟳ echo · src/app/providers.tsx
+//   return (
+//     <WagmiProvider config={wagmiConfig}>
+//       <QueryClientProvider client={queryClient}>
+//         <WalletProvider>
+//           {children}
