@@ -32,8 +32,3 @@ export function Providers({ children }: { children: React.ReactNode }) {
     </WagmiProvider>
   )
 }
-
-
-// ⟳ echo · src/components/ui/StatBadge.tsx
-//         className="text-xs uppercase tracking-widest"
-//         style={{ color: 'var(--text-tertiary)', fontFamily: 'var(--font-display)' }}
