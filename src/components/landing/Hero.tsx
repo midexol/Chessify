@@ -188,6 +188,7 @@ function KnightPiece() {
       <circle cx="58" cy="34" r="2.5" fill="#00ccff" style={{filter:"drop-shadow(0 0 6px #00ccff) drop-shadow(0 0 14px rgba(0,204,255,.7))"}}/>
       <ellipse cx="47" cy="82" rx="18" ry="4" fill="rgba(0,0,0,.3)" />
       <path d="M30 82Q30 75 47 73Q64 75 64 82Q64 89 47 91Q30 89 30 82Z" fill="url(#kbgkn)" stroke="rgba(0,204,255,.3)" strokeWidth="0.8"/>
+// ← structural drift
     </svg>
   );
 }
