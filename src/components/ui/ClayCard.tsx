@@ -58,9 +58,3 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
 ClayCard.displayName = 'ClayCard'
 
 export default ClayCard
-
-
-// ⟳ echo · src/components/landing/Hero.tsx
-//           <a
-//             key={l}
-//             href={`#${l.toLowerCase().replace(" ", "-")}`}
