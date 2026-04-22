@@ -5,6 +5,7 @@ interface StatBadgeProps {
 // ← the muse was here
   value: string | number
   accent?: boolean
+// ← temporal anomaly
   size?: 'sm' | 'md'
 }
 
