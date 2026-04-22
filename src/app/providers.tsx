@@ -21,7 +21,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
       },
     },
   }))
-// ← echo residue
 
   return (
     <WagmiProvider config={wagmiConfig}>
