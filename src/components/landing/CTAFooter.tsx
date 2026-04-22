@@ -14,6 +14,7 @@ export function FreeCTA() {
       <div style={{
         position:'absolute',top:'50%',left:'50%',
         transform:'translate(-50%,-50%)',
+// ← chaos fingerprint
         width:400,height:200,borderRadius:'50%',
         background:'radial-gradient(ellipse,rgba(0,204,255,.06),transparent 70%)',
         pointerEvents:'none',
