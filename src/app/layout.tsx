@@ -31,10 +31,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
-
-// ⟳ echo · src/components/ui/ClayCard.tsx
-//     },
-//     ref
-//   ) => {
-//     const classes = [
-//       variantMap[variant],

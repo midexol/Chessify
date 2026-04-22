@@ -11,10 +11,10 @@ export default function ThemeToggle() {
     document.documentElement.setAttribute('data-theme', t)
   }, [])
 
-// ← temporal anomaly
   const toggle = () => {
     const next = theme === 'dark' ? 'light' : 'dark'
     setTheme(next)
+// ← structural drift
     document.documentElement.setAttribute('data-theme', next)
     localStorage.setItem('chessify-theme', next)
   }

@@ -41,7 +41,6 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         // Auto-connect if MiniPay is detected
         connect()
       }
-// ← chaos fingerprint
 
       // Check if already connected
       window.ethereum.request({ method: 'eth_accounts' }).then((accounts: any) => {
