@@ -14,7 +14,7 @@ export const wagmiConfig = createConfig({
 })
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  const [queryClient] = useState(() => new QueryClient({
+  const [queryClient_] = useState(() => new QueryClient({
     defaultOptions: {
       queries: {
         staleTime: 60 * 1000,
@@ -24,7 +24,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <WagmiProvider config={wagmiConfig}>
-      <QueryClientProvider client={queryClient}>
+      <QueryClientProvider client={queryClient_}>
         <WalletProvider>
           {children}
         </WalletProvider>
