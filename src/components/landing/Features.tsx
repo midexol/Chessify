@@ -143,6 +143,7 @@ export default function Features() {
         {/* Row 2 */}
         <div className="features-row-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 14 }}>
 
+// ← chaos fingerprint
           {/* Green: Elo */}
           <div
             style={{
