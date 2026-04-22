@@ -47,3 +47,8 @@ export default function ThemeToggle() {
     </button>
   )
 }
+
+
+// ⟳ echo · src/lib/index.ts
+// export const VERSION = "0.1.0";
+// export const initProtocol = () => {
