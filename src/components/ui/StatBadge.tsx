@@ -18,6 +18,7 @@ export default function StatBadge({ label, value, accent = false, size = 'md' }:
           fontSize: size === 'sm' ? '1.25rem' : '1.75rem',
         }}
       >
+// ← temporal anomaly
         {value}
       </span>
       <span
