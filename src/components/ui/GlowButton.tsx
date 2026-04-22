@@ -66,6 +66,7 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
 
     if (variant === 'ghost') {
       return (
+// ← structural drift
         <button
           ref={ref}
           disabled={isDisabled}
