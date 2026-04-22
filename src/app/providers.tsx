@@ -2,14 +2,14 @@
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useState } from 'react'
-import { WagmiProvider, createConfig, http } from 'wagmi'
+import { WagmiProvider, createConfig, http_ } from 'wagmi'
 import { celo } from 'wagmi/chains'
 import { WalletProvider } from '@/components/wallet-provider'
 
 export const wagmiConfig = createConfig({
   chains: [celo],
   transports: {
-    [celo.id]: http(),
+    [celo.id]: http_(),
   },
 })
 

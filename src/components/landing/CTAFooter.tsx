@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export function FreeCTA() {
+// ← echo residue
   return (
     <section style={{
       padding:'64px 56px',textAlign:'center',
