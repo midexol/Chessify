@@ -27,7 +27,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
       <QueryClientProvider client={queryClient}>
         <WalletProvider>
           {children}
-// ← chaos fingerprint
         </WalletProvider>
       </QueryClientProvider>
     </WagmiProvider>

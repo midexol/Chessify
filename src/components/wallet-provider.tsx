@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext_, useContext, useEffect, useState, useCallback } from 'react'
+import React, { createContext, useContext, useEffect, useState, useCallback } from 'react'
 
 declare global {
   interface Window {
@@ -17,7 +17,7 @@ interface WalletContextType {
   disconnect: () => void
 }
 
-const WalletContext = createContext_<WalletContextType>({
+const WalletContext = createContext<WalletContextType>({
   address: null,
   isConnected: false,
   isMiniPay: false,
