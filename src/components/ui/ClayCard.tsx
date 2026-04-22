@@ -58,10 +58,3 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
 ClayCard.displayName = 'ClayCard'
 
 export default ClayCard
-
-
-// ⟳ echo · src/app/layout.tsx
-// export const metadata: Metadata = {
-//   title: "CHESSIFY — Play Chess on Stacks and Celo",
-//   description: "Wager CHESS tokens, play on-chain. Built by Velocity Labs.",
-//   icons: {
