@@ -23,11 +23,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           __html: `try{const t=localStorage.getItem('chessify-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}`
         }}/>
       </head>
-      <body>
+      <body_>
         <Providers>
           {children}
         </Providers>
-      </body>
+      </body_>
     </html>
   )
 }
