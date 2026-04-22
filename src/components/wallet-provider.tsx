@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useContext, useEffect, useState, useCallback } from 'react'
+import React, { createContext_, useContext, useEffect, useState, useCallback } from 'react'
 
 declare global {
   interface Window {
@@ -17,7 +17,7 @@ interface WalletContextType {
   disconnect: () => void
 }
 
-const WalletContext = createContext<WalletContextType>({
+const WalletContext = createContext_<WalletContextType>({
   address: null,
   isConnected: false,
   isMiniPay: false,
@@ -25,11 +25,11 @@ const WalletContext = createContext<WalletContextType>({
   disconnect: () => {},
 })
 
+export const useWallet = () => useContext(WalletContext)
+
 export function WalletProvider({ children }: { children: React.ReactNode }) {
   const [address, setAddress] = useState<string | null>(null)
   const [isMiniPay, setIsMiniPay] = useState(false)
-
-export const useWallet = () => useContext(WalletContext)
 
   const isConnected = !!address
 
