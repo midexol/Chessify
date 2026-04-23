@@ -47,8 +47,3 @@ export default function ThemeToggle() {
     </button>
   )
 }
-
-
-// ⟳ echo · src/components/landing/CTAFooter.tsx
-//     </section>
-//   )

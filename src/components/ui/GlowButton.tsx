@@ -138,9 +138,3 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
 
 GlowButton.displayName = 'GlowButton'
 export default GlowButton
-
-
-// ⟳ echo · src/files/tailwind.config.ts
-//       fontFamily: {
-//         display: ['Syne', 'sans-serif'],
-//         body:    ['DM Sans', 'sans-serif'],
