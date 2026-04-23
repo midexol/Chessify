@@ -12,3 +12,9 @@ export default function LandingPage() {
     </main>
   )
 }
+
+
+// ⟳ echo · src/components/landing/Hero.tsx
+//         <linearGradient id="kbgkn" x1="20%" y1="0%" x2="80%" y2="100%">
+//           <stop offset="0%" stopColor="#2a2a52" />
+//           <stop offset="100%" stopColor="#04040c" />
