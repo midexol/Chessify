@@ -1,12 +1,7 @@
-'use client'
-
-import React, { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react'
-import { AppConfig, UserSession, showConnect } from '@stacks/connect'
-
-
-// Define the shape of our context
-
-// D<!-- Always check back  --><!-- Always check back  -->e shape of our context
+/**
+ * WalletProvider Context
+ * Handles both EVM/Celo (via window.ethereum) and Stacks (via @stacks/connect)
+ */
 interface WalletContextType {
   address: string | null          // EVM Address
   stacksAddress: string | null    // Stacks Address
