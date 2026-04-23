@@ -6,7 +6,7 @@ import { AppConfig, UserSession, showConnect } from '@stacks/connect'
 
 // Define the shape of our context
 
-// Define the shape of our context
+// D<!-- Always check back  --><!-- Always check back  -->e shape of our context
 interface WalletContextType {
   address: string | null          // EVM Address
   stacksAddress: string | null    // Stacks Address
@@ -41,7 +41,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   // --- EVM / Celo State ---
   const [address, setAddress] = useState<string | null>(null)
   const [isMiniPay, setIsMiniPay] = useState(false)
-  
+
   // --- Stacks State ---
   const appConfig = useMemo(() => new AppConfig(['store_write', 'publish_data']), [])
   const userSession = useMemo(() => new UserSession({ appConfig }), [appConfig])

@@ -447,18 +447,17 @@ These scripts run automated game lifecycles on mainnet to generate on-chain acti
 
 ### P0 — Stacks Frontend Integration (Blocking)
 - [x] **Stacks Wallet Provider**: Integrated `@stacks/connect` into `WalletProvider` to handle Stacks authentication alongside EVM.
-- [x] **Dual-Chain Connection**: Implemented network switching logic in `WalletProvider`, integrated into the `Navbar`, and built a dedicated `Lobby` page in `src/app/app/lobby`.
-
+- [x] **Dual-Chain Connection**: Implemented network switching logic in `WalletProvider`, integrated into the global `Navbar` in `src/components/landing/Hero.tsx`.
+- [x] **Multi-Chain Navbar**: Enhanced navbar with multi-chain state, balance display, and chain toggle.
 - [x] **Stacks Contract Hooks**: Created `useStacksChess` hook in `src/hooks/useStacksChess.ts` wrapping `openContractCall` for the full game lifecycle.
-
 - [x] **Update `contracts.ts`**: Replaced legacy `STACKS_CONTRACTS` references with `chess-token-v3` and `chess-game`.
-
 
 ### P1 — Gameplay & Board Integration
 - [x] **React Chessboard**: Integrated `react-chessboard` + `chess.js` into a dedicated game page at `src/app/app/game/[id]`.
 - [ ] **Dual-Chain Move Logic**: Implement `useCeloChess` and unify dispatch logic so the same board works for both chains.
 - [ ] **Game Hub/Dashboard**: "My Games" page to track active matches, claim timeouts, view past games.
-- [x] **Game Lobby**: Built a dedicated `Lobby` page in `src/app/app/lobby` with challenge creation.
+- [x] **Game Lobby**: Built a dedicated `Lobby` page in `src/app/app/lobby` with challenge creation and network-aware filtering.
+
 - [ ] **On-Chain Move Verification**: Implement lightweight hash-based verification or PGN anchoring to prevent client-side "fake wins".
 
 
