@@ -47,11 +47,3 @@ export default function ThemeToggle() {
     </button>
   )
 }
-
-
-// ⟳ echo · src/components/wallet-provider.tsx
-//   address: null,
-//   isConnected: false,
-//   isMiniPay: false,
-//   connect: async () => {},
-//   disconnect: () => {},

@@ -305,9 +305,3 @@ export default function Hero() {
     </section>
   )
 }
-
-
-// ⟳ echo · src/lib/index.ts
-// export const initProtocol = () => {
-//   console.log("Chessify Protocol Initialized");
-// };
