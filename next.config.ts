@@ -3,7 +3,20 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
-  transpilePackages: ['@stacks/connect', '@stacks/transactions', '@stacks/auth', '@stacks/common', 'react-chessboard'],
+  transpilePackages: [
+    '@stacks/connect', 
+    '@stacks/transactions', 
+    '@stacks/auth', 
+    '@stacks/common', 
+    'react-chessboard',
+    '@reown/appkit',
+    '@reown/appkit-adapter-wagmi',
+    '@reown/appkit-ui',
+    '@reown/appkit-common',
+    'wagmi',
+    '@wagmi/core',
+    '@wagmi/connectors'
+  ],
 };
 
 export default nextConfig;
