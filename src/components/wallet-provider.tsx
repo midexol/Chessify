@@ -29,7 +29,7 @@ export const useWallet = () => useContext(WalletContext)
 
 export function WalletProvider({ children }: { children: React.ReactNode }) {
   const [address, setAddress] = useState<string | null>(null)
-  const [isMiniPay, setIsMiniPay_] = useState(false)
+  const [isMiniPay, setIsMiniPay] = useState(false)
 
   const isConnected = !!address
 
@@ -37,7 +37,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (typeof window !== 'undefined' && window.ethereum) {
       if (window.ethereum.isMiniPay) {
-        setIsMiniPay_(true)
+        setIsMiniPay(true)
         // Auto-connect if MiniPay is detected
         connect()
       }
