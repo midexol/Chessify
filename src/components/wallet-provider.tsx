@@ -1,7 +1,6 @@
 'use client'
 
-import React, { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react'
-import { AppConfig, UserSession, showConnect } from '@stacks/connect'
+import React, { createContext, useContext, useEffect, useState, useCallback } from 'react'
 import { useAccount } from 'wagmi'
 
 interface WalletContextType {
@@ -16,6 +15,7 @@ interface WalletContextType {
   connectStacks: () => Promise<void>
   disconnectStacks: () => void
   setActiveChain: (chain: 'celo' | 'stacks') => void
+  userSession: any | null
 }
 
 const WalletContext = createContext<WalletContextType>({
@@ -30,17 +30,17 @@ const WalletContext = createContext<WalletContextType>({
   connectStacks: async () => { },
   disconnectStacks: () => { },
   setActiveChain: () => { },
+  userSession: null
 })
 
 export const useWallet = () => useContext(WalletContext)
 
 export function WalletProvider({ children }: { children: React.ReactNode }) {
-  // --- EVM state from wagmi (safe hooks, no AppKit web components) ---
+  // --- EVM state ---
   const { address: evmAddress, isConnected: evmConnected } = useAccount()
 
-  // --- Stacks State ---
-  const appConfig = useMemo(() => new AppConfig(['store_write', 'publish_data']), [])
-  const userSession = useMemo(() => new UserSession({ appConfig }), [appConfig])
+  // --- Stacks State (Lazy Init) ---
+  const [userSession, setUserSession] = useState<any>(null)
   const [stacksAddress, setStacksAddress] = useState<string | null>(null)
 
   // --- Common State ---
@@ -50,7 +50,27 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   const isConnected = evmConnected || !!evmAddress
   const isStacksConnected = !!stacksAddress
 
-  // Persistent active chain preference
+  // 1. Initialize Stacks Session only on Client
+  useEffect(() => {
+    const initStacks = async () => {
+      try {
+        const { AppConfig, UserSession } = await import('@stacks/connect')
+        const appConfig = new AppConfig(['store_write', 'publish_data'])
+        const session = new UserSession({ appConfig })
+        setUserSession(session)
+
+        if (session.isUserSignedIn()) {
+          const userData = session.loadUserData()
+          setStacksAddress(userData.profile.stxAddress.mainnet || userData.profile.stxAddress.testnet)
+        }
+      } catch (e) {
+        console.error("Failed to init Stacks session", e)
+      }
+    }
+    initStacks()
+  }, [])
+
+  // 2. Persistent chain preference
   useEffect(() => {
     const savedChain = localStorage.getItem('chessify_active_chain') as 'celo' | 'stacks'
     if (savedChain) setActiveChainState(savedChain)
@@ -61,26 +81,13 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('chessify_active_chain', chain)
   }, [])
 
-  // Detect MiniPay
+  // 3. Detect MiniPay
   useEffect(() => {
     if (typeof window !== 'undefined' && (window as any).ethereum?.isMiniPay) {
       setIsMiniPay(true)
     }
   }, [])
 
-  // Sync Stacks session
-  useEffect(() => {
-    if (userSession.isUserSignedIn()) {
-      try {
-        const userData = userSession.loadUserData()
-        setStacksAddress(userData.profile.stxAddress.mainnet || userData.profile.stxAddress.testnet)
-      } catch (e) {
-        console.error("Failed to load Stacks user data", e)
-      }
-    }
-  }, [userSession])
-
-  // Open AppKit modal via dynamic import (avoids top-level import of appkit/react)
   const connect = useCallback(async () => {
     try {
       const { modal } = await import('@reown/appkit/react')
@@ -92,19 +99,25 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   }, [setActiveChain])
 
   const connectStacks = useCallback(async () => {
-    showConnect({
-      appDetails: {
-        name: 'Chessify Protocol',
-        icon: window.location.origin + '/Piece.svg',
-      },
-      userSession,
-      onFinish: () => {
-        const userData = userSession.loadUserData()
-        setStacksAddress(userData.profile.stxAddress.mainnet || userData.profile.stxAddress.testnet)
-        setActiveChain('stacks')
-      },
-      onCancel: () => console.log('Stacks connection cancelled'),
-    })
+    if (!userSession) return
+    try {
+      const { showConnect } = await import('@stacks/connect')
+      showConnect({
+        appDetails: {
+          name: 'Chessify Protocol',
+          icon: window.location.origin + '/Piece.svg',
+        },
+        userSession,
+        onFinish: () => {
+          const userData = userSession.loadUserData()
+          setStacksAddress(userData.profile.stxAddress.mainnet || userData.profile.stxAddress.testnet)
+          setActiveChain('stacks')
+        },
+        onCancel: () => console.log('Stacks connection cancelled'),
+      })
+    } catch (e) {
+      console.error("Failed to open Stacks connect", e)
+    }
   }, [userSession, setActiveChain])
 
   const disconnect = useCallback(() => {
@@ -112,9 +125,11 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   }, [setActiveChain])
 
   const disconnectStacks = useCallback(() => {
-    userSession.signUserOut()
-    setStacksAddress(null)
-    if (activeChain === 'stacks') setActiveChain('celo')
+    if (userSession) {
+      userSession.signUserOut()
+      setStacksAddress(null)
+      if (activeChain === 'stacks') setActiveChain('celo')
+    }
   }, [userSession, activeChain, setActiveChain])
 
   return (
@@ -131,6 +146,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         connectStacks,
         disconnectStacks,
         setActiveChain,
+        userSession
       }}
     >
       {children}

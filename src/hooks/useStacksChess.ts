@@ -7,19 +7,18 @@ import {
   uintCV,
   Pc
 } from '@stacks/transactions'
-import { openContractCall } from '@stacks/connect'
 import { useWallet } from '@/components/wallet-provider'
 import { STACKS_CONTRACTS, TOKEN_DECIMALS } from '@/config/contracts'
 
 export function useStacksChess() {
-  const { stacksAddress, isStacksConnected } = useWallet()
+  const { stacksAddress, isStacksConnected, userSession } = useWallet()
 
   const createGame = useCallback(async (wagerAmount: number) => {
-    if (!isStacksConnected || !stacksAddress) return
+    if (!isStacksConnected || !stacksAddress || !userSession) return
 
+    const { openContractCall } = await import('@stacks/connect')
     const microWager = BigInt(Math.floor(wagerAmount * Math.pow(10, TOKEN_DECIMALS)))
 
-    // Post-condition: User transfers 'microWager' of CHESS token
     const postCondition = Pc.principal(stacksAddress)
       .willSendEq(microWager)
       .ft(`${STACKS_CONTRACTS.token.address}.${STACKS_CONTRACTS.token.name}`, 'chess-token')
@@ -35,13 +34,15 @@ export function useStacksChess() {
         postConditionMode: PostConditionMode.Deny,
         onFinish: (data) => resolve(data),
         onCancel: () => reject(new Error('Transaction cancelled')),
+        userSession
       })
     })
-  }, [isStacksConnected, stacksAddress])
+  }, [isStacksConnected, stacksAddress, userSession])
 
   const joinGame = useCallback(async (gameId: number, wagerAmount: number) => {
-    if (!isStacksConnected || !stacksAddress) return
+    if (!isStacksConnected || !stacksAddress || !userSession) return
 
+    const { openContractCall } = await import('@stacks/connect')
     const microWager = BigInt(Math.floor(wagerAmount * Math.pow(10, TOKEN_DECIMALS)))
 
     const postCondition = Pc.principal(stacksAddress)
@@ -59,13 +60,14 @@ export function useStacksChess() {
         postConditionMode: PostConditionMode.Deny,
         onFinish: (data) => resolve(data),
         onCancel: () => reject(new Error('Transaction cancelled')),
+        userSession
       })
     })
-  }, [isStacksConnected, stacksAddress])
-
+  }, [isStacksConnected, stacksAddress, userSession])
 
   const submitMove = useCallback(async (gameId: number) => {
-    if (!isStacksConnected) return
+    if (!isStacksConnected || !userSession) return
+    const { openContractCall } = await import('@stacks/connect')
 
     return new Promise((resolve, reject) => {
       openContractCall({
@@ -77,12 +79,14 @@ export function useStacksChess() {
         postConditionMode: PostConditionMode.Allow,
         onFinish: (data) => resolve(data),
         onCancel: () => reject(new Error('Transaction cancelled')),
+        userSession
       })
     })
-  }, [isStacksConnected])
+  }, [isStacksConnected, userSession])
 
   const resign = useCallback(async (gameId: number) => {
-    if (!isStacksConnected) return
+    if (!isStacksConnected || !userSession) return
+    const { openContractCall } = await import('@stacks/connect')
 
     return new Promise((resolve, reject) => {
       openContractCall({
@@ -94,12 +98,14 @@ export function useStacksChess() {
         postConditionMode: PostConditionMode.Allow,
         onFinish: (data) => resolve(data),
         onCancel: () => reject(new Error('Transaction cancelled')),
+        userSession
       })
     })
-  }, [isStacksConnected])
+  }, [isStacksConnected, userSession])
 
   const reportWin = useCallback(async (gameId: number) => {
-    if (!isStacksConnected) return
+    if (!isStacksConnected || !userSession) return
+    const { openContractCall } = await import('@stacks/connect')
 
     return new Promise((resolve, reject) => {
       openContractCall({
@@ -111,9 +117,10 @@ export function useStacksChess() {
         postConditionMode: PostConditionMode.Allow,
         onFinish: (data) => resolve(data),
         onCancel: () => reject(new Error('Transaction cancelled')),
+        userSession
       })
     })
-  }, [isStacksConnected])
+  }, [isStacksConnected, userSession])
 
   return {
     createGame,
