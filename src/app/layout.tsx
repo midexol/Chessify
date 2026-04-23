@@ -1,6 +1,6 @@
 import './globals.css'
-import type { Metadata } from 'next'
 import { Providers } from './providers'
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: "CHESSIFY — Play Chess on Stacks and Celo",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children_ }: { children_: React.ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" data-theme="dark" suppressHydrationWarning>
       <head>
@@ -25,7 +25,7 @@ export default function RootLayout({ children_ }: { children_: React.ReactNode }
       </head>
       <body>
         <Providers>
-          {children_}
+          {children}
         </Providers>
       </body>
     </html>
