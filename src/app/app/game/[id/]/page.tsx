@@ -1,13 +1,11 @@
-'use client'
-
 import dynamic from 'next/dynamic'
 
-// Dynamically import the Game to avoid SSR issues with wallet SDKs
-const GameContent = dynamic(
-  () => import('@/components/game/GameContent'),
+// Shell to prevent block-chain SDKs from leaking into the server build
+const GameClient = dynamic(
+  () => import('@/components/game/GameClient'),
   { ssr: false }
 )
 
 export default function GamePage() {
-  return <GameContent />
+  return <GameClient />
 }

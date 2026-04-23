@@ -1,9 +1,6 @@
-'use client'
-
 import dynamic from 'next/dynamic'
 
-// Dynamically import the lobby with SSR disabled to prevent Turbopack
-// from evaluating wallet/blockchain SDKs during static generation.
+// Shell to prevent block-chain SDKs from leaking into the server build
 const LobbyContent = dynamic(
   () => import('@/components/lobby/LobbyContent'),
   { ssr: false }
