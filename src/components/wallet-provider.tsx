@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useContext, useEffect, useState, useCallback, useMemo, useRef } from 'react'
+import React, { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react'
 import { AppConfig, UserSession, showConnect } from '@stacks/connect'
 import { useAccount } from 'wagmi'
 
