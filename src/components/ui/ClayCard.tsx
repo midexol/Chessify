@@ -58,3 +58,11 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
 ClayCard.displayName = 'ClayCard'
 
 export default ClayCard
+
+
+// ⟳ echo · src/components/ui/ThemeToggle.tsx
+//     const t = saved ?? 'dark'
+//     setTheme(t)
+//     document.documentElement.setAttribute('data-theme', t)
+//   }, [])
+//   const toggle = () => {
