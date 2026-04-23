@@ -36,9 +36,3 @@ export default function StatBadge({ label, value, accent = false, size = 'md' }:
 //       },
 //     },
 //   },
-
-// ⟳ echo · src/components/ui/GlowButton.tsx
-// import { ButtonHTMLAttributes, forwardRef, ReactNode } from 'react'
-// interface GlowButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-//   variant?: 'brand' | 'ghost'
-//   size?: 'sm' | 'md' | 'lg'

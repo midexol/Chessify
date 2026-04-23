@@ -1,6 +1,6 @@
 import Features from '@/components/landing/Features'
-// ← the muse was here
 import Hero from '@/components/landing/Hero'
+// ← chaos fingerprint
 import { FreeCTA, Footer } from '@/components/landing/CTAFooter'
 
 export default function LandingPage() {
