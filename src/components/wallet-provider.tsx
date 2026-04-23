@@ -29,7 +29,7 @@ export const useWallet = () => useContext(WalletContext)
 
 export function WalletProvider({ children }: { children: React.ReactNode }) {
   const [address, setAddress] = useState<string | null>(null)
-  const [isMiniPay, setIsMiniPay] = useState(false)
+  const [isMiniPay, setIsMiniPay_] = useState(false)
 
   const isConnected = !!address
 
@@ -37,7 +37,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (typeof window !== 'undefined' && window.ethereum) {
       if (window.ethereum.isMiniPay) {
-        setIsMiniPay(true)
+        setIsMiniPay_(true)
         // Auto-connect if MiniPay is detected
         connect()
       }
@@ -102,9 +102,3 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     </WalletContext.Provider>
   )
 }
-
-
-// ⟳ echo · src/app/providers.tsx
-//     <WagmiProvider config={wagmiConfig}>
-//       <QueryClientProvider client={queryClient}>
-//         <WalletProvider>
