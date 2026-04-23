@@ -447,17 +447,20 @@ These scripts run automated game lifecycles on mainnet to generate on-chain acti
 
 ### P0 — Stacks Frontend Integration (Blocking)
 - [x] **Stacks Wallet Provider**: Integrated `@stacks/connect` into `WalletProvider` to handle Stacks authentication alongside EVM.
-- [/] **Dual-Chain Connection**: Implemented network switching logic in `WalletProvider` and integrated into the `Navbar` component.
+- [x] **Dual-Chain Connection**: Implemented network switching logic in `WalletProvider`, integrated into the `Navbar`, and built a dedicated `Lobby` page in `src/app/app/lobby`.
+
 - [x] **Stacks Contract Hooks**: Created `useStacksChess` hook in `src/hooks/useStacksChess.ts` wrapping `openContractCall` for the full game lifecycle.
 
 - [x] **Update `contracts.ts`**: Replaced legacy `STACKS_CONTRACTS` references with `chess-token-v3` and `chess-game`.
 
 
 ### P1 — Gameplay & Board Integration
-- [ ] **React Chessboard**: Integrate `react-chessboard` + `chess.js` into a game page — validate moves client-side, then call `submitMove()` on the respective chain
-- [ ] **On-Chain Move Verification**: Currently only `move-count` is tracked. Implement lightweight hash-based verification or PGN anchoring to prevent client-side "fake wins"
-- [ ] **Game Hub/Dashboard**: "My Games" page to track active matches, claim timeouts, view past games
-- [ ] **Game Lobby**: List of open games (status=WAITING) that users can join
+- [x] **React Chessboard**: Integrated `react-chessboard` + `chess.js` into a dedicated game page at `src/app/app/game/[id]`.
+- [ ] **Dual-Chain Move Logic**: Implement `useCeloChess` and unify dispatch logic so the same board works for both chains.
+- [ ] **Game Hub/Dashboard**: "My Games" page to track active matches, claim timeouts, view past games.
+- [x] **Game Lobby**: Built a dedicated `Lobby` page in `src/app/app/lobby` with challenge creation.
+- [ ] **On-Chain Move Verification**: Implement lightweight hash-based verification or PGN anchoring to prevent client-side "fake wins".
+
 
 ### P2 — Ecosystem & UX Polish
 - [ ] **Cross-Chain Elo Leaderboard**: Merge stats from Solidity `getPlayerStats` and Clarity `get-player-stats` into a unified ranking page

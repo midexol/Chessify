@@ -5,9 +5,7 @@ import {
   AnchorMode, 
   PostConditionMode, 
   uintCV,
-  FungibleConditionCode,
-  makeStandardFungiblePostCondition,
-  createAssetInfo
+  Pc
 } from '@stacks/transactions'
 import { openContractCall } from '@stacks/connect'
 import { useWallet } from '@/components/wallet-provider'
@@ -22,16 +20,9 @@ export function useStacksChess() {
     const microWager = BigInt(Math.floor(wagerAmount * Math.pow(10, TOKEN_DECIMALS)))
 
     // Post-condition: User transfers 'microWager' of CHESS token
-    const postCondition = makeStandardFungiblePostCondition(
-      stacksAddress,
-      FungibleConditionCode.Equal,
-      microWager,
-      createAssetInfo(
-        STACKS_CONTRACTS.token.address,
-        STACKS_CONTRACTS.token.name,
-        'chess-token'
-      )
-    )
+    const postCondition = Pc.principal(stacksAddress)
+      .willSendEq(microWager)
+      .ft(`${STACKS_CONTRACTS.token.address}.${STACKS_CONTRACTS.token.name}`, 'chess-token')
 
     return new Promise((resolve, reject) => {
       openContractCall({
@@ -53,16 +44,9 @@ export function useStacksChess() {
 
     const microWager = BigInt(Math.floor(wagerAmount * Math.pow(10, TOKEN_DECIMALS)))
 
-    const postCondition = makeStandardFungiblePostCondition(
-      stacksAddress,
-      FungibleConditionCode.Equal,
-      microWager,
-      createAssetInfo(
-        STACKS_CONTRACTS.token.address,
-        STACKS_CONTRACTS.token.name,
-        'chess-token'
-      )
-    )
+    const postCondition = Pc.principal(stacksAddress)
+      .willSendEq(microWager)
+      .ft(`${STACKS_CONTRACTS.token.address}.${STACKS_CONTRACTS.token.name}`, 'chess-token')
 
     return new Promise((resolve, reject) => {
       openContractCall({
@@ -78,6 +62,7 @@ export function useStacksChess() {
       })
     })
   }, [isStacksConnected, stacksAddress])
+
 
   const submitMove = useCallback(async (gameId: number) => {
     if (!isStacksConnected) return
