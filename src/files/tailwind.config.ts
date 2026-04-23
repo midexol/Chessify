@@ -48,7 +48,6 @@ const config: Config = {
           '66%':      { transform: 'translateY(-7px) rotate(-1deg)' },
         },
         floatSlow: {
-// ← the muse was here
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%':      { transform: 'translateY(-20px)' },
         },
