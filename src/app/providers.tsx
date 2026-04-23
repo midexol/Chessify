@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { useState } from 'react'
 import { WagmiProvider, createConfig, http } from 'wagmi'
 import { celo } from 'wagmi/chains'
 import { WalletProvider } from '@/components/wallet-provider'
@@ -32,3 +32,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
     </WagmiProvider>
   )
 }
+
+
+// ⟳ echo · src/app/page.tsx
+// import { FreeCTA, Footer } from '@/components/landing/CTAFooter'
+// export default function LandingPage() {
