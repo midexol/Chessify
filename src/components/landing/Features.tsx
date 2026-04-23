@@ -21,7 +21,7 @@ function BgIcon({ children }: { children: React.ReactNode }) {
 
 const titleStyle = (color: string, size = 18): React.CSSProperties => ({
   fontFamily: 'var(--fd)', fontWeight: 800, fontSize: size,
-  color, lineHeight: 1.05, letterSpacing_: '-.02em', marginBottom: 9,
+  color, lineHeight: 1.05, letterSpacing: '-.02em', marginBottom: 9,
 })
 
 const descStyle: React.CSSProperties = {
@@ -29,7 +29,7 @@ const descStyle: React.CSSProperties = {
 }
 
 const tagStyle = (bg: string, border: string, color: string): React.CSSProperties => ({
-  fontFamily: 'var(--fd)', fontSize: 9, letterSpacing_: '.12em',
+  fontFamily: 'var(--fd)', fontSize: 9, letterSpacing: '.12em',
   borderRadius: 999, padding: '4px 12px', display: 'inline-block',
   marginBottom: 13, background: bg, border: `1px solid ${border}`, color,
 })
@@ -67,9 +67,9 @@ export default function Features() {
           border: '1px solid rgba(160,100,255,.22)', borderRadius: 999,
           padding: '6px 18px', marginBottom: 18,
         }}>
-          <span style={{ fontFamily: 'var(--fd)', fontSize: 9, fontWeight: 600, color: '#c090ff', letterSpacing_: '.15em' }}>WHY CHESSIFY</span>
+          <span style={{ fontFamily: 'var(--fd)', fontSize: 9, fontWeight: 600, color: '#c090ff', letterSpacing: '.15em' }}>WHY CHESSIFY</span>
         </div>
-        <h2 style={{ fontFamily: 'var(--fd)', fontWeight: 900, fontSize: 'clamp(28px,3.5vw,44px)', lineHeight: 1.06, letterSpacing_: '-.03em', marginBottom: 14, color: 'var(--t1)' }}>
+        <h2 style={{ fontFamily: 'var(--fd)', fontWeight: 900, fontSize: 'clamp(28px,3.5vw,44px)', lineHeight: 1.06, letterSpacing: '-.03em', marginBottom: 14, color: 'var(--t1)' }}>
           Chess, rewired<br/><span style={{ color: 'var(--c)' }}>for the chain</span>
         </h2>
         <p style={{ fontSize: 15, color: 'var(--t2)', maxWidth: 400, margin: '0 auto', lineHeight: 1.7, fontWeight: 300 }}>
@@ -110,7 +110,7 @@ export default function Features() {
                 {[{v:'2×',l:'PAYOUT'},{v:'0%',l:'FEES'},{v:'∞',l:'GAMES'}].map(m => (
                   <div key={m.l}>
                     <div style={{ fontFamily: 'var(--fd)', fontWeight: 800, fontSize: 28, color: '#c090ff' }}>{m.v}</div>
-                    <div style={{ fontFamily: 'var(--fd)', fontSize: 8, color: 'var(--t3)', letterSpacing_: '.13em', marginTop: 3 }}>{m.l}</div>
+                    <div style={{ fontFamily: 'var(--fd)', fontSize: 8, color: 'var(--t3)', letterSpacing: '.13em', marginTop: 3 }}>{m.l}</div>
                   </div>
                 ))}
               </div>
