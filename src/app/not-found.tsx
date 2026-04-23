@@ -1,8 +1,8 @@
 'use client'
 
-import React, { Suspense, useRef } from 'react'
+import { Suspense, useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { useGLTF, Center, Float, Environment, Text, MeshDistortMaterial } from '@react-three/drei'
+import { useGLTF, Center, Float, Environment, MeshDistortMaterial } from '@react-three/drei'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import * as THREE from 'three'
@@ -147,7 +147,7 @@ export default function NotFound() {
             marginTop: 16,
             marginBottom: 40
           }}>
-            This move isn&apos;t in the opening theory. The grandmasters don&apos;t know how we got here. Let&apos;s return to the safe zone.
+            This move isn&apos;t in the opening theory. Let&apos;s return to the safe zone.
           </p>
 
           <Link href="/app/lobby">
