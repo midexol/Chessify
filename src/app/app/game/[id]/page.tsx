@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useState, useEffect } from 'react'
 import { Chess } from 'chess.js'
 import { Chessboard } from 'react-chessboard'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -19,7 +19,6 @@ export default function GamePage() {
   
   const [game, setGame] = useState(new Chess())
   const [isPending, setIsPending] = useState(false)
-  const [status, setStatus] = useState('ACTIVE') // ACTIVE, WAITING, COMPLETED
 
   // Sync board with contract state (Mocked for now)
   useEffect(() => {
@@ -27,7 +26,8 @@ export default function GamePage() {
     console.log(`Loading game ${id} on ${activeChain}`)
   }, [id, activeChain])
 
-  function onDrop(sourceSquare: string, targetSquare: string) {
+  function onDrop({ sourceSquare, targetSquare }: any) {
+    if (!targetSquare) return false
     try {
       const gameCopy = new Chess(game.fen())
       const move = gameCopy.move({
@@ -35,6 +35,7 @@ export default function GamePage() {
         to: targetSquare,
         promotion: 'q', // always promote to queen for simplicity
       })
+
 
       if (move === null) return false
 
@@ -47,6 +48,7 @@ export default function GamePage() {
       return false
     }
   }
+
 
   const handleMoveSubmission = async () => {
     setIsPending(true)
@@ -87,12 +89,15 @@ export default function GamePage() {
           <ClayCard className="p-4 bg-[#0a0a0a] border-[var(--b1)] overflow-hidden">
             <div className="aspect-square w-full max-w-[600px] mx-auto">
               <Chessboard 
-                position={game.fen()} 
-                onPieceDrop={onDrop}
-                boardOrientation="white"
-                customDarkSquareStyle={{ backgroundColor: '#1a1a2e' }}
-                customLightSquareStyle={{ backgroundColor: '#2a2a4e' }}
+                options={{
+                  position: game.fen(), 
+                  onPieceDrop: onDrop,
+                  boardOrientation: "white",
+                  darkSquareStyle: { backgroundColor: '#1a1a2e' },
+                  lightSquareStyle: { backgroundColor: '#2a2a4e' }
+                }}
               />
+
             </div>
           </ClayCard>
 

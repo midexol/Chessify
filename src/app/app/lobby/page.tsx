@@ -6,15 +6,18 @@ import { useWallet } from '@/components/wallet-provider'
 import GlowButton from '@/components/ui/GlowButton'
 import ClayCard from '@/components/ui/ClayCard'
 import StatBadge from '@/components/ui/StatBadge'
+import { useStacksChess } from '@/hooks/useStacksChess'
 import { useRouter } from 'next/navigation'
 
 export default function LobbyPage() {
   const { 
     isConnected, isStacksConnected, activeChain
   } = useWallet()
-
+  
+  const { createGame } = useStacksChess()
   const router = useRouter()
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
+  const [isPending, setIsPending] = useState(false)
   const [wager, setWager] = useState(100)
 
   // Mock data for lobby
@@ -25,10 +28,24 @@ export default function LobbyPage() {
   ]
 
   const handleCreateGame = async () => {
-    // This would call useStacksChess.createGame or useCeloChess.createGame
-    console.log(`Creating game on ${activeChain} with ${wager} CHESS`)
-    setIsCreateModalOpen(false)
+    setIsPending(true)
+    try {
+      if (activeChain === 'stacks') {
+        const res = await createGame(wager)
+        console.log('Game create broadcasted:', res)
+        // In a real app, we'd wait for tx confirmation or use an event listener
+        setIsCreateModalOpen(false)
+      } else {
+        // Celo logic...
+        alert('Celo integration coming soon!')
+      }
+    } catch (err) {
+      console.error('Create game failed:', err)
+    } finally {
+      setIsPending(false)
+    }
   }
+
 
   if (!isConnected && !isStacksConnected) {
     return (
@@ -200,7 +217,9 @@ export default function LobbyPage() {
                 </div>
 
                 <div className="flex gap-4">
-                  <GlowButton fullWidth variant="brand" onClick={handleCreateGame}>INITIALIZE GAME</GlowButton>
+                  <GlowButton fullWidth variant="brand" onClick={handleCreateGame} disabled={isPending}>
+                    {isPending ? 'BROADCASTING...' : 'INITIALIZE GAME'}
+                  </GlowButton>
                 </div>
               </ClayCard>
             </motion.div>
