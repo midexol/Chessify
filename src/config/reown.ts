@@ -24,7 +24,7 @@ export async function initAppKit() {
   const { createAppKit } = await import('@reown/appkit/react')
   createAppKit({
     adapters: [wagmiAdapter],
-    networks: [celo, mainnet] as [typeof celo, ...typeof networks],
+    networks: [celo, mainnet] as unknown as [typeof celo, typeof mainnet],
     projectId,
     metadata: {
       name: 'Chessify Protocol',

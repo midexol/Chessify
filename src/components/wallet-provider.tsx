@@ -83,8 +83,8 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   // Open AppKit modal via dynamic import (avoids top-level import of appkit/react)
   const connect = useCallback(async () => {
     try {
-      const { open } = await import('@reown/appkit/react')
-      await open()
+      const { modal } = await import('@reown/appkit/react')
+      await modal?.open()
     } catch (e) {
       console.error('Failed to open AppKit modal:', e)
     }
