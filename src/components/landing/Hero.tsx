@@ -267,6 +267,7 @@ function RookPiece() {
 }
 
 export default function Hero() {
+  const { isConnected, isStacksConnected, connect } = useWallet()
   return (
     <section className="hero-section" style={{background:'var(--bg)',position:'relative',overflow:'hidden'}}>
       <style>{KEYFRAMES}</style>
@@ -335,9 +336,13 @@ export default function Hero() {
           </div>
 
           <div style={{animation:'fadeUp .6s cubic-bezier(.16,1,.3,1) .4s both'}}>
-            <Link href="/app/lobby">
-              <GlowButton variant="brand" parallelogram size="lg" className="btn-brand-para-mobile">PLAY NOW</GlowButton>
-            </Link>
+            {!isConnected && !isStacksConnected ? (
+              <GlowButton variant="brand" parallelogram size="lg" onClick={connect} className="btn-brand-para-mobile">START PLAYING</GlowButton>
+            ) : (
+              <Link href="/app/lobby">
+                <GlowButton variant="brand" parallelogram size="lg" className="btn-brand-para-mobile">GO TO LOBBY</GlowButton>
+              </Link>
+            )}
           </div>
         </div>
       </div>

@@ -2,21 +2,14 @@
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useState } from 'react'
-import { WagmiProvider, createConfig, http } from 'wagmi'
-import { celo } from 'wagmi/chains'
+import { WagmiProvider } from 'wagmi'
 import dynamic from 'next/dynamic'
+import { wagmiAdapter } from '@/config/reown'
 
 const WalletProvider = dynamic(
   () => import('@/components/wallet-provider').then(mod => mod.WalletProvider),
   { ssr: false }
 )
-
-export const wagmiConfig = createConfig({
-  chains: [celo],
-  transports: {
-    [celo.id]: http(),
-  },
-})
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() => new QueryClient({
@@ -28,7 +21,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   }))
 
   return (
-    <WagmiProvider config={wagmiConfig}>
+    <WagmiProvider config={wagmiAdapter.wagmiConfig}>
       <QueryClientProvider client={queryClient}>
         <WalletProvider>
           {children}

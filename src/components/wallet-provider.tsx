@@ -2,11 +2,9 @@
 
 import React, { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react'
 import { AppConfig, UserSession, showConnect } from '@stacks/connect'
+import { useAppKit, useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
+import { networks } from '@/config/reown'
 
-/**
- * WalletProvider Context
- * Handles both EVM/Celo (via window.ethereum) and Stacks (via @stacks/connect)
- */
 interface WalletContextType {
   address: string | null          // EVM Address
   stacksAddress: string | null    // Stacks Address
@@ -38,19 +36,21 @@ const WalletContext = createContext<WalletContextType>({
 export const useWallet = () => useContext(WalletContext)
 
 export function WalletProvider({ children }: { children: React.ReactNode }) {
-  // --- EVM / Celo State ---
-  const [address, setAddress] = useState<string | null>(null)
-  const [isMiniPay, setIsMiniPay] = useState(false)
+  // --- Reown AppKit Hooks ---
+  const { open } = useAppKit()
+  const { address: evmAddress, isConnected: evmConnected } = useAppKitAccount()
+  const { chainId } = useAppKitNetwork()
 
   // --- Stacks State ---
   const appConfig = useMemo(() => new AppConfig(['store_write', 'publish_data']), [])
   const userSession = useMemo(() => new UserSession({ appConfig }), [appConfig])
   const [stacksAddress, setStacksAddress] = useState<string | null>(null)
 
-  // --- Active Chain Logic ---
+  // --- Common State ---
+  const [isMiniPay, setIsMiniPay] = useState(false)
   const [activeChain, setActiveChainState] = useState<'celo' | 'stacks'>('celo')
 
-  const isConnected = !!address
+  const isConnected = evmConnected || !!evmAddress
   const isStacksConnected = !!stacksAddress
 
   // Persistent active chain preference
@@ -64,63 +64,41 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('chessify_active_chain', chain)
   }, [])
 
-  // Initialize EVM / MiniPay
+  // Detected MiniPay
   useEffect(() => {
-    if (typeof window !== 'undefined' && (window as any).ethereum) {
-      if ((window as any).ethereum.isMiniPay) {
-        setIsMiniPay(true);
-        (window as any).ethereum.request({ method: 'eth_requestAccounts' })
-          .then((accounts: any) => accounts[0] && setAddress(accounts[0]))
-      }
-
-
-      (window as any).ethereum.request({ method: 'eth_accounts' }).then((accounts: any) => {
-        if (accounts.length > 0) setAddress(accounts[0])
-      })
-
-      const handleAccountsChanged = (accounts: any) => {
-        setAddress(accounts.length > 0 ? accounts[0] : null)
-      }
-      (window as any).ethereum.on('accountsChanged', handleAccountsChanged)
-      return () => (window as any).ethereum.removeListener('accountsChanged', handleAccountsChanged)
+    if (typeof window !== 'undefined' && (window as any).ethereum?.isMiniPay) {
+      setIsMiniPay(true)
     }
   }, [])
 
-
-  // Initialize Stacks session
+  // Sync Stacks session
   useEffect(() => {
     if (userSession.isUserSignedIn()) {
-      const userData = userSession.loadUserData()
-      setStacksAddress(userData.profile.stxAddress.testnet) // Use testnet for dev
-      setActiveChain('stacks')
-    }
-  }, [userSession, setActiveChain])
-
-  const connect = useCallback(async () => {
-    if (typeof window !== 'undefined' && (window as any).ethereum) {
       try {
-        const accounts = await (window as any).ethereum.request({ method: 'eth_requestAccounts' })
-        if (accounts.length > 0) {
-          setAddress(accounts[0])
-          setActiveChain('celo')
-        }
-      } catch (error) {
-        console.error('EVM connection failed:', error)
+        const userData = userSession.loadUserData()
+        setStacksAddress(userData.profile.stxAddress.mainnet || userData.profile.stxAddress.testnet)
+      } catch (e) {
+        console.error("Failed to load Stacks user data", e)
       }
     }
-  }, [setActiveChain])
+  }, [userSession])
 
+  const connect = useCallback(async () => {
+    await open()
+    setActiveChain('celo')
+  }, [open, setActiveChain])
 
   const connectStacks = useCallback(async () => {
+    // Avoid double instantiation of providers by using the built-in showConnect
     showConnect({
       appDetails: {
         name: 'Chessify Protocol',
-        icon: window.location.origin + '/logo.png',
+        icon: window.location.origin + '/Piece.svg',
       },
       userSession,
       onFinish: () => {
         const userData = userSession.loadUserData()
-        setStacksAddress(userData.profile.stxAddress.testnet)
+        setStacksAddress(userData.profile.stxAddress.mainnet || userData.profile.stxAddress.testnet)
         setActiveChain('stacks')
       },
       onCancel: () => console.log('Stacks connection cancelled'),
@@ -128,8 +106,10 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   }, [userSession, setActiveChain])
 
   const disconnect = useCallback(() => {
-    setAddress(null)
-  }, [])
+    // For AppKit, disconnect is usually handled via the modal UI itself
+    // but here we just clear our internal sync if needed.
+    setActiveChain('stacks') // Switch away
+  }, [setActiveChain])
 
   const disconnectStacks = useCallback(() => {
     userSession.signUserOut()
@@ -140,7 +120,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   return (
     <WalletContext.Provider
       value={{
-        address,
+        address: evmAddress || null,
         stacksAddress,
         isConnected,
         isStacksConnected,
