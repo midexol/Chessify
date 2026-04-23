@@ -6,20 +6,39 @@ import { useWallet } from '@/components/wallet-provider'
 import GlowButton from '@/components/ui/GlowButton'
 import ClayCard from '@/components/ui/ClayCard'
 import StatBadge from '@/components/ui/StatBadge'
-import { useStacksChess } from '@/hooks/useStacksChess'
+import { useStacksRead } from '@/hooks/useStacksRead'
 import { useRouter } from 'next/navigation'
 import { Navbar } from '@/components/landing/Hero'
+import { TOKEN_DECIMALS } from '@/config/contracts'
 
 export default function LobbyPage() {
   const { 
-    isConnected, isStacksConnected, activeChain
+    isConnected, isStacksConnected, activeChain, stacksAddress
   } = useWallet()
   
   const { createGame } = useStacksChess()
+  const { getTokenBalance, getPlayerStats } = useStacksRead()
   const router = useRouter()
+  
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
   const [isPending, setIsPending] = useState(false)
   const [wager, setWager] = useState(100)
+  const [balance, setBalance] = useState<string>('0.00')
+  const [rating, setRating] = useState<number>(1200)
+
+  // Fetch real stats
+  useEffect(() => {
+    if (activeChain === 'stacks' && stacksAddress) {
+      getTokenBalance().then(b => {
+        const formatted = (Number(b) / Math.pow(10, TOKEN_DECIMALS)).toFixed(2)
+        setBalance(formatted)
+      })
+      getPlayerStats().then(s => {
+        if (s) setRating(Number(s.rating.value))
+      })
+    }
+  }, [activeChain, stacksAddress, getTokenBalance, getPlayerStats])
+
 
   // Mock data for lobby
   const openGames = [

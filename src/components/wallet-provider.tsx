@@ -68,10 +68,11 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (typeof window !== 'undefined' && (window as any).ethereum) {
       if ((window as any).ethereum.isMiniPay) {
-        setIsMiniPay(true)
+        setIsMiniPay(true);
         (window as any).ethereum.request({ method: 'eth_requestAccounts' })
           .then((accounts: any) => accounts[0] && setAddress(accounts[0]))
       }
+
 
       (window as any).ethereum.request({ method: 'eth_accounts' }).then((accounts: any) => {
         if (accounts.length > 0) setAddress(accounts[0])
