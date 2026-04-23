@@ -3,6 +3,13 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
+  turbopack: {
+    resolveAlias: {
+      // Stub for @wagmi/core's optional 'accounts' dependency (Tempo wallet connector).
+      // Turbopack can't handle unresolvable dynamic imports — webpack silently fails them.
+      accounts: './src/stubs/accounts.ts',
+    },
+  },
   transpilePackages: [
     '@stacks/connect', 
     '@stacks/transactions', 
