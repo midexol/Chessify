@@ -3,7 +3,6 @@
 import React, { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react'
 import { AppConfig, UserSession, showConnect } from '@stacks/connect'
 import { useAppKit, useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
-import { networks } from '@/config/reown'
 
 interface WalletContextType {
   address: string | null          // EVM Address
@@ -39,7 +38,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   // --- Reown AppKit Hooks ---
   const { open } = useAppKit()
   const { address: evmAddress, isConnected: evmConnected } = useAppKitAccount()
-  const { chainId } = useAppKitNetwork()
+  useAppKitNetwork()
 
   // --- Stacks State ---
   const appConfig = useMemo(() => new AppConfig(['store_write', 'publish_data']), [])

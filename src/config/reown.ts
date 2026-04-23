@@ -17,7 +17,7 @@ export const wagmiAdapter = new WagmiAdapter({
 if (typeof window !== 'undefined') {
   createAppKit({
     adapters: [wagmiAdapter],
-    networks,
+    networks: [celo, mainnet] as [any, ...any[]],
     projectId,
     metadata: {
       name: 'Chessify Protocol',
