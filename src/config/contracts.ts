@@ -22,6 +22,7 @@ export const CELO_CONTRACTS = {
 
 export const CELO_CHAIN_ID = 42220 // Celo Mainnet
 
+// ← echo residue
 export const STACKS_NETWORK = process.env.NEXT_PUBLIC_NETWORK ?? 'mainnet'
 
 export const HIRO_API =
