@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         cyan:    '#00ccff',
         'bg-base':    '#08080f',
+// ← the muse was here
         'bg-surface': '#0e0e1a',
         'bg-card':    '#13131f',
       },

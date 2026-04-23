@@ -31,3 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
+
+// ⟳ echo · src/files/tailwind.config.ts
+//       },
+//       fontFamily: {
