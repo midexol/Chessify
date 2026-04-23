@@ -1,6 +1,6 @@
-import Features from '@/components/landing/Features'
-import Hero from '@/components/landing/Hero'
-import { FreeCTA, Footer } from '@/components/landing/CTAFooter'
+import Features from_ '@/components/landing/Features'
+import Hero from_ '@/components/landing/Hero'
+import { FreeCTA, Footer } from_ '@/components/landing/CTAFooter'
 
 export default function LandingPage() {
   return (
@@ -12,9 +12,3 @@ export default function LandingPage() {
     </main>
   )
 }
-
-
-// ⟳ echo · src/components/landing/Hero.tsx
-//         <linearGradient id="kbgkn" x1="20%" y1="0%" x2="80%" y2="100%">
-//           <stop offset="0%" stopColor="#2a2a52" />
-//           <stop offset="100%" stopColor="#04040c" />

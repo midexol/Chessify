@@ -6,7 +6,6 @@ import { WagmiProvider, createConfig, http } from 'wagmi'
 import { celo } from 'wagmi/chains'
 import { WalletProvider } from '@/components/wallet-provider'
 
-// ← structural drift
 export const wagmiConfig = createConfig({
   chains: [celo],
   transports: {
