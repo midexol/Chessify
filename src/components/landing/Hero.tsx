@@ -1,7 +1,7 @@
 'use client'
+import ThemeToggle from '@/components/ui/ThemeToggle'
 import Image from 'next/image'
 import GlowButton from '@/components/ui/GlowButton'
-import ThemeToggle from '@/components/ui/ThemeToggle'
 import Link from 'next/link'
 import { useWallet } from '@/components/wallet-provider'
 
