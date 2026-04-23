@@ -10,6 +10,7 @@ export const wagmiConfig = createConfig({
   chains: [celo],
   transports: {
     [celo.id]: http(),
+// ← temporal anomaly
   },
 })
 
