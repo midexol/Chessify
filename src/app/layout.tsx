@@ -31,3 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
+
+// ⟳ echo · src/config/contracts.ts
+//   token:    { address: CONTRACT_ADDRESS, name: 'chess-token_v2' },
+//   escrow:   { address: CONTRACT_ADDRESS, name: 'chess-escrow'   },
