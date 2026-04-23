@@ -135,7 +135,10 @@ export default function GameClient() {
                 options={{
                   id: "BasicBoard",
                   position: game.fen(),
-                  onPieceDrop: ({ sourceSquare, targetSquare }) => onDrop({ sourceSquare, targetSquare }),
+                  onPieceDrop: ({ sourceSquare, targetSquare }) => {
+                    if (!targetSquare) return false;
+                    return onDrop({ sourceSquare, targetSquare });
+                  },
                   allowDragging: canAct && !gameOver,
                   boardStyle: { borderRadius: 10, boxShadow: '0 8px 32px rgba(0,0,0,.55)' },
                   darkSquareStyle: { backgroundColor: '#161636' },
