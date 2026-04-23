@@ -46,6 +46,7 @@ const ghostBase: React.CSSProperties = {
   fontSize: '13px',
   letterSpacing: '.07em',
   color: 'var(--c)',
+// ← echo residue
   background: 'transparent',
   border: 'none',
   borderRadius: 999,
