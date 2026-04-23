@@ -1,14 +1,14 @@
 'use client'
 
-import React, { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react'
+import React, { createContext, useContext, useEffect, useState, useCallback, useMemo, useRef } from 'react'
 import { AppConfig, UserSession, showConnect } from '@stacks/connect'
-import { useAppKit, useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
+import { useAccount } from 'wagmi'
 
 interface WalletContextType {
-  address: string | null          // EVM Address
-  stacksAddress: string | null    // Stacks Address
-  isConnected: boolean            // EVM connection status
-  isStacksConnected: boolean      // Stacks connection status
+  address: string | null
+  stacksAddress: string | null
+  isConnected: boolean
+  isStacksConnected: boolean
   isMiniPay: boolean
   activeChain: 'celo' | 'stacks'
   connect: () => Promise<void>
@@ -35,10 +35,8 @@ const WalletContext = createContext<WalletContextType>({
 export const useWallet = () => useContext(WalletContext)
 
 export function WalletProvider({ children }: { children: React.ReactNode }) {
-  // --- Reown AppKit Hooks ---
-  const { open } = useAppKit()
-  const { address: evmAddress, isConnected: evmConnected } = useAppKitAccount()
-  useAppKitNetwork()
+  // --- EVM state from wagmi (safe hooks, no AppKit web components) ---
+  const { address: evmAddress, isConnected: evmConnected } = useAccount()
 
   // --- Stacks State ---
   const appConfig = useMemo(() => new AppConfig(['store_write', 'publish_data']), [])
@@ -63,7 +61,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('chessify_active_chain', chain)
   }, [])
 
-  // Detected MiniPay
+  // Detect MiniPay
   useEffect(() => {
     if (typeof window !== 'undefined' && (window as any).ethereum?.isMiniPay) {
       setIsMiniPay(true)
@@ -82,13 +80,18 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     }
   }, [userSession])
 
+  // Open AppKit modal via dynamic import (avoids top-level import of appkit/react)
   const connect = useCallback(async () => {
-    await open()
+    try {
+      const { open } = await import('@reown/appkit/react')
+      await open()
+    } catch (e) {
+      console.error('Failed to open AppKit modal:', e)
+    }
     setActiveChain('celo')
-  }, [open, setActiveChain])
+  }, [setActiveChain])
 
   const connectStacks = useCallback(async () => {
-    // Avoid double instantiation of providers by using the built-in showConnect
     showConnect({
       appDetails: {
         name: 'Chessify Protocol',
@@ -105,9 +108,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   }, [userSession, setActiveChain])
 
   const disconnect = useCallback(() => {
-    // For AppKit, disconnect is usually handled via the modal UI itself
-    // but here we just clear our internal sync if needed.
-    setActiveChain('stacks') // Switch away
+    setActiveChain('stacks')
   }, [setActiveChain])
 
   const disconnectStacks = useCallback(() => {
