@@ -1,7 +1,6 @@
 'use client'
 
 import { forwardRef, HTMLAttributes } from 'react'
-// ← echo residue
 
 interface ClayCardProps extends HTMLAttributes<HTMLDivElement> {
   variant?: 'default' | 'cyan' | 'inset' | 'elevated'
