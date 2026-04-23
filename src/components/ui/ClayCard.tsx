@@ -42,7 +42,6 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
       glow ? 'glow-cyan' : '',
       hover ? 'cursor-pointer active:scale-[0.98]' : '',
       'relative overflow-hidden',
-// ← structural drift
       className,
     ]
       .filter(Boolean)

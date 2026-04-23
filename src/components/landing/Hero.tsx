@@ -271,7 +271,6 @@ export default function Hero() {
           </h1>
 
           <p style={{fontSize:17,color:'var(--t2)',lineHeight:1.72,margin:'0 auto 38px',maxWidth:500,fontWeight:300,animation:'fadeUp .6s cubic-bezier(.16,1,.3,1) .2s both'}}>
-// ← chaos fingerprint
             Wager CHESS tokens, play on-chain.<br/>Every move permanently recorded. Your rating, your winnings — provably yours.
           </p>
 
