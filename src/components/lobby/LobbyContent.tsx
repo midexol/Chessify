@@ -136,135 +136,142 @@ export default function LobbyContent() {
       <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 65% 55% at 50% 40%,rgba(0,204,255,.07) 0%,transparent 60%),radial-gradient(ellipse 35% 35% at 18% 80%,rgba(120,60,220,.05) 0%,transparent 60%)', pointerEvents: 'none', zIndex: 0 }} />
       <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px)', backgroundSize: '52px 52px', pointerEvents: 'none', zIndex: 0, WebkitMaskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%,black 30%,transparent 80%)', maskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%,black 30%,transparent 80%)' }} />
 
-      {/* Strict Bento Grid Architecture */}
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 p-6 max-w-7xl mx-auto w-full pt-24 flex-1 items-start">
+      {/* MACRO-LAYOUT FIX: 
+        flex-1 ensures this container takes up remaining screen height.
+        flex flex-col justify-center items-center pushes the inner grid to the dead center of the screen.
+      */}
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center w-full px-4 md:px-8 py-12">
 
-        {/* Left Column: Challenges */}
-        <div className="lg:col-span-8 flex flex-col gap-8 rounded-3xl border border-white/10 bg-slate-900/50 backdrop-blur-xl p-8 shadow-2xl">
+        {/* The Grid itself, constrained by max-width */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full max-w-7xl">
 
-          <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-white/10 pb-8">
-            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-3">
-              <h1 className="text-4xl md:text-[52px] font-black uppercase tracking-tighter leading-none" style={{ fontFamily: 'var(--fd)', textShadow: 'var(--hero-text-shadow)' }}>
-                Game <span style={{ color: 'var(--c)', textShadow: 'var(--king-text-shadow)' }}>Lobby</span>
-              </h1>
-              <div className="flex flex-wrap items-center gap-4">
-                <div className="flex items-center gap-2 bg-black/40 py-1.5 px-3 rounded-full border border-white/10 shadow-inner">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[var(--c)] animate-pulse" />
-                  <span className="text-[11px] tracking-[0.2em] font-bold text-[var(--c)]" style={{ fontFamily: 'var(--fd)' }}>
-                    {activeChain?.toUpperCase() || 'NONE'}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 px-3 py-1 bg-black/20 rounded-full border border-white/5">
-                  <span className="text-[10px] tracking-[0.15em] uppercase font-bold text-[var(--t2)]" style={{ fontFamily: 'var(--fd)' }}>
-                    RATING
-                  </span>
-                  <span className="text-sm tracking-widest font-black text-white">
-                    {rating} <span className="text-[10px] text-[var(--c)] opacity-80">ELO</span>
-                  </span>
-                </div>
-              </div>
-            </motion.div>
+          {/* Left Column: Challenges (Uniform 40px padding for breathing room) */}
+          <div className="lg:col-span-8 flex flex-col gap-10 rounded-[32px] border border-white/10 bg-slate-900/50 backdrop-blur-xl p-8 md:p-10 shadow-2xl">
 
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
-              <GlowButton parallelogram variant="brand" size="lg" onClick={() => setIsCreateModalOpen(true)}>
-                CREATE NEW MATCH
-              </GlowButton>
-            </motion.div>
-          </header>
-
-          <div className="flex flex-col gap-4">
-            <h3 className="text-xs font-bold tracking-[0.25em] text-[var(--t3)] uppercase mb-2" style={{ fontFamily: 'var(--fd)' }}>Open Challenges</h3>
-
-            {openGames.filter(g => g.chain === activeChain).map((game, idx) => (
-              <motion.div
-                key={game.id}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
-              >
-                {/* Changed to strict CSS Grid for perfect column alignment */}
-                <div className="rounded-xl border border-white/5 bg-black/20 hover:bg-black/40 hover:border-white/10 transition-colors p-4 group grid grid-cols-[auto_1fr_auto_auto] items-center gap-6">
-
-                  <div className="w-12 h-12 rounded-lg flex flex-col items-center justify-center font-bold text-cyan-400 bg-cyan-950/30 border border-cyan-500/20">
-                    <span className="text-[8px] uppercase tracking-widest opacity-60">ELO</span>
-                    <span className="text-sm leading-none mt-0.5">{game.elo}</span>
+            <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-white/10 pb-8">
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-4">
+                <h1 className="text-4xl md:text-[52px] font-black uppercase tracking-tighter leading-none" style={{ fontFamily: 'var(--fd)', textShadow: 'var(--hero-text-shadow)' }}>
+                  Game <span style={{ color: 'var(--c)', textShadow: 'var(--king-text-shadow)' }}>Lobby</span>
+                </h1>
+                <div className="flex flex-wrap items-center gap-4">
+                  <div className="flex items-center gap-2 bg-black/40 py-1.5 px-3 rounded-full border border-white/10 shadow-inner">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[var(--c)] animate-pulse" />
+                    <span className="text-[11px] tracking-[0.2em] font-bold text-[var(--c)]" style={{ fontFamily: 'var(--fd)' }}>
+                      {activeChain?.toUpperCase() || 'NONE'}
+                    </span>
                   </div>
-
-                  <div className="flex flex-col justify-center">
-                    <span className="text-[9px] tracking-[0.2em] text-gray-500 uppercase font-bold mb-1" style={{ fontFamily: 'var(--fd)' }}>CHALLENGER</span>
-                    <span className="font-bold tracking-wide text-sm text-gray-200">{game.creator}</span>
+                  <div className="flex items-center gap-2 px-3 py-1 bg-black/20 rounded-full border border-white/5">
+                    <span className="text-[10px] tracking-[0.15em] uppercase font-bold text-[var(--t2)]" style={{ fontFamily: 'var(--fd)' }}>
+                      RATING
+                    </span>
+                    <span className="text-sm tracking-widest font-black text-white">
+                      {rating} <span className="text-[10px] text-[var(--c)] opacity-80">ELO</span>
+                    </span>
                   </div>
-
-                  <div className="flex flex-col justify-center text-right pr-4">
-                    <span className="text-[9px] tracking-[0.2em] text-gray-500 uppercase font-bold mb-1" style={{ fontFamily: 'var(--fd)' }}>WAGER</span>
-                    <div className="font-black text-cyan-400 text-base leading-none">{game.wager} <span className="text-[9px] text-cyan-700">CHESS</span></div>
-                  </div>
-
-                  <GlowButton
-                    size="md"
-                    onClick={() => handleJoinGame(game.id, game.wager)}
-                    disabled={isPending}
-                    className="min-w-[120px]"
-                  >
-                    {isPending ? '...' : 'JOIN MATCH'}
-                  </GlowButton>
-
                 </div>
               </motion.div>
-            ))}
 
-            {openGames.filter(g => g.chain === activeChain).length === 0 && (
-              <div className="py-20 text-center border border-dashed border-white/10 rounded-2xl bg-black/20">
-                <p className="text-sm font-medium text-gray-500 tracking-wider">NO OPEN MATCHES ON {activeChain?.toUpperCase()}</p>
-              </div>
-            )}
+              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
+                <GlowButton parallelogram variant="brand" size="lg" onClick={() => setIsCreateModalOpen(true)}>
+                  CREATE NEW MATCH
+                </GlowButton>
+              </motion.div>
+            </header>
+
+            <div className="flex flex-col gap-5">
+              <h3 className="text-xs font-bold tracking-[0.25em] text-[var(--t3)] uppercase mb-2" style={{ fontFamily: 'var(--fd)' }}>Open Challenges</h3>
+
+              {openGames.filter(g => g.chain === activeChain).map((game, idx) => (
+                <motion.div
+                  key={game.id}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                >
+                  {/* Padding increased to p-5 md:p-6 for internal breathing room */}
+                  <div className="rounded-2xl border border-white/5 bg-black/20 hover:bg-black/40 hover:border-white/10 transition-colors p-5 md:p-6 group grid grid-cols-[auto_1fr_auto_auto] items-center gap-6">
+
+                    <div className="w-14 h-14 rounded-xl flex flex-col items-center justify-center font-bold text-cyan-400 bg-cyan-950/30 border border-cyan-500/20">
+                      <span className="text-[9px] uppercase tracking-widest opacity-60">ELO</span>
+                      <span className="text-base leading-none mt-1">{game.elo}</span>
+                    </div>
+
+                    <div className="flex flex-col justify-center">
+                      <span className="text-[10px] tracking-[0.2em] text-gray-500 uppercase font-bold mb-1" style={{ fontFamily: 'var(--fd)' }}>CHALLENGER</span>
+                      <span className="font-bold tracking-wide text-base text-gray-200">{game.creator}</span>
+                    </div>
+
+                    <div className="flex flex-col justify-center text-right pr-4">
+                      <span className="text-[10px] tracking-[0.2em] text-gray-500 uppercase font-bold mb-1" style={{ fontFamily: 'var(--fd)' }}>WAGER</span>
+                      <div className="font-black text-cyan-400 text-lg leading-none">{game.wager} <span className="text-[10px] text-cyan-700">CHESS</span></div>
+                    </div>
+
+                    <GlowButton
+                      size="md"
+                      onClick={() => handleJoinGame(game.id, game.wager)}
+                      disabled={isPending}
+                      className="min-w-[130px] py-3"
+                    >
+                      {isPending ? '...' : 'JOIN MATCH'}
+                    </GlowButton>
+
+                  </div>
+                </motion.div>
+              ))}
+
+              {openGames.filter(g => g.chain === activeChain).length === 0 && (
+                <div className="py-24 text-center border border-dashed border-white/10 rounded-[24px] bg-black/20">
+                  <p className="text-sm font-medium text-gray-500 tracking-wider">NO OPEN MATCHES ON {activeChain?.toUpperCase()}</p>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
 
-        {/* Right Column: Profile & Faucet (Unified padding and border radii) */}
-        <div className="lg:col-span-4 flex flex-col gap-6">
+          {/* Right Column: Profile & Faucet (Uniform 32px padding, no fixed heights to prevent Faucet overlap) */}
+          <div className="lg:col-span-4 flex flex-col gap-8">
 
-          <div className="rounded-3xl border border-white/10 bg-slate-900/50 backdrop-blur-md p-8 flex flex-col shadow-2xl">
-            <h3 className="text-sm font-bold tracking-wider text-cyan-400 uppercase mb-6" style={{ fontFamily: 'var(--fd)' }}>Profile Stats</h3>
+            <div className="rounded-[32px] border border-white/10 bg-slate-900/50 backdrop-blur-md p-8 md:p-10 flex flex-col shadow-2xl">
+              <h3 className="text-sm font-bold tracking-wider text-cyan-400 uppercase mb-8" style={{ fontFamily: 'var(--fd)' }}>Profile Stats</h3>
 
-            <div className="flex items-baseline gap-2 mb-8">
-              <span className="text-[44px] font-black text-white leading-none" style={{ fontFamily: 'var(--fd)' }}>{balance}</span>
-              <span className="text-sm text-cyan-500 font-bold tracking-widest translate-y-[-4px]">CHESS</span>
-            </div>
-
-            <div className="flex justify-between items-center bg-black/30 p-4 rounded-xl border border-white/5 mb-8">
-              <div className="flex flex-col flex-1">
-                <span className="text-[10px] text-gray-500 font-bold tracking-widest uppercase mb-1">Wins</span>
-                <span className="text-xl font-bold text-white leading-none">14</span>
+              <div className="flex items-baseline gap-3 mb-10">
+                <span className="text-5xl font-black text-white leading-none" style={{ fontFamily: 'var(--fd)' }}>{balance}</span>
+                <span className="text-sm text-cyan-500 font-bold tracking-widest translate-y-[-4px]">CHESS</span>
               </div>
-              <div className="w-[1px] h-8 bg-white/10 mx-4" />
-              <div className="flex flex-col flex-1 text-right">
-                <span className="text-[10px] text-gray-500 font-bold tracking-widest uppercase mb-1">Losses</span>
-                <span className="text-xl font-bold text-gray-300 leading-none">8</span>
+
+              <div className="flex justify-between items-center bg-black/30 p-5 rounded-2xl border border-white/5 mb-8">
+                <div className="flex flex-col flex-1">
+                  <span className="text-[11px] text-gray-500 font-bold tracking-widest uppercase mb-2">Wins</span>
+                  <span className="text-2xl font-bold text-white leading-none">14</span>
+                </div>
+                <div className="w-[1px] h-10 bg-white/10 mx-4" />
+                <div className="flex flex-col flex-1 text-right">
+                  <span className="text-[11px] text-gray-500 font-bold tracking-widest uppercase mb-2">Losses</span>
+                  <span className="text-2xl font-bold text-gray-300 leading-none">8</span>
+                </div>
               </div>
+
+              <button className="w-full py-4 rounded-2xl border border-white/10 hover:bg-white/5 transition-colors text-xs font-bold tracking-widest text-gray-300 uppercase mt-auto">
+                VIEW HISTORY
+              </button>
             </div>
 
-            <button className="w-full py-3.5 rounded-xl border border-white/10 hover:bg-white/5 transition-colors text-xs font-bold tracking-widest text-gray-300 uppercase mt-auto">
-              VIEW HISTORY
-            </button>
-          </div>
-
-          <div className="rounded-3xl border border-white/10 bg-slate-900/50 backdrop-blur-md p-8 flex flex-col gap-4 shadow-2xl">
-            <div className="flex flex-col gap-2">
-              <h4 className="font-bold text-sm tracking-widest text-white uppercase" style={{ fontFamily: 'var(--fd)' }}>Need CHESS?</h4>
-              <p className="text-xs text-gray-400 leading-relaxed">Top up your wallet with testnet tokens to start playing on {activeChain}.</p>
+            <div className="rounded-[32px] border border-white/10 bg-slate-900/50 backdrop-blur-md p-8 md:p-10 flex flex-col gap-6 shadow-2xl">
+              <div className="flex flex-col gap-3">
+                <h4 className="font-bold text-[15px] tracking-widest text-white uppercase" style={{ fontFamily: 'var(--fd)' }}>Need CHESS?</h4>
+                <p className="text-[13px] text-gray-400 leading-relaxed">Top up your wallet with testnet tokens to start playing on {activeChain}.</p>
+              </div>
+              <button
+                onClick={() => router.push('#faucet')}
+                className="w-full py-4 rounded-2xl bg-cyan-950/40 border border-cyan-500/30 hover:bg-cyan-900/60 transition-colors text-xs font-bold tracking-widest text-cyan-400 uppercase mt-2"
+              >
+                VISIT FAUCET
+              </button>
             </div>
-            <button
-              onClick={() => router.push('#faucet')}
-              className="w-full py-3.5 rounded-xl bg-cyan-950/40 border border-cyan-500/30 hover:bg-cyan-900/60 transition-colors text-xs font-bold tracking-widest text-cyan-400 uppercase mt-4"
-            >
-              VISIT FAUCET
-            </button>
           </div>
         </div>
       </div>
 
-      {/* Create Match Modal remains unchanged */}
+      {/* Create Match Modal */}
       <AnimatePresence>
         {isCreateModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-6">
