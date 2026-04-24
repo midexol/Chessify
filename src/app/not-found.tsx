@@ -1,21 +1,17 @@
 'use client'
 
-import { Suspense, useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { useGLTF, Center, Float, Environment, MeshDistortMaterial } from '@react-three/drei'
-import { motion } from 'framer-motion'
-import Link from 'next/link'
+import { useGLTF, Float, Environment, ContactShadows, PresentationControls } from '@react-three/drei'
+import { useRef, Suspense } from 'react'
 import * as THREE from 'three'
+import Link from 'next/link'
 import GlowButton from '@/components/ui/GlowButton'
 import { Navbar } from '@/components/landing/Hero'
 
-// ─── 3D Knight Component ───────────────────────────────────────────────────
-
-function ChessKnight() {
+function KnightModel() {
   const { scene } = useGLTF('/models/chess-knight.glb')
   const meshRef = useRef<THREE.Group>(null)
 
-  // Subtle rotation
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.5
@@ -23,172 +19,89 @@ function ChessKnight() {
   })
 
   return (
-    <Center>
-      <primitive 
-        object={scene} 
-        ref={meshRef} 
-        scale={2.5} 
-        rotation={[0, Math.PI / 4, 0]}
-      />
-    </Center>
+    <primitive 
+      ref={meshRef} 
+      object={scene} 
+      scale={2.5} 
+      position={[0, -2, 0]}
+    />
   )
 }
 
-// ─── Background Elements ────────────────────────────────────────────────────
-
-function SceneContent() {
+function Scene() {
   return (
     <>
       <ambientLight intensity={0.5} />
-      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-      <pointLight position={[-10, -10, -10]} intensity={1} color="var(--c)" />
+      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={2} color="#00ccff" />
+      <pointLight position={[-10, -10, -10]} intensity={1} color="#783cdc" />
       
-      <Float speed={1.5} rotationIntensity={1} floatIntensity={2}>
-        <Suspense fallback={null}>
-          <ChessKnight />
-        </Suspense>
-      </Float>
-
-      {/* Decorative floating sphere */}
-      <Float speed={2} rotationIntensity={2}>
-        <mesh position={[4, 2, -2]}>
-          <sphereGeometry args={[0.5, 32, 32]} />
-          <MeshDistortMaterial 
-            color="var(--c)" 
-            speed={2} 
-            distort={0.4} 
-            radius={1}
-          />
-        </mesh>
-      </Float>
-
-      <Environment preset="city" />
+      <Suspense fallback={null}>
+        <PresentationControls
+          global
+          config={{ mass: 2, tension: 500 }}
+          snap={{ mass: 4, tension: 1500 }}
+          rotation={[0, 0.3, 0]}
+          polar={[-Math.PI / 3, Math.PI / 3]}
+          azimuth={[-Math.PI / 1.4, Math.PI / 1.4]}
+        >
+          <Float speed={2} rotationIntensity={1.5} floatIntensity={2}>
+            <KnightModel />
+          </Float>
+        </PresentationControls>
+        <ContactShadows position={[0, -2.5, 0]} opacity={0.4} scale={20} blur={2} far={4.5} />
+        <Environment preset="city" />
+      </Suspense>
     </>
   )
 }
 
-// ─── Main 404 Component ─────────────────────────────────────────────────────
+import { motion } from 'framer-motion'
 
 export default function NotFound() {
   return (
-    <div style={{ 
-      minHeight: '100vh', 
-      background: 'var(--bg)', 
-      color: 'var(--t1)',
-      overflow: 'hidden',
-      position: 'relative'
-    }}>
+    <main className="min-h-screen bg-[var(--bg)] flex flex-col items-center relative overflow-hidden">
       <Navbar />
+      
+      <div className="absolute inset-0 z-0">
+        <Canvas camera={{ position: [0, 0, 10], fov: 35 }}>
+          <Scene />
+        </Canvas>
+      </div>
 
-      <main style={{ 
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'relative',
-        zIndex: 10
-      }}>
-        
-        {/* 3D Canvas Container */}
-        <div style={{ 
-          position: 'absolute', 
-          top: 0, left: 0, 
-          width: '100%', height: '100%', 
-          zIndex: -1,
-          opacity: 0.6
-        }}>
-          <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
-            <Suspense fallback={null}>
-              <SceneContent />
-            </Suspense>
-          </Canvas>
-        </div>
-
-        {/* Text Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center flex-1 text-center px-6">
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          style={{ textAlign: 'center', maxWidth: 600, padding: 24 }}
+          className="mb-8"
         >
-          <h1 style={{ 
-            fontFamily: 'var(--fd)', 
-            fontSize: 'min(15vw, 120px)', 
-            fontWeight: 950, 
-            lineHeight: 0.8,
-            letterSpacing: '-0.05em',
-            margin: 0,
-            fontStyle: 'italic',
-            background: 'linear-gradient(to bottom, #fff, rgba(255,255,255,0.2))',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            position: 'relative'
-          }}>
-            404
-          </h1>
-          
-          <h2 style={{ 
-            fontFamily: 'var(--fd)', 
-            fontSize: 24, 
-            fontWeight: 800, 
-            textTransform: 'uppercase',
-            letterSpacing: '0.2em',
-            marginTop: 20,
-            color: 'var(--c)'
-          }}>
-            Wrong Square
-          </h2>
-          
-          <p style={{ 
-            fontSize: 16, 
-            color: 'var(--t3)', 
-            lineHeight: 1.6,
-            marginTop: 16,
-            marginBottom: 40
-          }}>
-            This move isn&apos;t in the opening theory. Let&apos;s return to the safe zone.
-          </p>
-
-          <Link href="/app/lobby">
-            <GlowButton variant="brand" size="lg">
-              RETURN TO LOBBY
-            </GlowButton>
-          </Link>
+           <h1 className="text-[12rem] md:text-[20rem] font-black leading-none tracking-tighter text-white/5 select-none">
+             404
+           </h1>
+           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full">
+             <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-[var(--t1)] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+               Checkmated by <span className="text-[var(--c)]">the Void</span>
+             </h2>
+             <p className="text-[var(--t2)] mt-6 max-w-md mx-auto text-lg font-medium">
+               The move you're looking for doesn't exist in our protocol. Retrace your steps back to the lobby.
+             </p>
+           </div>
         </motion.div>
 
-        {/* Bottom decorative bar */}
-        <div style={{
-          position: 'absolute',
-          bottom: 40,
-          left: 0,
-          right: 0,
-          display: 'flex',
-          justifyContent: 'center',
-          gap: 40,
-          fontFamily: 'var(--fd)',
-          fontSize: 10,
-          fontWeight: 700,
-          color: 'var(--t3)',
-          letterSpacing: '0.3em',
-          textTransform: 'uppercase',
-          opacity: 0.4
-        }}>
-          <div>STX-NETWORK</div>
-          <div>CELO-MAINNET</div>
-          <div>CHESS-V1-PROTOCOL</div>
-        </div>
-      </main>
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="mt-12"
+        >
+          <Link href="/">
+            <GlowButton variant="brand" parallelogram size="lg">RESUME PLAY</GlowButton>
+          </Link>
+        </motion.div>
+      </div>
 
-      {/* Grid overlay mask */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        zIndex: 5,
-        pointerEvents: 'none',
-        background: 'radial-gradient(circle at 50% 50%, transparent 0%, var(--bg) 80%)',
-        opacity: 0.8
-      }} />
-    </div>
+      {/* Decorative lines */}
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--c)] to-transparent opacity-30" />
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--c)] to-transparent opacity-10" />
+    </main>
   )
 }

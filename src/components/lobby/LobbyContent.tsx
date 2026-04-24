@@ -10,36 +10,65 @@ import { useStacksRead } from '@/hooks/useStacksRead'
 import { useStacksChess } from '@/hooks/useStacksChess'
 import { useRouter } from 'next/navigation'
 import { Navbar } from '@/components/landing/Hero'
-import { TOKEN_DECIMALS } from '@/config/contracts'
+import { CELO_CONTRACTS, TOKEN_DECIMALS } from '@/config/contracts'
+import { useCeloChess } from '@/hooks/useCeloChess'
+import { useReadContract, useAccount } from 'wagmi'
+import { CHESS_GAME_ABI, CHESS_TOKEN_ABI } from '@/config/abis'
+import { formatUnits } from 'viem'
 
 
 export default function LobbyContent() {
-  const { 
-    isConnected, isStacksConnected, activeChain, stacksAddress
+  const {
+    isConnected, isStacksConnected, activeChain, stacksAddress, address: celoAddress
   } = useWallet()
-  
-  const { createGame, joinGame } = useStacksChess()
-  const { getTokenBalance, getPlayerStats } = useStacksRead()
+
+  const { createGame: createStacksGame, joinGame: joinStacksGame } = useStacksChess()
+  const { createGame: createCeloGame, joinGame: joinCeloGame, isPending: isCeloPending } = useCeloChess()
+  const { getTokenBalance: getStacksBalance, getPlayerStats: getStacksStats } = useStacksRead()
   const router = useRouter()
-  
+
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
   const [isPending, setIsPending] = useState(false)
   const [wager, setWager] = useState(100)
   const [balance, setBalance] = useState<string>('0.00')
   const [rating, setRating] = useState<number>(1200)
 
+  // Fetch Celo Stats via Wagmi
+  const { data: celoBalance } = useReadContract({
+    address: CELO_CONTRACTS.token as `0x${string}`,
+    abi: CHESS_TOKEN_ABI,
+    functionName: 'balanceOf',
+    args: [celoAddress as `0x${string}`],
+    query: { enabled: activeChain === 'celo' && !!celoAddress }
+  })
+
+  const { data: celoStats } = useReadContract({
+    address: CELO_CONTRACTS.game as `0x${string}`,
+    abi: CHESS_GAME_ABI,
+    functionName: 'playerStats',
+    args: [celoAddress as `0x${string}`],
+    query: { enabled: activeChain === 'celo' && !!celoAddress }
+  })
+
   // Fetch real stats
   useEffect(() => {
     if (activeChain === 'stacks' && stacksAddress) {
-      getTokenBalance().then(b => {
+      getStacksBalance().then(b => {
         const formatted = (Number(b) / Math.pow(10, TOKEN_DECIMALS)).toFixed(2)
         setBalance(formatted)
       })
-      getPlayerStats().then(s => {
+      getStacksStats(stacksAddress).then(s => {
         if (s) setRating(Number(s.rating.value))
       })
+    } else if (activeChain === 'celo' && celoAddress) {
+       if (celoBalance !== undefined) {
+         setBalance(formatUnits(celoBalance as bigint, TOKEN_DECIMALS))
+       }
+       if (celoStats) {
+         setRating(Number((celoStats as any)[3])) // rating is 4th field
+       }
     }
-  }, [activeChain, stacksAddress, getTokenBalance, getPlayerStats])
+  }, [activeChain, stacksAddress, celoAddress, getStacksBalance, getStacksStats, celoBalance, celoStats])
 
 
   // Mock data for lobby
@@ -53,12 +82,13 @@ export default function LobbyContent() {
     setIsPending(true)
     try {
       if (activeChain === 'stacks') {
-        const res: any = await createGame(wager)
-        console.log('Game create broadcasted:', res)
-        // In a real app we'd wait for tx or redirect to a wait page
+        const res: any = await createStacksGame(wager)
+        console.log('Stacks Game broadcasted:', res)
         setIsCreateModalOpen(false)
       } else {
-        alert('Celo integration coming soon!')
+        const tx = await createCeloGame(wager)
+        console.log('Celo Game broadcasted:', tx)
+        setIsCreateModalOpen(false)
       }
     } catch (err) {
       console.error('Create game failed:', err)
@@ -71,11 +101,13 @@ export default function LobbyContent() {
     setIsPending(true)
     try {
       if (activeChain === 'stacks') {
-        const res: any = await joinGame(gameId, matchWager)
-        console.log('Game join broadcasted:', res)
+        const res: any = await joinStacksGame(gameId, matchWager)
+        console.log('Stacks Join broadcasted:', res)
         router.push(`/app/game/${gameId}`)
       } else {
-        alert('Celo integration coming soon!')
+        const tx = await joinCeloGame(gameId, matchWager)
+        console.log('Celo Join broadcasted:', tx)
+        router.push(`/app/game/${gameId}`)
       }
     } catch (err) {
       console.error('Join game failed:', err)
@@ -101,7 +133,7 @@ export default function LobbyContent() {
   return (
     <main className="min-h-screen bg-[var(--bg)] text-[var(--t1)] overflow-x-hidden">
       <Navbar />
-      
+
       {/* Ambient background effects */}
       <div className="fixed inset-0 pointer-events-none opacity-30">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[var(--c)] blur-[120px] rounded-full opacity-20" />
@@ -111,7 +143,7 @@ export default function LobbyContent() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-12 pt-32">
         {/* Header Section */}
         <header className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
           >
@@ -125,7 +157,7 @@ export default function LobbyContent() {
 
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             className="flex gap-4"
@@ -141,7 +173,7 @@ export default function LobbyContent() {
           {/* Open Matches List */}
           <div className="lg:col-span-2 space-y-6">
             <h3 className="text-xs font-bold tracking-[0.2em] text-[var(--t3)] uppercase mb-4">Open Challenges</h3>
-            
+
             <div className="space-y-4">
               {openGames.filter(g => g.chain === activeChain).map((game, idx) => (
                 <motion.div
@@ -160,15 +192,15 @@ export default function LobbyContent() {
                         <div className="font-bold">{game.creator}</div>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center gap-10">
                       <div className="text-right">
                         <div className="text-xs text-[var(--t3)] mb-1">WAGER</div>
                         <div className="font-black text-[var(--c)]">{game.wager} CHESS</div>
                       </div>
-                      <GlowButton 
-                        size="sm" 
-                        variant="ghost" 
+                      <GlowButton
+                        size="sm"
+                        variant="ghost"
                         onClick={() => handleJoinGame(game.id, game.wager)}
                         disabled={isPending}
                       >
@@ -191,7 +223,7 @@ export default function LobbyContent() {
           {/* Sidebar */}
           <div className="space-y-6">
             <h3 className="text-xs font-bold tracking-[0.2em] text-[var(--t3)] uppercase mb-4">Profile Stats</h3>
-            
+
             <ClayCard className="p-8 space-y-6">
               <div>
                 <div className="text-xs text-[var(--t3)] mb-2 uppercase tracking-wider">CHESS Balance</div>
@@ -200,7 +232,7 @@ export default function LobbyContent() {
                 </div>
               </div>
 
-              
+
               <div className="pt-6 border-t border-[var(--b1)] grid grid-cols-2 gap-4">
                 <div>
                   <div className="text-[10px] text-[var(--t3)] uppercase mb-1">Wins</div>
@@ -230,7 +262,7 @@ export default function LobbyContent() {
       <AnimatePresence>
         {isCreateModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-6">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -245,7 +277,7 @@ export default function LobbyContent() {
             >
               <ClayCard className="p-10">
                 <h3 className="text-2xl font-black mb-6 uppercase italic">Create Match</h3>
-                
+
                 <div className="space-y-6 mb-10">
                   <div>
                     <label className="block text-xs font-bold text-[var(--t3)] uppercase tracking-widest mb-3">Wager Amount (CHESS)</label>
@@ -254,11 +286,10 @@ export default function LobbyContent() {
                         <button
                           key={amt}
                           onClick={() => setWager(amt)}
-                          className={`py-3 rounded-xl border font-bold transition-all ${
-                            wager === amt 
-                              ? 'bg-[var(--c)] text-black border-[var(--c)] shadow-[0_0_20px_rgba(0,204,255,0.3)]' 
+                          className={`py-3 rounded-xl border font-bold transition-all ${wager === amt
+                              ? 'bg-[var(--c)] text-black border-[var(--c)] shadow-[0_0_20px_rgba(0,204,255,0.3)]'
                               : 'bg-[var(--b1)] text-[var(--t2)] border-[var(--b2)] hover:border-[var(--t3)]'
-                          }`}
+                            }`}
                         >
                           {amt}
                         </button>

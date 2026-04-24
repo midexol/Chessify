@@ -11,15 +11,15 @@ interface ClayCardProps extends HTMLAttributes<HTMLDivElement> {
 
 const paddingMap = {
   none: '',
-  sm:   'p-4',
-  md:   'p-6',
-  lg:   'p-8',
+  sm: 'p-4',
+  md: 'p-6',
+  lg: 'p-8',
 }
 
 const variantMap = {
-  default:  'clay',
-  cyan:     'clay-cyan',
-  inset:    'clay-inset',
+  default: 'clay',
+  cyan: 'clay-cyan',
+  inset: 'clay-inset',
   elevated: 'clay',
 }
 
