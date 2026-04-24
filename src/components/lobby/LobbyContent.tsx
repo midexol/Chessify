@@ -250,9 +250,9 @@ export default function LobbyContent() {
                 </div>
               </div>
 
-              <button className="w-full py-4 rounded-2xl border border-white/10 hover:bg-white/5 transition-colors text-xs font-bold tracking-widest text-gray-300 uppercase mt-auto">
+              <GlowButton variant="ghost" fullWidth>
                 VIEW HISTORY
-              </button>
+              </GlowButton>
             </div>
 
             <div className="rounded-[32px] border border-white/10 bg-slate-900/50 backdrop-blur-md p-8 md:p-10 flex flex-col gap-6 shadow-2xl">
@@ -260,12 +260,14 @@ export default function LobbyContent() {
                 <h4 className="font-bold text-[15px] tracking-widest text-white uppercase" style={{ fontFamily: 'var(--fd)' }}>Need CHESS?</h4>
                 <p className="text-[13px] text-gray-400 leading-relaxed">Top up your wallet with testnet tokens to start playing on {activeChain}.</p>
               </div>
-              <button
+              <GlowButton
+                variant="brand"
+                fullWidth
                 onClick={() => router.push('#faucet')}
-                className="w-full py-4 rounded-2xl bg-cyan-950/40 border border-cyan-500/30 hover:bg-cyan-900/60 transition-colors text-xs font-bold tracking-widest text-cyan-400 uppercase mt-2"
+                className="mt-2"
               >
                 VISIT FAUCET
-              </button>
+              </GlowButton>
             </div>
           </div>
         </div>
