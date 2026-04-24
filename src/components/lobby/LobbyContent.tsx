@@ -137,150 +137,135 @@ export default function LobbyContent() {
       <Navbar />
 
       {/* Ambient background effects & Grid from Hero */}
-      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 65% 55% at 50% 40%,rgba(0,204,255,.07) 0%,transparent 60%),radial-gradient(ellipse 35% 35% at 18% 80%,rgba(120,60,220,.05) 0%,transparent 60%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px)', backgroundSize: '52px 52px', pointerEvents: 'none', WebkitMaskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%,black 30%,transparent 80%)', maskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%,black 30%,transparent 80%)' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 65% 55% at 50% 40%,rgba(0,204,255,.07) 0%,transparent 60%),radial-gradient(ellipse 35% 35% at 18% 80%,rgba(120,60,220,.05) 0%,transparent 60%)', pointerEvents: 'none', zIndex: 0 }} />
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px)', backgroundSize: '52px 52px', pointerEvents: 'none', zIndex: 0, WebkitMaskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%,black 30%,transparent 80%)', maskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%,black 30%,transparent 80%)' }} />
 
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-12 pt-32 flex-1 flex flex-col">
-        {/* Unified Dashboard Header */}
-        <header className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-12 pb-6 border-b border-[var(--b1)] border-opacity-40">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex flex-col gap-4"
-          >
-            <h1 className="text-4xl md:text-[56px] font-black uppercase tracking-tighter leading-none" style={{ fontFamily: 'var(--fd)', textShadow: 'var(--hero-text-shadow)' }}>
-              Game <span style={{ color: 'var(--c)', textShadow: 'var(--king-text-shadow)' }}>Lobby</span>
-            </h1>
-            <div className="flex flex-wrap items-center gap-4">
-              <div className="flex items-center gap-2 bg-[var(--b1)] py-1.5 px-3 rounded-full border border-[var(--b2)] shadow-[0_0_12px_rgba(0,204,255,0.15)]">
-                <div className="w-1.5 h-1.5 rounded-full bg-[var(--c)]" style={{ animation: 'pulseDot 2s ease-in-out infinite' }} />
-                <span className="text-[11px] tracking-[0.2em] font-bold text-[var(--c)]" style={{ fontFamily: 'var(--fd)' }}>
-                  {activeChain?.toUpperCase() || 'NONE'}
-                </span>
-              </div>
-              <div className="flex items-center gap-2.5 px-3 py-1.5 bg-black/20 rounded-full border border-white/5">
-                <span className="text-[10px] tracking-[0.15em] uppercase font-bold text-[var(--t2)]" style={{ fontFamily: 'var(--fd)' }}>
-                  RATING
-                </span>
-                <span className="text-sm tracking-widest font-black text-[var(--t1)]">
-                  {rating} <span className="text-[10px] text-[var(--c)] opacity-80">ELO</span>
-                </span>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex items-center mt-4 md:mt-0"
-          >
-            <GlowButton parallelogram variant="brand" size="lg" onClick={() => setIsCreateModalOpen(true)}>
-              CREATE NEW MATCH
-            </GlowButton>
-          </motion.div>
-        </header>
-
-        {/* Main Grid System */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 flex-1 content-start">
-          {/* Open Matches List */}
-          <div className="lg:col-span-8 flex flex-col gap-5">
-            <h3 className="text-xs font-bold tracking-[0.25em] text-[var(--c)] opacity-80 uppercase pl-1" style={{ fontFamily: 'var(--fd)' }}>Open Challenges</h3>
-
-            <div className="flex flex-col gap-4">
-              {openGames.filter(g => g.chain === activeChain).map((game, idx) => (
-                <motion.div
-                  key={game.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.1 }}
-                >
-                  <ClayCard className="clay-dark-card transition-all duration-300 hover:border-[var(--c)] hover:shadow-[0_4px_30px_rgba(0,204,255,0.15)] group" padding="md">
-                    <div className="grid grid-cols-[auto_1fr_auto_auto] items-center gap-6">
-                      
-                      {/* ELO Block */}
-                      <div className="w-14 h-14 rounded-xl flex flex-col items-center justify-center font-bold text-[var(--c)] bg-black/40 border border-[var(--c)] border-opacity-20 shadow-inner">
-                        <span className="text-[9px] uppercase tracking-widest opacity-60">ELO</span>
-                        <span className="text-sm leading-none mt-0.5">{game.elo}</span>
-                      </div>
-                      
-                      {/* Player Info */}
-                      <div className="flex flex-col justify-center">
-                        <span className="text-[10px] tracking-[0.2em] text-[var(--t3)] uppercase font-bold mb-1" style={{ fontFamily: 'var(--fd)' }}>CHALLENGER</span>
-                        <span className="font-bold tracking-wide text-base text-white">{game.creator}</span>
-                      </div>
-
-                      {/* Wager amount */}
-                      <div className="flex flex-col justify-center text-right pr-4 border-r border-white/10">
-                        <span className="text-[10px] tracking-[0.2em] text-[var(--t3)] uppercase font-bold mb-1" style={{ fontFamily: 'var(--fd)' }}>WAGER</span>
-                        <div className="font-black text-[var(--c)] text-lg leading-none">{game.wager} <span className="text-[10px] opacity-70">CHESS</span></div>
-                      </div>
-
-                      {/* Action */}
-                      <div className="pl-2">
-                        <GlowButton
-                          size="md"
-                          variant="brand"
-                          onClick={() => handleJoinGame(game.id, game.wager)}
-                          disabled={isPending}
-                          className="opacity-90 group-hover:opacity-100 min-w-[120px]"
-                        >
-                          {isPending ? 'JOINING...' : 'JOIN MATCH'}
-                        </GlowButton>
-                      </div>
-
-                    </div>
-                  </ClayCard>
-                </motion.div>
-              ))}
-
-              {openGames.filter(g => g.chain === activeChain).length === 0 && (
-                <div className="py-24 text-center border-2 border-dashed border-[var(--b1)] rounded-3xl bg-[rgba(0,0,0,0.2)]">
-                  <p className="text-sm font-medium text-[var(--t2)] tracking-wider">NO OPEN MATCHES ON {activeChain?.toUpperCase()}</p>
+      {/* Bento Grid Architecture */}
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 p-6 max-w-7xl mx-auto w-full pt-16 flex-1 items-start">
+        
+        {/* Left Column (Span 8): Massive Bento Card containing Header + Open Challenges */}
+        <div className="lg:col-span-8 flex flex-col gap-8 rounded-3xl border border-white/10 bg-slate-900/50 backdrop-blur-xl p-8 xl:p-10 shadow-2xl">
+          
+          <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-white/10 pb-8">
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-3">
+              <h1 className="text-4xl md:text-[52px] font-black uppercase tracking-tighter leading-none" style={{ fontFamily: 'var(--fd)', textShadow: 'var(--hero-text-shadow)' }}>
+                Game <span style={{ color: 'var(--c)', textShadow: 'var(--king-text-shadow)' }}>Lobby</span>
+              </h1>
+              <div className="flex flex-wrap items-center gap-4">
+                <div className="flex items-center gap-2 bg-black/40 py-1.5 px-3 rounded-full border border-white/10 shadow-inner">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[var(--c)] animate-pulse" />
+                  <span className="text-[11px] tracking-[0.2em] font-bold text-[var(--c)]" style={{ fontFamily: 'var(--fd)' }}>
+                    {activeChain?.toUpperCase() || 'NONE'}
+                  </span>
                 </div>
-              )}
+                <div className="flex items-center gap-2 px-3 py-1 bg-black/20 rounded-full border border-white/5">
+                  <span className="text-[10px] tracking-[0.15em] uppercase font-bold text-[var(--t2)]" style={{ fontFamily: 'var(--fd)' }}>
+                    RATING
+                  </span>
+                  <span className="text-sm tracking-widest font-black text-white">
+                    {rating} <span className="text-[10px] text-[var(--c)] opacity-80">ELO</span>
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
+              {/* Keep parallelogram for the primary visual CTA only */}
+              <GlowButton parallelogram variant="brand" size="lg" onClick={() => setIsCreateModalOpen(true)}>
+                CREATE NEW MATCH
+              </GlowButton>
+            </motion.div>
+          </header>
+
+          <div className="flex flex-col gap-4">
+            <h3 className="text-xs font-bold tracking-[0.25em] text-[var(--t3)] uppercase mb-2" style={{ fontFamily: 'var(--fd)' }}>Open Challenges</h3>
+
+            {openGames.filter(g => g.chain === activeChain).map((game, idx) => (
+              <motion.div
+                key={game.id}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1 }}
+              >
+                <div className="rounded-xl border border-white/5 bg-black/20 hover:bg-black/40 hover:border-white/10 transition-colors p-4 group flex items-center justify-between gap-6">
+                  
+                  <div className="flex items-center gap-5">
+                    <div className="w-12 h-12 rounded-lg flex flex-col items-center justify-center font-bold text-cyan-400 bg-cyan-950/30 border border-cyan-500/20">
+                      <span className="text-[8px] uppercase tracking-widest opacity-60">ELO</span>
+                      <span className="text-sm leading-none mt-0.5">{game.elo}</span>
+                    </div>
+                    
+                    <div className="flex flex-col justify-center">
+                      <span className="text-[9px] tracking-[0.2em] text-gray-500 uppercase font-bold mb-1" style={{ fontFamily: 'var(--fd)' }}>CHALLENGER</span>
+                      <span className="font-bold tracking-wide text-sm text-gray-200">{game.creator}</span>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col justify-center text-right pr-2">
+                    <span className="text-[9px] tracking-[0.2em] text-gray-500 uppercase font-bold mb-1" style={{ fontFamily: 'var(--fd)' }}>WAGER</span>
+                    <div className="font-black text-cyan-400 text-base leading-none">{game.wager} <span className="text-[9px] text-cyan-700">CHESS</span></div>
+                  </div>
+
+                  <GlowButton
+                    size="md"
+                    onClick={() => handleJoinGame(game.id, game.wager)}
+                    disabled={isPending}
+                    className="min-w-[110px]"
+                  >
+                    {isPending ? '...' : 'JOIN MATCH'}
+                  </GlowButton>
+
+                </div>
+              </motion.div>
+            ))}
+
+            {openGames.filter(g => g.chain === activeChain).length === 0 && (
+              <div className="py-20 text-center border border-dashed border-white/10 rounded-2xl bg-black/20">
+                <p className="text-sm font-medium text-gray-500 tracking-wider">NO OPEN MATCHES ON {activeChain?.toUpperCase()}</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Right Column (Span 4): Stacked Profile & Faucet Bento Cards */}
+        <div className="lg:col-span-4 flex flex-col gap-6">
+          
+          <div className="rounded-2xl border border-white/10 bg-slate-900/50 backdrop-blur-md p-6 flex flex-col">
+            <h3 className="text-sm font-bold tracking-wider text-cyan-400 uppercase mb-6" style={{ fontFamily: 'var(--fd)' }}>Profile Stats</h3>
+            
+            <div className="flex items-baseline gap-2 mb-6">
+              <span className="text-[44px] font-black text-white leading-none" style={{ fontFamily: 'var(--fd)' }}>{balance}</span>
+              <span className="text-sm text-cyan-500 font-bold tracking-widest">CHESS</span>
             </div>
+
+            <div className="flex justify-between items-center bg-black/30 p-4 rounded-xl border border-white/5 mb-8">
+              <div className="flex flex-col">
+                <span className="text-[10px] text-gray-500 font-bold tracking-widest uppercase mb-1">Wins</span>
+                <span className="text-xl font-bold text-white leading-none">14</span>
+              </div>
+              <div className="w-[1px] h-8 bg-white/10" />
+              <div className="flex flex-col text-right">
+                <span className="text-[10px] text-gray-500 font-bold tracking-widest uppercase mb-1">Losses</span>
+                <span className="text-xl font-bold text-gray-300 leading-none">8</span>
+              </div>
+            </div>
+
+            <button className="w-full py-3.5 rounded-full border border-white/10 hover:bg-white/5 transition-colors text-xs font-bold tracking-widest text-gray-300 uppercase mt-auto">
+              VIEW HISTORY
+            </button>
           </div>
 
-          {/* Sidebar / Profile Stats */}
-          <div className="lg:col-span-4 flex flex-col gap-6">
-            <h3 className="text-xs font-bold tracking-[0.25em] text-[var(--c)] opacity-80 uppercase pl-1" style={{ fontFamily: 'var(--fd)' }}>Profile Stats</h3>
-
-            <ClayCard className="clay-cyan-card flex flex-col relative" padding="lg">
-              {/* Top Accent Line */}
-              <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[var(--c)] to-transparent opacity-80" />
-              
-              <div className="flex flex-col gap-2 mb-8">
-                <span className="text-[10px] text-[var(--t2)] uppercase tracking-[0.25em] font-bold" style={{ fontFamily: 'var(--fd)' }}>CHESS Balance</span>
-                <div className="text-4xl font-black text-white flex items-baseline gap-2 leading-none" style={{ fontFamily: 'var(--fd)' }}>
-                  {balance} <span className="text-[var(--c)] text-sm tracking-widest font-bold">CHESS</span>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-6 pt-6 pb-8 border-t border-[var(--nav-border)]">
-                <div className="flex flex-col gap-1.5">
-                  <span className="text-[10px] text-[var(--t2)] uppercase tracking-[0.2em] font-bold" style={{ fontFamily: 'var(--fd)' }}>Wins</span>
-                  <span className="text-2xl font-black text-white drop-shadow-[0_0_12px_rgba(255,255,255,0.2)] leading-none">14</span>
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <span className="text-[10px] text-[var(--t2)] uppercase tracking-[0.2em] font-bold" style={{ fontFamily: 'var(--fd)' }}>Losses</span>
-                  <span className="text-2xl font-bold text-[var(--t2)] leading-none">8</span>
-                </div>
-              </div>
-
-              <div className="mt-auto">
-                <GlowButton fullWidth variant="ghost" size="sm">VIEW HISTORY</GlowButton>
-              </div>
-            </ClayCard>
-
-            <ClayCard className="clay-dark-card border-[rgba(0,204,255,0.1)] flex flex-col gap-4" padding="md">
-              <div className="flex flex-col gap-1">
-                <h4 className="font-bold text-sm tracking-wide text-white" style={{ fontFamily: 'var(--fd)' }}>Need CHESS?</h4>
-                <p className="text-xs text-[var(--t2)] leading-relaxed">Top up your wallet with testnet tokens to start playing on {activeChain}.</p>
-              </div>
-              <GlowButton fullWidth variant="brand" size="md" onClick={() => router.push('#faucet')}>
-                VISIT FAUCET
-              </GlowButton>
-            </ClayCard>
+          <div className="rounded-2xl border border-white/10 bg-slate-900/50 backdrop-blur-md p-6 flex flex-col gap-4">
+            <div className="flex flex-col gap-1.5">
+              <h4 className="font-bold text-sm tracking-widest text-white uppercase" style={{ fontFamily: 'var(--fd)' }}>Need CHESS?</h4>
+              <p className="text-xs text-gray-400 leading-relaxed">Top up your wallet with testnet tokens to start playing on {activeChain}.</p>
+            </div>
+            <button 
+              onClick={() => router.push('#faucet')}
+              className="w-full py-3.5 rounded-full bg-cyan-950/40 border border-cyan-500/30 hover:bg-cyan-900/60 transition-colors text-xs font-bold tracking-widest text-cyan-400 uppercase mt-2"
+            >
+              VISIT FAUCET
+            </button>
           </div>
         </div>
       </div>

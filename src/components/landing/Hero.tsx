@@ -40,7 +40,7 @@ export function Navbar() {
   }
 
   return (
-    <nav className="hero-navbar" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "18px 56px", position: "relative", zIndex: 20 }}>
+    <nav className="hero-navbar w-full flex items-center justify-between" style={{ padding: "18px 56px", position: "relative", zIndex: 20 }}>
       <div>
         <Image src="/chessify.png" alt="Chessify" width={200} height={50} style={{ objectFit: "contain" }} />
       </div>
@@ -57,7 +57,7 @@ export function Navbar() {
           </a>
         ))}
       </div>
-      <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+      <div className="flex items-center gap-3">
         <div className="hidden sm:block">
           <ThemeToggle />
         </div>
