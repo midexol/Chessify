@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useWallet } from '@/components/wallet-provider'
 import GlowButton from '@/components/ui/GlowButton'
 import ClayCard from '@/components/ui/ClayCard'
+import ComingSoonOverlay from '@/components/ui/ComingSoonOverlay'
 import { useStacksRead } from '@/hooks/useStacksRead'
 import { useStacksChess } from '@/hooks/useStacksChess'
 import { useRouter } from 'next/navigation'
@@ -27,6 +28,9 @@ export default function LobbyContent() {
   const { getTokenBalance: getStacksBalance, getPlayerStats: getStacksStats } = useStacksRead()
   const router = useRouter()
 
+  const [isComingSoonOpen, setIsComingSoonOpen] = useState(false)
+  const MAINTENANCE_MODE = true
+  
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
   const [isPending, setIsPending] = useState(false)
   const [wager, setWager] = useState(100)
@@ -78,6 +82,8 @@ export default function LobbyContent() {
   ]
 
   const handleCreateGame = async () => {
+    if (MAINTENANCE_MODE) return setIsComingSoonOpen(true)
+    
     setIsPending(true)
     try {
       if (activeChain === 'stacks') {
@@ -97,6 +103,8 @@ export default function LobbyContent() {
   }
 
   const handleJoinGame = async (gameId: number, matchWager: number) => {
+    if (MAINTENANCE_MODE) return setIsComingSoonOpen(true)
+
     setIsPending(true)
     try {
       if (activeChain === 'stacks') {
@@ -113,6 +121,21 @@ export default function LobbyContent() {
     } finally {
       setIsPending(false)
     }
+  }
+
+  const handleFaucetClick = () => {
+    if (MAINTENANCE_MODE) return setIsComingSoonOpen(true)
+    router.push('#faucet')
+  }
+
+  const handleHistoryClick = () => {
+    if (MAINTENANCE_MODE) return setIsComingSoonOpen(true)
+    // Router logic for view history when implemented
+  }
+
+  const handleOpenCreateModal = () => {
+    if (MAINTENANCE_MODE) return setIsComingSoonOpen(true)
+    setIsCreateModalOpen(true)
   }
 
   if (!isConnected && !isStacksConnected) {
@@ -172,7 +195,7 @@ export default function LobbyContent() {
               </motion.div>
 
               <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
-                <GlowButton parallelogram variant="brand" size="lg" onClick={() => setIsCreateModalOpen(true)}>
+                <GlowButton parallelogram variant="brand" size="lg" onClick={handleOpenCreateModal}>
                   CREATE NEW MATCH
                 </GlowButton>
               </motion.div>
@@ -250,7 +273,7 @@ export default function LobbyContent() {
                 </div>
               </div>
 
-              <GlowButton variant="ghost" fullWidth>
+              <GlowButton variant="ghost" fullWidth onClick={handleHistoryClick}>
                 VIEW HISTORY
               </GlowButton>
             </div>
@@ -263,7 +286,7 @@ export default function LobbyContent() {
               <GlowButton
                 variant="brand"
                 fullWidth
-                onClick={() => router.push('#faucet')}
+                onClick={handleFaucetClick}
                 className="mt-2"
               >
                 VISIT FAUCET
@@ -323,6 +346,8 @@ export default function LobbyContent() {
           </div>
         )}
       </AnimatePresence>
+
+      <ComingSoonOverlay isOpen={isComingSoonOpen} onClose={() => setIsComingSoonOpen(false)} />
     </main>
   )
 }
