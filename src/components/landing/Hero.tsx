@@ -27,25 +27,13 @@ const KEYFRAMES = `
 }
 `
 
-function KnightPiece() {
-  return (
-    <svg viewBox="0 0 90 150" width="100%">
-      <defs>
-        <linearGradient id="kbgkn" x1="20%" y1="0%" x2="80%" y2="100%">
-          <stop offset="0%" stopColor="#2a2a52" />
-          <stop offset="100%" stopColor="#04040c" />
-        </linearGradient>
-      </defs>
-      <ellipse cx="45" cy="142" rx="26" ry="7" fill="rgba(0,0,0,.55)" />
-      <path d="M18 137Q16 132 14 125L22 118L68 118L76 125Q74 132 72 137Z" fill="url(#kbgkn)" stroke="rgba(0,204,255,.16)" strokeWidth="0.8" />
-      <path d="M24 118Q22 95 32 75L40 62L55 60L66 75Q72 95 70 118Z" fill="url(#kbgkn)" />
-      <path d="M40 62L36 48L42 30L52 20L66 26L70 36L66 46L60 52L55 60Z" fill="url(#kbgkn)" stroke="rgba(0,204,255,.25)" strokeWidth="0.8" />
-      <circle cx="58" cy="34" r="2.5" fill="#00ccff" style={{ filter: "drop-shadow(0 0 6px #00ccff) drop-shadow(0 0 14px rgba(0,204,255,.7))" }} />
-      <ellipse cx="47" cy="82" rx="18" ry="4" fill="rgba(0,0,0,.3)" />
-      <path d="M30 82Q30 75 47 73Q64 75 64 82Q64 89 47 91Q30 89 30 82Z" fill="url(#kbgkn)" stroke="rgba(0,204,255,.3)" strokeWidth="0.8" />
-    </svg>
-  );
-}
+export function Navbar() {
+  const {
+    isConnected, address,
+    isStacksConnected, stacksAddress,
+    isMiniPay, connect, connectStacks,
+    disconnect, activeChain, setActiveChain
+  } = useWallet()
 
   const formatAddress = (addr: string) => {
     return `${addr.slice(0, 6)}...${addr.slice(-4)}`
@@ -148,17 +136,6 @@ function KnightPiece() {
   )
 }
 
-function KingPiece() {
-  return (
-    <svg viewBox="0 0 90 160" width="100%">
-      <defs>
-        <linearGradient id="kbg" x1="25%" y1="0%" x2="75%" y2="100%"><stop offset="0%" stopColor="#353566" /><stop offset="40%" stopColor="#1a1a45" /><stop offset="100%" stopColor="#05050f" /></linearGradient>
-        <radialGradient id="ks" cx="26%" cy="16%" r="36%"><stop offset="0%" stopColor="rgba(255,255,255,.22)" /><stop offset="100%" stopColor="rgba(255,255,255,0)" /></radialGradient>
-        <linearGradient id="kr" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stopColor="rgba(0,204,255,.52)" /><stop offset="28%" stopColor="rgba(0,204,255,.1)" /><stop offset="100%" stopColor="rgba(0,204,255,0)" /></linearGradient>
-      </defs>
-      {/* Shadow */}
-      <ellipse cx="45" cy="142" rx="26" ry="7" fill="rgba(0,0,0,.55)" />
-
 function QueenPiece() {
   return (
     <svg viewBox="0 0 85 155" width="100%">
@@ -186,6 +163,17 @@ function QueenPiece() {
     </svg>
   )
 }
+
+function KingPiece() {
+  return (
+    <svg viewBox="0 0 90 160" width="100%">
+      <defs>
+        <linearGradient id="kbg" x1="25%" y1="0%" x2="75%" y2="100%"><stop offset="0%" stopColor="#353566" /><stop offset="40%" stopColor="#1a1a45" /><stop offset="100%" stopColor="#05050f" /></linearGradient>
+        <radialGradient id="ks" cx="26%" cy="16%" r="36%"><stop offset="0%" stopColor="rgba(255,255,255,.22)" /><stop offset="100%" stopColor="rgba(255,255,255,0)" /></radialGradient>
+        <linearGradient id="kr" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stopColor="rgba(0,204,255,.52)" /><stop offset="28%" stopColor="rgba(0,204,255,.1)" /><stop offset="100%" stopColor="rgba(0,204,255,0)" /></linearGradient>
+      </defs>
+      {/* Shadow */}
+      <ellipse cx="45" cy="142" rx="26" ry="7" fill="rgba(0,0,0,.55)" />
 
       {/* Base */}
       <path d="M18 137Q16 132 14 125L22 118L68 118L76 125Q74 132 72 137Z" fill="url(#kbg)" stroke="rgba(0,204,255,.16)" strokeWidth="0.8" />
@@ -242,11 +230,25 @@ function BishopPiece() {
   )
 }
 
-export default function Hero() {
-  const { isConnected, isStacksConnected, connect } = useWallet()
+function KnightPiece() {
   return (
-    <section className="hero-section" style={{ background: 'var(--bg)', position: 'relative', overflow: 'hidden' }}>
-      <style>{KEYFRAMES}</style>
+    <svg viewBox="0 0 90 150" width="100%">
+      <defs>
+        <linearGradient id="kbgkn" x1="20%" y1="0%" x2="80%" y2="100%">
+          <stop offset="0%" stopColor="#2a2a52" />
+          <stop offset="100%" stopColor="#04040c" />
+        </linearGradient>
+      </defs>
+      <ellipse cx="45" cy="142" rx="26" ry="7" fill="rgba(0,0,0,.55)" />
+      <path d="M18 137Q16 132 14 125L22 118L68 118L76 125Q74 132 72 137Z" fill="url(#kbgkn)" stroke="rgba(0,204,255,.16)" strokeWidth="0.8" />
+      <path d="M24 118Q22 95 32 75L40 62L55 60L66 75Q72 95 70 118Z" fill="url(#kbgkn)" />
+      <path d="M40 62L36 48L42 30L52 20L66 26L70 36L66 46L60 52L55 60Z" fill="url(#kbgkn)" stroke="rgba(0,204,255,.25)" strokeWidth="0.8" />
+      <circle cx="58" cy="34" r="2.5" fill="#00ccff" style={{ filter: "drop-shadow(0 0 6px #00ccff) drop-shadow(0 0 14px rgba(0,204,255,.7))" }} />
+      <ellipse cx="47" cy="82" rx="18" ry="4" fill="rgba(0,0,0,.3)" />
+      <path d="M30 82Q30 75 47 73Q64 75 64 82Q64 89 47 91Q30 89 30 82Z" fill="url(#kbgkn)" stroke="rgba(0,204,255,.3)" strokeWidth="0.8" />
+    </svg>
+  );
+}
 
 function RookPiece() {
   return (
@@ -277,13 +279,11 @@ function RookPiece() {
   )
 }
 
-export function Navbar() {
-  const {
-    isConnected, address,
-    isStacksConnected, stacksAddress,
-    isMiniPay, connect, connectStacks,
-    disconnect, activeChain, setActiveChain
-  } = useWallet()
+export default function Hero() {
+  const { isConnected, isStacksConnected, connect } = useWallet()
+  return (
+    <section className="hero-section" style={{ background: 'var(--bg)', position: 'relative', overflow: 'hidden' }}>
+      <style>{KEYFRAMES}</style>
 
       {/* Ambient mesh */}
       <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 65% 55% at 50% 40%,rgba(0,204,255,.07) 0%,transparent 60%),radial-gradient(ellipse 35% 35% at 18% 80%,rgba(120,60,220,.05) 0%,transparent 60%)', pointerEvents: 'none' }} />
