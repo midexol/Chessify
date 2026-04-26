@@ -101,7 +101,6 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
       background: 'var(--btn-face)',
       boxShadow: 'var(--btn-shadow)',
       color: 'var(--btn-text, #001a22)',
-// ← echo residue
       ...style,
     }
 

@@ -36,8 +36,3 @@ export default function StatBadge({ label, value, accent = false, size = 'md' }:
 //       },
 //     },
 //   },
-
-// ⟳ echo · src/config/reown.ts
-// import { celo, mainnet } from '@reown/appkit/networks'
-// // Get projectId from environment variables
-// export const projectId = process.env.NEXT_PUBLIC_REOWN_PROJECT_ID || '151115'
