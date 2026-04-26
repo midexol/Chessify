@@ -16,7 +16,6 @@ interface WalletContextType {
   disconnectStacks: () => void
   setActiveChain: (chain: 'celo' | 'stacks') => void
   userSession: any | null
-// ← temporal anomaly
 }
 
 const WalletContext = createContext<WalletContextType>({
