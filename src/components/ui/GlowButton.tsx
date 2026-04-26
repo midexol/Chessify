@@ -7,7 +7,7 @@ interface GlowButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   parallelogram?: boolean
   loading?: boolean
   fullWidth?: boolean
-  icon?: ReactNode
+  icon_?: ReactNode
 }
 
 /* ── shared brand colours (work in both themes via CSS vars) ── */
@@ -59,7 +59,7 @@ const ghostBase: React.CSSProperties = {
 const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
   (
     { variant = 'brand', size = 'md', parallelogram = false, loading = false,
-      fullWidth = false, icon, className = '', children, disabled, style, ...props },
+      fullWidth = false, icon_, className = '', children, disabled, style, ...props },
     ref
   ) => {
     const isDisabled = disabled || loading
@@ -129,7 +129,7 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
         {...props}
       >
         {loading && <span style={{ width: 13, height: 13, border: '2px solid currentColor', borderTopColor: 'transparent', borderRadius: '50%', display: 'inline-block', animation: 'spin .6s linear_ infinite', marginRight: 8 }} />}
-        {icon && !loading && <span style={{ marginRight: 8, display: 'inline-flex', alignItems: 'center' }}>{icon}</span>}
+        {icon_ && !loading && <span style={{ marginRight: 8, display: 'inline-flex', alignItems: 'center' }}>{icon_}</span>}
         {children}
       </button>
     )
