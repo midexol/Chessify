@@ -2,39 +2,51 @@
 
 import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Float, Environment, MeshDistortMaterial } from '@react-three/drei'
-import { motion } from 'framer-motion'
+import { Float, Environment, MeshDistortMaterial, Text } from '@react-three/drei'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import GlowButton from '@/components/ui/GlowButton'
 import { useHistory } from '@/hooks/useHistory'
 import { useWallet } from '@/components/wallet-provider'
-
-function KingPiece() {
-  return (
-    <Float speed={1.5} rotationIntensity={0.5} floatIntensity={0.5}>
-      <mesh scale={1.8} rotation={[0, Math.PI / 4, 0]}>
-        <octahedronGeometry args={[1, 0]} />
-        <MeshDistortMaterial
-          color="#00ccff"
-          speed={2}
-          distort={0.4}
-          radius={1}
-          emissive="#00ccff"
-          emissiveIntensity={0.5}
-        />
-      </mesh>
-    </Float>
-  )
-}
+import { Queen, PieceView } from '@/components/ui/ChessModels'
 
 function Scene() {
   return (
     <>
-      <ambientLight intensity={0.2} />
-      <pointLight position={[10, 10, 10]} intensity={1.5} color="#00ccff" />
-      <pointLight position={[-10, 5, -10]} intensity={1} color="#6a0dad" />
+      <ambientLight intensity={1} />
+      <pointLight position={[10, 10, 10]} intensity={2} color="#00ccff" />
+      <pointLight position={[-10, 5, -10]} intensity={1.5} color="#6a0dad" />
       <Environment preset="city" />
-      <KingPiece />
+      
+      {/* Background Hero Piece */}
+      <Queen color="#00ccff" emissive="#00ccff" position={[0, -0.5, 0]} floatIntensity={0.8} rotationIntensity={0.4} />
+
+      {/* Floating Background Labels (Polish) */}
+      <Float speed={2} rotationIntensity={0.2} floatIntensity={1}>
+        <Text
+          position={[-4, 2, -2]}
+          fontSize={0.8}
+          color="#00ccff"
+          font="/fonts/font_discovery.woff" // Assuming a custom font exists or using default
+          material-toneMapped={false}
+          material-transparent={true}
+          material-opacity={0.15}
+        >
+          MASTERS
+        </Text>
+      </Float>
+
+      <Float speed={1.5} rotationIntensity={0.1} floatIntensity={0.5}>
+        <Text
+          position={[4, -2, -1]}
+          fontSize={0.6}
+          color="#6a0dad"
+          material-transparent={true}
+          material-opacity={0.1}
+        >
+          HISTORY
+        </Text>
+      </Float>
     </>
   )
 }
@@ -93,53 +105,60 @@ export function HistoryContent() {
                   </div>
                 ) : (
                   <div className="divide-y divide-white/5">
-                    {history.map((item, idx) => (
-                      <motion.div
-                        key={item.id + item.timestamp}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: idx * 0.05 }}
-                        className="p-6 md:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 hover:bg-white/[0.02] transition-colors"
-                      >
-                        <div className="flex items-center gap-6 w-full sm:w-auto">
-                          <div className={`w-12 h-12 shrink-0 rounded-xl flex items-center justify-center font-bold border ${item.chain === 'celo' ? 'text-green-400 bg-green-950/20 border-green-500/20' : 'text-orange-400 bg-orange-950/20 border-orange-500/20'}`}>
-                            {item.chain === 'celo' ? 'C' : 'S'}
-                          </div>
-                          <div className="flex flex-col min-w-0">
-                            <div className="flex items-center gap-2 mb-1">
-                              <span className="text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded bg-white/10 text-white/50">
-                                {item.role}
-                              </span>
-                              <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest truncate max-w-[150px]">
-                                vs {item.opponent.slice(0, 8)}...
-                              </span>
+                    <AnimatePresence mode="popLayout">
+                      {history.map((item, idx) => (
+                        <motion.div
+                          key={item.id + item.timestamp}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, scale: 0.95 }}
+                          transition={{ delay: idx * 0.05 }}
+                          className="p-6 md:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 hover:bg-white/[0.02] transition-colors"
+                        >
+                          <div className="flex items-center gap-6 w-full sm:w-auto">
+                            <div className="w-16 h-16 shrink-0 rounded-2xl flex items-center justify-center border border-white/10 bg-black/40 overflow-hidden relative group">
+                              <PieceView 
+                                type={item.role.toLowerCase() === 'creator' ? 'king' : 'rook'} 
+                                color={item.chain === 'celo' ? '#35ee66' : '#ff9900'} 
+                                className="w-full h-full"
+                              />
                             </div>
-                            <span className="font-black text-xl text-white tracking-tight">
-                              MATCH #{item.id}
-                            </span>
-                          </div>
-                        </div>
-
-                        <div className="flex items-center justify-between w-full sm:w-auto sm:gap-12 shrink-0">
-                          <div className="flex flex-col sm:text-right">
-                            <span className="text-[9px] font-bold text-gray-500 uppercase tracking-widest mb-1">Wager</span>
-                            <span className="text-lg font-black text-cyan-400">
-                              {item.wager} <span className="text-[10px] opacity-60">CHESS</span>
-                            </span>
-                          </div>
-
-                          <div className="flex flex-col text-right">
-                            <span className="text-[9px] font-bold text-gray-500 uppercase tracking-widest mb-1">Status</span>
-                            <div className="flex items-center gap-2 justify-end">
-                              <div className={`w-1.5 h-1.5 rounded-full ${item.status === 'Active' ? 'bg-green-400 animate-pulse' : 'bg-gray-400'}`} />
-                              <span className={`text-sm font-black uppercase italic ${item.status === 'Active' ? 'text-green-400' : 'text-gray-300'}`}>
-                                {item.status}
+                            <div className="flex flex-col min-w-0">
+                              <div className="flex items-center gap-2 mb-1">
+                                <span className="text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded bg-white/10 text-white/50">
+                                  {item.role}
+                                </span>
+                                <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest truncate max-w-[150px]">
+                                  vs {item.opponent.slice(0, 8)}...
+                                </span>
+                              </div>
+                              <span className="font-black text-xl text-white tracking-tight">
+                                MATCH #{item.id}
                               </span>
                             </div>
                           </div>
-                        </div>
-                      </motion.div>
-                    ))}
+
+                          <div className="flex items-center justify-between w-full sm:w-auto sm:gap-12 shrink-0">
+                            <div className="flex flex-col sm:text-right">
+                              <span className="text-[9px] font-bold text-gray-500 uppercase tracking-widest mb-1">Wager</span>
+                              <span className="text-lg font-black text-cyan-400">
+                                {item.wager} <span className="text-[10px] opacity-60">CHESS</span>
+                              </span>
+                            </div>
+
+                            <div className="flex flex-col text-right">
+                              <span className="text-[9px] font-bold text-gray-500 uppercase tracking-widest mb-1">Status</span>
+                              <div className="flex items-center gap-2 justify-end">
+                                <div className={`w-1.5 h-1.5 rounded-full ${item.status === 'Active' ? 'bg-green-400 animate-pulse' : 'bg-gray-400'}`} />
+                                <span className={`text-sm font-black uppercase italic ${item.status === 'Active' ? 'text-green-400' : 'text-gray-300'}`}>
+                                  {item.status}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </AnimatePresence>
                   </div>
                 )}
               </div>

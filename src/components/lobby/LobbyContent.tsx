@@ -17,42 +17,10 @@ import { useReadContract, useAccount } from 'wagmi'
 import { CHESS_GAME_ABI, CHESS_TOKEN_ABI } from '@/config/abis'
 import { formatUnits } from 'viem'
 import { Canvas } from '@react-three/fiber'
-import { useGLTF, Float, Environment } from '@react-three/drei'
-import * as THREE from 'three'
-
-// STRICT RULE: Preload all 3D assets
-useGLTF.preload('/models/King.glb')
-useGLTF.preload('/models/QueenChess.glb')
-useGLTF.preload('/models/Rook.glb')
-useGLTF.preload('/models/pawn.glb')
+import { Environment } from '@react-three/drei'
+import { King, Queen, Rook, Pawn } from '@/components/ui/ChessModels'
 
 function LiveBackgroundPieces() {
-  const king = useGLTF('/models/King.glb')
-  const queen = useGLTF('/models/QueenChess.glb')
-  const rook = useGLTF('/models/Rook.glb')
-  const pawn = useGLTF('/models/pawn.glb')
-
-  const cyanMaterial = useMemo(() => new THREE.MeshStandardMaterial({
-    color: '#00ccff', emissive: '#00ccff', emissiveIntensity: 0.4, roughness: 0.2, metalness: 0.8
-  }), [])
-
-  const slateMaterial = useMemo(() => new THREE.MeshStandardMaterial({
-    color: '#0f172a', roughness: 0.4, metalness: 0.6
-  }), [])
-
-  const applyMaterial = (scene: THREE.Group, material: THREE.Material) => {
-    const clone = scene.clone()
-    clone.traverse((child: any) => {
-      if (child.isMesh) child.material = material
-    })
-    return clone
-  }
-
-  const coloredQueen = useMemo(() => applyMaterial(queen.scene, cyanMaterial), [queen.scene, cyanMaterial])
-  const coloredKing = useMemo(() => applyMaterial(king.scene, cyanMaterial), [king.scene, cyanMaterial])
-  const coloredRook = useMemo(() => applyMaterial(rook.scene, slateMaterial), [rook.scene, slateMaterial])
-  const coloredPawn = useMemo(() => applyMaterial(pawn.scene, slateMaterial), [pawn.scene, slateMaterial])
-
   return (
     <>
       <ambientLight intensity={1.5} />
@@ -60,21 +28,10 @@ function LiveBackgroundPieces() {
       <directionalLight position={[-10, -10, -5]} intensity={1} color="#6a0dad" />
       <Environment preset="city" />
 
-      <Float speed={0.8} rotationIntensity={0.2} floatIntensity={0.4} position={[-3.5, 2.5, -2]}>
-        <primitive object={coloredQueen} scale={1.62} rotation={[0.1, 0.4, 0.1]} />
-      </Float>
-
-      <Float speed={1.0} rotationIntensity={0.3} floatIntensity={0.5} position={[3.5, 3, -3]}>
-        <primitive object={coloredKing} scale={1.87} rotation={[-0.1, -0.2, 0.2]} />
-      </Float>
-
-      <Float speed={0.9} rotationIntensity={0.15} floatIntensity={0.3} position={[-3.5, -2, -1.5]}>
-        <primitive object={coloredRook} scale={1.37} rotation={[0.1, 0.2, -0.1]} />
-      </Float>
-
-      <Float speed={0.7} rotationIntensity={0.25} floatIntensity={0.4} position={[3.5, -2.5, -1]}>
-        <primitive object={coloredPawn} scale={1.25} rotation={[-0.2, -0.1, 0.3]} />
-      </Float>
+      <Queen position={[-3.5, 2.5, -2]} />
+      <King position={[3.5, 3, -3]} />
+      <Rook position={[-3.5, -2, -1.5]} color="#1e293b" emissive="#000" />
+      <Pawn position={[3.5, -2.5, -1]} color="#1e293b" emissive="#000" />
     </>
   )
 }
