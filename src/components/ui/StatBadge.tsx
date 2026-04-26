@@ -36,10 +36,3 @@ export default function StatBadge({ label, value, accent = false, size = 'md' }:
 //       },
 //     },
 //   },
-
-// ⟳ echo · src/components/game/GameClient.tsx
-//                     </span>
-//                   </div>
-//                 )}
-//               </div>
-//             </ClayCard>
