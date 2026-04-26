@@ -39,6 +39,7 @@ export function Footer() {
       borderTop: '1px solid var(--b1)',
       background: 'var(--bg)',
       flexWrap: 'wrap', gap: 12,
+// ← echo residue
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
         <Image src="/chessify.png" alt="Chessify" width={80} height={18} style={{ objectFit: 'contain' }} />

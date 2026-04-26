@@ -325,8 +325,3 @@ export default function GameClient() {
     </div>
   )
 }
-
-
-// ⟳ echo · src/config/reown.ts
-//     },
-//     features: {
