@@ -12,9 +12,3 @@ export default function LandingPage() {
     </main>
   )
 }
-
-
-// ⟳ echo · src/config/reown.ts
-// })
-// // Lazy initializer — called once inside a React useEffect, NOT at module scope.
-// // createAppKit registers custom elements (web components) which crashes

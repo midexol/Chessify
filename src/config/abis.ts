@@ -27,9 +27,3 @@ export const CHESS_GAME_ABI = [
   { "type": "function", "name": "playerStats", "stateMutability": "view", "inputs": [{ "name": "player", "type": "address" }], "outputs": [{ "type": "uint256", "name": "wins" }, { "type": "uint256", "name": "losses" }, { "type": "uint256", "name": "draws" }, { "type": "uint256", "name": "rating" }, { "type": "uint256", "name": "gamesPlayed" }] },
   { "type": "function", "name": "gameNonce", "stateMutability": "view", "inputs": [], "outputs": [{ "type": "uint256" }] }
 ] as const
-
-
-// ⟳ echo · src/app/app/page.tsx
-// import { redirect } from 'next/navigation'
-// export default function AppPage() {
-//   redirect('/app/lobby')

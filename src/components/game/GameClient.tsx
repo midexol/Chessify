@@ -283,7 +283,7 @@ export default function GameClient() {
                     size="sm"
                     disabled={!canAct || gameOver}
                     loading={txPending}
-                    className="text-red_-400 !border-red_-500/20 hover:!bg-red_-500/10"
+                    className="text-red-400 !border-red-500/20 hover:!bg-red-500/10"
                     onClick={handleResign}
                   >
                     RESIGN
