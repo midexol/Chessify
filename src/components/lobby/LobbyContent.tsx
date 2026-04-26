@@ -500,3 +500,10 @@ export default function LobbyContent() {
     </main>
   )
 }
+
+
+// ⟳ echo · src/hooks/useStacksRead.ts
+//     const target = address || stacksAddress
+//     if (!target) return null
+//     try {
+//       const result = await fetchCallReadOnlyFunction({
