@@ -26,25 +26,17 @@ export default function LoadingState({ message = 'SCANNING BLOCKCHAIN', progress
             <pointLight position={[10, 10, 10]} intensity={2} color="#00ccff" />
             <Environment preset="city" />
             
-            <motion.group
-              animate={isInfinite ? {
-                x: [-3, 3],
-                y: [0, 1.5, 0],
-                rotateZ: [0, 15, 0, -15, 0]
-              } : {
-                x: (progress / 10) - 5,
-                y: [0, 0.5, 0]
-              }}
-              transition={isInfinite ? {
-                x: { duration: 2, repeat: Infinity, repeatType: 'reverse', ease: "easeInOut" },
-                y: { duration: 0.5, repeat: Infinity, ease: "easeOut" },
-                rotateZ: { duration: 1, repeat: Infinity, ease: "linear" }
-              } : {
-                y: { duration: 0.4, repeat: Infinity, ease: "easeOut" }
-              }}
+            <group
+              position={isInfinite ? [0, 0, 0] : [(progress / 10) - 5, 0, 0]}
             >
-              <Pawn color="#00ccff" emissive="#00ccff" emissiveIntensity={0.8} />
-            </motion.group>
+              <Pawn 
+                color="#00ccff" 
+                emissive="#00ccff" 
+                emissiveIntensity={0.8}
+                floatSpeed={isInfinite ? 3 : 2}
+                floatIntensity={isInfinite ? 2 : 1}
+              />
+            </group>
           </Suspense>
         </Canvas>
 

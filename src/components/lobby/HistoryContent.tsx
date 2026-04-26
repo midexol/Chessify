@@ -2,7 +2,7 @@
 
 import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Float, Environment, Text } from '@react-three/drei'
+import { Float, Environment, MeshDistortMaterial, Text } from '@react-three/drei'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import GlowButton from '@/components/ui/GlowButton'
@@ -18,7 +18,7 @@ function Scene() {
       <pointLight position={[10, 10, 10]} intensity={2} color="#00ccff" />
       <pointLight position={[-10, 5, -10]} intensity={1.5} color="#6a0dad" />
       <Environment preset="city" />
-      
+
       {/* Background Hero Piece */}
       <Queen color="#00ccff" emissive="#00ccff" position={[0, -0.5, 0]} floatIntensity={0.8} rotationIntensity={0.4} />
 
@@ -55,7 +55,7 @@ function Scene() {
 export function HistoryContent() {
   const router = useRouter()
   const { history, isLoading } = useHistory()
-  const { } = useWallet() // Removed activeChain to fix unused warning
+  const { activeChain } = useWallet()
 
   return (
     <main className="relative min-h-screen w-full bg-[#06060f] text-[#eeeeff] overflow-x-hidden flex flex-col font-body">
@@ -115,9 +115,9 @@ export function HistoryContent() {
                         >
                           <div className="flex items-center gap-6 w-full sm:w-auto">
                             <div className="w-16 h-16 shrink-0 rounded-2xl flex items-center justify-center border border-white/10 bg-black/40 overflow-hidden relative group">
-                              <PieceView 
-                                type={item.role.toLowerCase() === 'creator' ? 'king' : 'rook'} 
-                                color={item.chain === 'celo' ? '#35ee66' : '#ff9900'} 
+                              <PieceView
+                                type={item.role.toLowerCase() === 'creator' ? 'king' : 'rook'}
+                                color={item.chain === 'celo' ? '#35ee66' : '#ff9900'}
                                 className="w-full h-full"
                               />
                             </div>
