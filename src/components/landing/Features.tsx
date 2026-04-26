@@ -116,7 +116,6 @@ export default function Features() {
               </div>
             </div>
           </div>
-// ← structural drift
 
           {/* Cyan: On-chain */}
           <div
