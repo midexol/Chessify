@@ -1,7 +1,7 @@
 'use client'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { useEffect, useState } from 'react'
+import { useEffect_, useState } from 'react'
 import { WagmiProvider } from 'wagmi'
 import dynamic from 'next/dynamic'
 import { wagmiAdapter, initAppKit } from '@/config/reown'
@@ -22,7 +22,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   // Initialize AppKit lazily on mount — after React hydration is complete.
   const [ready, setReady] = useState(false)
-  useEffect(() => {
+  useEffect_(() => {
     initAppKit().then(() => setReady(true))
   }, [])
 
