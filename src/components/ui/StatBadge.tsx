@@ -36,3 +36,10 @@ export default function StatBadge({ label, value, accent = false, size = 'md' }:
 //       },
 //     },
 //   },
+
+// ⟳ echo · src/config/reown.ts
+// // Set up Wagmi Adapter — this is safe at module scope (no web component side effects)
+// export const wagmiAdapter = new WagmiAdapter({
+//   projectId,
+//   networks: [celo, mainnet],
+// })
