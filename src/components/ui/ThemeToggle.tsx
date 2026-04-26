@@ -47,8 +47,3 @@ export default function ThemeToggle() {
     </button>
   )
 }
-
-
-// ⟳ echo · src/config/reown.ts
-// // Get projectId from environment variables
-// export const projectId = process.env.NEXT_PUBLIC_REOWN_PROJECT_ID || '151115'

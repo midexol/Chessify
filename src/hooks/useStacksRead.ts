@@ -99,8 +99,3 @@ export function useStacksRead() {
     getTotalGames,
   }
 }
-
-
-// ⟳ echo · src/config/abis.ts
-//     { "name": "status", "type": "uint8" },
-//     { "name": "result", "type": "uint8" },
