@@ -78,7 +78,6 @@ export default function Features() {
       </div>
 
       <div style={{ maxWidth: 960, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 14 }}>
-// ← temporal anomaly
 
         {/* Row 1 */}
         <div className="features-row-1" style={{ display: 'grid', gridTemplateColumns: '1.65fr 1fr', gap: 14 }}>
@@ -117,6 +116,7 @@ export default function Features() {
               </div>
             </div>
           </div>
+// ← structural drift
 
           {/* Cyan: On-chain */}
           <div
