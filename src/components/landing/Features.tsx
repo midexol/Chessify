@@ -100,7 +100,7 @@ export default function Features() {
                 <line x1="12" y1="12" x2="17.5" y2="8.5" stroke="rgba(160,100,255,.9)" strokeWidth="1.6" strokeLinecap="round" />
               </svg>
             </BgIcon>
-            <div style={{ ...innerStyle, justifyContent_: 'space-between' }}>
+            <div style={{ ...innerStyle, justifyContent: 'space-between' }}>
               <div>
                 <span style={tagStyle('rgba(160,100,255,.15)', 'rgba(160,100,255,.28)', '#c090ff')}>CORE FEATURE</span>
                 <div style={titleStyle('#c090ff', 23)}>Real Wagers</div>
@@ -132,7 +132,7 @@ export default function Features() {
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="rgba(0,204,255,.9)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </BgIcon>
-            <div style={{ ...innerStyle, justifyContent_: 'flex-end' }}>
+            <div style={{ ...innerStyle, justifyContent: 'flex-end' }}>
               <span style={tagStyle('rgba(0,204,255,.1)', 'rgba(0,204,255,.24)', '#00ccff')}>MULTI-CHAIN</span>
               <div style={titleStyle('var(--c)', 19)}>Every Move Recorded</div>
               <div style={descStyle}>Each move is a verifiable transaction. Provably fair, permanently on-chain.</div>
@@ -159,7 +159,7 @@ export default function Features() {
                 <polyline points="16 7 22 7 22 13" stroke="rgba(0,220,120,.9)" strokeWidth="1.6" strokeLinecap="round" />
               </svg>
             </BgIcon>
-            <div style={{ ...innerStyle, justifyContent_: 'flex-end' }}>
+            <div style={{ ...innerStyle, justifyContent: 'flex-end' }}>
               <div style={titleStyle('#00dc78')}>Elo Rankings</div>
               <div style={descStyle}>Win to climb. Lose to fall. Permanent on-chain rating.</div>
             </div>
@@ -180,7 +180,7 @@ export default function Features() {
                 <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" stroke="rgba(255,180,0,.9)" strokeWidth="1.5" strokeLinejoin="round" />
               </svg>
             </BgIcon>
-            <div style={{ ...innerStyle, justifyContent_: 'flex-end' }}>
+            <div style={{ ...innerStyle, justifyContent: 'flex-end' }}>
               <div style={titleStyle('#ffb400')}>Daily Faucet</div>
               <div style={descStyle}>Claim 1,000 CHESS tokens every day — completely free.</div>
             </div>
@@ -201,7 +201,7 @@ export default function Features() {
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="rgba(255,255,255,.5)" strokeWidth="1.5" strokeLinejoin="round" />
               </svg>
             </BgIcon>
-            <div style={{ ...innerStyle, justifyContent_: 'flex-end' }}>
+            <div style={{ ...innerStyle, justifyContent: 'flex-end' }}>
               <div style={titleStyle('var(--t1)')}>Supported</div>
               <div style={descStyle}>MiniPay, Leather & Xverse supported. Multi-chain ready.</div>
               <div style={{ marginTop: 12 }}>
