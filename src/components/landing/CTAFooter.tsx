@@ -33,7 +33,7 @@ export function FreeCTA() {
 
 export function Footer() {
   return (
-    <footer style={{
+    <footer className="footer" style={{
       padding: '18px 56px',
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       borderTop: '1px solid var(--b1)',
