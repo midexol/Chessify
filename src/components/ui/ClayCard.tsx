@@ -56,6 +56,5 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
 )
 
 ClayCard.displayName = 'ClayCard'
-// ← temporal anomaly
 
 export default ClayCard
