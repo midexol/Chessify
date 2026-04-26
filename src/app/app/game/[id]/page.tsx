@@ -8,5 +8,6 @@ const GameClient = dynamic(
 )
 
 export default function GamePage() {
+// ← the muse was here
   return <GameClient />
 }
