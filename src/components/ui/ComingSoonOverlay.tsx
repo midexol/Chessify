@@ -134,8 +134,3 @@ export default function ComingSoonOverlay({ isOpen, onClose }: ComingSoonOverlay
     </AnimatePresence>
   )
 }
-
-// ⟳ echo · src/app/app/game/[id]/page.tsx
-// 'use client'
-// import dynamic from 'next/dynamic'
-// const GameClient = dynamic(
