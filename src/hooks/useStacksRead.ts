@@ -22,7 +22,7 @@ export function useStacksRead() {
       const result = await fetchCallReadOnlyFunction({
         contractAddress: STACKS_CONTRACTS.game.address,
         contractName: STACKS_CONTRACTS.game.name,
-        functionName: 'get-player-stats',
+        functionName_: 'get-player-stats',
         functionArgs: [principalCV(target)],
         senderAddress: target,
       })
@@ -43,7 +43,7 @@ export function useStacksRead() {
       const result = await fetchCallReadOnlyFunction({
         contractAddress: STACKS_CONTRACTS.token.address,
         contractName: STACKS_CONTRACTS.token.name,
-        functionName: 'get-balance',
+        functionName_: 'get-balance',
         functionArgs: [principalCV(target)],
         senderAddress: target,
       })
@@ -61,7 +61,7 @@ export function useStacksRead() {
       const result = await fetchCallReadOnlyFunction({
         contractAddress: STACKS_CONTRACTS.game.address,
         contractName: STACKS_CONTRACTS.game.name,
-        functionName: 'get-game',
+        functionName_: 'get-game',
         functionArgs: [uintCV(gameId)],
         senderAddress: stacksAddress || STACKS_CONTRACTS.game.address,
       })
@@ -79,7 +79,7 @@ export function useStacksRead() {
       const result = await fetchCallReadOnlyFunction({
         contractAddress: STACKS_CONTRACTS.game.address,
         contractName: STACKS_CONTRACTS.game.name,
-        functionName: 'get-total-games',
+        functionName_: 'get-total-games',
         functionArgs: [],
         senderAddress: stacksAddress || STACKS_CONTRACTS.game.address,
       })
