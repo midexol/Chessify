@@ -60,7 +60,6 @@ function LiveBackgroundPieces() {
       <directionalLight position={[-10, -10, -5]} intensity={1} color="#6a0dad" />
       <Environment preset="city" />
 
-      {/* 1.25x Scale & Brought closer to center */}
       <Float speed={0.8} rotationIntensity={0.2} floatIntensity={0.4} position={[-3.5, 2.5, -2]}>
         <primitive object={coloredQueen} scale={1.62} rotation={[0.1, 0.4, 0.1]} />
       </Float>
@@ -200,149 +199,296 @@ export default function LobbyContent() {
 
       <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px)', backgroundSize: '52px 52px', pointerEvents: 'none', zIndex: 0, opacity: 0.4 }} />
 
-      {/* LAYOUT CIRCUIT BREAKER: box-border and max-w-full prevent grid blowouts */}
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center w-full max-w-full box-border px-4 md:px-8 py-12 md:py-24">
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-start w-full max-w-7xl mx-auto box-border">
 
-          {/* LEFT COLUMN */}
+          {/* ── LEFT COLUMN ── */}
           <div className="lg:col-span-8 flex flex-col gap-6 md:gap-8 w-full min-w-0 box-border">
 
-            <div className="rounded-[32px] border border-white/10 bg-slate-900/60 backdrop-blur-xl p-6 md:p-10 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-8 box-border">
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-4">
-                <h1 className="text-4xl md:text-[52px] font-black uppercase tracking-tighter leading-none" style={{ fontFamily: 'var(--fd)', textShadow: 'var(--hero-text-shadow)' }}>
-                  Game <span style={{ color: 'var(--c)', textShadow: 'var(--king-text-shadow)' }}>Lobby</span>
-                </h1>
-                <div className="flex flex-wrap items-center gap-3">
-                  <div className="flex items-center gap-2 bg-black/40 py-1.5 px-3 rounded-full border border-white/10 shadow-inner">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[var(--c)] animate-pulse" />
-                    <span className="text-[11px] tracking-[0.2em] font-bold text-[var(--c)]" style={{ fontFamily: 'var(--fd)' }}>
-                      {activeChain?.toUpperCase() || 'NONE'}
+            {/*
+              FIX: Shell/content split.
+              The outer div owns ALL visual properties that create a stacking context:
+              backdrop-blur, background, border, border-radius, shadow.
+              The inner div owns ALL spacing: padding.
+              This prevents backdrop-blur from interfering with padding compositing.
+            */}
+
+            {/* ── CARD 1: Game Lobby Header ── */}
+            <div className="rounded-[32px] border border-white/10 bg-slate-900/60 backdrop-blur-xl shadow-2xl">
+              <div className="p-6 md:p-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-4">
+                  <h1
+                    className="text-4xl md:text-[52px] font-black uppercase tracking-tighter leading-none"
+                    style={{ fontFamily: 'var(--fd)', textShadow: 'var(--hero-text-shadow)' }}
+                  >
+                    Game{' '}
+                    <span style={{ color: 'var(--c)', textShadow: 'var(--king-text-shadow)' }}>
+                      Lobby
                     </span>
-                  </div>
-                  <div className="flex items-center gap-2 px-3 py-1 bg-black/20 rounded-full border border-white/5">
-                    <span className="text-[10px] tracking-[0.15em] uppercase font-bold text-[var(--t2)]" style={{ fontFamily: 'var(--fd)' }}>RATING</span>
-                    <span className="text-sm tracking-widest font-black text-white">{rating} <span className="text-[10px] text-[var(--c)] opacity-80">ELO</span></span>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="shrink-0">
-                <GlowButton parallelogram variant="brand" size="lg" onClick={() => handleAction(() => setIsCreateModalOpen(true))} className="w-full md:w-auto">
-                  CREATE NEW MATCH
-                </GlowButton>
-              </motion.div>
-            </div>
-
-            <div className="rounded-[32px] border border-white/10 bg-slate-900/60 backdrop-blur-xl p-6 md:p-10 shadow-2xl flex flex-col gap-6 box-border">
-              <h3 className="text-xs font-bold tracking-[0.25em] text-[var(--t3)] uppercase" style={{ fontFamily: 'var(--fd)' }}>Open Challenges</h3>
-
-              <div className="flex flex-col gap-4">
-                {openGames.filter(g => g.chain === activeChain).map((game, idx) => (
-                  <motion.div key={game.id} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.1 }}>
-                    <div className="rounded-2xl border border-white/5 bg-black/40 hover:bg-black/60 hover:border-white/10 transition-colors p-5 md:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 group box-border">
-
-                      <div className="flex items-center gap-5 w-full sm:w-auto min-w-0">
-                        <div className="w-14 h-14 shrink-0 rounded-xl flex flex-col items-center justify-center font-bold text-cyan-400 bg-cyan-950/30 border border-cyan-500/20">
-                          <span className="text-[9px] uppercase tracking-widest opacity-60">ELO</span>
-                          <span className="text-base leading-none mt-1">{game.elo}</span>
-                        </div>
-                        <div className="flex flex-col justify-center min-w-0">
-                          <span className="text-[10px] tracking-[0.2em] text-gray-500 uppercase font-bold mb-1" style={{ fontFamily: 'var(--fd)' }}>CHALLENGER</span>
-                          {/* Added truncate to prevent super long addresses breaking flex rows */}
-                          <span className="font-bold tracking-wide text-base text-gray-200 truncate max-w-full">{game.creator}</span>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center justify-between w-full sm:w-auto sm:gap-8 border-t sm:border-t-0 border-white/5 pt-4 sm:pt-0 shrink-0">
-                        <div className="flex flex-col justify-center sm:text-right">
-                          <span className="text-[10px] tracking-[0.2em] text-gray-500 uppercase font-bold mb-1" style={{ fontFamily: 'var(--fd)' }}>WAGER</span>
-                          <div className="font-black text-cyan-400 text-lg leading-none">{game.wager} <span className="text-[10px] text-cyan-700">CHESS</span></div>
-                        </div>
-                        <GlowButton size="md" onClick={() => handleJoinGame(game.id, game.wager)} disabled={isPending} className="min-w-[120px] shrink-0">
-                          {isPending ? '...' : 'JOIN MATCH'}
-                        </GlowButton>
-                      </div>
-
+                  </h1>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <div className="flex items-center gap-2 bg-black/40 py-1.5 px-3 rounded-full border border-white/10 shadow-inner">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[var(--c)] animate-pulse" />
+                      <span
+                        className="text-[11px] tracking-[0.2em] font-bold text-[var(--c)]"
+                        style={{ fontFamily: 'var(--fd)' }}
+                      >
+                        {activeChain?.toUpperCase() || 'NONE'}
+                      </span>
                     </div>
-                  </motion.div>
-                ))}
-
-                {openGames.filter(g => g.chain === activeChain).length === 0 && (
-                  <div className="py-20 text-center border border-dashed border-white/10 rounded-2xl bg-black/40">
-                    <p className="text-sm font-medium text-gray-500 tracking-wider">NO OPEN MATCHES ON {activeChain?.toUpperCase()}</p>
+                    <div className="flex items-center gap-2 px-3 py-1 bg-black/20 rounded-full border border-white/5">
+                      <span
+                        className="text-[10px] tracking-[0.15em] uppercase font-bold text-[var(--t2)]"
+                        style={{ fontFamily: 'var(--fd)' }}
+                      >
+                        RATING
+                      </span>
+                      <span className="text-sm tracking-widest font-black text-white">
+                        {rating}{' '}
+                        <span className="text-[10px] text-[var(--c)] opacity-80">ELO</span>
+                      </span>
+                    </div>
                   </div>
-                )}
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="shrink-0"
+                >
+                  <GlowButton
+                    parallelogram
+                    variant="brand"
+                    size="lg"
+                    onClick={() => handleAction(() => setIsCreateModalOpen(true))}
+                    className="w-full md:w-auto"
+                  >
+                    CREATE NEW MATCH
+                  </GlowButton>
+                </motion.div>
               </div>
             </div>
+
+            {/* ── CARD 2: Open Challenges ── */}
+            <div className="rounded-[32px] border border-white/10 bg-slate-900/60 backdrop-blur-xl shadow-2xl">
+              <div className="p-6 md:p-10 flex flex-col gap-6">
+                <h3
+                  className="text-xs font-bold tracking-[0.25em] text-[var(--t3)] uppercase"
+                  style={{ fontFamily: 'var(--fd)' }}
+                >
+                  Open Challenges
+                </h3>
+
+                <div className="flex flex-col gap-4">
+                  {openGames.filter(g => g.chain === activeChain).map((game, idx) => (
+                    <motion.div
+                      key={game.id}
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: idx * 0.1 }}
+                    >
+                      {/*
+                        Challenge row: also split — outer for visual chrome,
+                        inner for padding. Keeps hover states clean.
+                      */}
+                      <div className="rounded-2xl border border-white/5 bg-black/40 hover:bg-black/60 hover:border-white/10 transition-colors">
+                        <div className="p-5 md:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+
+                          <div className="flex items-center gap-5 w-full sm:w-auto min-w-0">
+                            <div className="w-14 h-14 shrink-0 rounded-xl flex flex-col items-center justify-center font-bold text-cyan-400 bg-cyan-950/30 border border-cyan-500/20">
+                              <span className="text-[9px] uppercase tracking-widest opacity-60">ELO</span>
+                              <span className="text-base leading-none mt-1">{game.elo}</span>
+                            </div>
+                            <div className="flex flex-col justify-center min-w-0">
+                              <span
+                                className="text-[10px] tracking-[0.2em] text-gray-500 uppercase font-bold mb-1"
+                                style={{ fontFamily: 'var(--fd)' }}
+                              >
+                                CHALLENGER
+                              </span>
+                              <span className="font-bold tracking-wide text-base text-gray-200 truncate max-w-full">
+                                {game.creator}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center justify-between w-full sm:w-auto sm:gap-8 border-t sm:border-t-0 border-white/5 pt-4 sm:pt-0 shrink-0">
+                            <div className="flex flex-col justify-center sm:text-right">
+                              <span
+                                className="text-[10px] tracking-[0.2em] text-gray-500 uppercase font-bold mb-1"
+                                style={{ fontFamily: 'var(--fd)' }}
+                              >
+                                WAGER
+                              </span>
+                              <div className="font-black text-cyan-400 text-lg leading-none">
+                                {game.wager}{' '}
+                                <span className="text-[10px] text-cyan-700">CHESS</span>
+                              </div>
+                            </div>
+                            <GlowButton
+                              size="md"
+                              onClick={() => handleJoinGame(game.id, game.wager)}
+                              disabled={isPending}
+                              className="min-w-[120px] shrink-0"
+                            >
+                              {isPending ? '...' : 'JOIN MATCH'}
+                            </GlowButton>
+                          </div>
+
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+
+                  {openGames.filter(g => g.chain === activeChain).length === 0 && (
+                    <div className="py-20 text-center border border-dashed border-white/10 rounded-2xl bg-black/40">
+                      <p className="text-sm font-medium text-gray-500 tracking-wider">
+                        NO OPEN MATCHES ON {activeChain?.toUpperCase()}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          {/* RIGHT COLUMN */}
+          {/* ── RIGHT COLUMN ── */}
           <div className="lg:col-span-4 flex flex-col gap-6 md:gap-8 h-auto w-full min-w-0 box-border">
 
-            <div className="rounded-[32px] border border-white/10 bg-slate-900/60 backdrop-blur-md p-6 md:p-10 flex flex-col shadow-2xl relative box-border">
-              <h3 className="text-sm font-bold tracking-wider text-cyan-400 uppercase mb-8" style={{ fontFamily: 'var(--fd)' }}>Profile Stats</h3>
+            {/* ── CARD 3: Profile Stats ── */}
+            <div className="rounded-[32px] border border-white/10 bg-slate-900/60 backdrop-blur-md shadow-2xl">
+              <div className="p-6 md:p-10 flex flex-col">
+                <h3
+                  className="text-sm font-bold tracking-wider text-cyan-400 uppercase mb-8"
+                  style={{ fontFamily: 'var(--fd)' }}
+                >
+                  Profile Stats
+                </h3>
 
-              <div className="flex items-baseline gap-2 mb-10">
-                <span className="text-5xl font-black text-white leading-none" style={{ fontFamily: 'var(--fd)' }}>{balance}</span>
-                <span className="text-sm text-cyan-500 font-bold tracking-widest">CHESS</span>
-              </div>
-
-              <div className="flex justify-between items-center bg-black/40 p-5 rounded-2xl border border-white/5 mb-8">
-                <div className="flex flex-col flex-1">
-                  <span className="text-[11px] text-gray-500 font-bold tracking-widest uppercase mb-2">Wins</span>
-                  <span className="text-2xl font-bold text-white leading-none">14</span>
+                <div className="flex items-baseline gap-2 mb-10">
+                  <span
+                    className="text-5xl font-black text-white leading-none"
+                    style={{ fontFamily: 'var(--fd)' }}
+                  >
+                    {balance}
+                  </span>
+                  <span className="text-sm text-cyan-500 font-bold tracking-widest">CHESS</span>
                 </div>
-                <div className="w-[1px] h-10 bg-white/10 mx-4 shrink-0" />
-                <div className="flex flex-col flex-1 text-right">
-                  <span className="text-[11px] text-gray-500 font-bold tracking-widest uppercase mb-2">Losses</span>
-                  <span className="text-2xl font-bold text-gray-300 leading-none">8</span>
-                </div>
-              </div>
 
-              <div className="mt-auto pt-2 w-full">
-                <GlowButton variant="ghost" fullWidth onClick={() => handleAction(() => console.log("History"))}>
-                  VIEW HISTORY
-                </GlowButton>
+                <div className="flex justify-between items-center bg-black/40 p-5 rounded-2xl border border-white/5 mb-8">
+                  <div className="flex flex-col flex-1">
+                    <span className="text-[11px] text-gray-500 font-bold tracking-widest uppercase mb-2">
+                      Wins
+                    </span>
+                    <span className="text-2xl font-bold text-white leading-none">14</span>
+                  </div>
+                  <div className="w-[1px] h-10 bg-white/10 mx-4 shrink-0" />
+                  <div className="flex flex-col flex-1 text-right">
+                    <span className="text-[11px] text-gray-500 font-bold tracking-widest uppercase mb-2">
+                      Losses
+                    </span>
+                    <span className="text-2xl font-bold text-gray-300 leading-none">8</span>
+                  </div>
+                </div>
+
+                <div className="mt-auto pt-2 w-full">
+                  <GlowButton
+                    variant="ghost"
+                    fullWidth
+                    onClick={() => handleAction(() => console.log('History'))}
+                  >
+                    VIEW HISTORY
+                  </GlowButton>
+                </div>
               </div>
             </div>
 
-            <div className="rounded-[32px] border border-white/10 bg-slate-900/60 backdrop-blur-md p-6 md:p-10 flex flex-col shadow-2xl relative box-border">
-              <div className="flex flex-col gap-3 mb-6">
-                <h4 className="font-bold text-[15px] tracking-widest text-white uppercase" style={{ fontFamily: 'var(--fd)' }}>Need CHESS?</h4>
-                <p className="text-[13px] text-gray-400 leading-relaxed">Top up your wallet with testnet tokens to start playing on {activeChain}.</p>
-              </div>
-              <div className="mt-auto w-full">
-                <GlowButton variant="brand" fullWidth onClick={() => handleAction(() => router.push('#faucet'))}>
-                  VISIT FAUCET
-                </GlowButton>
+            {/* ── CARD 4: Need CHESS? ── */}
+            <div className="rounded-[32px] border border-white/10 bg-slate-900/60 backdrop-blur-md shadow-2xl">
+              <div className="p-6 md:p-10 flex flex-col gap-3">
+                <h4
+                  className="font-bold text-[15px] tracking-widest text-white uppercase"
+                  style={{ fontFamily: 'var(--fd)' }}
+                >
+                  Need CHESS?
+                </h4>
+                <p className="text-[13px] text-gray-400 leading-relaxed">
+                  Top up your wallet with testnet tokens to start playing on {activeChain}.
+                </p>
+                <div className="mt-4 w-full">
+                  <GlowButton
+                    variant="brand"
+                    fullWidth
+                    onClick={() => handleAction(() => router.push('#faucet'))}
+                  >
+                    VISIT FAUCET
+                  </GlowButton>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
 
+      {/* ── CREATE MATCH MODAL ── */}
       <AnimatePresence>
         {isCreateModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-6 box-border">
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsCreateModalOpen(false)} className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
-            <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20 }} className="relative w-full max-w-md box-border">
-              <ClayCard className="p-8 md:p-10 box-border overflow-hidden">
-                <h3 className="text-2xl font-black mb-6 uppercase italic">Create Match</h3>
-                <div className="space-y-6 mb-10">
-                  <div>
-                    <label className="block text-xs font-bold text-[var(--t3)] uppercase tracking-widest mb-3">Wager Amount (CHESS)</label>
-                    <div className="grid grid-cols-3 gap-2">
-                      {[50, 100, 250, 500, 1000, 2500].map(amt => (
-                        <button key={amt} onClick={() => setWager(amt)} className={`py-3 rounded-xl border font-bold transition-all ${wager === amt ? 'bg-[var(--c)] text-black border-[var(--c)] shadow-[0_0_20px_rgba(0,204,255,0.3)]' : 'bg-[var(--b1)] text-[var(--t2)] border-[var(--b2)] hover:border-[var(--t3)]'}`}>
-                          {amt}
-                        </button>
-                      ))}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsCreateModalOpen(false)}
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-md box-border"
+            >
+              {/*
+                ClayCard already manages its own shell correctly.
+                The inner padding div keeps content away from the blur boundary.
+              */}
+              <ClayCard className="overflow-hidden">
+                <div className="p-8 md:p-10">
+                  <h3 className="text-2xl font-black mb-6 uppercase italic">Create Match</h3>
+                  <div className="space-y-6 mb-10">
+                    <div>
+                      <label className="block text-xs font-bold text-[var(--t3)] uppercase tracking-widest mb-3">
+                        Wager Amount (CHESS)
+                      </label>
+                      <div className="grid grid-cols-3 gap-2">
+                        {[50, 100, 250, 500, 1000, 2500].map(amt => (
+                          <button
+                            key={amt}
+                            onClick={() => setWager(amt)}
+                            className={`py-3 rounded-xl border font-bold transition-all ${
+                              wager === amt
+                                ? 'bg-[var(--c)] text-black border-[var(--c)] shadow-[0_0_20px_rgba(0,204,255,0.3)]'
+                                : 'bg-[var(--b1)] text-[var(--t2)] border-[var(--b2)] hover:border-[var(--t3)]'
+                            }`}
+                          >
+                            {amt}
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="flex gap-4">
-                  <GlowButton fullWidth variant="brand" onClick={handleCreateGame} disabled={isPending}>{isPending ? 'BROADCASTING...' : 'INITIALIZE GAME'}</GlowButton>
+                  <div className="flex gap-4">
+                    <GlowButton
+                      fullWidth
+                      variant="brand"
+                      onClick={handleCreateGame}
+                      disabled={isPending}
+                    >
+                      {isPending ? 'BROADCASTING...' : 'INITIALIZE GAME'}
+                    </GlowButton>
+                  </div>
                 </div>
               </ClayCard>
             </motion.div>
