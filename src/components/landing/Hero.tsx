@@ -180,6 +180,7 @@ export default function Hero() {
             <div style={{ fontSize: 9, letterSpacing: '.12em', color: 'rgba(255,255,255,.35)', marginBottom: 4 }}>PRIZE POOL</div>
             <div style={{ fontWeight: 800, fontSize: 15, color: 'var(--t1)' }}>1,000 CHESS</div>
           </div>
+        </div>
 
         {/* TEXT — z:3, BEHIND pieces */}
         <div style={{ position: 'relative', zIndex: 3 }}>
