@@ -5,7 +5,7 @@ import { Canvas } from '@react-three/fiber'
 import { Float, Environment, Text, MeshDistortMaterial } from '@react-three/drei'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/navigation'
-import { GlowButton } from '@/components/ui/GlowButton'
+import GlowButton from '@/components/ui/GlowButton'
 import { useHistory, HistoryItem } from '@/hooks/useHistory'
 import { useWallet } from '@/components/wallet-provider'
 
@@ -60,7 +60,7 @@ export function HistoryContent() {
 
       <div className="relative z-10 flex-1 flex flex-col items-center w-full max-w-full box-border px-4 md:px-8 py-12 md:py-24">
         <div className="w-full max-w-4xl mx-auto flex flex-col gap-8">
-          
+
           {/* Header Row */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
@@ -68,7 +68,7 @@ export function HistoryContent() {
                 ← BACK TO LOBBY
               </GlowButton>
             </motion.div>
-            
+
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-center md:text-right">
               <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter" style={{ fontFamily: 'var(--fd)', textShadow: 'var(--hero-text-shadow)' }}>
                 Game <span style={{ color: 'var(--c)', textShadow: 'var(--king-text-shadow)' }}>History</span>
@@ -94,7 +94,7 @@ export function HistoryContent() {
                 ) : (
                   <div className="divide-y divide-white/5">
                     {history.map((item, idx) => (
-                      <motion.div 
+                      <motion.div
                         key={item.id + item.timestamp}
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -127,7 +127,7 @@ export function HistoryContent() {
                               {item.wager} <span className="text-[10px] opacity-60">CHESS</span>
                             </span>
                           </div>
-                          
+
                           <div className="flex flex-col text-right">
                             <span className="text-[9px] font-bold text-gray-500 uppercase tracking-widest mb-1">Status</span>
                             <div className="flex items-center gap-2 justify-end">
