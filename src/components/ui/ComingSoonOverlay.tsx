@@ -134,8 +134,3 @@ export default function ComingSoonOverlay({ isOpen, onClose }: ComingSoonOverlay
     </AnimatePresence>
   )
 }
-
-// ⟳ echo · src/config/reown.ts
-//       url: typeof window !== 'undefined' ? window.location.origin : 'https://chessify.xyz',
-//       icons: ['/Piece.svg'],
-//     },
