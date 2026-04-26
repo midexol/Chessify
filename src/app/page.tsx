@@ -12,3 +12,10 @@ export default function LandingPage() {
     </main>
   )
 }
+
+
+// ⟳ echo · src/components/ui/StatBadge.tsx
+//       >
+//         {value}
+//       </span>
+//       <span
