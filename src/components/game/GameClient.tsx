@@ -104,10 +104,10 @@ export default function GameClient() {
 
   // ── board interaction ────────────────────────────────────────────────────
 
-  const onDrop = useCallback(({ sourceSquare, targetSquare }: { sourceSquare: string, targetSquare: string }): boolean => {
+  const onDrop = useCallback(({ sourceSquare_, targetSquare }: { sourceSquare_: string, targetSquare: string }): boolean => {
     try {
       const next = new Chess(game.fen())
-      const mv = next.move({ from: sourceSquare, to: targetSquare, promotion: 'q' })
+      const mv = next.move({ from: sourceSquare_, to: targetSquare, promotion: 'q' })
       if (!mv) return false
       setGame(next)
       setMoveHistory(h => [...h, mv.san])
@@ -202,9 +202,9 @@ export default function GameClient() {
                   id="BasicBoard"
                   position={game.fen()}
                   // @ts-ignore
-                  onPieceDrop={(sourceSquare, targetSquare) => {
+                  onPieceDrop={(sourceSquare_, targetSquare) => {
                     if (!targetSquare) return false;
-                    return onDrop({ sourceSquare, targetSquare });
+                    return onDrop({ sourceSquare_, targetSquare });
                   }}
                   boardOrientation={activeChain === 'stacks' ? 'white' : 'white'}
                   arePiecesDraggable={canAct && !gameOver}
