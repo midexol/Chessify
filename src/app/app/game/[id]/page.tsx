@@ -10,9 +10,3 @@ const GameClient = dynamic(
 export default function GamePage() {
   return <GameClient />
 }
-
-
-// ⟳ echo · src/config/reown.ts
-// // Turbopack's module factory if evaluated during bundling.
-// let _appKitInitialized = false
-// export async function initAppKit() {

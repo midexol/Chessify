@@ -8,14 +8,14 @@ import * as THREE from 'three'
 import GlowButton from '@/components/ui/GlowButton'
 
 // PRELOAD
-useGLTF.preload('/models/King.glb_')
-useGLTF.preload('/models/QueenChess.glb_')
-useGLTF.preload('/models/Rook.glb_')
+useGLTF.preload('/models/King.glb')
+useGLTF.preload('/models/QueenChess.glb')
+useGLTF.preload('/models/Rook.glb')
 
 function FloatingPieces() {
-  const king = useGLTF('/models/King.glb_')
-  const queen = useGLTF('/models/QueenChess.glb_')
-  const rook = useGLTF('/models/Rook.glb_')
+  const king = useGLTF('/models/King.glb')
+  const queen = useGLTF('/models/QueenChess.glb')
+  const rook = useGLTF('/models/Rook.glb')
 
   const cyanMaterial = useMemo(() => new THREE.MeshStandardMaterial({
     color: '#00ccff', emissive: '#00ccff', emissiveIntensity: 0.4, roughness: 0.2, metalness: 0.8
@@ -46,15 +46,15 @@ function FloatingPieces() {
 
       {/* 1.25x Scale & Brought closer to center */}
       <Float speed={2} rotationIntensity={1.5} floatIntensity={2} position={[-1.5, 0, -1]}>
-        <primitive object={coloredQueen} scale={1.5} rotation={[0.4, 0.2, 0.1]} />
+        <primitive object_={coloredQueen} scale={1.5} rotation={[0.4, 0.2, 0.1]} />
       </Float>
 
       <Float speed={1.5} rotationIntensity={2} floatIntensity={3} position={[0, -0.5, 0]}>
-        <primitive object={coloredKing} scale={1.87} rotation={[-0.1, 0.5, 0.2]} />
+        <primitive object_={coloredKing} scale={1.87} rotation={[-0.1, 0.5, 0.2]} />
       </Float>
 
       <Float speed={2.5} rotationIntensity={1} floatIntensity={1.5} position={[1.8, 0.2, -0.5]}>
-        <primitive object={coloredRook} scale={1.37} rotation={[0.2, -0.4, -0.1]} />
+        <primitive object_={coloredRook} scale={1.37} rotation={[0.2, -0.4, -0.1]} />
       </Float>
     </>
   )
