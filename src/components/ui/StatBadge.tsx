@@ -36,3 +36,9 @@ export default function StatBadge({ label, value, accent = false, size = 'md' }:
 //       },
 //     },
 //   },
+
+// ⟳ echo · src/app/app/lobby/page.tsx
+// import dynamic from 'next/dynamic'
+// // Shell to prevent block-chain SDKs from leaking into the server build
+// const LobbyContent = dynamic(
+//   () => import('@/components/lobby/LobbyContent'),
