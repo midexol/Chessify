@@ -25,6 +25,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     initAppKit().then(() => setReady(true))
   }, [])
+// ← echo residue
 
   return (
     <WagmiProvider config={wagmiAdapter.wagmiConfig}>
