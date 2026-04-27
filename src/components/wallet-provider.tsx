@@ -1,20 +1,33 @@
 'use client'
 
 import React, { createContext, useContext, useEffect, useState, useCallback } from 'react'
-import { useAccount } from 'wagmi'
+import { useAccount, useDisconnect } from 'wagmi'
 
 interface WalletContextType {
+  // ── Addresses ──
   address: string | null
   stacksAddress: string | null
+
+  // ── Connection State ──
   isConnected: boolean
   isStacksConnected: boolean
   isMiniPay: boolean
   activeChain: 'celo' | 'stacks'
+
+  // ── Unified Auth ──
+  connectWallet: () => void       // Opens chain select modal
+  disconnectAll: () => void       // Disconnects active chain
+  showChainSelect: boolean
+  setShowChainSelect: (show: boolean) => void
+
+  // ── Internal (used by ChainSelectModal) ──
   connect: () => Promise<void>
-  disconnect: () => void
   connectStacks: () => Promise<void>
+  disconnect: () => void
   disconnectStacks: () => void
   setActiveChain: (chain: 'celo' | 'stacks') => void
+
+  // ── Session ──
   userSession: any | null
 }
 
@@ -25,6 +38,10 @@ const WalletContext = createContext<WalletContextType>({
   isStacksConnected: false,
   isMiniPay: false,
   activeChain: 'celo',
+  connectWallet: () => { },
+  disconnectAll: () => { },
+  showChainSelect: false,
+  setShowChainSelect: () => { },
   connect: async () => { },
   disconnect: () => { },
   connectStacks: async () => { },
@@ -38,6 +55,7 @@ export const useWallet = () => useContext(WalletContext)
 export function WalletProvider({ children }: { children: React.ReactNode }) {
   // --- EVM state ---
   const { address: evmAddress, isConnected: evmConnected } = useAccount()
+  const { disconnect: wagmiDisconnect } = useDisconnect()
 
   // --- Stacks State (Lazy Init) ---
   const [userSession, setUserSession] = useState<any>(null)
@@ -46,6 +64,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   // --- Common State ---
   const [isMiniPay, setIsMiniPay] = useState(false)
   const [activeChain, setActiveChainState] = useState<'celo' | 'stacks'>('celo')
+  const [showChainSelect, setShowChainSelect] = useState(false)
 
   const isConnected = evmConnected || !!evmAddress
   const isStacksConnected = !!stacksAddress
@@ -62,12 +81,17 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         if (session.isUserSignedIn()) {
           const userData = session.loadUserData()
           setStacksAddress(userData.profile.stxAddress.mainnet || userData.profile.stxAddress.testnet)
+          // Auto-set chain if Stacks session exists and no Celo connection
+          if (!evmConnected) {
+            setActiveChainState('stacks')
+          }
         }
       } catch (e) {
         console.error("Failed to init Stacks session", e)
       }
     }
     initStacks()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // 2. Persistent chain preference
@@ -88,6 +112,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     }
   }, [])
 
+  // ── Connect Celo (via Reown AppKit) ──
   const connect = useCallback(async () => {
     try {
       const { modal } = await import('@reown/appkit/react')
@@ -96,8 +121,10 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
       console.error('Failed to open AppKit modal:', e)
     }
     setActiveChain('celo')
+    setShowChainSelect(false)
   }, [setActiveChain])
 
+  // ── Connect Stacks (via Stacks Connect) ──
   const connectStacks = useCallback(async () => {
     if (!userSession) return
     try {
@@ -112,25 +139,47 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
           const userData = userSession.loadUserData()
           setStacksAddress(userData.profile.stxAddress.mainnet || userData.profile.stxAddress.testnet)
           setActiveChain('stacks')
+          setShowChainSelect(false)
         },
-        onCancel: () => console.log('Stacks connection cancelled'),
+        onCancel: () => {
+          console.log('Stacks connection cancelled')
+          setShowChainSelect(false)
+        },
       })
     } catch (e) {
       console.error("Failed to open Stacks connect", e)
     }
   }, [userSession, setActiveChain])
 
+  // ── Disconnect Celo ──
   const disconnect = useCallback(() => {
-    setActiveChain('stacks')
-  }, [setActiveChain])
+    wagmiDisconnect()
+  }, [wagmiDisconnect])
 
+  // ── Disconnect Stacks ──
   const disconnectStacks = useCallback(() => {
     if (userSession) {
       userSession.signUserOut()
       setStacksAddress(null)
-      if (activeChain === 'stacks') setActiveChain('celo')
     }
-  }, [userSession, activeChain, setActiveChain])
+  }, [userSession])
+
+  // ── Unified: Open Chain Select Modal ──
+  const connectWallet = useCallback(() => {
+    setShowChainSelect(true)
+  }, [])
+
+  // ── Unified: Disconnect whichever is active ──
+  const disconnectAll = useCallback(() => {
+    if (activeChain === 'celo') {
+      disconnect()
+    } else {
+      disconnectStacks()
+    }
+    // Also disconnect the other if both happen to be connected
+    if (isConnected) disconnect()
+    if (isStacksConnected) disconnectStacks()
+  }, [activeChain, isConnected, isStacksConnected, disconnect, disconnectStacks])
 
   return (
     <WalletContext.Provider
@@ -141,6 +190,10 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         isStacksConnected,
         isMiniPay,
         activeChain,
+        connectWallet,
+        disconnectAll,
+        showChainSelect,
+        setShowChainSelect,
         connect,
         disconnect,
         connectStacks,

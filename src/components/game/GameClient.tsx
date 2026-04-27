@@ -44,7 +44,7 @@ export default function GameClient() {
   const gameId = Number(params?.id ?? 0)
 
   // @ts-ignore - intentional
-  const { stacksAddress, isStacksConnected, activeChain, address: celoAddress, isConnected } = useWallet()
+  const { stacksAddress, isStacksConnected, activeChain, address: celoAddress, isConnected, connectWallet } = useWallet()
   const { submitMove: submitStacksMove, resign: resignStacks, reportWin: reportStacksWin } = useStacksChess()
   // @ts-ignore - intentional
   const { getGame: getStacksGame, getPlayerStats: getStacksStats } = useStacksRead()
@@ -313,9 +313,14 @@ export default function GameClient() {
               <motion.div 
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="p-4 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 text-yellow-200/70 text-[10px] uppercase font-bold tracking-widest text-center"
+                className="p-4 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 text-center flex flex-col gap-3 items-center"
               >
-                Connection required for tactical input
+                <span className="text-yellow-200/70 text-[10px] uppercase font-bold tracking-widest">
+                  Connection required for tactical input
+                </span>
+                <GlowButton variant="brand" size="sm" onClick={connectWallet}>
+                  CONNECT WALLET
+                </GlowButton>
               </motion.div>
             )}
           </div>

@@ -17,7 +17,7 @@ function Scene() {
       <ambientLight intensity={1} />
       <pointLight position={[10, 10, 10]} intensity={2} color="#00ccff" />
       <pointLight position={[-10, 5, -10]} intensity={1.5} color="#6a0dad" />
-      <Environment preset="city" />
+      <Environment files="/textures/environment/city.hdr" />
 
       {/* Background Hero Piece */}
       <Queen color="#00ccff" emissive="#00ccff" position={[0, -0.5, 0]} floatIntensity={0.8} rotationIntensity={0.4} />

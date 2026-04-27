@@ -6,6 +6,8 @@ import { WagmiProvider } from 'wagmi'
 import dynamic from 'next/dynamic'
 import { wagmiAdapter, initAppKit } from '@/config/reown'
 
+import { ThemeProvider } from 'next-themes'
+
 const WalletProvider = dynamic(
   () => import('@/components/wallet-provider').then(mod => mod.WalletProvider),
   { ssr: false }
@@ -20,7 +22,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
     },
   }))
 
-  // Initialize AppKit lazily on mount — after React hydration is complete.
   const [ready, setReady] = useState(false)
   useEffect(() => {
     initAppKit().then(() => setReady(true))
@@ -29,15 +30,15 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <WagmiProvider config={wagmiAdapter.wagmiConfig}>
       <QueryClientProvider client={queryClient}>
-        {ready ? (
-          <WalletProvider>
-            {children}
-          </WalletProvider>
-        ) : (
-          // Render children without wallet context during initialization
-          // This prevents a flash of nothing while AppKit loads
-          <>{children}</>
-        )}
+        <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem={false}>
+          {ready ? (
+            <WalletProvider>
+              {children}
+            </WalletProvider>
+          ) : (
+            <>{children}</>
+          )}
+        </ThemeProvider>
       </QueryClientProvider>
     </WagmiProvider>
   )

@@ -1,21 +1,18 @@
 'use client'
 import { useEffect, useState } from 'react'
+import { useTheme } from 'next-themes'
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark')
+  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
 
-  useEffect(() => {
-    const saved = localStorage.getItem('chessify-theme') as 'dark' | 'light' | null
-    const t = saved ?? 'dark'
-    setTheme(t)
-    document.documentElement.setAttribute('data-theme', t)
-  }, [])
+  // Avoid hydration mismatch by waiting until mounted
+  useEffect(() => setMounted(true), [])
+
+  if (!mounted) return <div style={{ width: 40, height: 40 }} />
 
   const toggle = () => {
-    const next = theme === 'dark' ? 'light' : 'dark'
-    setTheme(next)
-    document.documentElement.setAttribute('data-theme', next)
-    localStorage.setItem('chessify-theme', next)
+    setTheme(theme === 'dark' ? 'light' : 'dark')
   }
 
   return (

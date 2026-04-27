@@ -49,7 +49,7 @@ function Scene() {
           </Float>
         </PresentationControls>
         <ContactShadows position={[0, -2.5, 0]} opacity={0.4} scale={20} blur={2} far={4.5} />
-        <Environment preset="city" />
+        <Environment files="/textures/environment/city.hdr" />
       </Suspense>
     </>
   )

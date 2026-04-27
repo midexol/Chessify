@@ -59,7 +59,7 @@ function SuccessScene() {
       <ambientLight intensity={2} />
       <pointLight position={[10, 10, 10]} intensity={3} color="#00ccff" />
       <pointLight position={[-10, -5, 5]} intensity={2} color="#35ee66" />
-      <Environment preset="city" />
+      <Environment files="/textures/environment/city.hdr" />
       <Queen color="#35ee66" emissive="#35ee66" emissiveIntensity={0.6} position={[0, -0.5, 0]} floatSpeed={2} floatIntensity={1.5} rotationIntensity={0.8} />
     </>
   )

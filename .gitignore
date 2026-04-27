@@ -63,3 +63,10 @@ simulate-stacks.js
 play-chess.js   
 icarus.js
 simulate-automata.js
+
+# large files
+*.deb
+*.crdownload
+*.zip
+*.tar.gz
+*.iso

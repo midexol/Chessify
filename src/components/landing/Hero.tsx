@@ -7,7 +7,8 @@ import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Environment } from '@react-three/drei'
 import { useWallet } from '@/components/wallet-provider'
-import { King, Queen, Bishop, Knight, Rook } from '@/components/ui/ChessModels'
+import ChainSelectModal from '@/components/ui/ChainSelectModal'
+import { King, Queen, Bishop, Knight, Pawn } from '@/components/ui/ChessModels'
 
 const KEYFRAMES = `
 @keyframes rspin       { to{transform:translate(-50%,-50%) rotate(360deg)} }
@@ -30,91 +31,82 @@ export function Navbar() {
   const {
     isConnected, address,
     isStacksConnected, stacksAddress,
-    isMiniPay, connect, connectStacks,
-    disconnect, activeChain, setActiveChain
+    activeChain, connectWallet, disconnectAll,
+    showChainSelect, setShowChainSelect,
+    connect, connectStacks
   } = useWallet()
 
-  const formatAddress = (addr: string) => {
-    return `${addr.slice(0, 6)}...${addr.slice(-4)}`
-  }
+  const connected = isConnected || isStacksConnected
+  const displayAddress = activeChain === 'celo' ? address : stacksAddress
+  const chainLabel = activeChain === 'celo' ? 'CELO' : 'STX'
+  const chainColor = activeChain === 'celo' ? '#35ee66' : '#ff9900'
+
+  const formatAddress = (addr: string) => `${addr.slice(0, 6)}...${addr.slice(-4)}`
 
   return (
-    <nav className="hero-navbar w-full flex items-center justify-between" style={{ padding: "18px 56px", position: "relative", zIndex: 20 }}>
-      <div>
-        <Image src="/chessify.png" alt="Chessify" width={200} height={50} style={{ objectFit: "contain" }} />
-      </div>
-      <div className="nav-surface hero-nav-links" style={{ display: "flex", gap: 28, borderRadius: 999, padding: "10px 28px" }}>
-        {["How it works", "Leaderboard", "Faucet"].map((l) => (
-          <a
-            key={l}
-            href={`#${l.toLowerCase().replace(" ", "-")}`}
-            style={{ fontFamily: "var(--fd)", fontSize: 12, fontWeight: 500, color: "var(--t2)", textDecoration: "none", letterSpacing: ".06em", transition: "color .2s" }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--c)"; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--t2)"; }}
-          >
-            {l}
-          </a>
-        ))}
-      </div>
-      <div className="flex items-center gap-3">
-        <div className="hidden sm:block">
-          <ThemeToggle />
+    <>
+      <nav className="hero-navbar w-full flex items-center justify-between" style={{ padding: "18px 56px", position: "relative", zIndex: 20 }}>
+        <div>
+          <Image src="/chessify.png" alt="Chessify" width={200} height={50} style={{ objectFit: "contain" }} />
         </div>
-
-        {/* Stacks Connection */}
-        {isStacksConnected && stacksAddress ? (
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <span
-              onClick={() => setActiveChain('stacks')}
-              className="text-[10px] sm:text-[11px]"
-              style={{
-                fontFamily: "var(--fb)", color: activeChain === 'stacks' ? "var(--c)" : "var(--t1)",
-                background: "var(--b1)", padding: "6px 12px", borderRadius: 999, cursor: 'pointer',
-                border: activeChain === 'stacks' ? '1px solid var(--c)' : '1px solid transparent'
-              }}
-            >
-              <span className="hidden xs:inline">STX: </span>{formatAddress(stacksAddress)}
-            </span>
+        <div className="nav-surface hero-nav-links" style={{ display: "flex", gap: 28, borderRadius: 999, padding: "10px 28px" }}>
+          {["How it works", "History", "Faucet"].map((l) => {
+            const isAppRoute = l === "Faucet" || l === "History"
+            const path = isAppRoute ? `/app/${l.toLowerCase()}` : `#${l.toLowerCase().replace(" ", "-")}`
+            
+            return (
+              <Link
+                key={l}
+                href={path}
+                style={{ fontFamily: "var(--fd)", fontSize: 12, fontWeight: 500, color: "var(--t2)", textDecoration: "none", letterSpacing: ".06em", transition: "color .2s" }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--c)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--t2)"; }}
+              >
+                {l}
+              </Link>
+            )
+          })}
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="hidden sm:block">
+            <ThemeToggle />
           </div>
-        ) : (
-          <button
-            onClick={connectStacks}
-            className="text-[10px] sm:text-[11px] px-3 py-2 sm:px-4"
-            style={{
-              background: "transparent",
-              color: "var(--t1)",
-              border: "1px solid var(--b2)",
-              borderRadius: 999,
-              cursor: "pointer",
-              fontFamily: 'var(--fd)'
-            }}
-          >
-            Connect Stacks
-          </button>
-        )}
 
-        {/* Celo/EVM Connection */}
-        {isConnected && address ? (
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <span
-              onClick={() => setActiveChain('celo')}
-              className="text-[10px] sm:text-[11px]"
-              style={{
-                fontFamily: "var(--fb)", color: activeChain === 'celo' ? "var(--c)" : "var(--t1)",
-                background: "var(--b1)", padding: "6px 12px", borderRadius: 999, cursor: 'pointer',
-                border: activeChain === 'celo' ? '1px solid var(--c)' : '1px solid transparent'
-              }}
-            >
-              <span className="hidden xs:inline">CELO: </span>{formatAddress(address)}
-            </span>
-            <button onClick={disconnect} style={{ background: "transparent", border: "none", color: "var(--t3)", cursor: "pointer", fontSize: 18, padding: '0 4px' }} title="Disconnect Active Wallet">
-              ×
-            </button>
-          </div>
-        ) : (
-          !isMiniPay && (
+          {connected && displayAddress ? (
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              {/* Chain badge */}
+              <div
+                className="flex items-center gap-1.5 py-1 px-2.5 rounded-full"
+                style={{ background: `${chainColor}15`, border: `1px solid ${chainColor}30` }}
+              >
+                <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: chainColor }} />
+                <span className="text-[9px] font-bold tracking-[0.15em]" style={{ color: chainColor, fontFamily: 'var(--fd)' }}>
+                  {chainLabel}
+                </span>
+              </div>
+              {/* Address */}
+              <span
+                className="text-[10px] sm:text-[11px]"
+                style={{
+                  fontFamily: "var(--fb)", color: "var(--t1)",
+                  background: "var(--b1)", padding: "6px 12px", borderRadius: 999,
+                  border: '1px solid var(--b2)'
+                }}
+              >
+                {formatAddress(displayAddress)}
+              </span>
+              {/* Disconnect */}
+              <button
+                onClick={disconnectAll}
+                style={{ background: "transparent", border: "none", color: "var(--t3)", cursor: "pointer", fontSize: 18, padding: '0 4px' }}
+                title="Disconnect Wallet"
+              >
+                ×
+              </button>
+            </div>
+          ) : (
             <button
-              onClick={connect}
+              onClick={connectWallet}
               className="text-[10px] sm:text-[11px] px-3 py-2 sm:px-4"
               style={{
                 background: "var(--c)",
@@ -126,19 +118,27 @@ export function Navbar() {
                 fontFamily: 'var(--fd)'
               }}
             >
-              Connect Celo
+              Connect Wallet
             </button>
-          )
-        )}
-      </div>
-    </nav>
+          )}
+        </div>
+      </nav>
+
+      {/* Chain Select Modal */}
+      <ChainSelectModal
+        isOpen={showChainSelect}
+        onClose={() => setShowChainSelect(false)}
+        onSelectCelo={connect}
+        onSelectStacks={connectStacks}
+      />
+    </>
   )
 }
 
 
 
 export default function Hero() {
-  const { isConnected, isStacksConnected, connect } = useWallet()
+  const { isConnected, isStacksConnected, connectWallet } = useWallet()
   return (
     <section className="hero-section" style={{ background: 'var(--bg)', position: 'relative', overflow: 'hidden' }}>
       <style>{KEYFRAMES}</style>
@@ -152,20 +152,20 @@ export default function Hero() {
 
       <div className="hero-content" style={{ position: 'relative', minHeight: 'calc(100vh - 76px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '60px 48px 80px' }}>
 
-        {/* PIECES — z:5, IN FRONT of text */}
-        <div className="hero-pieces" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 5 }}>
+        {/* PIECES — z:2, BEHIND text */}
+        <div className="hero-pieces" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 2 }}>
           <Canvas camera={{ position: [0, 0, 15], fov: 45 }} gl={{ alpha: true }}>
             <Suspense fallback={null}>
               <ambientLight intensity={1.5} />
               <pointLight position={[10, 10, 10]} intensity={2} color="#00ccff" />
               <pointLight position={[-10, -10, -10]} intensity={1} color="#6a0dad" />
-              <Environment preset="city" />
-              
-              <King position={[0, 4.5, 0]} floatIntensity={0.8} />
-              <Queen position={[-6.5, 3, -4]} rotation={[0, 0.4, 0]} floatIntensity={1.2} />
-              <Bishop position={[7, 3.5, -5]} rotation={[0, -0.4, 0]} floatIntensity={1} />
-              <Knight position={[-8, -4, -2]} rotation={[0, 0.6, 0]} floatIntensity={0.9} />
-              <Rook position={[8, -4.5, -3]} rotation={[0, -0.6, 0]} floatIntensity={1.1} />
+              <Environment files="/textures/environment/city.hdr" />
+
+              <King position={[0, 4, -2]} scale={5.6} color="#00ccff" emissive="#00ccff" emissiveIntensity={0.6} floatIntensity={1.8} floatSpeed={1.5} />
+              <Queen position={[-9, 5, -8]} rotation={[0.2, 0.4, 0]} scale={3.4} color="#ffffff" emissive="#ffffff" emissiveIntensity={0.5} floatIntensity={2.5} floatSpeed={1.2} />
+              <Bishop position={[9, 5.5, -10]} rotation={[-0.2, -0.4, 0]} scale={3.2} color="#111111" emissive="#333333" emissiveIntensity={0.2} floatIntensity={1.6} floatSpeed={1.4} />
+              <Knight position={[-11, -5.5, -6]} rotation={[0.1, 0.6, 0]} scale={3.0} color="#111111" emissive="#333333" emissiveIntensity={0.2} floatIntensity={1.4} floatSpeed={1.3} />
+              <Pawn position={[11.5, -6, -9]} rotation={[-0.1, -0.6, 0]} scale={2.8} color="#ffffff" emissive="#ffffff" emissiveIntensity={0.5} floatIntensity={1.7} floatSpeed={1.1} />
             </Suspense>
           </Canvas>
           {/* Rings */}
@@ -182,8 +182,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* TEXT — z:3, BEHIND pieces */}
-        <div style={{ position: 'relative', zIndex: 3 }}>
+        {/* TEXT — z:10, IN FRONT of pieces */}
+        <div style={{ position: 'relative', zIndex: 10 }}>
           <div className="hero-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'var(--badge-bg)', border: '1px solid var(--b1)', borderRadius: 999, padding: '7px 18px', marginBottom: 24, animation: 'fadeUp .6s cubic-bezier(.16,1,.3,1) both' }}>
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--c)', animation: 'pulseDot 2s ease-in-out infinite', flexShrink: 0 }} />
             <span style={{ fontFamily: 'var(--fd)', fontSize: 9, fontWeight: 600, color: 'var(--c)', letterSpacing: '.14em' }}>ON-CHAIN CHESS — MULTI-CHAIN</span>
@@ -216,7 +216,7 @@ export default function Hero() {
 
           <div style={{ animation: 'fadeUp .6s cubic-bezier(.16,1,.3,1) .4s both' }}>
             {!isConnected && !isStacksConnected ? (
-              <GlowButton variant="brand" parallelogram size="lg" onClick={connect} className="btn-brand-para-mobile">START PLAYING</GlowButton>
+              <GlowButton variant="brand" parallelogram size="lg" onClick={connectWallet} className="btn-brand-para-mobile">START PLAYING</GlowButton>
             ) : (
               <Link href="/app/lobby">
                 <GlowButton variant="brand" parallelogram size="lg" className="btn-brand-para-mobile">GO TO LOBBY</GlowButton>

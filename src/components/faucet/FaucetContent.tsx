@@ -6,13 +6,13 @@ import { Canvas } from '@react-three/fiber'
 import { Float, Environment, Text } from '@react-three/drei'
 import { useRouter } from 'next/navigation'
 import { useWallet } from '@/components/wallet-provider'
-import { useWriteContract, useAccount } from 'wagmi'
+import { useWriteContract } from 'wagmi'
 import { useStacksRead } from '@/hooks/useStacksRead'
 import GlowButton from '@/components/ui/GlowButton'
 import LoadingState from '@/components/ui/LoadingState'
 import FaucetResultModal, { type FaucetResultType } from '@/components/ui/FaucetResultModal'
 import { Navbar } from '@/components/landing/Hero'
-import { King, Queen, Rook, Pawn, Bishop, Knight } from '@/components/ui/ChessModels'
+import { King, Pawn, Bishop, Knight } from '@/components/ui/ChessModels'
 import { CHESS_TOKEN_ABI } from '@/config/abis'
 import { CELO_CONTRACTS, STACKS_CONTRACTS, TOKEN_DECIMALS, FAUCET_AMOUNT } from '@/config/contracts'
 import { formatUnits } from 'viem'
@@ -29,12 +29,7 @@ const KEYFRAMES = `
 }
 `
 
-/* ── DRIP AMOUNTS ── */
-const DRIP_OPTIONS = [
-  { amount: 100,  label: '100',   subtitle: 'STARTER', color: '#00ccff', piece: 'pawn' as const },
-  { amount: 500,  label: '500',   subtitle: 'STANDARD', color: '#35ee66', piece: 'rook' as const },
-  { amount: 1000, label: '1,000', subtitle: 'PREMIUM',  color: '#ffb400', piece: 'queen' as const },
-]
+
 
 /* ── 3D Background Scene ── */
 function FaucetScene() {
@@ -43,7 +38,7 @@ function FaucetScene() {
       <ambientLight intensity={1.5} />
       <directionalLight position={[10, 10, 5]} intensity={2} color="#00ccff" />
       <directionalLight position={[-10, -10, -5]} intensity={1} color="#6a0dad" />
-      <Environment preset="city" />
+      <Environment files="/textures/environment/city.hdr" />
 
       {/* Large background king */}
       <King position={[0, -0.5, -2]} color="#0f172a" emissive="#00ccff" emissiveIntensity={0.15} floatSpeed={0.5} floatIntensity={0.3} rotationIntensity={0.1} scale={2.5} />
@@ -117,11 +112,11 @@ function TokenDisplay({ balance, chain }: { balance: string; chain: string }) {
    ═══════════════════════════════════════════ */
 export default function FaucetContent() {
   const router = useRouter()
-  const { isConnected, activeChain, address: celoAddress, stacksAddress, isStacksConnected } = useWallet()
+  const { isConnected, activeChain, address: celoAddress, stacksAddress, isStacksConnected, connectWallet } = useWallet()
   const { getTokenBalance: getStacksBalance } = useStacksRead()
   const { writeContractAsync } = useWriteContract()
 
-  const [selectedAmount, setSelectedAmount] = useState(0) // index
+
   const [isClaiming, setIsClaiming] = useState(false)
   const [balance, setBalance] = useState('0.00')
   const [resultType, setResultType] = useState<FaucetResultType>(null)
@@ -337,7 +332,7 @@ export default function FaucetContent() {
                     <p className="text-sm font-bold text-white/60 uppercase tracking-widest mb-1">Wallet Required</p>
                     <p className="text-xs text-white/30">Connect your {activeChain === 'celo' ? 'Celo' : 'Stacks'} wallet to claim tokens</p>
                   </div>
-                  <GlowButton variant="brand" size="lg" parallelogram onClick={() => router.push('/app/lobby')}>
+                  <GlowButton variant="brand" size="lg" parallelogram onClick={connectWallet}>
                     CONNECT WALLET
                   </GlowButton>
                 </div>

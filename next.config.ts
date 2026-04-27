@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import path from "node:path";
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -7,6 +8,7 @@ const nextConfig: NextConfig = {
   },
   reactCompiler: true,
   turbopack: {
+    root: path.resolve(__dirname),
     resolveAlias: {
       // Stub for @wagmi/core's optional 'accounts' dependency (Tempo wallet connector).
       // Turbopack can't handle unresolvable dynamic imports — webpack silently fails them.

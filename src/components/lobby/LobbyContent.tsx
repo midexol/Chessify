@@ -26,7 +26,7 @@ function LiveBackgroundPieces() {
       <ambientLight intensity={1.5} />
       <directionalLight position={[10, 10, 5]} intensity={2} color="#00ccff" />
       <directionalLight position={[-10, -10, -5]} intensity={1} color="#6a0dad" />
-      <Environment preset="city" />
+      <Environment files="/textures/environment/city.hdr" />
 
       <Queen position={[-3.5, 2.5, -2]} />
       <King position={[3.5, 3, -3]} />
@@ -37,7 +37,7 @@ function LiveBackgroundPieces() {
 }
 
 export default function LobbyContent() {
-  const { isConnected, isStacksConnected, activeChain, stacksAddress, address: celoAddress } = useWallet()
+  const { isConnected, isStacksConnected, activeChain, stacksAddress, address: celoAddress, connectWallet } = useWallet()
   const { createGame: createStacksGame, joinGame: joinStacksGame } = useStacksChess()
   // @ts-expect-error - intentional unused isCeloPending
   const { createGame: createCeloGame, joinGame: joinCeloGame, isPending: isCeloPending } = useCeloChess()
@@ -45,7 +45,7 @@ export default function LobbyContent() {
   const router = useRouter()
 
   const [isComingSoonOpen, setIsComingSoonOpen] = useState(false)
-  const MAINTENANCE_MODE = true
+  const MAINTENANCE_MODE = false
 
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
   const [isPending, setIsPending] = useState(false)
@@ -137,7 +137,7 @@ export default function LobbyContent() {
         <ClayCard className="max-w-md w-full p-8 md:p-10 text-center mt-20 relative z-10 shadow-2xl">
           <h2 className="text-2xl font-bold text-[var(--t1)] mb-4">Connection Required</h2>
           <p className="text-[var(--t2)] mb-8">Please connect your wallet to enter the Chessify Lobby.</p>
-          <GlowButton onClick={() => router.push('/')} variant="brand">Return Home</GlowButton>
+          <GlowButton onClick={connectWallet} variant="brand">Connect Wallet</GlowButton>
         </ClayCard>
       </main>
     )
@@ -354,7 +354,7 @@ export default function LobbyContent() {
                   <GlowButton
                     variant="ghost"
                     fullWidth
-                    onClick={() => router.push('/app/history')}
+                    onClick={() => handleAction(() => router.push('/app/history'))}
                   >
                     VIEW HISTORY
                   </GlowButton>
