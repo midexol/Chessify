@@ -66,6 +66,7 @@ export default function GameClient() {
   const [moveHistory, setMoveHistory] = useState<string[]>([])
   const [txPending, setTxPending] = useState(false)
   const [dataLoaded, setDataLoaded] = useState(false)
+  const [moveFrom, setMoveFrom] = useState<string>('')
 
   // Fetch Celo Game Data
   const { data: celoGameData } = useReadContract({
@@ -138,6 +139,37 @@ export default function GameClient() {
     }
   }, [game, isBotGame])
 
+  const onSquareClick = useCallback((square: string) => {
+    const canAct = (isBotGame || isStacksConnected || isConnected) && !txPending
+    if (!canAct || game.isGameOver()) return
+    if (isBotGame && game.turn() === 'b') return
+
+    // Clicked source square
+    if (!moveFrom) {
+      const piece = game.get(square as any)
+      if (piece && piece.color === game.turn()) {
+        setMoveFrom(square)
+      }
+      return
+    }
+
+    // Clicked target square
+    const piece = game.get(square as any)
+    if (piece && piece.color === game.turn()) {
+      setMoveFrom(square)
+      return
+    }
+
+    const moveInfo = { sourceSquare: moveFrom, targetSquare: square }
+    const success = onDrop(moveInfo)
+    if (success) {
+      setMoveFrom('')
+    } else {
+      setMoveFrom('') // Reset if invalid
+    }
+  }, [game, moveFrom, onDrop, isBotGame, isStacksConnected, isConnected, txPending])
+
+
   // ── tx helpers ───────────────────────────────────────────────────────────
 
   const withTx = useCallback(async (fn: () => Promise<unknown> | undefined) => {
@@ -186,8 +218,11 @@ export default function GameClient() {
       </div>
 
       {!isBotGame && !gameData ? (
-        <div className="min-h-screen flex items-center justify-center">
+        <div className="min-h-screen flex flex-col items-center justify-center gap-12 relative z-10">
           <LoadingState message={`RETRIEVING MATCH DATA #${gameId}`} />
+          <Link href="/app/lobby">
+            <GlowButton variant="ghost" size="sm" parallelogram>← CANCEL / BACK TO LOBBY</GlowButton>
+          </Link>
         </div>
       ) : (
         <main className="relative z-10 max-w-7xl mx-auto px-6 py-12 pt-32">
@@ -242,9 +277,11 @@ export default function GameClient() {
                     return onDrop({ sourceSquare, targetSquare });
                   }}
                   boardOrientation={activeChain === 'stacks' ? 'white' : 'white'}
-                  arePiecesDraggable={canAct && !gameOver}
+                  arePiecesDraggable={canAct && !gameOver && (!isBotGame || turn === 'w')}
+                  onSquareClick={onSquareClick}
                   customDarkSquareStyle={{ backgroundColor: '#161636' }}
                   customLightSquareStyle={{ backgroundColor: '#2a2a5a' }}
+                  customSquareStyles={moveFrom ? { [moveFrom]: { backgroundColor: 'rgba(0, 204, 255, 0.4)' } } : {}}
                   customBoardStyle={{
                     borderRadius: '12px',
                     boxShadow: '0 20px 50px rgba(0,0,0,0.5)',

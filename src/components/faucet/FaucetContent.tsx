@@ -350,7 +350,6 @@ export default function FaucetContent() {
 
                   {/* CLAIM BUTTON */}
                   <div
-                    className="rounded-[24px] p-[2px]"
                     style={{
                       background: 'linear-gradient(135deg, #00ccff, #6a0dad, #00ccff)',
                       animation: 'drip-pulse 3s ease-in-out infinite',

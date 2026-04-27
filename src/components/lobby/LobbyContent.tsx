@@ -53,7 +53,7 @@ export default function LobbyContent() {
   const [isPending, setIsPending] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const [searchId, setSearchId] = useState('')
-  const ITEMS_PER_PAGE = 5
+  const ITEMS_PER_PAGE = 3
   const [wager, setWager] = useState(100)
   const [balance, setBalance] = useState<string>('0.00')
   const [rating, setRating] = useState<number>(1200)

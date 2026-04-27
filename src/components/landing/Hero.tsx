@@ -21,9 +21,10 @@ const KEYFRAMES = `
 }
 
 @media (max-width: 768px) {
-  .hero-pieces { display: none; }
+  .hero-pieces { opacity: 0.08; transform: scale(0.6) translateY(20%); }
   .hero-navbar { padding: 18px 24px !important; }
   .hero-nav-links { display: none !important; }
+  .hero-logo-img { width: 140px !important; height: auto !important; }
 }
 `
 
@@ -47,7 +48,7 @@ export function Navbar() {
     <>
       <nav className="hero-navbar w-full flex items-center justify-between" style={{ padding: "18px 56px", position: "relative", zIndex: 20 }}>
         <div>
-          <Image src="/chessify.png" alt="Chessify" width={200} height={50} style={{ objectFit: "contain" }} />
+          <Image src="/chessify.png" alt="Chessify" width={200} height={50} style={{ objectFit: "contain" }} className="hero-logo-img" />
         </div>
         <div className="nav-surface hero-nav-links" style={{ display: "flex", gap: 28, borderRadius: 999, padding: "10px 28px" }}>
           {["How it works", "History", "Faucet"].map((l) => {
