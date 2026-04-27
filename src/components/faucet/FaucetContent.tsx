@@ -349,22 +349,22 @@ export default function FaucetContent() {
                   </div>
 
                   {/* CLAIM BUTTON */}
-                  <div
+                  {/* <div
                     style={{
                       background: 'linear-gradient(135deg, #00ccff, #6a0dad, #00ccff)',
                       animation: 'drip-pulse 3s ease-in-out infinite',
                     }}
+                  > */}
+                  <GlowButton
+                    variant="brand"
+                    size="lg"
+                    parallelogram
+                    onClick={handleClaim}
+                    className="min-w-[280px]"
                   >
-                    <GlowButton
-                      variant="brand"
-                      size="lg"
-                      parallelogram
-                      onClick={handleClaim}
-                      className="min-w-[280px]"
-                    >
-                      CLAIM {faucetAmountFormatted} CHESS
-                    </GlowButton>
-                  </div>
+                    CLAIM {faucetAmountFormatted} CHESS
+                  </GlowButton>
+                  {/* </div> */}
 
                   <span className="text-[9px] font-bold tracking-[0.2em] text-white/25 uppercase">
                     One claim per day • {activeChain === 'celo' ? 'Celo Network' : 'Stacks Network'}
