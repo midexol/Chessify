@@ -156,10 +156,14 @@ export function useHistory() {
       fetchStacksHistory()
     ])
     
-    const combined = [...celoItems, ...stacksItems].sort((a, b) => b.timestamp - a.timestamp)
+    // Filter by active chain to avoid cross-chain UI leaks
+    const combined = [...celoItems, ...stacksItems]
+      .filter(item => item.chain === activeChain)
+      .sort((a, b) => b.timestamp - a.timestamp)
+      
     setHistory(combined)
     setIsLoading(false)
-  }, [fetchCeloHistory, fetchStacksHistory])
+  }, [fetchCeloHistory, fetchStacksHistory, activeChain])
 
   useEffect(() => {
     refreshHistory()

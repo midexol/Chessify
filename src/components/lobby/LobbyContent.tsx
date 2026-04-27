@@ -123,6 +123,16 @@ export default function LobbyContent() {
 
   const handleAction = (action: () => void) => MAINTENANCE_MODE ? setIsComingSoonOpen(true) : action()
 
+  useEffect(() => {
+    // Redirect if not connected and not in a loading state
+    if (!isConnected && !isStacksConnected) {
+      const timer = setTimeout(() => {
+        router.replace('/')
+      }, 3000) // Give it a 3s grace period to detect existing sessions
+      return () => clearTimeout(timer)
+    }
+  }, [isConnected, isStacksConnected, router])
+
   if (!isConnected && !isStacksConnected) {
     return (
       <main className="min-h-screen w-full max-w-[100vw] bg-[var(--bg)] flex items-center justify-center p-6 relative overflow-hidden box-border">
@@ -136,7 +146,8 @@ export default function LobbyContent() {
 
         <ClayCard className="max-w-md w-full p-8 md:p-10 text-center mt-20 relative z-10 shadow-2xl">
           <h2 className="text-2xl font-bold text-[var(--t1)] mb-4">Connection Required</h2>
-          <p className="text-[var(--t2)] mb-8">Please connect your wallet to enter the Chessify Lobby.</p>
+          <p className="text-[var(--t2)] mb-4">Please connect your wallet to enter the Chessify Lobby.</p>
+          <p className="text-[var(--t3)] text-[10px] uppercase tracking-widest mb-8">Redirecting to landing page in 3s...</p>
           <GlowButton onClick={connectWallet} variant="brand">Connect Wallet</GlowButton>
         </ClayCard>
       </main>

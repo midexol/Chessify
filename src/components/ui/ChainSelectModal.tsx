@@ -56,7 +56,7 @@ function ChainCard({
   description: string
   accentColor: string
   accentGlow: string
-  icon: string
+  iconUrl: string
   onClick: () => void
   delay?: number
   children: React.ReactNode
@@ -101,7 +101,9 @@ function ChainCard({
       <div className="px-6 pb-6 pt-1 relative z-10">
         {/* Ecosystem Badge */}
         <div className="flex items-center gap-2 mb-3">
-          <span className="text-lg">{icon}</span>
+          <div className="w-6 h-6 flex items-center justify-center relative bg-white/5 rounded-lg border border-white/10 p-1">
+            <img src={iconUrl} alt="chain" className="w-full h-full object-contain" />
+          </div>
           <span
             className="text-[9px] font-black tracking-[0.3em] uppercase"
             style={{ color: accentColor, fontFamily: 'var(--fd)' }}
@@ -216,7 +218,7 @@ export default function ChainSelectModal({
                 description="Connect with MetaMask, WalletConnect, or any EVM-compatible wallet. MiniPay supported."
                 accentColor="#35ee66"
                 accentGlow="rgba(53, 238, 102, 0.08)"
-                icon="🌿"
+                iconUrl="/celo-celo-logo.svg"
                 onClick={onSelectCelo}
                 delay={0.2}
               >
@@ -230,7 +232,7 @@ export default function ChainSelectModal({
                 description="Connect with Leather or Xverse wallet. Secured by Bitcoin's proof-of-work."
                 accentColor="#ff9900"
                 accentGlow="rgba(255, 153, 0, 0.08)"
-                icon="₿"
+                iconUrl="/stacks-stx-logo.svg"
                 onClick={onSelectStacks}
                 delay={0.3}
               >
