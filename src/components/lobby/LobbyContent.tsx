@@ -12,6 +12,7 @@ import { useRouter } from 'next/navigation'
 import { Navbar } from '@/components/landing/Hero'
 import { CELO_CONTRACTS, TOKEN_DECIMALS } from '@/config/contracts'
 import { useCeloChess } from '@/hooks/useCeloChess'
+import { useLobby } from '@/hooks/useLobby'
 // @ts-expect-error - intentional unused variable
 import { useReadContract, useAccount } from 'wagmi'
 import { CHESS_GAME_ABI, CHESS_TOKEN_ABI } from '@/config/abis'
@@ -79,11 +80,7 @@ export default function LobbyContent() {
     }
   }, [activeChain, stacksAddress, celoAddress, getStacksBalance, getStacksStats, celoBalance, celoStats])
 
-  const openGames = [
-    { id: 101, creator: 'SP2...X14', wager: 50, chain: 'stacks', elo: 1200 },
-    { id: 202, creator: '0x4...a21', wager: 250, chain: 'celo', elo: 1850 },
-    { id: 105, creator: 'SP3...A99', wager: 100, chain: 'stacks', elo: 1420 },
-  ]
+  const { games: openGames, isLoading: isLobbyLoading, refresh: refreshLobby } = useLobby()
 
   const handleCreateGame = async () => {
     if (MAINTENANCE_MODE) return setIsComingSoonOpen(true)
@@ -96,6 +93,7 @@ export default function LobbyContent() {
         await createCeloGame(wager)
         setIsCreateModalOpen(false)
       }
+      refreshLobby()
     } catch (err) {
       console.error('Create game failed:', err)
     } finally {
@@ -223,7 +221,7 @@ export default function LobbyContent() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="shrink-0"
+                  className="shrink-0 flex flex-wrap gap-4"
                 >
                   <GlowButton
                     parallelogram
@@ -234,6 +232,15 @@ export default function LobbyContent() {
                   >
                     CREATE NEW MATCH
                   </GlowButton>
+                  <GlowButton
+                    parallelogram
+                    variant="ghost"
+                    size="lg"
+                    onClick={() => router.push('/app/game/bot')}
+                    className="w-full md:w-auto"
+                  >
+                    QUICK PLAY (VS AI)
+                  </GlowButton>
                 </motion.div>
               </div>
             </div>
@@ -241,12 +248,17 @@ export default function LobbyContent() {
             {/* ── CARD 2: Open Challenges ── */}
             <div className="rounded-[32px] border border-white/10 bg-slate-900/60 backdrop-blur-xl shadow-2xl">
               <div className="p-6 md:p-10 flex flex-col gap-6">
-                <h3
-                  className="text-xs font-bold tracking-[0.25em] text-[var(--t3)] uppercase"
-                  style={{ fontFamily: 'var(--fd)' }}
-                >
-                  Open Challenges
-                </h3>
+                <div className="flex items-center justify-between">
+                  <h3
+                    className="text-xs font-bold tracking-[0.25em] text-[var(--t3)] uppercase"
+                    style={{ fontFamily: 'var(--fd)' }}
+                  >
+                    Open Challenges
+                  </h3>
+                  {isLobbyLoading && (
+                    <div className="w-3 h-3 border-2 border-[var(--c)] border-t-transparent rounded-full animate-spin opacity-60" />
+                  )}
+                </div>
 
                 <div className="flex flex-col gap-4">
                   {openGames.filter(g => g.chain === activeChain).map((game, idx) => (

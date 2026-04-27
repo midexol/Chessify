@@ -41,7 +41,8 @@ interface PlayerStats {
 
 export default function GameClient() {
   const params = useParams()
-  const gameId = Number(params?.id ?? 0)
+  const isBotGame = params?.id === 'bot'
+  const gameId = isBotGame ? 0 : Number(params?.id ?? 0)
 
   // @ts-ignore - intentional
   const { stacksAddress, isStacksConnected, activeChain, address: celoAddress, isConnected, connectWallet } = useWallet()
@@ -111,11 +112,25 @@ export default function GameClient() {
       if (!mv) return false
       setGame(next)
       setMoveHistory(h => [...h, mv.san])
+      
+      // If bot game, trigger bot move after a short delay
+      if (isBotGame && !next.isGameOver()) {
+        setTimeout(() => {
+          const possibleMoves = next.moves()
+          if (possibleMoves.length > 0) {
+            const botMove = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
+            next.move(botMove)
+            setGame(new Chess(next.fen()))
+            setMoveHistory(h => [...h, botMove])
+          }
+        }, 500)
+      }
+      
       return true
     } catch {
       return false
     }
-  }, [game])
+  }, [game, isBotGame])
 
   // ── tx helpers ───────────────────────────────────────────────────────────
 
@@ -169,9 +184,18 @@ export default function GameClient() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
           <div>
             <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tighter">
-              Match <span className="text-[var(--c)]">#{gameId}</span>
+              {isBotGame ? (
+                <>AI <span className="text-[var(--c)]">Training</span></>
+              ) : (
+                <>Match <span className="text-[var(--c)]">#{gameId}</span></>
+              )}
             </h1>
-            {gameData && (
+            {isBotGame ? (
+              <div className="flex gap-4 mt-4">
+                <StatBadge label="MODE" value="SINGLE PLAYER" accent />
+                <StatBadge label="OPPONENT" value="SYSTEM BOT" />
+              </div>
+            ) : gameData && (
               <div className="flex gap-4 mt-4">
                 <StatBadge label="WAGER" value={`${gameData.wager} CHESS`} accent />
                 <StatBadge label="STATUS" value={gameData.status.toUpperCase()} />
@@ -261,11 +285,11 @@ export default function GameClient() {
                   variant="brand"
                   fullWidth
                   parallelogram
-                  disabled={!canAct || gameOver}
+                  disabled={!canAct || gameOver || isBotGame}
                   loading={txPending}
                   onClick={handleMoveSubmit}
                 >
-                  BROADCAST MOVE
+                  {isBotGame ? 'BOT SESSION ACTIVE' : 'BROADCAST MOVE'}
                 </GlowButton>
                 
                 <div className="grid grid-cols-2 gap-3">
