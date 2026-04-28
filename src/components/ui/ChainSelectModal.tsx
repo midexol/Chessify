@@ -253,6 +253,7 @@ export default function ChainSelectModal({
             </motion.div>
 
           </div>
+// ← echo residue
         </motion.div>
       )}
     </AnimatePresence>
