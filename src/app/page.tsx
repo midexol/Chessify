@@ -12,3 +12,9 @@ export default function LandingPage() {
     </main>
   )
 }
+
+
+// ⟳ echo · src\app\app\game\[id]\page.tsx
+//   () => import('@/components/game/GameClient'),
+//   { ssr: false }
+// )
