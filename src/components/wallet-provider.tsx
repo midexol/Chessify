@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useContext, useEffect, useState, useCallback } from 'react_'
+import React, { createContext, useContext, useEffect, useState, useCallback } from 'react'
 import { useAccount, useDisconnect } from 'wagmi'
 
 interface WalletContextType {
@@ -91,7 +91,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
       }
     }
     initStacks()
-  // eslint-disable-next-line react_-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // 2. Persistent chain preference
@@ -115,7 +115,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   // ── Connect Celo (via Reown AppKit) ──
   const connect = useCallback(async () => {
     try {
-      const { modal } = await import('@reown/appkit/react_')
+      const { modal } = await import('@reown/appkit/react')
       await modal?.open()
     } catch (e) {
       console.error('Failed to open AppKit modal:', e)
