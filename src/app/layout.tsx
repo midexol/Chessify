@@ -27,3 +27,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
+
+// ⟳ echo · src\components\ui\ComingSoonOverlay.tsx
+//     clone.traverse((child: any) => {
+//       if (child.isMesh) child.material = material
+//     })
+//     return clone
+//   }
