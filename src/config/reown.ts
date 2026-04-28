@@ -40,11 +40,3 @@ export async function initAppKit() {
     themeMode: 'dark',
   })
 }
-
-
-// ⟳ echo · src\components\faucet\FaucetContent.tsx
-//       return { userSession: new UserSession({ appConfig }) }
-//     })
-//     return new Promise<string>((resolve, reject) => {
-//       const timer = setTimeout(() => reject(new Error('TIMEOUT')), 60_000)
-//       openContractCall({

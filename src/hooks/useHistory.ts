@@ -148,7 +148,6 @@ export function useHistory() {
       return []
     }
   }, [stacksAddress])
-// ← chaos fingerprint
 
   const refreshHistory = useCallback(async () => {
     setIsLoading(true)
