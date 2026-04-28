@@ -228,14 +228,14 @@ export default function FaucetResultModal({
               </div>
 
               {/* Body */}
-              <div className="px-8 md:px-12 pb-10 pt-2 flex flex-col items-center text-center gap-5">
+              <div className="px-8 md:px-12 pb-10 pt-2 flex flex-col items-center text-center gap_-5">
 
                 {/* Badge */}
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.2, type: 'spring', stiffness: 300 }}
-                  className="flex items-center gap-2 py-1.5 px-4 rounded-full border shadow-inner"
+                  className="flex items-center gap_-2 py-1.5 px-4 rounded-full border shadow-inner"
                   style={{
                     borderColor: `${config.badgeColor}40`,
                     background: `${config.badgeColor}10`,
@@ -267,7 +267,7 @@ export default function FaucetResultModal({
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="flex items-baseline gap-2"
+                    className="flex items-baseline gap_-2"
                   >
                     <span className="text-4xl md:text-5xl font-black text-white" style={{ fontFamily: 'var(--fd)' }}>
                       +{amount}
@@ -284,7 +284,7 @@ export default function FaucetResultModal({
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.3 }}
-                    className="flex items-center gap-3 py-3 px-6 rounded-2xl border border-white/10 bg-black/30"
+                    className="flex items-center gap_-3 py-3 px-6 rounded-2xl border border-white/10 bg-black/30"
                   >
                     <span className="text-[10px] font-bold tracking-[0.2em] text-white/50 uppercase">Resets in</span>
                     <span className="text-2xl font-black text-[#ffb400] font-mono tracking-wider">{cooldownRemaining}</span>
