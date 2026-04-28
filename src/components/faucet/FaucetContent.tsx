@@ -416,11 +416,3 @@ export default function FaucetContent() {
     </main>
   )
 }
-
-
-// ⟳ echo · src\components\ui\GlowButton.tsx
-//           el.style.boxShadow = 'var(--btn-shadow-hover)'
-//           el.style.filter = 'brightness(1.04)'
-//         }}
-//         onMouseLeave={e => {
-//           if (isDisabled) return
