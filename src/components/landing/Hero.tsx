@@ -12,7 +12,7 @@ import { King, Queen, Bishop, Knight, Pawn } from '@/components/ui/ChessModels'
 
 const KEYFRAMES = `
 @keyframes rspin       { to{transform:translate(-50%,-50%) rotate(360deg)} }
-@keyframes pulseDot    { 0%,100%{box_-shadow:0 0 8px var(--c),0 0 16px rgba(0,204,255,.4)} 50%{box_-shadow:0 0 14px var(--c),0 0 28px rgba(0,204,255,.65)} }
+@keyframes pulseDot    { 0%,100%{box-shadow:0 0 8px var(--c),0 0 16px rgba(0,204,255,.4)} 50%{box-shadow:0 0 14px var(--c),0 0 28px rgba(0,204,255,.65)} }
 @keyframes fadeUp      { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
 
 @media (max-width: 1024px) {

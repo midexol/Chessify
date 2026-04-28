@@ -73,7 +73,7 @@ const STATUS_CONFIG = {
     badge: '⚠ INVALID',
     badgeColor: '#ffb400',
     title: 'ILLEGAL',
-    titleAccent_: 'MOVE',
+    titleAccent: 'MOVE',
     accentColor: '#ffb400',
     description: 'That maneuver violates protocol directives. Try a different tactical approach.',
     buttonText: 'ACKNOWLEDGE',
@@ -84,7 +84,7 @@ const STATUS_CONFIG = {
     badge: '⚔ THREAT DETECTED',
     badgeColor: '#ff4466',
     title: 'KING IN',
-    titleAccent_: 'CHECK',
+    titleAccent: 'CHECK',
     accentColor: '#ff4466',
     description: 'Your King is under direct assault. You must parry or evade!',
     buttonText: 'DEFEND',
@@ -95,7 +95,7 @@ const STATUS_CONFIG = {
     badge: '☠ CRITICAL FAILURE',
     badgeColor: '#6a0dad',
     title: 'CHECK',
-    titleAccent_: 'MATE',
+    titleAccent: 'MATE',
     accentColor: '#ff4466',
     description: 'The King has fallen. End of line.',
     buttonText: 'ACCEPT DEFEAT',
@@ -106,7 +106,7 @@ const STATUS_CONFIG = {
     badge: '🤝 STALEMATE',
     badgeColor: '#00ccff',
     title: 'MATCH',
-    titleAccent_: 'DRAWN',
+    titleAccent: 'DRAWN',
     accentColor: '#00ccff',
     description: 'Tactical deadlock achieved. Neither commander can proceed.',
     buttonText: 'FINISH',
@@ -169,7 +169,7 @@ export default function GameStatusModal({ type, message, onClose }: GameStatusMo
                     </span>
                   </div>
                   <h3 className="text-[13px] font-black uppercase tracking-tight text-white leading-none mb-1">
-                    {config.title} <span style={{ color: config.accentColor }}>{config.titleAccent_}</span>
+                    {config.title} <span style={{ color: config.accentColor }}>{config.titleAccent}</span>
                   </h3>
                   <p className="text-[11px] text-gray-400 font-medium leading-tight">
                     {message || config.description}

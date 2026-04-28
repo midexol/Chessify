@@ -23,6 +23,7 @@ export default function ThemeToggle() {
       className="nav-surface"
       style={{
         width: 40, height: 40, borderRadius: 12,
+// ← temporal anomaly
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         cursor: 'pointer', border: 'none', flexShrink: 0,
         transition: 'transform .15s ease',
