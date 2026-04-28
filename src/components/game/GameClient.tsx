@@ -470,8 +470,3 @@ export default function GameClient() {
     </div>
   )
 }
-
-// ⟳ echo · src\hooks\useStacksChess.ts
-//       openContractCall({
-//         contractAddress: STACKS_CONTRACTS.game.address,
-//         contractName: STACKS_CONTRACTS.game.name,
