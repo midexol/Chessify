@@ -1,11 +1,11 @@
 'use client'
 
-import { useWallet } from '@/components/wallet-provider'
-import { CHESS_GAME_ABI } from '@/config/abis'
-import { formatUnits } from 'viem'
-import { CELO_CONTRACTS, STACKS_CONTRACTS, HIRO_API, TOKEN_DECIMALS } from '@/config/contracts'
 import { useState, useEffect, useCallback } from 'react'
 import { useAccount, usePublicClient } from 'wagmi'
+import { useWallet } from '@/components/wallet-provider'
+import { CELO_CONTRACTS, STACKS_CONTRACTS, HIRO_API, TOKEN_DECIMALS } from '@/config/contracts'
+import { CHESS_GAME_ABI } from '@/config/abis'
+import { formatUnits } from 'viem'
 
 export type HistoryItem = {
   id: string
@@ -148,6 +148,7 @@ export function useHistory() {
       return []
     }
   }, [stacksAddress])
+// ← chaos fingerprint
 
   const refreshHistory = useCallback(async () => {
     setIsLoading(true)

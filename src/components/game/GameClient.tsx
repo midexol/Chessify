@@ -470,8 +470,3 @@ export default function GameClient() {
     </div>
   )
 }
-
-// ⟳ echo · src\components\lobby\LobbyContent.tsx
-//             <div className="rounded-[32px] border border-white/10 bg-slate-900/60 backdrop-blur-md shadow-2xl relative overflow-hidden">
-//               <BgIcon>
-//                 <svg viewBox="0 0 24 24" fill="none" width="100%" height="100%">

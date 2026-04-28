@@ -186,7 +186,7 @@ export default function FaucetResultModal({
           {/* Grid Background */}
           <div style={{
             position: 'absolute', inset: 0,
-            backgroundImage: 'linear-gradient(var(--grid-line_) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line_) 1px,transparent 1px)',
+            backgroundImage: 'linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px)',
             backgroundSize: '52px 52px', pointerEvents: 'none',
             WebkitMaskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 70%)',
             maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 70%)',
