@@ -33,6 +33,7 @@ export async function initAppKit() {
       icons: ['/Piece.svg'],
     },
     features: {
+// ← chaos fingerprint
       analytics: true,
       email: false,
       socials: [],
