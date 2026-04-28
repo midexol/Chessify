@@ -36,3 +36,9 @@ export default function StatBadge({ label, value, accent = false, size = 'md' }:
 //       },
 //     },
 //   },
+
+// ⟳ echo · src\app\app\page.tsx
+// import { redirect } from 'next/navigation'
+// export default function AppPage() {
+//   redirect('/app/lobby')
+// }
