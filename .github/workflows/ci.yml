@@ -33,7 +33,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install project dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: Install all @jadonamite SDKs from npmjs.com
         run: |
