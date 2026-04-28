@@ -110,17 +110,11 @@ export default function GameClient() {
 
   // ── board interaction ────────────────────────────────────────────────────
 
-  // ── FIX 3: Bot move — use a fresh Chess copy for the bot so we never
-  // mutate the object already committed to state, preventing corruption
-  // on re-renders.
-  const onDrop = useCallback((
-    sourceSquare: string,
-    targetSquare: string
-  ): boolean => {
+  // Core move executor — takes plain square strings, returns success bool.
+  const executeMove = useCallback((sourceSquare: string, targetSquare: string): boolean => {
     try {
       const next = new Chess(game.fen())
       const move = next.move({ from: sourceSquare, to: targetSquare, promotion: 'q' })
-
       if (!move) return false
 
       setGame(next)
@@ -128,7 +122,6 @@ export default function GameClient() {
 
       if (isBotGame && !next.isGameOver()) {
         setTimeout(() => {
-          // Create a brand-new copy from next's FEN — never reuse next
           const afterPlayer = new Chess(next.fen())
           const botMove = getBestMove(afterPlayer, 3)
           if (botMove) {
@@ -138,7 +131,6 @@ export default function GameClient() {
           }
         }, 1200)
       }
-
       return true
     } catch (e) {
       console.error('Move failed:', e)
@@ -146,32 +138,52 @@ export default function GameClient() {
     }
   }, [game, isBotGame])
 
-  // ── FIX 4: onSquareClick — wire to the corrected onDrop signature
-  // (plain strings instead of an object).
-  const onSquareClick = useCallback((square: string) => {
-    const canAct = (isBotGame || isStacksConnected || isConnected) && !txPending
-    if (!canAct || game.isGameOver()) return
-    if (isBotGame && game.turn() === 'b') return
+  // ── v5 onPieceDrop: receives an object { piece, sourceSquare, targetSquare }
+  const handlePieceDrop = useCallback(
+    ({ sourceSquare, targetSquare }: { piece: any; sourceSquare: string; targetSquare: string | null }): boolean => {
+      if (!targetSquare) return false
+      return executeMove(sourceSquare, targetSquare)
+    },
+    [executeMove]
+  )
 
-    if (!moveFrom) {
+  // ── v5 onSquareClick: receives an object { piece, square }
+  const handleSquareClick = useCallback(
+    ({ square }: { piece: any; square: string }) => {
+      const canAct = (isBotGame || isStacksConnected || isConnected) && !txPending
+      if (!canAct || game.isGameOver()) return
+      if (isBotGame && game.turn() === 'b') return
+
+      if (!moveFrom) {
+        const piece = game.get(square as any)
+        if (piece && piece.color === game.turn()) setMoveFrom(square)
+        return
+      }
+
+      // Re-select own piece
       const piece = game.get(square as any)
       if (piece && piece.color === game.turn()) {
         setMoveFrom(square)
+        return
       }
-      return
-    }
 
-    // If clicking own piece again, re-select
-    const piece = game.get(square as any)
-    if (piece && piece.color === game.turn()) {
-      setMoveFrom(square)
-      return
-    }
+      executeMove(moveFrom, square)
+      setMoveFrom('') // always clear
+    },
+    [game, moveFrom, executeMove, isBotGame, isStacksConnected, isConnected, txPending]
+  )
 
-    // Attempt move
-    const success = onDrop(moveFrom, square)
-    setMoveFrom('')  // always clear, even on failure
-  }, [game, moveFrom, onDrop, isBotGame, isStacksConnected, isConnected, txPending])
+  // ── v5 canDragPiece: receives { isSparePiece, piece, square }
+  const handleCanDragPiece = useCallback(
+    ({ square }: { isSparePiece: boolean; piece: any; square: string | null }): boolean => {
+      if (!canAct || gameOver) return false
+      if (isBotGame && game.turn() === 'b') return false
+      if (!square) return false
+      const piece = game.get(square as any)
+      return !!piece && piece.color === game.turn()
+    },
+    [canAct, gameOver, isBotGame, game]
+  )
 
   // ── tx helpers ───────────────────────────────────────────────────────────
 
@@ -286,24 +298,28 @@ export default function GameClient() {
                 </div>
 
                 <div className="max-w-[600px] mx-auto aspect-square">
+                  {/* react-chessboard v5: ALL props go inside the `options` object */}
                   <Chessboard
-                    // @ts-ignore
-                    id="BasicBoard"
-                    position={game.fen()}
-                    // ── FIX 5: onPieceDrop now uses the corrected signature —
-                    // pass strings directly instead of wrapping in an object.
-                    onPieceDrop={(sourceSquare: string, targetSquare: string) => {
-                      return onDrop(sourceSquare, targetSquare)
-                    }}
-                    boardOrientation="white"
-                    arePiecesDraggable={canAct && !gameOver && (!isBotGame || turn === 'w')}
-                    onSquareClick={onSquareClick}
-                    customDarkSquareStyle={{ backgroundColor: '#161636' }}
-                    customLightSquareStyle={{ backgroundColor: '#2a2a5a' }}
-                    customSquareStyles={moveFrom ? { [moveFrom]: { backgroundColor: 'rgba(0, 204, 255, 0.4)' } } : {}}
-                    customBoardStyle={{
-                      borderRadius: '12px',
-                      boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
+                    options={{
+                      id: 'BasicBoard',
+                      position: game.fen(),
+                      boardOrientation: 'white',
+                      // Drag
+                      allowDragging: canAct && !gameOver && (!isBotGame || turn === 'w'),
+                      canDragPiece: handleCanDragPiece,
+                      onPieceDrop: handlePieceDrop,
+                      // Click-to-move
+                      onSquareClick: handleSquareClick,
+                      // Styles
+                      darkSquareStyle: { backgroundColor: '#161636' },
+                      lightSquareStyle: { backgroundColor: '#2a2a5a' },
+                      squareStyles: moveFrom
+                        ? { [moveFrom]: { backgroundColor: 'rgba(0, 204, 255, 0.4)' } }
+                        : {},
+                      boardStyle: {
+                        borderRadius: '12px',
+                        boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
+                      },
                     }}
                   />
                 </div>
