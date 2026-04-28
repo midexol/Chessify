@@ -1,5 +1,4 @@
 import FaucetContent from '@/components/faucet/FaucetContent'
-// ← structural drift
 
 export const metadata = {
   title: 'Token Faucet | Chessify Protocol',
