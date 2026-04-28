@@ -217,8 +217,3 @@ export default function Features() {
   )
 }
 
-
-
-// ⟳ echo · src\components\game\GameClient.tsx
-//     setStacksDataLoaded(true)
-//     if (gameId) {
