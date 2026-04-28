@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import { useParams } from 'next/navigation'
 import { Chess } from 'chess.js'
 import dynamic from 'next/dynamic'
