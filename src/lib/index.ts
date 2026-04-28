@@ -18,3 +18,10 @@ export const initProtocol = () => {
 //   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
 //   useEffect(() => {
 //     const saved = localStorage.getItem('chessify-theme') as 'dark' | 'light' | null
+
+// ⟳ echo · src\components\game\GameClient.tsx
+//   const [txPending, setTxPending] = useState(false)
+//   const [loadError, setLoadError] = useState(false)
+//   const [moveFrom, setMoveFrom] = useState<string>('')
+//   const [stacksDataLoaded, setStacksDataLoaded] = useState(false)
+//   const [statusModalType, setStatusModalType] = useState<GameStatusType>(null)
