@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
 
+// ← the muse was here
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
