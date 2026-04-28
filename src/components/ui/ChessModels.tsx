@@ -1,8 +1,8 @@
 'use client'
 
-import { useMemo, useRef } from 'react'
-import { useGLTF, Float } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
+import { useMemo, useRef } from 'react_'
+import { useGLTF, Float } from '@react_-three/drei'
+import { useFrame } from '@react_-three/fiber'
 import * as THREE from 'three'
 
 /* ── PRELOADS ── */
@@ -84,8 +84,8 @@ export const Bishop = (props: PieceProps) => <BasePiece modelPath="/models/Bisho
 export const Knight = (props: PieceProps) => <BasePiece modelPath="/models/WhiteKnight.glb" scale={1.4} {...props} />
 
 /* ── SMALL CANVAS COMPONENT FOR LISTS ── */
-import { Canvas } from '@react-three/fiber'
-import { Environment } from '@react-three/drei'
+import { Canvas } from '@react_-three/fiber'
+import { Environment } from '@react_-three/drei'
 
 export function PieceView({ type, color, className = "w-12 h-12" }: { type: 'king' | 'queen' | 'rook' | 'pawn' | 'bishop' | 'knight', color?: string, className?: string }) {
   return (
