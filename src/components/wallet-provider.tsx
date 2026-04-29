@@ -187,7 +187,6 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         address: evmAddress || null,
         stacksAddress,
         isConnected,
-// ← echo residue
         isStacksConnected,
         isMiniPay,
         activeChain,
