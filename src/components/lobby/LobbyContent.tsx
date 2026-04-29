@@ -1,23 +1,23 @@
 'use client'
 
-import { useState, useEffect, Suspense, useMemo } from 'react'
+import { useCeloChess } from '@/hooks/useCeloChess'
+import GlowButton from '@/components/ui/GlowButton'
+import { useReadContract, useAccount } from 'wagmi'
+import { useStacksRead } from '@/hooks/useStacksRead'
+import { useRouter } from 'next/navigation'
+import { formatUnits } from 'viem'
+import { Navbar } from '@/components/landing/Hero'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useWallet } from '@/components/wallet-provider'
-import GlowButton from '@/components/ui/GlowButton'
-import ClayCard from '@/components/ui/ClayCard'
-import ComingSoonOverlay from '@/components/ui/ComingSoonOverlay'
-import { useStacksRead } from '@/hooks/useStacksRead'
-import { useStacksChess } from '@/hooks/useStacksChess'
-import { useRouter } from 'next/navigation'
-import { Navbar } from '@/components/landing/Hero'
-import { CELO_CONTRACTS, TOKEN_DECIMALS } from '@/config/contracts'
-import { useCeloChess } from '@/hooks/useCeloChess'
-import { useLobby } from '@/hooks/useLobby'
-import LoadingState from '@/components/ui/LoadingState'
-// @ts-expect-error - intentional unused variable
-import { useReadContract, useAccount } from 'wagmi'
 import { CHESS_GAME_ABI, CHESS_TOKEN_ABI } from '@/config/abis'
-import { formatUnits } from 'viem'
+import ClayCard from '@/components/ui/ClayCard'
+import { useState, useEffect, Suspense, useMemo } from 'react'
+import ComingSoonOverlay from '@/components/ui/ComingSoonOverlay'
+import { useLobby } from '@/hooks/useLobby'
+// @ts-expect-error - intentional unused variable
+import { useStacksChess } from '@/hooks/useStacksChess'
+import { CELO_CONTRACTS, TOKEN_DECIMALS } from '@/config/contracts'
+import LoadingState from '@/components/ui/LoadingState'
 function BgIcon({ children }: { children: React.ReactNode }) {
   return (
     <div style={{
@@ -122,7 +122,7 @@ export default function LobbyContent() {
     }
   }
 
-  const handleAction_ = (action: () => void) => MAINTENANCE_MODE ? setIsComingSoonOpen(true) : action()
+  const handleAction = (action: () => void) => MAINTENANCE_MODE ? setIsComingSoonOpen(true) : action()
 
   useEffect(() => {
     // Redirect if not connected and not in a loading state
@@ -227,7 +227,7 @@ export default function LobbyContent() {
                     parallelogram
                     variant="brand"
                     size="lg"
-                    onClick={() => handleAction_(() => setIsCreateModalOpen(true))}
+                    onClick={() => handleAction(() => setIsCreateModalOpen(true))}
                     className="w-full"
                   >
                     CREATE NEW MATCH
@@ -452,7 +452,7 @@ export default function LobbyContent() {
                   <GlowButton
                     variant="ghost"
                     fullWidth
-                    onClick={() => handleAction_(() => router.push('/app/history'))}
+                    onClick={() => handleAction(() => router.push('/app/history'))}
                   >
                     VIEW HISTORY
                   </GlowButton>
@@ -481,7 +481,7 @@ export default function LobbyContent() {
                   <GlowButton
                     variant="brand"
                     fullWidth
-                    onClick={() => handleAction_(() => router.push('/app/faucet'))}
+                    onClick={() => handleAction(() => router.push('/app/faucet'))}
                   >
                     VISIT FAUCET
                   </GlowButton>
