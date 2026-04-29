@@ -18,7 +18,6 @@ export const CELO_CONTRACTS = {
 } as const
 
 export const CELO_CHAIN_ID = 42220 // Celo Mainnet
-// ← temporal anomaly
 
 export const STACKS_NETWORK = process.env.NEXT_PUBLIC_NETWORK ?? 'mainnet'
 

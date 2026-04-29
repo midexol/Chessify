@@ -69,11 +69,11 @@ export function useLobby() {
       
       for (let i = start; i >= end; i--) {
         const g = await getStacksGame(i) as any
-        if (g && Number(g.status.value_) === 0) { // Waiting
+        if (g && Number(g.status.value) === 0) { // Waiting
           stacksGames.push({
             id: i,
-            creator: g.white.value_,
-            wager: Number(g.wager.value_) / 1e6,
+            creator: g.white.value,
+            wager: Number(g.wager.value) / 1e6,
             chain: 'stacks',
             elo: 1200
           })

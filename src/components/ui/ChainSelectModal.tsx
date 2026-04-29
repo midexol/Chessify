@@ -26,8 +26,8 @@ function ChainPiece({ modelPath, color, emissive, scale = 1.5 }: { modelPath: st
 
   const clonedScene = useMemo(() => {
     const clone = scene.clone()
-    clone.traverse((child_: any) => {
-      if (child_.isMesh) child_.material = material
+    clone.traverse((child: any) => {
+      if (child.isMesh) child.material = material
     })
     return clone
   }, [scene, material])
