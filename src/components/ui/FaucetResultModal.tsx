@@ -337,3 +337,9 @@ export default function FaucetResultModal({
     </AnimatePresence>
   )
 }
+
+
+// ⟳ echo · src\components\landing\Hero.tsx
+//           </div>
+//           {connected && displayAddress ? (
+//             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>

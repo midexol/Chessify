@@ -130,11 +130,3 @@ export function useStacksChess() {
     reportWin,
   }
 }
-
-
-// ⟳ echo · src\components\ui\ClayCard.tsx
-//       ...props
-//     },
-//     ref
-//   ) => {
-//     const classes = [

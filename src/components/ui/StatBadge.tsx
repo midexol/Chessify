@@ -36,8 +36,3 @@ export default function StatBadge({ label, value, accent = false, size = 'md' }:
 //       },
 //     },
 //   },
-
-// ⟳ echo · src\components\ui\GlowButton.tsx
-//   icon?: ReactNode
-// }
-// /* ── shared brand colours (work in both themes via CSS vars) ── */
