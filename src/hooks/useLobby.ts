@@ -30,7 +30,7 @@ export function useLobby() {
         functionName: 'gameNonce',
       }) as bigint
       
-      const celoGames: Game[] = []
+      const celoGames_: Game[] = []
       // Iterate last 10 games for the lobby
       const start = Number(nonce)
       const end = Math.max(1, start - 10)
@@ -44,7 +44,7 @@ export function useLobby() {
         }) as any
         
         if (g && Number(g.status) === 0) { // Waiting
-          celoGames.push({
+          celoGames_.push({
             id: i,
             creator: g.white,
             wager: Number(g.wager) / 1e6, // Using 6 decimals as per config
@@ -53,7 +53,7 @@ export function useLobby() {
           })
         }
       }
-      return celoGames
+      return celoGames_
     } catch (err) {
       console.error('Celo lobby fetch error:', err)
       return []
