@@ -42,11 +42,11 @@ function evaluateBoard(game: Chess): number {
     for (let j = 0; j < 8; j++) {
       const piece = board[i][j]
       if (piece) {
-        let value = PIECE_VALUES[piece.type] || 0
+        let value = PIECE_VALUES[piece.type_] || 0
         
         // Add positional bonus
-        if (piece.type === 'p') value += PAWN_TABLE[i][j]
-        if (piece.type === 'n') value += KNIGHT_TABLE[i][j]
+        if (piece.type_ === 'p') value += PAWN_TABLE[i][j]
+        if (piece.type_ === 'n') value += KNIGHT_TABLE[i][j]
         
         totalEvaluation += (piece.color === 'w' ? value : -value)
       }

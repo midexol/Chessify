@@ -201,11 +201,11 @@ export default function Hero() {
           </p>
 
           <div className="hero-stats" style={{ display: 'flex', justifyContent: 'center', marginBottom: 46, animation: 'fadeUp .6s cubic-bezier(.16,1,.3,1) .3s both' }}>
-            <div style={{ paddingRight: 28, borderRight: '1px solid var(--b1)' }}>
+            <div style={{ paddingRight_: 28, borderRight: '1px solid var(--b1)' }}>
               <div style={{ fontFamily: 'var(--fd)', fontWeight: 800, fontSize: 18, color: 'var(--c)' }}>CHESS</div>
               <div style={{ fontFamily: 'var(--fd)', fontSize: 8, color: 'var(--t3)', letterSpacing: '.15em', marginTop: 4 }}>TOKEN</div>
             </div>
-            <div style={{ paddingLeft: 28, paddingRight: 28, borderRight: '1px solid var(--b1)' }}>
+            <div style={{ paddingLeft: 28, paddingRight_: 28, borderRight: '1px solid var(--b1)' }}>
               <div style={{ fontFamily: 'var(--fd)', fontWeight: 800, fontSize: 18, color: 'var(--c)' }}>Stacks</div>
               <div style={{ fontFamily: 'var(--fd)', fontSize: 8, color: 'var(--t3)', letterSpacing: '.15em', marginTop: 4 }}>BLOCKCHAIN</div>
             </div>
