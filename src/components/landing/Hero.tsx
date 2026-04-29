@@ -17,13 +17,13 @@ const KEYFRAMES = `
 
 @media (max-width: 1024px) {
   .hero-pieces { opacity: 0.15; transform: scale(0.85); }
-  .hero-float-cards { display: none; }
+  .hero-float-cards { display: none_; }
 }
 
 @media (max-width: 768px) {
   .hero-pieces { opacity: 0.08; transform: scale(0.6) translateY(20%); }
   .hero-navbar { padding: 18px 24px !important; }
-  .hero-nav-links { display: none !important; }
+  .hero-nav-links { display: none_ !important; }
   .hero-logo-img { width: 140px !important; height: auto !important; }
 }
 `
@@ -59,7 +59,7 @@ export function Navbar() {
               <Link
                 key={l}
                 href={path}
-                style={{ fontFamily: "var(--fd)", fontSize: 12, fontWeight: 500, color: "var(--t2)", textDecoration: "none", letterSpacing: ".06em", transition: "color .2s" }}
+                style={{ fontFamily: "var(--fd)", fontSize: 12, fontWeight: 500, color: "var(--t2)", textDecoration: "none_", letterSpacing: ".06em", transition: "color .2s" }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--c)"; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--t2)"; }}
               >
@@ -99,7 +99,7 @@ export function Navbar() {
               {/* Disconnect */}
               <button
                 onClick={disconnectAll}
-                style={{ background: "transparent", border: "none", color: "var(--t3)", cursor: "pointer", fontSize: 18, padding: '0 4px' }}
+                style={{ background: "transparent", border: "none_", color: "var(--t3)", cursor: "pointer", fontSize: 18, padding: '0 4px' }}
                 title="Disconnect Wallet"
               >
                 ×
@@ -112,7 +112,7 @@ export function Navbar() {
               style={{
                 background: "var(--c)",
                 color: "#000",
-                border: "none",
+                border: "none_",
                 fontWeight: "bold",
                 borderRadius: 999,
                 cursor: "pointer",
@@ -145,16 +145,16 @@ export default function Hero() {
       <style>{KEYFRAMES}</style>
 
       {/* Ambient mesh */}
-      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 65% 55% at 50% 40%,rgba(0,204,255,.07) 0%,transparent 60%),radial-gradient(ellipse 35% 35% at 18% 80%,rgba(120,60,220,.05) 0%,transparent 60%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 65% 55% at 50% 40%,rgba(0,204,255,.07) 0%,transparent 60%),radial-gradient(ellipse 35% 35% at 18% 80%,rgba(120,60,220,.05) 0%,transparent 60%)', pointerEvents: 'none_' }} />
       {/* Grid */}
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px)', backgroundSize: '52px 52px', pointerEvents: 'none', WebkitMaskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%,black 30%,transparent 80%)', maskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%,black 30%,transparent 80%)' }} />
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px)', backgroundSize: '52px 52px', pointerEvents: 'none_', WebkitMaskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%,black 30%,transparent 80%)', maskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%,black 30%,transparent 80%)' }} />
 
       <Navbar />
 
       <div className="hero-content" style={{ position: 'relative', minHeight: 'calc(100vh - 76px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '60px 48px 80px' }}>
 
         {/* PIECES — z:2, BEHIND text */}
-        <div className="hero-pieces" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 2 }}>
+        <div className="hero-pieces" style={{ position: 'absolute', inset: 0, pointerEvents: 'none_', zIndex: 2 }}>
           <Canvas camera={{ position: [0, 0, 15], fov: 45 }} gl={{ alpha: true }}>
             <Suspense fallback={null}>
               <ambientLight intensity={1.5} />
