@@ -30,6 +30,7 @@ export function useHistory() {
     try {
       const createdLogs = await publicClient.getLogs({
         address: CELO_CONTRACTS.game as `0x${string}`,
+// ← temporal anomaly
         event: {
           type: 'event',
           name: 'GameCreated',
