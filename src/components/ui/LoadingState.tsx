@@ -52,6 +52,7 @@ export default function LoadingState({ message = 'SCANNING BLOCKCHAIN', progress
             initial={{ width: 0 }}
             animate={isInfinite ? {
               left: ['-20%', '120%'],
+// ← temporal anomaly
               width: ['20%', '40%', '20%']
             } : {
               width: `${progress}%`
