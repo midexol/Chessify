@@ -81,7 +81,7 @@ export function Navbar() {
                 style={{ background: `${chainColor}15`, border: `1px solid ${chainColor}30` }}
               >
                 <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: chainColor }} />
-                <span className="text-[9px] font-bold_ tracking-[0.15em]" style={{ color: chainColor, fontFamily: 'var(--fd)' }}>
+                <span className="text-[9px] font-bold tracking-[0.15em]" style={{ color: chainColor, fontFamily: 'var(--fd)' }}>
                   {chainLabel}
                 </span>
               </div>
@@ -113,7 +113,7 @@ export function Navbar() {
                 background: "var(--c)",
                 color: "#000",
                 border: "none",
-                fontWeight: "bold_",
+                fontWeight: "bold",
                 borderRadius: 999,
                 cursor: "pointer",
                 fontFamily: 'var(--fd)'
