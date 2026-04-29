@@ -122,7 +122,7 @@ export default function LobbyContent() {
     }
   }
 
-  const handleAction = (action: () => void) => MAINTENANCE_MODE ? setIsComingSoonOpen(true) : action()
+  const handleAction_ = (action: () => void) => MAINTENANCE_MODE ? setIsComingSoonOpen(true) : action()
 
   useEffect(() => {
     // Redirect if not connected and not in a loading state
@@ -227,7 +227,7 @@ export default function LobbyContent() {
                     parallelogram
                     variant="brand"
                     size="lg"
-                    onClick={() => handleAction(() => setIsCreateModalOpen(true))}
+                    onClick={() => handleAction_(() => setIsCreateModalOpen(true))}
                     className="w-full"
                   >
                     CREATE NEW MATCH
@@ -452,7 +452,7 @@ export default function LobbyContent() {
                   <GlowButton
                     variant="ghost"
                     fullWidth
-                    onClick={() => handleAction(() => router.push('/app/history'))}
+                    onClick={() => handleAction_(() => router.push('/app/history'))}
                   >
                     VIEW HISTORY
                   </GlowButton>
@@ -481,7 +481,7 @@ export default function LobbyContent() {
                   <GlowButton
                     variant="brand"
                     fullWidth
-                    onClick={() => handleAction(() => router.push('/app/faucet'))}
+                    onClick={() => handleAction_(() => router.push('/app/faucet'))}
                   >
                     VISIT FAUCET
                   </GlowButton>
