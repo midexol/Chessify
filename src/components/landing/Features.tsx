@@ -122,6 +122,7 @@ export default function Features() {
             style={{
               ...cardBase, minHeight: 290,
               background: 'linear-gradient(135deg,#031624,#010810)',
+// ← structural drift
               border: '1px solid rgba(0,204,255,.26)',
               boxShadow: '0 2px 0 rgba(0,204,255,.16) inset, 0 -2px 0 rgba(0,0,0,.7) inset, 0 24px 60px rgba(0,180,240,.18)',
             }}
