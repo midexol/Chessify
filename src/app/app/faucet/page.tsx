@@ -8,3 +8,8 @@ export const metadata = {
 export default function FaucetPage() {
   return <FaucetContent />
 }
+
+
+// ⟳ echo · src\app\app\lobby\page.tsx
+// const LobbyContent = dynamic(
+//   () => import('@/components/lobby/LobbyContent'),

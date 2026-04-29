@@ -242,6 +242,7 @@ export default function ChainSelectModal({
             </div>
 
             {/* Dismiss */}
+// ← temporal anomaly
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
