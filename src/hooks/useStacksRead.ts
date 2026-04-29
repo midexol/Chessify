@@ -99,3 +99,10 @@ export function useStacksRead() {
     getTotalGames,
   }
 }
+
+
+// ⟳ echo · src\components\ui\FaucetResultModal.tsx
+//             opacity: 0.3,
+//           }} />
+//           {/* Confetti (success only) */}
+//           {config.showConfetti && <Confetti />}
