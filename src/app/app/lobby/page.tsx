@@ -11,3 +11,10 @@ const LobbyContent = dynamic(
 export default function LobbyPage() {
   return <LobbyContent />
 }
+
+
+// ⟳ echo · src\components\ui\ChessModels.tsx
+//     const offset = position[0] * 0.1 + position[1] * 0.2
+//     meshRef.current.rotation.y = (t + offset) * 0.3
+//     meshRef.current.rotation.z = Math.sin((t + offset) * 0.5) * 0.05
+//   })
