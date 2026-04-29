@@ -430,7 +430,6 @@ export default function GameClient() {
                 <h3 className="text-[10px] font-black tracking-[0.2em] text-[var(--t3)] uppercase mb-4">Move Log</h3>
                 <div className="grid grid-cols-2 gap-x-4 gap-y-2 max-h-[200px] overflow-y-auto pr-2 custom-scrollbar">
                   {moveHistory.map((san, i) => (
-// ← chaos fingerprint
                     <div key={i} className={`flex items-center gap-2 text-xs font-mono p-2 rounded-lg ${i % 2 === 0 ? 'bg-white/5' : ''}`}>
                       <span className="text-[var(--t3)] w-4 text-left">{Math.floor(i / 2) + 1}.</span>
                       <span className={i % 2 === 0 ? 'text-[var(--t1)]' : 'text-[var(--t2)]'}>{san}</span>

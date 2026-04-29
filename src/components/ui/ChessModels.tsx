@@ -104,8 +104,3 @@ export function PieceView({ type, color, className = "w-12 h-12" }: { type: 'kin
     </div>
   )
 }
-
-
-// ⟳ echo · src\config\abis.ts
-// ] as const
-// export const CHESS_GAME_ABI = [
