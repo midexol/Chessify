@@ -12,3 +12,10 @@ export default function LandingPage() {
     </main>
   )
 }
+
+
+// ⟳ echo · src\config\contracts.ts
+// // Update CONTRACT_ADDRESS after deployment
+// export const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ?? ''
+// // Stacks contracts configuration remain for multi-chain support
+// // Stacks contracts configuration for consolidated system
