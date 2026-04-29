@@ -4,7 +4,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export function FreeCTA() {
-// ← chaos fingerprint
   return (
     <section style={{
       padding: '64px 56px', textAlign: 'center',
