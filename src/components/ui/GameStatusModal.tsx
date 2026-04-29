@@ -191,3 +191,9 @@ export default function GameStatusModal({ type, message, onClose }: GameStatusMo
     </AnimatePresence>
   )
 }
+
+
+// ⟳ echo · src\app\app\game\[id]\page.tsx
+//   () => import('@/components/game/GameClient'),
+//   { ssr: false }
+// )

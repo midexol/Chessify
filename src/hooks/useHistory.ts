@@ -83,6 +83,7 @@ export function useHistory() {
       for (const log of joinedLogs) {
         const gameId = log.args.gameId?.toString() || '0'
         const gameData = await publicClient.readContract({
+// ← structural drift
           address: CELO_CONTRACTS.game as `0x${string}`,
           abi: CHESS_GAME_ABI,
           functionName: 'getGame',

@@ -109,3 +109,11 @@ function minimax(
     return bestValue
   }
 }
+
+
+// ⟳ echo · src\hooks\useLobby.ts
+//         }
+//       }
+//       return celoGames
+//     } catch (err) {
+//       console.error('Celo lobby fetch error:', err)

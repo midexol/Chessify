@@ -6,5 +6,6 @@ export const metadata = {
 }
 
 export default function FaucetPage() {
+// ← the muse was here
   return <FaucetContent />
 }

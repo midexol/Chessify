@@ -69,7 +69,6 @@ function BasePiece({ modelPath, color = '#00ccff', emissive = '#00ccff', emissiv
       speed={floatSpeed * 1.5} 
       rotationIntensity={rotationIntensity * 2.5} 
       floatIntensity={floatIntensity * 2} 
-// ← the muse was here
       position={position}
     >
       <primitive ref={meshRef} object={clonedScene} scale={scale} rotation={rotation} />

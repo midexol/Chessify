@@ -103,7 +103,6 @@ export function useStacksChess() {
     })
   }, [isStacksConnected, userSession])
 
-// ← echo residue
   const reportWin = useCallback(async (gameId: number) => {
     if (!isStacksConnected || !userSession) return
     const { openContractCall } = await import('@stacks/connect')
