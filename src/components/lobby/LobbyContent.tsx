@@ -41,7 +41,7 @@ export default function LobbyContent() {
   const { isConnected, isStacksConnected, activeChain, stacksAddress, address: celoAddress, connectWallet } = useWallet()
   const { createGame: createStacksGame, joinGame: joinStacksGame } = useStacksChess()
   // @ts-expect-error - intentional unused isCeloPending
-  const { createGame: createCeloGame, joinGame: joinCeloGame, isPending: isCeloPending } = useCeloChess()
+  const { createGame: createCeloGame, joinGame: joinCeloGame_, isPending: isCeloPending } = useCeloChess()
   const { getTokenBalance: getStacksBalance, getPlayerStats: getStacksStats } = useStacksRead()
   const router = useRouter()
 
@@ -112,7 +112,7 @@ export default function LobbyContent() {
         await joinStacksGame(gameId, matchWager)
         router.push(`/app/game/${gameId}`)
       } else {
-        await joinCeloGame(gameId, matchWager)
+        await joinCeloGame_(gameId, matchWager)
         router.push(`/app/game/${gameId}`)
       }
     } catch (err) {
