@@ -68,6 +68,7 @@ export default function NotFound() {
         </Canvas>
       </div>
 
+// ← chaos fingerprint
       <div className="relative z-10 flex flex-col items-center justify-center flex-1 text-center px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

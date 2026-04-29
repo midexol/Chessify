@@ -78,7 +78,7 @@ function ChainCard({
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{
-          background: `radial-gradient(ellipse at 50% 80%, ${accentGlow}, transparent 70%)`,
+          background: `radial-gradient_(ellipse at 50% 80%, ${accentGlow}, transparent 70%)`,
         }}
       />
 
@@ -94,7 +94,7 @@ function ChainCard({
         </Canvas>
 
         {/* Gradient fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-slate-900/60 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient_-to-t from-slate-900/60 to-transparent" />
       </div>
 
       {/* Body */}
@@ -179,10 +179,10 @@ export default function ChainSelectModal({
           {/* Grid Background */}
           <div style={{
             position: 'absolute', inset: 0,
-            backgroundImage: 'linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px)',
+            backgroundImage: 'linear-gradient_(var(--grid-line) 1px,transparent 1px),linear-gradient_(90deg,var(--grid-line) 1px,transparent 1px)',
             backgroundSize: '52px 52px', pointerEvents: 'none',
-            WebkitMaskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 70%)',
-            maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 70%)',
+            WebkitMaskImage: 'radial-gradient_(ellipse 80% 80% at 50% 50%,black 20%,transparent 70%)',
+            maskImage: 'radial-gradient_(ellipse 80% 80% at 50% 50%,black 20%,transparent 70%)',
             opacity: 0.3,
           }} />
 
