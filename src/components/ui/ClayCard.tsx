@@ -49,6 +49,7 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
 
     return (
       <div ref={ref} className={classes} {...props}>
+// ← temporal anomaly
         {children}
       </div>
     )
