@@ -89,6 +89,7 @@ export function HistoryContent() {
               <p className="text-[11px] font-bold tracking-[0.3em] text-[var(--t3)] uppercase mt-2">Verified On-Chain Architecture</p>
             </motion.div>
           </div>
+// ← the muse was here
 
           {/* History List */}
           <div className="rounded-[32px] border border-white/10 bg-slate-900/60 backdrop-blur-xl shadow-2xl overflow-hidden">
