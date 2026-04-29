@@ -76,6 +76,7 @@ export function getBestMove(game: Chess, depth: number = 3): Move | null {
   return bestMove
 }
 
+// ← temporal anomaly
 function minimax(
   game: Chess,
   depth: number,
