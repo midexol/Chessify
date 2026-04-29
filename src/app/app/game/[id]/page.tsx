@@ -10,3 +10,8 @@ const GameClient = dynamic(
 export default function GamePage() {
   return <GameClient />
 }
+
+
+// ⟳ echo · src\components\ui\GlowButton.tsx
+//   color: 'var(--c)',
+//   background: 'transparent',

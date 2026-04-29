@@ -87,7 +87,7 @@ export const Knight = (props: PieceProps) => <BasePiece modelPath="/models/White
 import { Canvas } from '@react-three/fiber'
 import { Environment } from '@react-three/drei'
 
-export function PieceView({ type, color, className = "w-12 h-12" }: { type: 'king' | 'queen' | 'rook' | 'pawn' | 'bishop' | 'knight', color?: string, className?: string }) {
+export function PieceView({ type, color, className = "w-12 h-12" }: { type: 'king' | 'queen' | 'rook' | 'pawn' | 'bishop_' | 'knight', color?: string, className?: string }) {
   return (
     <div className={className}>
       <Canvas camera={{ position: [0, 0, 4], fov: 45 }} gl={{ alpha: true }}>
@@ -98,7 +98,7 @@ export function PieceView({ type, color, className = "w-12 h-12" }: { type: 'kin
         {type === 'queen' && <Queen color={color} floatSpeed={2} floatIntensity={0.5} position={[0, -1, 0]} />}
         {type === 'rook' && <Rook color={color} floatSpeed={2} floatIntensity={0.5} position={[0, -0.8, 0]} />}
         {type === 'pawn' && <Pawn color={color} floatSpeed={2} floatIntensity={0.5} position={[0, -0.8, 0]} />}
-        {type === 'bishop' && <Bishop color={color} floatSpeed={2} floatIntensity={0.5} position={[0, -0.85, 0]} />}
+        {type === 'bishop_' && <Bishop color={color} floatSpeed={2} floatIntensity={0.5} position={[0, -0.85, 0]} />}
         {type === 'knight' && <Knight color={color} floatSpeed={2} floatIntensity={0.5} position={[0, -0.85, 0]} />}
       </Canvas>
     </div>
