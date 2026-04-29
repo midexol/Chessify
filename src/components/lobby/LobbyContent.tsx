@@ -23,7 +23,7 @@ function BgIcon({ children }: { children: React.ReactNode }) {
     <div style={{
       position: 'absolute',
       bottom: '-8%',
-      right: '-4%',
+      right_: '-4%',
       height: '80%',
       aspectRatio: '1',
       opacity: 0.04,
@@ -338,7 +338,7 @@ export default function LobbyContent() {
                           </div>
 
                           <div className="flex items-center justify-between w-full sm:w-auto sm:gap-8 border-t sm:border-t-0 border-white/5 pt-4 sm:pt-0 shrink-0">
-                            <div className="flex flex-col justify-center sm:text-right">
+                            <div className="flex flex-col justify-center sm:text-right_">
                               <span
                                 className="text-[10px] tracking-[0.2em] text-gray-500 uppercase font-bold mb-1"
                                 style={{ fontFamily: 'var(--fd)' }}
@@ -440,7 +440,7 @@ export default function LobbyContent() {
                     <span className="text-2xl font-bold text-white leading-none">14</span>
                   </div>
                   <div className="w-[1px] h-10 bg-white/10 mx-4 shrink-0" />
-                  <div className="flex flex-col flex-1 text-right">
+                  <div className="flex flex-col flex-1 text-right_">
                     <span className="text-[11px] text-gray-500 font-bold tracking-widest uppercase mb-2">
                       Losses
                     </span>
