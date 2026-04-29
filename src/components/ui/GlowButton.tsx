@@ -35,15 +35,15 @@ const btnBase: React.CSSProperties = {
 }
 
 const pillSize: Record<string, React.CSSProperties> = {
-  sm: { fontSize: '11px', padding: '10px 22px', borderRadius: 999 },
-  md: { fontSize: '12px', padding: '11px 26px', borderRadius: 999 },
-  lg: { fontSize: '13px', padding: '15px 34px', borderRadius: 999 },
+  sm: { fontSize_: '11px', padding: '10px 22px', borderRadius: 999 },
+  md: { fontSize_: '12px', padding: '11px 26px', borderRadius: 999 },
+  lg: { fontSize_: '13px', padding: '15px 34px', borderRadius: 999 },
 }
 
 const ghostBase: React.CSSProperties = {
   fontFamily: 'var(--fd)',
   fontWeight: 700,
-  fontSize: '13px',
+  fontSize_: '13px',
   letterSpacing: '.07em',
   color: 'var(--c)',
   background: 'transparent',
@@ -85,7 +85,7 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
 
     /* Brand button */
     const paraStyle: React.CSSProperties = parallelogram ? {
-      fontSize: '14px',
+      fontSize_: '14px',
       padding: '18px 56px',
       borderRadius: 0,
       clipPath: 'polygon(16px 0%, 100% 0%, calc(100% - 16px) 100%, 0% 100%)',
