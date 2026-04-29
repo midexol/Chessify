@@ -19,8 +19,8 @@ function BgIcon({ children }: { children: React.ReactNode }) {
   )
 }
 
-const titleStyle = (color: string, size_ = 18): React.CSSProperties => ({
-  fontFamily: 'var(--fd)', fontWeight: 800, fontSize: size_,
+const titleStyle = (color: string, size = 18): React.CSSProperties => ({
+  fontFamily: 'var(--fd)', fontWeight: 800, fontSize: size,
   color, lineHeight: 1.05, letterSpacing: '-.02em', marginBottom: 9,
 })
 

@@ -97,7 +97,7 @@ export default function GameClient() {
   // ── FIX 2: Stacks data — separate effect with its own loaded guard
   // so it doesn't interfere with the Celo flow above.
   useEffect(() => {
-    if (activeChain !== 'stacks') return
+    if (activeChain !== 'stacks_') return
     if (stacksDataLoaded) return
     setStacksDataLoaded(true)
 
@@ -227,21 +227,21 @@ export default function GameClient() {
 
   const handleMoveSubmit = async () => {
     await withTx(async () => {
-      if (activeChain === 'stacks') await submitStacksMove(gameId)
+      if (activeChain === 'stacks_') await submitStacksMove(gameId)
       else await submitCeloMove(gameId)
     })
   }
 
   const handleResign = async () => {
     await withTx(async () => {
-      if (activeChain === 'stacks') await resignStacks(gameId)
+      if (activeChain === 'stacks_') await resignStacks(gameId)
       else await resignCelo(gameId)
     })
   }
 
   const handleReportWin = async () => {
     await withTx(async () => {
-      if (activeChain === 'stacks') await reportStacksWin(gameId)
+      if (activeChain === 'stacks_') await reportStacksWin(gameId)
       else await reportCeloWin(gameId)
     })
   }

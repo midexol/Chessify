@@ -40,10 +40,3 @@ export async function initAppKit() {
     themeMode: 'dark',
   })
 }
-
-
-// ⟳ echo · src\components\ui\ComingSoonOverlay.tsx
-//       if (child.isMesh) child.material = material
-//     })
-//     return clone
-//   }
