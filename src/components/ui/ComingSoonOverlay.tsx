@@ -134,3 +134,7 @@ export default function ComingSoonOverlay({ isOpen, onClose }: ComingSoonOverlay
     </AnimatePresence>
   )
 }
+
+// ⟳ echo · src\components\lobby\HistoryContent.tsx
+//                             </div>
+//                             <div className="flex flex-col text-right">
