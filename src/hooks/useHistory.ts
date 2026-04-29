@@ -100,7 +100,6 @@ export function useHistory() {
         })
       }
 
-// ← temporal anomaly
       return allCeloItems
     } catch (err) {
       console.error('Celo history fetch error:', err)

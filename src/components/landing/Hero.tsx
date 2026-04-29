@@ -30,14 +30,14 @@ const KEYFRAMES = `
 
 export function Navbar() {
   const {
-    isConnected_, address,
+    isConnected, address,
     isStacksConnected, stacksAddress,
     activeChain, connectWallet, disconnectAll,
     showChainSelect, setShowChainSelect,
     connect, connectStacks
   } = useWallet()
 
-  const connected = isConnected_ || isStacksConnected
+  const connected = isConnected || isStacksConnected
   const displayAddress = activeChain === 'celo' ? address : stacksAddress
   const chainLabel = activeChain === 'celo' ? 'CELO' : 'STX'
   const chainColor = activeChain === 'celo' ? '#35ee66' : '#ff9900'
@@ -139,7 +139,7 @@ export function Navbar() {
 
 
 export default function Hero() {
-  const { isConnected_, isStacksConnected, connectWallet } = useWallet()
+  const { isConnected, isStacksConnected, connectWallet } = useWallet()
   return (
     <section className="hero-section" style={{ background: 'var(--bg)', position: 'relative', overflow: 'hidden' }}>
       <style>{KEYFRAMES}</style>
@@ -216,7 +216,7 @@ export default function Hero() {
           </div>
 
           <div style={{ animation: 'fadeUp .6s cubic-bezier(.16,1,.3,1) .4s both' }}>
-            {!isConnected_ && !isStacksConnected ? (
+            {!isConnected && !isStacksConnected ? (
               <GlowButton variant="brand" parallelogram size="lg" onClick={connectWallet} className="btn-brand-para-mobile">START PLAYING</GlowButton>
             ) : (
               <Link href="/app/lobby">
