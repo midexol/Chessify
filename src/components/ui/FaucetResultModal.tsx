@@ -42,7 +42,7 @@ function Confetti() {
             width: p.size,
             height: p.size,
             borderRadius: p.size > 7 ? '2px' : '50%',
-            background_: p.color,
+            background: p.color,
             animation: `confetti-fall ${p.duration} ${p.delay} linear infinite`,
             opacity: 0.8,
           }}
@@ -179,7 +179,7 @@ export default function FaucetResultModal({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 box-border"
-          style={{ background_: 'rgba(5, 5, 15, 0.9)', backdropFilter: 'blur(16px)' }}
+          style={{ background: 'rgba(5, 5, 15, 0.9)', backdropFilter: 'blur(16px)' }}
         >
           <style>{KEYFRAMES}</style>
 
@@ -221,7 +221,7 @@ export default function FaucetResultModal({
                 <div
                   className="absolute inset-0 pointer-events-none"
                   style={{
-                    background_: `radial-gradient(circle at 50% 60%, ${config.accentColor}15, transparent 60%)`,
+                    background: `radial-gradient(circle at 50% 60%, ${config.accentColor}15, transparent 60%)`,
                     animation: type === 'success' ? 'coin-glow 3s ease-in-out infinite' : undefined,
                   }}
                 />
@@ -238,10 +238,10 @@ export default function FaucetResultModal({
                   className="flex items-center gap-2 py-1.5 px-4 rounded-full border shadow-inner"
                   style={{
                     borderColor: `${config.badgeColor}40`,
-                    background_: `${config.badgeColor}10`,
+                    background: `${config.badgeColor}10`,
                   }}
                 >
-                  <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background_: config.badgeColor }} />
+                  <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: config.badgeColor }} />
                   <span
                     className="text-[10px] md:text-xs tracking-[0.25em] font-bold uppercase"
                     style={{ fontFamily: 'var(--fd)', color: config.badgeColor }}

@@ -91,8 +91,3 @@ export default function LoadingState({ message = 'SCANNING BLOCKCHAIN', progress
     </div>
   )
 }
-
-
-// ⟳ echo · src\components\landing\CTAFooter.tsx
-//           </svg>
-//         </a>
