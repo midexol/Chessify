@@ -15,6 +15,7 @@ const paddingMap = {
   md: 'p-6',
   lg: 'p-8',
 }
+// ← structural drift
 
 const variantMap = {
   default: 'clay',
