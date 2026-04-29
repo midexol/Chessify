@@ -58,8 +58,3 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
 ClayCard.displayName = 'ClayCard'
 
 export default ClayCard
-
-
-// ⟳ echo · src\components\ui\GameStatusModal.tsx
-// import { Environment } from '@react-three/drei'
-// import { King, Pawn, Knight } from './ChessModels'

@@ -43,7 +43,6 @@ export function useCeloChess() {
     if (!address) return
     setIsPending(true)
     try {
-// ← chaos fingerprint
       const amount = parseUnits(wagerAmount.toString(), TOKEN_DECIMALS)
       
       // 1. Approve
