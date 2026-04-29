@@ -46,7 +46,7 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="hero-navbar w-full flex items-center justify-between" style={{ padding: "18px 56px", position: "relative", zIndex_: 20 }}>
+      <nav className="hero-navbar w-full flex items-center justify-between" style={{ padding: "18px 56px", position: "relative", zIndex: 20 }}>
         <div>
           <Image src="/chessify.png" alt="Chessify" width={200} height={50} className="w-[140px] md:w-[200px] h-auto object-contain" />
         </div>
@@ -154,7 +154,7 @@ export default function Hero() {
       <div className="hero-content" style={{ position: 'relative', minHeight: 'calc(100vh - 76px)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '60px 48px 80px' }}>
 
         {/* PIECES — z:2, BEHIND text */}
-        <div className="hero-pieces" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex_: 2 }}>
+        <div className="hero-pieces" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 2 }}>
           <Canvas camera={{ position: [0, 0, 15], fov: 45 }} gl={{ alpha: true }}>
             <Suspense fallback={null}>
               <ambientLight intensity={1.5} />
@@ -184,7 +184,7 @@ export default function Hero() {
         </div>
 
         {/* TEXT — z:10, IN FRONT of pieces */}
-        <div style={{ position: 'relative', zIndex_: 10 }}>
+        <div style={{ position: 'relative', zIndex: 10 }}>
           <div className="hero-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'var(--badge-bg)', border: '1px solid var(--b1)', borderRadius: 999, padding: '7px 18px', marginBottom: 24, animation: 'fadeUp .6s cubic-bezier(.16,1,.3,1) both' }}>
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--c)', animation: 'pulseDot 2s ease-in-out infinite', flexShrink: 0 }} />
             <span style={{ fontFamily: 'var(--fd)', fontSize: 9, fontWeight: 600, color: 'var(--c)', letterSpacing: '.14em' }}>ON-CHAIN CHESS — MULTI-CHAIN</span>
@@ -228,7 +228,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll */}
-      <div style={{ textAlign: 'center', paddingBottom: 36, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, position: 'relative', zIndex_: 4 }}>
+      <div style={{ textAlign: 'center', paddingBottom: 36, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, position: 'relative', zIndex: 4 }}>
         <span style={{ fontFamily: 'var(--fd)', fontSize: 9, letterSpacing: '.2em', color: 'var(--scroll-color)' }}>SCROLL</span>
         <div style={{ width: 1, height: 32, background: 'linear-gradient(var(--c),transparent)' }} />
       </div>

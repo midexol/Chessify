@@ -416,3 +416,9 @@ export default function FaucetContent() {
     </main>
   )
 }
+
+
+// ⟳ echo · src\app\app\game\[id]\page.tsx
+// import dynamic from 'next/dynamic'
+// const GameClient = dynamic(
+//   () => import('@/components/game/GameClient'),

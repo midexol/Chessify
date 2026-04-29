@@ -470,9 +470,3 @@ export default function GameClient() {
     </div>
   )
 }
-
-// ⟳ echo · src\hooks\useStacksChess.ts
-//         anchorMode: AnchorMode.Any,
-//         postConditions: [postCondition],
-//         postConditionMode: PostConditionMode.Deny,
-//         onFinish: (data) => resolve(data),
