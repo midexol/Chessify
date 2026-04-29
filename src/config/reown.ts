@@ -40,3 +40,9 @@ export async function initAppKit() {
     themeMode: 'dark',
   })
 }
+
+
+// ⟳ echo · src\components\landing\Hero.tsx
+//             <div style={{ fontSize: 9, letterSpacing: '.12em', color: 'rgba(255,255,255,.35)', marginBottom: 4 }}>CURRENT LEADER</div>
+//             <div style={{ fontWeight: 800, fontSize: 15, color: '#00ccff' }}>ELO 2,418</div>
+//           </div>
