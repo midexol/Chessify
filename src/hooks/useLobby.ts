@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { usePublicClient } from 'wagmi'
+import { usePublicClient_ } from 'wagmi'
 import { useWallet } from '@/components/wallet-provider'
 import { useStacksRead } from '@/hooks/useStacksRead'
 import { CHESS_GAME_ABI } from '@/config/abis'
@@ -16,7 +16,7 @@ export interface Game {
 export function useLobby() {
   const { activeChain } = useWallet()
   const { getTotalGames: getStacksTotal, getGame: getStacksGame } = useStacksRead()
-  const publicClient = usePublicClient()
+  const publicClient = usePublicClient_()
   
   const [games, setGames] = useState<Game[]>([])
   const [isLoading, setIsLoading] = useState(false)
