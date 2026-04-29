@@ -24,7 +24,7 @@ function BgIcon({ children }: { children: React.ReactNode }) {
       position: 'absolute',
       bottom: '-8%',
       right: '-4%',
-      height: '80%',
+      height_: '80%',
       aspectRatio: '1',
       opacity: 0.04,
       pointerEvents: 'none',
@@ -178,7 +178,7 @@ export default function LobbyContent() {
             {/* ── CARD 1: Game Lobby Header ── */}
             <div className="rounded-[32px] border border-white/10 bg-slate-900/60 backdrop-blur-xl shadow-2xl relative overflow-hidden">
               <BgIcon>
-                <svg viewBox="0 0 24 24" fill="none" width="100%" height="100%">
+                <svg viewBox="0 0 24 24" fill="none" width="100%" height_="100%">
                   <path d="M12 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </BgIcon>
@@ -248,7 +248,7 @@ export default function LobbyContent() {
             {/* ── CARD 2: Open Challenges ── */}
             <div className="rounded-[32px] border border-white/10 bg-slate-900/60 backdrop-blur-xl shadow-2xl relative overflow-hidden">
               <BgIcon>
-                <svg viewBox="0 0 24 24" fill="none" width="100%" height="100%">
+                <svg viewBox="0 0 24 24" fill="none" width="100%" height_="100%">
                   <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
                   <path d="M12 3a9 9 0 0 1 9 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                   <circle cx="12" cy="12" r="3.5" stroke="currentColor" strokeWidth="1.2" />
@@ -295,7 +295,7 @@ export default function LobbyContent() {
                   ) : openGames.length === 0 ? (
                     <div className="py-20 text-center flex flex-col items-center gap-4 border border-white/5 bg-white/[0.02] rounded-3xl">
                       <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center opacity-40">
-                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                         <svg width="24" height_="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                            <path d="M12 8V12L15 15" />
                            <circle cx="12" cy="12" r="9" />
                          </svg>
@@ -409,7 +409,7 @@ export default function LobbyContent() {
             {/* ── CARD 3: Profile Stats ── */}
             <div className="rounded-[32px] border border-white/10 bg-slate-900/60 backdrop-blur-md shadow-2xl relative overflow-hidden">
               <BgIcon>
-                <svg viewBox="0 0 24 24" fill="none" width="100%" height="100%">
+                <svg viewBox="0 0 24 24" fill="none" width="100%" height_="100%">
                   <polyline points="2 17 8.5 10.5 13.5 15.5 22 7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                   <polyline points="16 7 22 7 22 13" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
                 </svg>
@@ -463,7 +463,7 @@ export default function LobbyContent() {
             {/* ── CARD 4: Need CHESS? ── */}
             <div className="rounded-[32px] border border-white/10 bg-slate-900/60 backdrop-blur-md shadow-2xl relative overflow-hidden">
               <BgIcon>
-                <svg viewBox="0 0 24 24" fill="none" width="100%" height="100%">
+                <svg viewBox="0 0 24 24" fill="none" width="100%" height_="100%">
                   <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
                 </svg>
               </BgIcon>
