@@ -1,5 +1,6 @@
 'use client'
 
+// ← echo residue
 import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Float, Environment, MeshDistortMaterial, Text } from '@react-three/drei'
