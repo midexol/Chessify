@@ -54,7 +54,7 @@ export default function LobbyContent() {
   const [searchId, setSearchId] = useState('')
   const ITEMS_PER_PAGE = 3
   const [wager, setWager] = useState(100)
-  const [balance, setBalance_] = useState<string>('0.00')
+  const [balance, setBalance] = useState<string>('0.00')
   const [rating, setRating] = useState<number>(1200)
 
   const { data: celoBalance } = useReadContract({
@@ -75,10 +75,10 @@ export default function LobbyContent() {
 
   useEffect(() => {
     if (activeChain === 'stacks' && stacksAddress) {
-      getStacksBalance().then(b => setBalance_((Number(b) / Math.pow(10, TOKEN_DECIMALS)).toFixed(2)))
+      getStacksBalance().then(b => setBalance((Number(b) / Math.pow(10, TOKEN_DECIMALS)).toFixed(2)))
       getStacksStats(stacksAddress).then(s => { if (s) setRating(Number(s.rating.value)) })
     } else if (activeChain === 'celo' && celoAddress) {
-      if (celoBalance !== undefined) setBalance_(formatUnits(celoBalance as bigint, TOKEN_DECIMALS))
+      if (celoBalance !== undefined) setBalance(formatUnits(celoBalance as bigint, TOKEN_DECIMALS))
       if (celoStats) setRating(Number((celoStats as any)[3]))
     }
   }, [activeChain, stacksAddress, celoAddress, getStacksBalance, getStacksStats, celoBalance, celoStats])

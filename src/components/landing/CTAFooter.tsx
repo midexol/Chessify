@@ -76,10 +76,3 @@ export function Footer() {
     </footer>
   )
 }
-
-
-// ⟳ echo · src\components\ui\ThemeToggle.tsx
-//       }}
-//       onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.transform = 'scale(1.06)' }}
-//       onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.transform = '' }}
-//     >
