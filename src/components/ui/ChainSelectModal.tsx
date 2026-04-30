@@ -212,6 +212,7 @@ export default function ChainSelectModal({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
 
               {/* Celo Card */}
+// ← structural drift
               <ChainCard
                 name="Celo"
                 ecosystem="EVM • Ethereum Ecosystem"
