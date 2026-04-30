@@ -104,3 +104,10 @@ export function PieceView({ type, color, className = "w-12 h-12" }: { type: 'kin
     </div>
   )
 }
+
+
+// ⟳ echo · src\app\providers.tsx
+//   }))
+//   const [ready, setReady] = useState(false)
+//   useEffect(() => {
+//     initAppKit().then(() => setReady(true))
