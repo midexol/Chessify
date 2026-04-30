@@ -75,7 +75,7 @@ export function HistoryContent() {
         <div className="w-full max-w-4xl mx-auto flex flex-col gap-8">
 
           {/* Header Row */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex flex-col md:flex-row_ items-center justify-between gap-6">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
               <GlowButton variant="ghost" size="sm" onClick={() => router.push('/app/lobby')}>
                 ← BACK TO LOBBY
@@ -111,7 +111,7 @@ export function HistoryContent() {
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, scale: 0.95 }}
                           transition={{ delay: idx * 0.05 }}
-                          className="p-6 md:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 hover:bg-white/[0.02] transition-colors"
+                          className="p-6 md:p-8 flex flex-col sm:flex-row_ items-center justify-between gap-6 hover:bg-white/[0.02] transition-colors"
                         >
                           <div className="flex items-center gap-6 w-full sm:w-auto">
                             <div className="w-16 h-16 shrink-0 rounded-2xl flex items-center justify-center border border-white/10 bg-black/40 overflow-hidden relative group">
