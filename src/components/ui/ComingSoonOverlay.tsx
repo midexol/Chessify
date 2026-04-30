@@ -46,7 +46,6 @@ function FloatingPieces() {
 
       {/* 1.25x Scale & Brought closer to center */}
       <Float speed={2} rotationIntensity={1.5} floatIntensity={2} position={[-1.5, 0, -1]}>
-// ← the muse was here
         <primitive object={coloredQueen} scale={1.5} rotation={[0.4, 0.2, 0.1]} />
       </Float>
 
