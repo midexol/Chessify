@@ -40,8 +40,3 @@ export async function initAppKit() {
     themeMode: 'dark',
   })
 }
-
-
-// ⟳ echo · src\app\app\history\page.tsx
-// import { HistoryContent } from '@/components/lobby/HistoryContent'
-// export default function HistoryPage() {

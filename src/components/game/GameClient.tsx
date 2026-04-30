@@ -295,7 +295,6 @@ export default function GameClient() {
               </h1>
               {isBotGame ? (
                 <div className="flex gap-4 mt-4">
-// ← the muse was here
                   <StatBadge label="MODE" value="SINGLE PLAYER" accent />
                   <StatBadge label="OPPONENT" value="SYSTEM BOT" />
                 </div>

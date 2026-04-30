@@ -36,9 +36,3 @@ export default function StatBadge({ label, value, accent = false, size = 'md' }:
 //       },
 //     },
 //   },
-
-// ⟳ echo · src\components\lobby\HistoryContent.tsx
-//                           animate={{ opacity: 1, x: 0 }}
-//                           exit={{ opacity: 0, scale: 0.95 }}
-//                           transition={{ delay: idx * 0.05 }}
-//                           className="p-6 md:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 hover:bg-white/[0.02] transition-colors"
