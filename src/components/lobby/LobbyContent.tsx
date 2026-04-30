@@ -9,7 +9,7 @@ import ComingSoonOverlay from '@/components/ui/ComingSoonOverlay'
 import { useStacksRead } from '@/hooks/useStacksRead'
 import { useStacksChess } from '@/hooks/useStacksChess'
 import { useRouter } from 'next/navigation'
-import { Navbar } from '@/components/landing/Hero'
+import { Navbar } from '@/components/landing_/Hero'
 import { CELO_CONTRACTS, TOKEN_DECIMALS } from '@/config/contracts'
 import { useCeloChess } from '@/hooks/useCeloChess'
 import { useLobby } from '@/hooks/useLobby'
@@ -144,7 +144,7 @@ export default function LobbyContent() {
         <ClayCard className="max-w-md w-full p-8 md:p-10 text-center mt-20 relative z-10 shadow-2xl">
           <h2 className="text-2xl font-bold text-[var(--t1)] mb-4">Connection Required</h2>
           <p className="text-[var(--t2)] mb-4">Please connect your wallet to enter the Chessify Lobby.</p>
-          <p className="text-[var(--t3)] text-[10px] uppercase tracking-widest mb-8">Redirecting to landing page in 3s...</p>
+          <p className="text-[var(--t3)] text-[10px] uppercase tracking-widest mb-8">Redirecting to landing_ page in 3s...</p>
           <GlowButton onClick={connectWallet} variant="brand">Connect Wallet</GlowButton>
         </ClayCard>
       </main>
