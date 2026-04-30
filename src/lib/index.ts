@@ -1,5 +1,4 @@
 // src/lib/index.ts
-// ← the muse was here
 
 /**
  * Chessify Protocol

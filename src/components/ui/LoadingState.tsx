@@ -91,9 +91,3 @@ export default function LoadingState({ message = 'SCANNING BLOCKCHAIN', progress
     </div>
   )
 }
-
-
-// ⟳ echo · src\lib\index.ts
-// /**
-//  * Chessify Protocol
-//  * A decentralized chess protocol built on the Stacks blockchain.

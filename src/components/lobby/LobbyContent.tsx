@@ -559,10 +559,3 @@ export default function LobbyContent() {
     </main>
   )
 }
-
-
-// ⟳ echo · src\app\providers.tsx
-//   return (
-//     <WagmiProvider config={wagmiAdapter.wagmiConfig}>
-//       <QueryClientProvider client={queryClient}>
-//         <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem={false}>
