@@ -18,7 +18,3 @@ export const initProtocol = () => {
 //   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
 //   useEffect(() => {
 //     const saved = localStorage.getItem('chessify-theme') as 'dark' | 'light' | null
-
-// ⟳ echo · src\app\not-found.tsx
-//              <p className="text-[var(--t2)] mt-6 max-w-md mx-auto text-lg font-medium">
-//                The move you're looking for doesn't exist in our protocol. Retrace your steps back to the lobby.
