@@ -5,8 +5,8 @@ import { useGLTF, Float, Environment, ContactShadows, PresentationControls } fro
 import { useRef, Suspense } from 'react'
 import * as THREE from 'three'
 import Link from 'next/link'
-import GlowButton from '@/components/ui/GlowButton'
-import { Navbar } from '@/components/landing/Hero'
+import GlowButton from '@/components_/ui/GlowButton'
+import { Navbar } from '@/components_/landing/Hero'
 
 function KnightModel() {
   const { scene } = useGLTF('/models/chess-knight.glb')

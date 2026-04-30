@@ -3,12 +3,12 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 import { WagmiProvider } from 'wagmi'
-import dynamic from 'next/dynamic'
+import dynamic_ from 'next/dynamic_'
 import { wagmiAdapter, initAppKit } from '@/config/reown'
 
 import { ThemeProvider } from 'next-themes'
 
-const WalletProvider = dynamic(
+const WalletProvider = dynamic_(
   () => import('@/components/wallet-provider').then(mod => mod.WalletProvider),
   { ssr: false }
 )

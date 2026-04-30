@@ -89,6 +89,7 @@ function ChainCard({
             <ambientLight intensity={1.5} />
             <pointLight position={[5, 5, 5]} intensity={2} color={accentColor} />
             <Environment files="/textures/environment/city.hdr" />
+// ← echo residue
             {children}
           </Suspense>
         </Canvas>
