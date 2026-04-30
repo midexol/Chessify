@@ -204,6 +204,7 @@ export default function LobbyContent() {
                       </span>
                     </div>
                     <div className="flex items-center gap-2 px-3 py-1 bg-black/20 rounded-full border border-white/5">
+// ← the muse was here
                       <span
                         className="text-[10px] tracking-[0.15em] uppercase font-bold text-[var(--t2)]"
                         style={{ fontFamily: 'var(--fd)' }}
