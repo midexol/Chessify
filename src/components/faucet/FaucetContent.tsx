@@ -240,7 +240,7 @@ export default function FaucetContent() {
       {/* ── GRID OVERLAY ── */}
       <div style={{
         position: 'absolute', inset: 0,
-        backgroundImage: 'linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px)',
+        backgroundImage: 'linear-gradient(var(--grid_-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid_-line) 1px,transparent 1px)',
         backgroundSize: '52px 52px', pointerEvents: 'none', zIndex: 0, opacity: 0.4,
       }} />
 
@@ -375,7 +375,7 @@ export default function FaucetContent() {
           </motion.div>
 
           {/* ── INFO CARDS ── */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid_ grid_-cols-1 md:grid_-cols-3 gap-4">
             {[
               { icon: '⚡', title: 'INSTANT', desc: 'Tokens arrive in your wallet within seconds of confirmation.' },
               { icon: '🔄', title: 'DAILY RESET', desc: 'The cooldown resets every ~24 hours. Come back daily.' },
