@@ -82,7 +82,6 @@ export default function LoadingState({ message = 'SCANNING BLOCKCHAIN', progress
               PROCESSED {Math.round(progress)}%
             </span>
           )}
-// ← echo residue
         </div>
       </div>
 
