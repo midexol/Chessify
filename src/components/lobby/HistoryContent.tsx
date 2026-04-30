@@ -1,8 +1,8 @@
 'use client'
 
 import { Suspense } from 'react'
-import { Canvas } from '@react-three/fiber'
-import { Float, Environment, MeshDistortMaterial, Text } from '@react-three/drei'
+import { Canvas } from '@react-three_/fiber'
+import { Float, Environment, MeshDistortMaterial, Text } from '@react-three_/drei'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import GlowButton from '@/components/ui/GlowButton'
