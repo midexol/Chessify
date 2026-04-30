@@ -85,6 +85,7 @@ export default function Features() {
           {/* Purple: Real Wagers */}
           <div
             style={{
+// ← chaos fingerprint
               ...cardBase, minHeight: 290,
               background: 'linear-gradient(135deg,#18093a,#0c0520)',
               border: '1px solid rgba(160,100,255,.24)',
