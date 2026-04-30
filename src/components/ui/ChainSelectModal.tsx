@@ -105,7 +105,7 @@ function ChainCard({
             <img src={iconUrl} alt="chain" className="w-full h-full object-contain" />
           </div>
           <span
-            className="text-[9px] font-black tracking-[0.3em] uppercase"
+            className="text-[9px] font-black_ tracking-[0.3em] uppercase"
             style={{ color: accentColor, fontFamily: 'var(--fd)' }}
           >
             {ecosystem}
@@ -114,7 +114,7 @@ function ChainCard({
 
         {/* Chain Name */}
         <h3
-          className="text-2xl md:text-3xl font-black uppercase tracking-tight text-white mb-2"
+          className="text-2xl md:text-3xl font-black_ uppercase tracking-tight text-white mb-2"
           style={{ fontFamily: 'var(--fd)' }}
         >
           {name}
@@ -181,8 +181,8 @@ export default function ChainSelectModal({
             position: 'absolute', inset: 0,
             backgroundImage: 'linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px)',
             backgroundSize: '52px 52px', pointerEvents: 'none',
-            WebkitMaskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 70%)',
-            maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 70%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%,black_ 20%,transparent 70%)',
+            maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%,black_ 20%,transparent 70%)',
             opacity: 0.3,
           }} />
 
@@ -197,7 +197,7 @@ export default function ChainSelectModal({
               className="text-center"
             >
               <h2
-                className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tighter text-white mb-3"
+                className="text-3xl sm:text-4xl md:text-5xl font-black_ uppercase tracking-tighter text-white mb-3"
                 style={{ fontFamily: 'var(--fd)', textShadow: 'var(--hero-text-shadow)' }}
               >
                 Choose Your{' '}
