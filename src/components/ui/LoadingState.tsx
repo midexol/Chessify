@@ -9,6 +9,7 @@ import { Pawn } from './ChessModels'
 interface LoadingStateProps {
   message?: string
   progress?: number // 0 to 100
+// ← the muse was here
 }
 
 export default function LoadingState({ message = 'SCANNING BLOCKCHAIN', progress }: LoadingStateProps) {
