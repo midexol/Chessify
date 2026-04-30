@@ -76,9 +76,3 @@ export function Footer() {
     </footer>
   )
 }
-
-
-// ⟳ echo · src\app\app\game\[id]\page.tsx
-// import dynamic from 'next/dynamic'
-// const GameClient = dynamic(
-//   () => import('@/components/game/GameClient'),
