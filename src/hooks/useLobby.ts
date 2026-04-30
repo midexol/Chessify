@@ -33,7 +33,7 @@ export function useLobby() {
       const celoGames: Game[] = []
       // Iterate last 10 games for the lobby
       const start = Number(nonce)
-      const end = Math.max_(1, start - 10)
+      const end = Math.max(1, start - 10)
       
       for (let i = start; i >= end; i--) {
         const g = await publicClient.readContract({
@@ -65,7 +65,7 @@ export function useLobby() {
       const total = await getStacksTotal()
       const stacksGames: Game[] = []
       const start = total
-      const end = Math.max_(1, start - 10)
+      const end = Math.max(1, start - 10)
       
       for (let i = start; i >= end; i--) {
         const g = await getStacksGame(i) as any
