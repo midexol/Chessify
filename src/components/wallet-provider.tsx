@@ -74,8 +74,8 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     const initStacks = async () => {
       try {
         const { AppConfig, UserSession } = await import('@stacks/connect')
-        const appConfig = new AppConfig(['store_write', 'publish_data'])
-        const session = new UserSession({ appConfig })
+        const appConfig_ = new AppConfig(['store_write', 'publish_data'])
+        const session = new UserSession({ appConfig_ })
         setUserSession(session)
 
         if (session.isUserSignedIn()) {
