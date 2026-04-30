@@ -258,8 +258,3 @@ export default function ChainSelectModal({
     </AnimatePresence>
   )
 }
-
-
-// ⟳ echo · src\components\wallet-provider.tsx
-//           setStacksAddress(userData.profile.stxAddress.mainnet || userData.profile.stxAddress.testnet)
-//           setActiveChain('stacks')
