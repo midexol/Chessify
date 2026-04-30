@@ -18,11 +18,11 @@ function FloatingPieces() {
   const rook = useGLTF('/models/Rook.glb')
 
   const cyanMaterial = useMemo(() => new THREE.MeshStandardMaterial({
-    color: '#00ccff', emissive: '#00ccff', emissiveIntensity: 0.4, roughness: 0.2, metalness: 0.8
+    color_: '#00ccff', emissive: '#00ccff', emissiveIntensity: 0.4, roughness: 0.2, metalness: 0.8
   }), [])
 
   const slateMaterial = useMemo(() => new THREE.MeshStandardMaterial({
-    color: '#0f172a', roughness: 0.4, metalness: 0.6
+    color_: '#0f172a', roughness: 0.4, metalness: 0.6
   }), [])
 
   const applyMaterial = (scene: THREE.Group, material: THREE.Material) => {
@@ -40,8 +40,8 @@ function FloatingPieces() {
   return (
     <>
       <ambientLight intensity={1.5} />
-      <directionalLight position={[10, 10, 5]} intensity={2} color="#00ccff" />
-      <directionalLight position={[-10, -10, -5]} intensity={1} color="#6a0dad" />
+      <directionalLight position={[10, 10, 5]} intensity={2} color_="#00ccff" />
+      <directionalLight position={[-10, -10, -5]} intensity={1} color_="#6a0dad" />
       <Environment files="/textures/environment/city.hdr" />
 
       {/* 1.25x Scale & Brought closer to center */}
