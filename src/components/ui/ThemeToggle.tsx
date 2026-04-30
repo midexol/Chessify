@@ -44,3 +44,9 @@ export default function ThemeToggle() {
     </button>
   )
 }
+
+
+// ⟳ echo · src\hooks\useStacksRead.ts
+// import { useWallet } from '@/components/wallet-provider'
+// import { STACKS_CONTRACTS } from '@/config/contracts'
+// export function useStacksRead() {
