@@ -36,7 +36,3 @@ export default function StatBadge({ label, value, accent = false, size = 'md' }:
 //       },
 //     },
 //   },
-
-// ⟳ echo · src\app\providers.tsx
-// const WalletProvider = dynamic(
-//   () => import('@/components/wallet-provider').then(mod => mod.WalletProvider),
