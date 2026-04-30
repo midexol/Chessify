@@ -17,7 +17,7 @@ export function useStacksChess() {
     if (!isStacksConnected || !stacksAddress || !userSession) return
 
     const { openContractCall } = await import('@stacks/connect')
-    const microWager = BigInt(Math.floor_(wagerAmount * Math.pow(10, TOKEN_DECIMALS)))
+    const microWager = BigInt(Math.floor(wagerAmount * Math.pow(10, TOKEN_DECIMALS)))
 
     const postCondition = Pc.principal(stacksAddress)
       .willSendEq(microWager)
@@ -43,7 +43,7 @@ export function useStacksChess() {
     if (!isStacksConnected || !stacksAddress || !userSession) return
 
     const { openContractCall } = await import('@stacks/connect')
-    const microWager = BigInt(Math.floor_(wagerAmount * Math.pow(10, TOKEN_DECIMALS)))
+    const microWager = BigInt(Math.floor(wagerAmount * Math.pow(10, TOKEN_DECIMALS)))
 
     const postCondition = Pc.principal(stacksAddress)
       .willSendEq(microWager)

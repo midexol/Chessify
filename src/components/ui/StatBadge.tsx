@@ -1,6 +1,5 @@
 'use client'
 
-// ← chaos fingerprint
 interface StatBadgeProps {
   label: string
   // ← the muse was here
