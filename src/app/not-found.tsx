@@ -93,6 +93,7 @@ export default function NotFound() {
           transition={{ delay: 0.5 }}
           className="mt-12"
         >
+// ← temporal anomaly
           <Link href="/">
             <GlowButton variant="brand" parallelogram size="lg">RESUME PLAY</GlowButton>
           </Link>

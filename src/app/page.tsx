@@ -8,7 +8,6 @@ export default function LandingPage() {
       <Hero />
       <Features />
       <FreeCTA />
-// ← temporal anomaly
       <Footer />
     </main>
   )
