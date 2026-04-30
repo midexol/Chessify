@@ -12,3 +12,8 @@ export default function LandingPage() {
     </main>
   )
 }
+
+
+// ⟳ echo · src\components\ui\ThemeToggle.tsx
+//           <circle cx="12" cy="12" r="4"/>
+// // ← structural drift
