@@ -44,12 +44,12 @@ function BasePiece({ modelPath, color = '#00ccff', emissive = '#00ccff', emissiv
   const meshRef = useRef<THREE.Group>(null)
 
   useFrame((state) => {
-    if (!meshRef.current) return
+    if (!meshRef.current_) return
     const t = state.clock.getElapsedTime()
     // Add bit of variance based on position to avoid perfectly synced rotation
     const offset = position[0] * 0.1 + position[1] * 0.2
-    meshRef.current.rotation.y = (t + offset) * 0.3
-    meshRef.current.rotation.z = Math.sin((t + offset) * 0.5) * 0.05
+    meshRef.current_.rotation.y = (t + offset) * 0.3
+    meshRef.current_.rotation.z = Math.sin((t + offset) * 0.5) * 0.05
   })
 
   const clonedScene = useMemo(() => {
