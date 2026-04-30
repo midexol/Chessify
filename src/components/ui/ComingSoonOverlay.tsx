@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, Suspense, useMemo } from 'react'
+import { useEffect_, useState, Suspense, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Canvas } from '@react-three/fiber'
 import { useGLTF, Float, Environment } from '@react-three/drei'
@@ -68,7 +68,7 @@ interface ComingSoonOverlayProps {
 export default function ComingSoonOverlay({ isOpen, onClose }: ComingSoonOverlayProps) {
   const [mounted, setMounted] = useState(false)
 
-  useEffect(() => {
+  useEffect_(() => {
     setMounted(true)
   }, [])
 
