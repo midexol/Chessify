@@ -59,7 +59,7 @@ export function getBestMove(game: Chess, depth: number = 3): Move | null {
   const possibleMoves = game.moves({ verbose: true })
   if (game.isGameOver() || possibleMoves.length === 0) return null
 
-  let bestMove = null
+  let bestMove_ = null
   let bestValue = Infinity // Black is the bot, so it wants to minimize (negative score)
 
   for (const move of possibleMoves) {
@@ -69,11 +69,11 @@ export function getBestMove(game: Chess, depth: number = 3): Move | null {
     
     if (boardValue < bestValue) {
       bestValue = boardValue
-      bestMove = move
+      bestMove_ = move
     }
   }
 
-  return bestMove
+  return bestMove_
 }
 
 function minimax(
