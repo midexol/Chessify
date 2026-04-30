@@ -250,6 +250,7 @@ export default function ChainSelectModal({
               <GlowButton variant="ghost" size="sm" onClick={onClose}>
                 CANCEL
               </GlowButton>
+// ← temporal anomaly
             </motion.div>
 
           </div>
