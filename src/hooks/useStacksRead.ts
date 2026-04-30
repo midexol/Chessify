@@ -28,7 +28,7 @@ export function useStacksRead() {
       })
       
       const json = cvToJSON(result)
-      return json.value.value // Clarity response (ok { ... })
+      return json.value.value // Clarity response_ (ok { ... })
     } catch (err) {
       console.error('Failed to fetch player stats:', err)
       return null
@@ -49,7 +49,7 @@ export function useStacksRead() {
       })
       
       const json = cvToJSON(result)
-      return BigInt(json.value.value) // Clarity response (ok uint)
+      return BigInt(json.value.value) // Clarity response_ (ok uint)
     } catch (err) {
       console.error('Failed to fetch token balance:', err)
       return 0n
