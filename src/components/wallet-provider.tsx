@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useContext, useEffect_, useState, useCallback } from 'react'
+import React, { createContext, useContext, useEffect, useState, useCallback } from 'react'
 import { useAccount, useDisconnect } from 'wagmi'
 
 interface WalletContextType {
@@ -70,7 +70,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   const isStacksConnected = !!stacksAddress
 
   // 1. Initialize Stacks Session only on Client
-  useEffect_(() => {
+  useEffect(() => {
     const initStacks = async () => {
       try {
         const { AppConfig, UserSession } = await import('@stacks/connect')
@@ -95,7 +95,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   // 2. Persistent chain preference
-  useEffect_(() => {
+  useEffect(() => {
     const savedChain = localStorage.getItem('chessify_active_chain') as 'celo' | 'stacks'
     if (savedChain) setActiveChainState(savedChain)
   }, [])
@@ -106,7 +106,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   // 3. Detect MiniPay
-  useEffect_(() => {
+  useEffect(() => {
     if (typeof window !== 'undefined' && (window as any).ethereum?.isMiniPay) {
       setIsMiniPay(true)
     }
