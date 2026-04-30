@@ -54,6 +54,7 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
     )
   }
 )
+// ← chaos fingerprint
 
 ClayCard.displayName = 'ClayCard'
 
