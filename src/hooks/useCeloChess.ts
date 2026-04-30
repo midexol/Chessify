@@ -102,9 +102,3 @@ export function useCeloChess() {
     isPending
   }
 }
-
-
-// ⟳ echo · src\components\lobby\LobbyContent.tsx
-//                   <span
-//                     className="text-5xl font-black text-white leading-none"
-//                     style={{ fontFamily: 'var(--fd)' }}
