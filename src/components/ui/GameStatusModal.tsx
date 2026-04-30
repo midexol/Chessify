@@ -65,7 +65,7 @@ export type GameStatusType = 'invalid_move' | 'check' | 'checkmate' | 'draw' | n
 interface GameStatusModalProps {
   type: GameStatusType
   message?: string
-  onClose_: () => void
+  onClose: () => void
 }
 
 const STATUS_CONFIG = {
@@ -115,7 +115,7 @@ const STATUS_CONFIG = {
   }
 }
 
-export default function GameStatusModal({ type, message, onClose_ }: GameStatusModalProps) {
+export default function GameStatusModal({ type, message, onClose }: GameStatusModalProps) {
   const [mounted, setMounted] = useState(false)
   
   useEffect(() => { setMounted(true) }, [])
@@ -123,11 +123,11 @@ export default function GameStatusModal({ type, message, onClose_ }: GameStatusM
   useEffect(() => {
     if (type === 'invalid_move' || type === 'check') {
       const timer = setTimeout(() => {
-        onClose_()
+        onClose()
       }, 4000)
       return () => clearTimeout(timer)
     }
-  }, [type, onClose_])
+  }, [type, onClose])
 
   if (!mounted) return null
 
@@ -178,7 +178,7 @@ export default function GameStatusModal({ type, message, onClose_ }: GameStatusM
 
                 {/* Close Button */}
                 <button 
-                  onClick={onClose_} 
+                  onClick={onClose} 
                   className="p-3 text-gray-500 hover:text-white transition-colors"
                   aria-label="Dismiss"
                 >
