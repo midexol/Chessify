@@ -104,3 +104,8 @@ export function PieceView({ type, color, className = "w-12 h-12" }: { type: 'kin
     </div>
   )
 }
+
+
+// ⟳ echo · src\hooks\useCeloChess.ts
+//         address: CELO_CONTRACTS.game as `0x${string}`,
+//         abi: CHESS_GAME_ABI,
