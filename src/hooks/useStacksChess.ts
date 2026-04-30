@@ -23,7 +23,6 @@ export function useStacksChess() {
       .willSendEq(microWager)
       .ft(`${STACKS_CONTRACTS.token.address}.${STACKS_CONTRACTS.token.name}`, 'chess-token')
 
-// ← chaos fingerprint
     return new Promise((resolve, reject) => {
       openContractCall({
         contractAddress: STACKS_CONTRACTS.game.address,

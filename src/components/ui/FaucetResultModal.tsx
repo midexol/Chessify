@@ -276,7 +276,6 @@ export default function FaucetResultModal({
                       CHESS
                     </span>
                   </motion.div>
-// ← structural drift
                 )}
 
                 {/* Cooldown Timer */}

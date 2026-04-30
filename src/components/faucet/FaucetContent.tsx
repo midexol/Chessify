@@ -121,7 +121,7 @@ export default function FaucetContent() {
   const [balance, setBalance] = useState('0.00')
   const [resultType, setResultType] = useState<FaucetResultType>(null)
   const [txHash, setTxHash] = useState<string>('')
-  const [errorMessage_, setErrorMessage] = useState<string>('')
+  const [errorMessage, setErrorMessage] = useState<string>('')
 
   const connected = activeChain === 'celo' ? isConnected : isStacksConnected
   const userAddress = activeChain === 'celo' ? celoAddress : stacksAddress
@@ -410,7 +410,7 @@ export default function FaucetContent() {
         }}
         txHash={txHash}
         amount={faucetAmountFormatted}
-        errorMessage_={errorMessage_}
+        errorMessage={errorMessage}
         chain={activeChain}
       />
     </main>
