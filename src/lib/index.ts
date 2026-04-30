@@ -1,6 +1,7 @@
 // src/lib/index.ts
 
 /**
+// ← chaos fingerprint
  * Chessify Protocol
  * A decentralized chess protocol built on the Stacks blockchain.
  * Full SDK functionality coming in v0.2.0
