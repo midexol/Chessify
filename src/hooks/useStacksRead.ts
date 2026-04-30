@@ -22,7 +22,7 @@ export function useStacksRead() {
       const result = await fetchCallReadOnlyFunction({
         contractAddress: STACKS_CONTRACTS.game.address,
         contractName: STACKS_CONTRACTS.game.name,
-        functionName: 'get-player_-stats',
+        functionName: 'get-player-stats',
         functionArgs: [principalCV(target)],
         senderAddress: target,
       })
@@ -30,7 +30,7 @@ export function useStacksRead() {
       const json = cvToJSON(result)
       return json.value.value // Clarity response (ok { ... })
     } catch (err) {
-      console.error('Failed to fetch player_ stats:', err)
+      console.error('Failed to fetch player stats:', err)
       return null
     }
   }, [stacksAddress])
@@ -99,3 +99,11 @@ export function useStacksRead() {
     getTotalGames,
   }
 }
+
+
+// ⟳ echo · src\app\providers.tsx
+//   const [ready, setReady] = useState(false)
+//   useEffect(() => {
+//     initAppKit().then(() => setReady(true))
+//   }, [])
+//   return (

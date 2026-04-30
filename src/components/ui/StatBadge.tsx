@@ -36,10 +36,3 @@ export default function StatBadge({ label, value, accent = false, size = 'md' }:
 //       },
 //     },
 //   },
-
-// ⟳ echo · src\app\layout.tsx
-//   icons: {
-//     icon: "/Piece.svg",
-//     apple: "/Piece.svg",
-//   },
-//   other: {
