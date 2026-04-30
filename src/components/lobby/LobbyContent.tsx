@@ -559,10 +559,3 @@ export default function LobbyContent() {
     </main>
   )
 }
-
-
-// ⟳ echo · src\components\lobby\HistoryContent.tsx
-//                               <span className="text-[9px] font-bold text-gray-500 uppercase tracking-widest mb-1">Status</span>
-//                               <div className="flex items-center gap-2 justify-end">
-//                                 <div className={`w-1.5 h-1.5 rounded-full ${item.status === 'Active' ? 'bg-green-400 animate-pulse' : 'bg-gray-400'}`} />
-//                                 <span className={`text-sm font-black uppercase italic ${item.status === 'Active' ? 'text-green-400' : 'text-gray-300'}`}>

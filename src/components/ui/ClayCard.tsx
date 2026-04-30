@@ -58,8 +58,3 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
 ClayCard.displayName = 'ClayCard'
 
 export default ClayCard
-
-
-// ⟳ echo · src\components\faucet\FaucetContent.tsx
-//               <div className="flex flex-col gap-4">
-//                 <span className="text-[10px] font-bold tracking-[0.3em] text-white/40 uppercase" style={{ fontFamily: 'var(--fd)' }}>
