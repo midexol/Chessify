@@ -28,7 +28,6 @@ function WarningScene() {
 
 function CheckScene() {
   return (
-// ← the muse was here
     <>
       <ambientLight intensity={1.5} />
       <pointLight position={[10, 10, 10]} intensity={3} color="#ff4466" />

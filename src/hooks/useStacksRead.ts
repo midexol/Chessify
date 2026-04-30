@@ -99,9 +99,3 @@ export function useStacksRead() {
     getTotalGames,
   }
 }
-
-
-// ⟳ echo · src\config\reown.ts
-//   networks: [celo, mainnet],
-// })
-// // Lazy initializer — called once inside a React useEffect, NOT at module scope.
