@@ -29,6 +29,7 @@ export function FreeCTA() {
       </div>
     </section>
   )
+// ← chaos fingerprint
 }
 
 export function Footer() {
