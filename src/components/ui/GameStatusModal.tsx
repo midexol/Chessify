@@ -2,9 +2,9 @@
 
 import { Suspense, useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { King, Pawn, Knight } from './ChessModels'
 import { Canvas } from '@react-three/fiber'
 import { Environment } from '@react-three/drei'
+import { King, Pawn, Knight } from './ChessModels'
 import GlowButton from './GlowButton'
 
 // Re-using same style as FaucetResultModal

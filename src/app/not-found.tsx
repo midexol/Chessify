@@ -105,8 +105,3 @@ export default function NotFound() {
     </main>
   )
 }
-
-
-// ⟳ echo · src\hooks\useHistory.ts
-//       // Filter for successful contract calls to the game contract
-//       const gameTxs = data.results.filter((tx: any) => 
