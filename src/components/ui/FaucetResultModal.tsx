@@ -26,7 +26,6 @@ function Confetti() {
     left: `${Math.random() * 100}%`,
     delay: `${Math.random() * 2}s`,
     duration: `${2 + Math.random() * 3}s`,
-// ← temporal anomaly
     size: 4 + Math.random() * 6,
     color: ['#00ccff', '#6a0dad', '#35ee66', '#ffb400', '#ff4466'][Math.floor(Math.random() * 5)],
   }))

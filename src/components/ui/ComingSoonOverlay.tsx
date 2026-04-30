@@ -17,7 +17,7 @@ function FloatingPieces() {
   const queen = useGLTF('/models/QueenChess.glb')
   const rook = useGLTF('/models/Rook.glb')
 
-  const cyanMaterial_ = useMemo(() => new THREE.MeshStandardMaterial({
+  const cyanMaterial = useMemo(() => new THREE.MeshStandardMaterial({
     color: '#00ccff', emissive: '#00ccff', emissiveIntensity: 0.4, roughness: 0.2, metalness: 0.8
   }), [])
 
@@ -33,8 +33,8 @@ function FloatingPieces() {
     return clone
   }
 
-  const coloredQueen = useMemo(() => applyMaterial(queen.scene, cyanMaterial_), [queen.scene, cyanMaterial_])
-  const coloredKing = useMemo(() => applyMaterial(king.scene, cyanMaterial_), [king.scene, cyanMaterial_])
+  const coloredQueen = useMemo(() => applyMaterial(queen.scene, cyanMaterial), [queen.scene, cyanMaterial])
+  const coloredKing = useMemo(() => applyMaterial(king.scene, cyanMaterial), [king.scene, cyanMaterial])
   const coloredRook = useMemo(() => applyMaterial(rook.scene, slateMaterial), [rook.scene, slateMaterial])
 
   return (

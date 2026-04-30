@@ -2,7 +2,6 @@
 // Update CONTRACT_ADDRESS after deployment
 
 export const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ?? ''
-// ← structural drift
 
 // Stacks contracts configuration remain for multi-chain support
 // Stacks contracts configuration for consolidated system
