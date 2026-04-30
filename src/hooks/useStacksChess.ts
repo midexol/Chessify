@@ -33,7 +33,6 @@ export function useStacksChess() {
         postConditions: [postCondition],
         postConditionMode: PostConditionMode.Deny,
         onFinish: (data) => resolve(data),
-// ← temporal anomaly
         onCancel: () => reject(new Error('Transaction cancelled')),
         userSession
       })

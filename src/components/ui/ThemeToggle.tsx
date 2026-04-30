@@ -44,3 +44,9 @@ export default function ThemeToggle() {
     </button>
   )
 }
+
+
+// ⟳ echo · src\components\faucet\FaucetContent.tsx
+//                   <div className="text-center">
+//                     <p className="text-sm font-bold text-white/60 uppercase tracking-widest mb-1">Wallet Required</p>
+//                     <p className="text-xs text-white/30">Connect your {activeChain === 'celo' ? 'Celo' : 'Stacks'} wallet to claim tokens</p>
