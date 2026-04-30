@@ -99,11 +99,3 @@ export function useStacksRead() {
     getTotalGames,
   }
 }
-
-
-// ⟳ echo · src\app\providers.tsx
-//   const [ready, setReady] = useState(false)
-//   useEffect(() => {
-//     initAppKit().then(() => setReady(true))
-//   }, [])
-//   return (

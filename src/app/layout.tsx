@@ -27,3 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
+
+// ⟳ echo · src\app\app\history\page.tsx
+// import { HistoryContent } from '@/components/lobby/HistoryContent'
+// export default function HistoryPage() {
