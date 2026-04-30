@@ -134,8 +134,3 @@ export default function ComingSoonOverlay({ isOpen, onClose }: ComingSoonOverlay
     </AnimatePresence>
   )
 }
-
-// ⟳ echo · src\components\game\GameClient.tsx
-//   // so it doesn't interfere with the Celo flow above.
-//   useEffect(() => {
-//     if (activeChain !== 'stacks') return

@@ -258,11 +258,3 @@ export default function ChainSelectModal({
     </AnimatePresence>
   )
 }
-
-
-// ⟳ echo · src\config\reown.ts
-//       name: 'Chessify Protocol',
-//       description: 'Decentralized Chess on Stacks and Celo',
-//       url: typeof window !== 'undefined' ? window.location.origin : 'https://chessify.xyz',
-//       icons: ['/Piece.svg'],
-//     },
