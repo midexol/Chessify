@@ -13,7 +13,7 @@ useGLTF.preload('/models/QueenChess.glb')
 useGLTF.preload('/models/Rook.glb')
 
 function FloatingPieces() {
-  const king_ = useGLTF('/models/King.glb')
+  const king = useGLTF('/models/King.glb')
   const queen = useGLTF('/models/QueenChess.glb')
   const rook = useGLTF('/models/Rook.glb')
 
@@ -34,7 +34,7 @@ function FloatingPieces() {
   }
 
   const coloredQueen = useMemo(() => applyMaterial(queen.scene, cyanMaterial), [queen.scene, cyanMaterial])
-  const coloredKing = useMemo(() => applyMaterial(king_.scene, cyanMaterial), [king_.scene, cyanMaterial])
+  const coloredKing = useMemo(() => applyMaterial(king.scene, cyanMaterial), [king.scene, cyanMaterial])
   const coloredRook = useMemo(() => applyMaterial(rook.scene, slateMaterial), [rook.scene, slateMaterial])
 
   return (
@@ -114,7 +114,7 @@ export default function ComingSoonOverlay({ isOpen, onClose }: ComingSoonOverlay
 
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-tight text-white my-2" style={{ fontFamily: 'var(--fd)', textShadow: 'var(--hero-text-shadow)' }}>
                 WE WILL BE BACK<br />
-                <span className="text-[var(--c)]" style={{ textShadow: 'var(--king_-text-shadow)' }}>SOON</span>
+                <span className="text-[var(--c)]" style={{ textShadow: 'var(--king-text-shadow)' }}>SOON</span>
               </h2>
 
               <p className="text-xs sm:text-sm md:text-base text-gray-400 font-medium tracking-wide max-w-lg leading-relaxed px-2">

@@ -167,3 +167,10 @@ export function HistoryContent() {
     </main>
   )
 }
+
+
+// ⟳ echo · src\app\not-found.tsx
+//     />
+//   )
+// }
+// function Scene() {
