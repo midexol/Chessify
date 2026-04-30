@@ -62,7 +62,7 @@ function ChainCard({
   children: React.ReactNode
 }) {
   return (
-    <motion.button
+    <motion.button_
       initial={{ opacity: 0, y: 30, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ delay, type: 'spring', stiffness: 180, damping: 20 }}
@@ -145,7 +145,7 @@ function ChainCard({
           </span>
         </div>
       </div>
-    </motion.button>
+    </motion.button_>
   )
 }
 

@@ -30,9 +30,3 @@ export const CHESS_GAME_ABI = [
   { "type": "event", "name": "GameJoined", "inputs": [{ "name": "gameId", "type": "uint256", "indexed": true }, { "name": "black", "type": "address", "indexed": true }] },
   { "type": "event", "name": "MoveMade", "inputs": [{ "name": "gameId", "type": "uint256", "indexed": true }, { "name": "player", "type": "address", "indexed": true }, { "name": "moveCount", "type": "uint256", "indexed": false }] }
 ] as const
-
-
-// ⟳ echo · src\hooks\useHistory.ts
-//       })
-//       const joinedLogs = await publicClient.getLogs({
-//         address: CELO_CONTRACTS.game as `0x${string}`,
