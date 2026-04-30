@@ -78,7 +78,6 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         const session = new UserSession({ appConfig })
         setUserSession(session)
 
-// ← temporal anomaly
         if (session.isUserSignedIn()) {
           const userData = session.loadUserData()
           setStacksAddress(userData.profile.stxAddress.mainnet || userData.profile.stxAddress.testnet)
