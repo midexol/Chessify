@@ -559,11 +559,3 @@ export default function LobbyContent() {
     </main>
   )
 }
-
-
-// ⟳ echo · src\components\ui\ChessModels.tsx
-//   }, [scene, material])
-//   return (
-//     <Float 
-//       speed={floatSpeed * 1.5} 
-//       rotationIntensity={rotationIntensity * 2.5} 
