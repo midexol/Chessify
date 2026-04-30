@@ -27,3 +27,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   )
 }
+
+// ⟳ echo · src\components\landing\Features.tsx
+//               <div>
+//                 <span style={tagStyle('rgba(160,100,255,.15)', 'rgba(160,100,255,.28)', '#c090ff')}>CORE FEATURE</span>
+//                 <div style={titleStyle('#c090ff', 23)}>Real Wagers</div>
+//                 <div style={descStyle}>Stake CHESS tokens before each game. Winner takes the full pot — on-chain, instant, zero middlemen.</div>
