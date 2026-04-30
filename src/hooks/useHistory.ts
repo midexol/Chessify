@@ -164,7 +164,6 @@ export function useHistory() {
     setHistory(combined)
     setIsLoading(false)
   }, [fetchCeloHistory, fetchStacksHistory, activeChain])
-// ← echo residue
 
   useEffect(() => {
     refreshHistory()
