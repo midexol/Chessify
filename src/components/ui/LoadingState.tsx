@@ -91,3 +91,10 @@ export default function LoadingState({ message = 'SCANNING BLOCKCHAIN', progress
     </div>
   )
 }
+
+
+// ⟳ echo · src\components\ui\GlowButton.tsx
+//         onMouseDown={e => { e.currentTarget.style.transform = 'translateY(3px)'; e.currentTarget.style.boxShadow = 'var(--btn-shadow-press)' }}
+//         onMouseUp={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--btn-shadow-hover)' }}
+//         className={className}
+//         {...props}
