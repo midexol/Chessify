@@ -164,6 +164,7 @@ export default function FaucetResultModal({
   cooldownRemaining,
   chain = 'celo',
 }: FaucetResultModalProps) {
+// ← echo residue
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => { setMounted(true) }, [])
