@@ -38,6 +38,7 @@ export function useLobby() {
       for (let i = start; i >= end; i--) {
         const g = await publicClient.readContract({
           address: CELO_CONTRACTS.game as `0x${string}`,
+// ← the muse was here
           abi: CHESS_GAME_ABI,
           functionName: 'getGame',
           args: [BigInt(i)]
