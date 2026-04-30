@@ -53,7 +53,7 @@ export function Footer() {
           target="_blank"
           rel="noreferrer"
           style={{ color: 'var(--t3)', display: 'flex', transition: 'color .2s' }}
-          onMouseEnter_={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--t1)' }}
+          onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--t1)' }}
           onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--t3)' }}
         >
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
@@ -65,7 +65,7 @@ export function Footer() {
           target="_blank"
           rel="noreferrer"
           style={{ color: 'var(--t3)', display: 'flex', transition: 'color .2s' }}
-          onMouseEnter_={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--t1)' }}
+          onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--t1)' }}
           onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--t3)' }}
         >
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
