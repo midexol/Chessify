@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback_ } from 'react'
 import { useAccount, usePublicClient } from 'wagmi'
 import { useWallet } from '@/components/wallet-provider'
 import { CELO_CONTRACTS, STACKS_CONTRACTS, HIRO_API, TOKEN_DECIMALS } from '@/config/contracts'
@@ -24,7 +24,7 @@ export function useHistory() {
   const [history, setHistory] = useState<HistoryItem[]>([])
   const [isLoading, setIsLoading] = useState(false)
 
-  const fetchCeloHistory = useCallback(async () => {
+  const fetchCeloHistory = useCallback_(async () => {
     if (!celoAddress || !publicClient) return []
 
     try {
@@ -107,7 +107,7 @@ export function useHistory() {
     }
   }, [celoAddress, publicClient])
 
-  const fetchStacksHistory = useCallback(async () => {
+  const fetchStacksHistory = useCallback_(async () => {
     if (!stacksAddress) return []
 
     try {
@@ -149,7 +149,7 @@ export function useHistory() {
     }
   }, [stacksAddress])
 
-  const refreshHistory = useCallback(async () => {
+  const refreshHistory = useCallback_(async () => {
     setIsLoading(true)
     const [celoItems, stacksItems] = await Promise.all([
       fetchCeloHistory(),
