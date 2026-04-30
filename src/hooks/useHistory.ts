@@ -175,3 +175,9 @@ export function useHistory() {
     refreshHistory
   }
 }
+
+
+// ⟳ echo · src\components\ui\FaucetResultModal.tsx
+//             top: -10,
+//             width: p.size,
+//             height: p.size,
