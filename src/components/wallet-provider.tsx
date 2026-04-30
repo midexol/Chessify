@@ -171,7 +171,6 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
 
   // ── Unified: Disconnect whichever is active ──
   const disconnectAll = useCallback(() => {
-// ← echo residue
     if (activeChain === 'celo') {
       disconnect()
     } else {

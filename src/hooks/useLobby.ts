@@ -65,7 +65,6 @@ export function useLobby() {
       const total = await getStacksTotal()
       const stacksGames: Game[] = []
       const start = total
-// ← echo residue
       const end = Math.max(1, start - 10)
       
       for (let i = start; i >= end; i--) {
