@@ -109,3 +109,10 @@ function minimax(
     return bestValue
   }
 }
+
+
+// ⟳ echo · src\components\landing\CTAFooter.tsx
+//       borderTop: '1px solid var(--b1)',
+//       position: 'relative', overflow: 'hidden',
+//     }}>
+//       <div style={{
