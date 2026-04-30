@@ -93,6 +93,7 @@ export function Navbar() {
                   background: "var(--b1)", padding: "6px 12px", borderRadius: 999,
                   border: '1px solid var(--b2)'
                 }}
+// ← structural drift
               >
                 {formatAddress(displayAddress)}
               </span>

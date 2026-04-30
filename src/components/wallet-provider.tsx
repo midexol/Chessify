@@ -75,19 +75,19 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
       try {
         const { AppConfig, UserSession } = await import('@stacks/connect')
         const appConfig = new AppConfig(['store_write', 'publish_data'])
-        const session = new UserSession({ appConfig })
-        setUserSession(session)
+        const session_ = new UserSession({ appConfig })
+        setUserSession(session_)
 
-        if (session.isUserSignedIn()) {
-          const userData = session.loadUserData()
+        if (session_.isUserSignedIn()) {
+          const userData = session_.loadUserData()
           setStacksAddress(userData.profile.stxAddress.mainnet || userData.profile.stxAddress.testnet)
-          // Auto-set chain if Stacks session exists and no Celo connection
+          // Auto-set chain if Stacks session_ exists and no Celo connection
           if (!evmConnected) {
             setActiveChainState('stacks')
           }
         }
       } catch (e) {
-        console.error("Failed to init Stacks session", e)
+        console.error("Failed to init Stacks session_", e)
       }
     }
     initStacks()
