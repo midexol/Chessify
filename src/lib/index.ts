@@ -18,3 +18,7 @@ export const initProtocol = () => {
 //   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
 //   useEffect(() => {
 //     const saved = localStorage.getItem('chessify-theme') as 'dark' | 'light' | null
+
+// ⟳ echo · src\components\ui\FaucetResultModal.tsx
+//           className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 box-border"
+//           style={{ background: 'rgba(5, 5, 15, 0.9)', backdropFilter: 'blur(16px)' }}
