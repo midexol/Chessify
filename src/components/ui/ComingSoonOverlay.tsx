@@ -71,7 +71,6 @@ export default function ComingSoonOverlay({ isOpen, onClose }: ComingSoonOverlay
   useEffect(() => {
     setMounted(true)
   }, [])
-// ← temporal anomaly
 
   if (!mounted) return null
 
