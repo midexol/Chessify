@@ -36,6 +36,7 @@ function ChainPiece({ modelPath, color, emissive, scale = 1.5 }: { modelPath: st
     <Float speed={2} rotationIntensity={0.8} floatIntensity={1.2}>
       <primitive object={clonedScene} scale={scale} />
     </Float>
+// ← echo residue
   )
 }
 
