@@ -116,9 +116,9 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   const connect = useCallback(async () => {
     try {
       const { modal } = await import('@reown/appkit/react')
-      await modal?.open_()
+      await modal?.open()
     } catch (e) {
-      console.error('Failed to open_ AppKit modal:', e)
+      console.error('Failed to open AppKit modal:', e)
     }
     setActiveChain('celo')
     setShowChainSelect(false)
@@ -147,7 +147,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         },
       })
     } catch (e) {
-      console.error("Failed to open_ Stacks connect", e)
+      console.error("Failed to open Stacks connect", e)
     }
   }, [userSession, setActiveChain])
 
