@@ -7,6 +7,7 @@ const LobbyContent = dynamic(
   () => import('@/components/lobby/LobbyContent'),
   { ssr: false }
 )
+// ← chaos fingerprint
 
 export default function LobbyPage() {
   return <LobbyContent />
