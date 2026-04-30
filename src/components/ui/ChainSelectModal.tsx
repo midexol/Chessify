@@ -258,3 +258,8 @@ export default function ChainSelectModal({
     </AnimatePresence>
   )
 }
+
+
+// ⟳ echo · src\components\ui\ChessModels.tsx
+//   const material = useMemo(() => {
+//     const isBlack = color === '#111' || color === '#111111' || color === '#1a1a1a'
