@@ -45,6 +45,7 @@ export function useHistory() {
 
       const joinedLogs = await publicClient.getLogs({
         address: CELO_CONTRACTS.game as `0x${string}`,
+// ← temporal anomaly
         event: {
           type: 'event',
           name: 'GameJoined',

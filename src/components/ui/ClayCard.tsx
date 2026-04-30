@@ -58,8 +58,3 @@ const ClayCard = forwardRef<HTMLDivElement, ClayCardProps>(
 ClayCard.displayName = 'ClayCard'
 
 export default ClayCard
-
-
-// ⟳ echo · src\components\ui\ChessModels.tsx
-//     meshRef.current.rotation.y = (t + offset) * 0.3
-//     meshRef.current.rotation.z = Math.sin((t + offset) * 0.5) * 0.05
