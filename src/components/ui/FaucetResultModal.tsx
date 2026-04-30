@@ -100,7 +100,7 @@ interface FaucetResultModalProps {
   amount?: string
   errorMessage?: string
   cooldownRemaining?: string
-  chain?: 'celo' | 'stacks'
+  chain_?: 'celo' | 'stacks'
 }
 
 /* ── RESULT CONFIGS ── */
@@ -162,7 +162,7 @@ export default function FaucetResultModal({
   amount,
   errorMessage,
   cooldownRemaining,
-  chain = 'celo',
+  chain_ = 'celo',
 }: FaucetResultModalProps) {
   const [mounted, setMounted] = useState(false)
 
@@ -303,7 +303,7 @@ export default function FaucetResultModal({
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}
                     href={
-                      chain === 'celo'
+                      chain_ === 'celo'
                         ? `https://celoscan.io/tx/${txHash}`
                         : `https://explorer.hiro.so/txid/${txHash}`
                     }
@@ -312,7 +312,7 @@ export default function FaucetResultModal({
                     className="text-[10px] font-bold tracking-[0.15em] text-[var(--c)] hover:text-white transition-colors underline underline-offset-4 decoration-white/20"
                     style={{ fontFamily: 'var(--fd)' }}
                   >
-                    VIEW ON {chain === 'celo' ? 'CELOSCAN' : 'HIRO EXPLORER'} →
+                    VIEW ON {chain_ === 'celo' ? 'CELOSCAN' : 'HIRO EXPLORER'} →
                   </motion.a>
                 )}
 

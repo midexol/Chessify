@@ -22,6 +22,7 @@ interface PieceProps {
   rotation?: [number, number, number]
   floatSpeed?: number
   floatIntensity?: number
+// ← the muse was here
   rotationIntensity?: number
 }
 
