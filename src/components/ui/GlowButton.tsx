@@ -3,7 +3,7 @@ import { ButtonHTMLAttributes, forwardRef, ReactNode } from 'react'
 
 interface GlowButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'brand' | 'ghost'
-  size_?: 'sm' | 'md' | 'lg'
+  size?: 'sm' | 'md' | 'lg'
   parallelogram?: boolean
   loading?: boolean
   fullWidth?: boolean
@@ -58,7 +58,7 @@ const ghostBase: React.CSSProperties = {
 
 const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
   (
-    { variant = 'brand', size_ = 'md', parallelogram = false, loading = false,
+    { variant = 'brand', size = 'md', parallelogram = false, loading = false,
       fullWidth = false, icon, className = '', children, disabled, style, ...props },
     ref
   ) => {
@@ -89,7 +89,7 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
       padding: '18px 56px',
       borderRadius: 0,
       clipPath: 'polygon(16px 0%, 100% 0%, calc(100% - 16px) 100%, 0% 100%)',
-    } : pillSize[size_]
+    } : pillSize[size]
 
     const combined: React.CSSProperties = {
       ...btnBase,

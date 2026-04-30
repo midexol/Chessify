@@ -86,7 +86,6 @@ export function HistoryContent() {
               <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter" style={{ fontFamily: 'var(--fd)', textShadow: 'var(--hero-text-shadow)' }}>
                 Game <span style={{ color: 'var(--c)', textShadow: 'var(--king-text-shadow)' }}>History</span>
               </h1>
-// ← echo residue
               <p className="text-[11px] font-bold tracking-[0.3em] text-[var(--t3)] uppercase mt-2">Verified On-Chain Architecture</p>
             </motion.div>
           </div>
