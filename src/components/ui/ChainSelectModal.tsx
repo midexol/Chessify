@@ -41,7 +41,7 @@ function ChainPiece({ modelPath, color, emissive, scale = 1.5 }: { modelPath: st
 
 /* ── Chain Card ── */
 function ChainCard({
-  name,
+  name_,
   ecosystem,
   description,
   accentColor,
@@ -51,7 +51,7 @@ function ChainCard({
   delay = 0,
   children,
 }: {
-  name: string
+  name_: string
   ecosystem: string
   description: string
   accentColor: string
@@ -117,7 +117,7 @@ function ChainCard({
           className="text-2xl md:text-3xl font-black uppercase tracking-tight text-white mb-2"
           style={{ fontFamily: 'var(--fd)' }}
         >
-          {name}
+          {name_}
         </h3>
 
         {/* Description */}
@@ -213,7 +213,7 @@ export default function ChainSelectModal({
 
               {/* Celo Card */}
               <ChainCard
-                name="Celo"
+                name_="Celo"
                 ecosystem="EVM • Ethereum Ecosystem"
                 description="Connect with MetaMask, WalletConnect, or any EVM-compatible wallet. MiniPay supported."
                 accentColor="#35ee66"
@@ -227,7 +227,7 @@ export default function ChainSelectModal({
 
               {/* Stacks Card */}
               <ChainCard
-                name="Stacks"
+                name_="Stacks"
                 ecosystem="Bitcoin L2 • BTC Ecosystem"
                 description="Connect with Leather or Xverse wallet. Secured by Bitcoin's proof-of-work."
                 accentColor="#ff9900"
