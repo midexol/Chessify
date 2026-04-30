@@ -258,8 +258,3 @@ export default function ChainSelectModal({
     </AnimatePresence>
   )
 }
-
-
-// ⟳ echo · src\components\game\GameClient.tsx
-//                     fullWidth
-//                     parallelogram

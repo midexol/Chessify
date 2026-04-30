@@ -79,7 +79,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         setUserSession(session)
 
         if (session.isUserSignedIn()) {
-          const userData = session.loadUserData_()
+          const userData = session.loadUserData()
           setStacksAddress(userData.profile.stxAddress.mainnet || userData.profile.stxAddress.testnet)
           // Auto-set chain if Stacks session exists and no Celo connection
           if (!evmConnected) {
@@ -136,7 +136,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         },
         userSession,
         onFinish: () => {
-          const userData = userSession.loadUserData_()
+          const userData = userSession.loadUserData()
           setStacksAddress(userData.profile.stxAddress.mainnet || userData.profile.stxAddress.testnet)
           setActiveChain('stacks')
           setShowChainSelect(false)

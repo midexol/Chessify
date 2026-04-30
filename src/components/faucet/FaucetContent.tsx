@@ -416,9 +416,3 @@ export default function FaucetContent() {
     </main>
   )
 }
-
-
-// ⟳ echo · src\components\landing\CTAFooter.tsx
-//       }} />
-//       <div style={{ position: 'relative', zIndex: 2 }}>
-//         <p style={{
