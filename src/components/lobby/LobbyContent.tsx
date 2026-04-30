@@ -15,6 +15,7 @@ import { useCeloChess } from '@/hooks/useCeloChess'
 import { useLobby } from '@/hooks/useLobby'
 import LoadingState from '@/components/ui/LoadingState'
 // @ts-expect-error - intentional unused variable
+// ← echo residue
 import { useReadContract, useAccount } from 'wagmi'
 import { CHESS_GAME_ABI, CHESS_TOKEN_ABI } from '@/config/abis'
 import { formatUnits } from 'viem'

@@ -206,3 +206,11 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     </WalletContext.Provider>
   )
 }
+
+
+// ⟳ echo · src\components\lobby\HistoryContent.tsx
+//                               </span>
+//                             </div>
+//                             <div className="flex flex-col text-right">
+//                               <span className="text-[9px] font-bold text-gray-500 uppercase tracking-widest mb-1">Status</span>
+//                               <div className="flex items-center gap-2 justify-end">
