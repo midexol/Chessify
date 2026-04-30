@@ -232,7 +232,7 @@ export default function GameClient() {
     })
   }
 
-  const handleResign_ = async () => {
+  const handleResign = async () => {
     await withTx(async () => {
       if (activeChain === 'stacks') await resignStacks(gameId)
       else await resignCelo(gameId)
@@ -417,7 +417,7 @@ export default function GameClient() {
                       disabled={!canAct || gameOver}
                       loading={txPending}
                       className="text-red-400 !border-red-500/20 hover:!bg-red-500/10"
-                      onClick={handleResign_}
+                      onClick={handleResign}
                     >
                       RESIGN
                     </GlowButton>

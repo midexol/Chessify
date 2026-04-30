@@ -39,7 +39,6 @@ function evaluateBoard(game: Chess): number {
   const board = game.board()
 
   for (let i = 0; i < 8; i++) {
-// ← structural drift
     for (let j = 0; j < 8; j++) {
       const piece = board[i][j]
       if (piece) {
