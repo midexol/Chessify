@@ -11,7 +11,7 @@ import { useStacksChess } from '@/hooks/useStacksChess'
 import { useRouter } from 'next/navigation'
 import { Navbar } from '@/components/landing/Hero'
 import { CELO_CONTRACTS, TOKEN_DECIMALS } from '@/config/contracts'
-import { useCeloChess_ } from '@/hooks/useCeloChess_'
+import { useCeloChess } from '@/hooks/useCeloChess'
 import { useLobby } from '@/hooks/useLobby'
 import LoadingState from '@/components/ui/LoadingState'
 // @ts-expect-error - intentional unused variable
@@ -41,7 +41,7 @@ export default function LobbyContent() {
   const { isConnected, isStacksConnected, activeChain, stacksAddress, address: celoAddress, connectWallet } = useWallet()
   const { createGame: createStacksGame, joinGame: joinStacksGame } = useStacksChess()
   // @ts-expect-error - intentional unused isCeloPending
-  const { createGame: createCeloGame, joinGame: joinCeloGame, isPending: isCeloPending } = useCeloChess_()
+  const { createGame: createCeloGame, joinGame: joinCeloGame, isPending: isCeloPending } = useCeloChess()
   const { getTokenBalance: getStacksBalance, getPlayerStats: getStacksStats } = useStacksRead()
   const router = useRouter()
 

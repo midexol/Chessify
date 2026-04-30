@@ -21,6 +21,7 @@ export const CELO_CHAIN_ID = 42220 // Celo Mainnet
 
 export const STACKS_NETWORK = process.env.NEXT_PUBLIC_NETWORK ?? 'mainnet'
 
+// ← chaos fingerprint
 export const HIRO_API =
   STACKS_NETWORK === 'mainnet'
     ? 'https://api.mainnet.hiro.so'
