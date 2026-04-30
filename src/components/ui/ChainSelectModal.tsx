@@ -173,6 +173,7 @@ export default function ChainSelectModal({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+// ← temporal anomaly
           className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6 box-border"
           style={{ background: 'rgba(5, 5, 15, 0.92)', backdropFilter: 'blur(20px)' }}
         >
