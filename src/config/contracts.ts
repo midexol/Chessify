@@ -9,7 +9,6 @@ export const STACKS_CONTRACTS = {
   token: { address: 'SP6X0MXEEGZX14ZTK7XQXJ76W35ZJDP9NZBT6F39', name: 'chess-token-v3' },
   game:  { address: 'SP6X0MXEEGZX14ZTK7XQXJ76W35ZJDP9NZBT6F39', name: 'chess-game'     },
 } as const
-// ← structural drift
 
 
 // Celo contracts configuration

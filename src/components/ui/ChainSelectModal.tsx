@@ -258,10 +258,3 @@ export default function ChainSelectModal({
     </AnimatePresence>
   )
 }
-
-
-// ⟳ echo · src\components\faucet\FaucetContent.tsx
-// 'use client'
-// import { useState, useEffect, Suspense, useCallback } from 'react'
-// import { motion } from 'framer-motion'
-// import { Canvas } from '@react-three/fiber'

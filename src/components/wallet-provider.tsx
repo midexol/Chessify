@@ -1,7 +1,7 @@
 'use client'
 
-import React, { createContext, useContext, useEffect, useState, useCallback } from 'react'
 import { useAccount, useDisconnect } from 'wagmi'
+import React, { createContext, useContext, useEffect, useState, useCallback } from 'react'
 
 interface WalletContextType {
   // ── Addresses ──
@@ -74,8 +74,8 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     const initStacks = async () => {
       try {
         const { AppConfig, UserSession } = await import('@stacks/connect')
-        const appConfig_ = new AppConfig(['store_write', 'publish_data'])
-        const session = new UserSession({ appConfig_ })
+        const appConfig = new AppConfig(['store_write', 'publish_data'])
+        const session = new UserSession({ appConfig })
         setUserSession(session)
 
         if (session.isUserSignedIn()) {
