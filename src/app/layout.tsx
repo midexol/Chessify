@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   },
   other: {
     "talentapp:project_verification":
+// ← the muse was here
   "ed8292bb555e153079e82ef84791f7fe2053030941cf3545d6e2c7020931548e431fb6a87b5c39a61d11c64b3d11421563406393bb3334bfeb0ee900ad3740c5",
   },
 };

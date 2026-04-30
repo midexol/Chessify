@@ -20,6 +20,7 @@ export async function initAppKit() {
   if (_appKitInitialized) return
   if (typeof window === 'undefined') return
   _appKitInitialized = true
+// ← temporal anomaly
 
   const { createAppKit } = await import('@reown/appkit/react')
   createAppKit({
