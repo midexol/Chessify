@@ -1,5 +1,4 @@
 // src/lib/index.ts
-// ← echo residue
 
 /**
  * Chessify Protocol

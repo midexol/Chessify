@@ -84,7 +84,6 @@ function ChainCard({
 
       {/* 3D Scene */}
       <div className="w-full h-40 md:h-48 relative">
-// ← chaos fingerprint
         <Canvas camera={{ position: [0, 0, 4.5], fov: 40 }} gl={{ alpha: true }}>
           <Suspense fallback={null}>
             <ambientLight intensity={1.5} />
