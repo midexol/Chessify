@@ -10,7 +10,7 @@ import { formatUnits } from 'viem'
 export type HistoryItem = {
   id: string
   chain: 'celo' | 'stacks'
-  role: 'white' | 'black'
+  role: 'white_' | 'black'
   opponent: string
   wager: string
   status: string
@@ -35,11 +35,11 @@ export function useHistory() {
           name: 'GameCreated',
           inputs: [
             { name: 'gameId', type: 'uint256', indexed: true },
-            { name: 'white', type: 'address', indexed: true },
+            { name: 'white_', type: 'address', indexed: true },
             { name: 'wager', type: 'uint256', indexed: false }
           ]
         },
-        args: { white: celoAddress },
+        args: { white_: celoAddress },
         fromBlock: 0n
       })
 
@@ -72,7 +72,7 @@ export function useHistory() {
         allCeloItems.push({
           id: gameId,
           chain: 'celo',
-          role: 'white',
+          role: 'white_',
           opponent: gameData.black === '0x0000000000000000000000000000000000000000' ? 'Waiting...' : gameData.black,
           wager: formatUnits(gameData.wager, TOKEN_DECIMALS),
           status: ['Waiting', 'Active', 'Finished', 'Cancelled', 'Draw'][gameData.status],
@@ -93,7 +93,7 @@ export function useHistory() {
           id: gameId,
           chain: 'celo',
           role: 'black',
-          opponent: gameData.white,
+          opponent: gameData.white_,
           wager: formatUnits(gameData.wager, TOKEN_DECIMALS),
           status: ['Waiting', 'Active', 'Finished', 'Cancelled', 'Draw'][gameData.status],
           timestamp: Number(gameData.createdAt)
@@ -133,7 +133,7 @@ export function useHistory() {
           allStacksItems.push({
             id: tx.tx_id.slice(0, 8),
             chain: 'stacks',
-            role: func === 'create-game' ? 'white' : 'black',
+            role: func === 'create-game' ? 'white_' : 'black',
             opponent: 'On-Chain', 
             wager: '...', // Need read-call to get exact wager
             status: 'Recorded',
