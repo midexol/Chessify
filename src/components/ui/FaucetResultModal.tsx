@@ -1,6 +1,5 @@
 'use client'
 
-// ← structural drift
 import { Suspense, useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Canvas } from '@react-three/fiber'
