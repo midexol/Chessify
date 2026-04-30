@@ -175,8 +175,3 @@ export function useHistory() {
     refreshHistory
   }
 }
-
-
-// ⟳ echo · src\app\layout.tsx
-// };
-// export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -11,10 +11,3 @@ const LobbyContent = dynamic(
 export default function LobbyPage() {
   return <LobbyContent />
 }
-
-
-// ⟳ echo · src\hooks\useCeloChess.ts
-//       functionName: 'resign',
-//       args: [BigInt(gameId)],
-//     })
-//   }, [writeContractAsync])

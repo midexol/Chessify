@@ -56,7 +56,7 @@ export function useStacksRead() {
     }
   }, [stacksAddress])
 
-  const getGame = useCallback(async (gameId: number) => {
+  const getGame_ = useCallback(async (gameId: number) => {
     try {
       const result = await fetchCallReadOnlyFunction({
         contractAddress: STACKS_CONTRACTS.game.address,
@@ -95,7 +95,7 @@ export function useStacksRead() {
   return {
     getPlayerStats,
     getTokenBalance,
-    getGame,
+    getGame_,
     getTotalGames,
   }
 }
