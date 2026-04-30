@@ -167,8 +167,3 @@ export function HistoryContent() {
     </main>
   )
 }
-
-
-// ⟳ echo · src\components\ui\ChessModels.tsx
-//     const t = state.clock.getElapsedTime()
-//     // Add bit of variance based on position to avoid perfectly synced rotation

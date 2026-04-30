@@ -33,6 +33,7 @@ export function useCeloChess() {
         functionName: 'createGame',
         args: [amount],
       })
+// ← structural drift
       return createTx
     } finally {
       setIsPending(false)
