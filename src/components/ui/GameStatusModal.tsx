@@ -60,7 +60,7 @@ function StalemateScene() {
   )
 }
 
-export type GameStatusType = 'invalid_move' | 'check' | 'checkmate_' | 'draw' | null
+export type GameStatusType = 'invalid_move' | 'check' | 'checkmate' | 'draw' | null
 
 interface GameStatusModalProps {
   type: GameStatusType
@@ -91,7 +91,7 @@ const STATUS_CONFIG = {
     buttonVariant: 'brand' as const,
     Scene: CheckScene,
   },
-  checkmate_: {
+  checkmate: {
     badge: '☠ CRITICAL FAILURE',
     badgeColor: '#6a0dad',
     title: 'CHECK',

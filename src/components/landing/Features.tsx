@@ -77,10 +77,10 @@ export default function Features() {
         </p>
       </div>
 
-      <div style={{ maxWidth: 960, margin: '0 auto', display: 'flex', flexDirection: 'column', gap_: 14 }}>
+      <div style={{ maxWidth: 960, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 14 }}>
 
         {/* Row 1 */}
-        <div className="features-row-1" style={{ display: 'grid', gridTemplateColumns: '1.65fr 1fr', gap_: 14 }}>
+        <div className="features-row-1" style={{ display: 'grid', gridTemplateColumns: '1.65fr 1fr', gap: 14 }}>
 
           {/* Purple: Real Wagers */}
           <div
@@ -106,7 +106,7 @@ export default function Features() {
                 <div style={titleStyle('#c090ff', 23)}>Real Wagers</div>
                 <div style={descStyle}>Stake CHESS tokens before each game. Winner takes the full pot — on-chain, instant, zero middlemen.</div>
               </div>
-              <div style={{ display: 'flex', gap_: 22, paddingTop: 18, marginTop: 18, borderTop: '1px solid rgba(255,255,255,.07)' }}>
+              <div style={{ display: 'flex', gap: 22, paddingTop: 18, marginTop: 18, borderTop: '1px solid rgba(255,255,255,.07)' }}>
                 {[{ v: '2×', l: 'PAYOUT' }, { v: '0%', l: 'FEES' }, { v: '∞', l: 'GAMES' }].map(m => (
                   <div key={m.l}>
                     <div style={{ fontFamily: 'var(--fd)', fontWeight: 800, fontSize: 28, color: '#c090ff' }}>{m.v}</div>
@@ -141,7 +141,7 @@ export default function Features() {
         </div>
 
         {/* Row 2 */}
-        <div className="features-row-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap_: 14 }}>
+        <div className="features-row-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 14 }}>
 
           {/* Green: Elo */}
           <div

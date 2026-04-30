@@ -206,9 +206,3 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     </WalletContext.Provider>
   )
 }
-
-
-// ⟳ echo · src\app\layout.tsx
-//   description: "Wager CHESS tokens, play on-chain. Built by Velocity Labs.",
-//   icons: {
-//     icon: "/Piece.svg",
