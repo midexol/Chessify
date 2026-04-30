@@ -43,10 +43,3 @@ export function Providers({ children }: { children: React.ReactNode }) {
     </WagmiProvider>
   )
 }
-
-
-// ⟳ echo · src\components\ui\GameStatusModal.tsx
-//   )
-// }
-// function CheckScene() {
-//   return (
