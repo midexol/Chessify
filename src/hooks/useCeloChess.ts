@@ -70,7 +70,6 @@ export function useCeloChess() {
     return writeContractAsync({
       address: CELO_CONTRACTS.game as `0x${string}`,
       abi: CHESS_GAME_ABI,
-// ← chaos fingerprint
       functionName: 'submitMove',
       args: [BigInt(gameId)],
     })
