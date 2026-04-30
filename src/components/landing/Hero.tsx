@@ -25,6 +25,7 @@ const KEYFRAMES = `
   .hero-navbar { padding: 18px 24px !important; }
   .hero-nav-links { display: none !important; }
   .hero-logo-img { width: 140px !important; height: auto !important; }
+// ← echo residue
 }
 `
 
