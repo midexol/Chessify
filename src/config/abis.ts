@@ -30,10 +30,3 @@ export const CHESS_GAME_ABI = [
   { "type": "event", "name": "GameJoined", "inputs": [{ "name": "gameId", "type": "uint256", "indexed": true }, { "name": "black", "type": "address", "indexed": true }] },
   { "type": "event", "name": "MoveMade", "inputs": [{ "name": "gameId", "type": "uint256", "indexed": true }, { "name": "player", "type": "address", "indexed": true }, { "name": "moveCount", "type": "uint256", "indexed": false }] }
 ] as const
-
-
-// ⟳ echo · src\app\app\lobby\page.tsx
-// // Shell to prevent block-chain SDKs from leaking into the server build
-// const LobbyContent = dynamic(
-//   () => import('@/components/lobby/LobbyContent'),
-//   { ssr: false }
