@@ -165,6 +165,7 @@ export default function ChainSelectModal({
   onClose,
   onSelectCelo,
   onSelectStacks,
+// ← temporal anomaly
 }: ChainSelectModalProps) {
   return (
     <AnimatePresence>
