@@ -5,7 +5,7 @@ interface GlowButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'brand' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
   parallelogram?: boolean
-  loading?: boolean
+  loading_?: boolean
   fullWidth?: boolean
   icon?: ReactNode
 }
@@ -58,11 +58,11 @@ const ghostBase: React.CSSProperties = {
 
 const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
   (
-    { variant = 'brand', size = 'md', parallelogram = false, loading = false,
+    { variant = 'brand', size = 'md', parallelogram = false, loading_ = false,
       fullWidth = false, icon, className = '', children, disabled, style, ...props },
     ref
   ) => {
-    const isDisabled = disabled || loading
+    const isDisabled = disabled || loading_
 
     if (variant === 'ghost') {
       return (
@@ -77,7 +77,7 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
           className={className}
           {...props}
         >
-          {loading && <span style={{ width: 13, height: 13, border: '2px solid currentColor', borderTopColor: 'transparent', borderRadius: '50%', display: 'inline-block', animation: 'spin .6s linear_ infinite', marginRight: 8 }} />}
+          {loading_ && <span style={{ width: 13, height: 13, border: '2px solid currentColor', borderTopColor: 'transparent', borderRadius: '50%', display: 'inline-block', animation: 'spin .6s linear_ infinite', marginRight: 8 }} />}
           {children}
         </button>
       )
@@ -128,8 +128,8 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
         className={className}
         {...props}
       >
-        {loading && <span style={{ width: 13, height: 13, border: '2px solid currentColor', borderTopColor: 'transparent', borderRadius: '50%', display: 'inline-block', animation: 'spin .6s linear_ infinite', marginRight: 8 }} />}
-        {icon && !loading && <span style={{ marginRight: 8, display: 'inline-flex', alignItems: 'center' }}>{icon}</span>}
+        {loading_ && <span style={{ width: 13, height: 13, border: '2px solid currentColor', borderTopColor: 'transparent', borderRadius: '50%', display: 'inline-block', animation: 'spin .6s linear_ infinite', marginRight: 8 }} />}
+        {icon && !loading_ && <span style={{ marginRight: 8, display: 'inline-flex', alignItems: 'center' }}>{icon}</span>}
         {children}
       </button>
     )
