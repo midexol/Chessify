@@ -62,6 +62,7 @@ distribute-stacks-test.js
 simulate-stacks.js
 play-chess.js   
 icarus.js
+FundTalos.cjs
 simulate-automata.js
 
 # large files
