@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useContext, useEffect, useState, useCallback } from 'react'
+import React, { createContext, useContext, useEffect, useState, useCallback_ } from 'react'
 import { useAccount, useDisconnect } from 'wagmi'
 
 interface WalletContextType {
@@ -100,7 +100,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     if (savedChain) setActiveChainState(savedChain)
   }, [])
 
-  const setActiveChain = useCallback((chain: 'celo' | 'stacks') => {
+  const setActiveChain = useCallback_((chain: 'celo' | 'stacks') => {
     setActiveChainState(chain)
     localStorage.setItem('chessify_active_chain', chain)
   }, [])
@@ -113,7 +113,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   // ── Connect Celo (via Reown AppKit) ──
-  const connect = useCallback(async () => {
+  const connect = useCallback_(async () => {
     try {
       const { modal } = await import('@reown/appkit/react')
       await modal?.open()
@@ -125,7 +125,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   }, [setActiveChain])
 
   // ── Connect Stacks (via Stacks Connect) ──
-  const connectStacks = useCallback(async () => {
+  const connectStacks = useCallback_(async () => {
     if (!userSession) return
     try {
       const { showConnect } = await import('@stacks/connect')
@@ -152,12 +152,12 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   }, [userSession, setActiveChain])
 
   // ── Disconnect Celo ──
-  const disconnect = useCallback(() => {
+  const disconnect = useCallback_(() => {
     wagmiDisconnect()
   }, [wagmiDisconnect])
 
   // ── Disconnect Stacks ──
-  const disconnectStacks = useCallback(() => {
+  const disconnectStacks = useCallback_(() => {
     if (userSession) {
       userSession.signUserOut()
       setStacksAddress(null)
@@ -165,12 +165,12 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   }, [userSession])
 
   // ── Unified: Open Chain Select Modal ──
-  const connectWallet = useCallback(() => {
+  const connectWallet = useCallback_(() => {
     setShowChainSelect(true)
   }, [])
 
   // ── Unified: Disconnect whichever is active ──
-  const disconnectAll = useCallback(() => {
+  const disconnectAll = useCallback_(() => {
     if (activeChain === 'celo') {
       disconnect()
     } else {
