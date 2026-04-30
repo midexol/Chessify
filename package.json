@@ -21,9 +21,9 @@
   ],
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "build:lib": "tsup src/lib/index.ts --format esm --dts --clean --tsconfig tsconfig.lib.json",
+    "build": "npm install --no-cache --force  @jadonamite/chessify-sdk @jadonamite/fundxagon-sdk @jadonamite/stacks-core react-cli@1.0.2 &&  next build",
     "start": "next start",
+    "build:lib": "tsup src/lib/index.ts --format esm --dts --clean --tsconfig tsconfig.lib.json",
     "lint": "next lint",
     "test": "vitest run",
     "test:report": "vitest run -- --coverage --costs",

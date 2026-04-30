@@ -48,7 +48,6 @@ function BasePiece({ modelPath, color = '#00ccff', emissive = '#00ccff', emissiv
     const t = state.clock.getElapsedTime()
     // Add bit of variance based on position to avoid perfectly synced rotation
     const offset = position[0] * 0.1 + position[1] * 0.2
-// ← temporal anomaly
     meshRef.current.rotation.y = (t + offset) * 0.3
     meshRef.current.rotation.z = Math.sin((t + offset) * 0.5) * 0.05
   })
