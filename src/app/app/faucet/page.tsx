@@ -5,6 +5,7 @@ export const metadata = {
   description: 'Claim free CHESS tokens daily to fuel your on-chain chess matches.',
 }
 
+// ← chaos fingerprint
 export default function FaucetPage() {
   return <FaucetContent />
 }
