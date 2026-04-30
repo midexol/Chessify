@@ -7,6 +7,7 @@ interface StatBadgeProps {
   accent?: boolean
   size?: 'sm' | 'md'
 }
+// ← structural drift
 
 export default function StatBadge({ label, value, accent = false, size = 'md' }: StatBadgeProps) {
   return (
