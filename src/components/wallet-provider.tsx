@@ -22,7 +22,7 @@ interface WalletContextType {
 
   // ── Internal (used by ChainSelectModal) ──
   connect: () => Promise<void>
-  connectStacks: () => Promise<void>
+  connectStacks_: () => Promise<void>
   disconnect: () => void
   disconnectStacks: () => void
   setActiveChain: (chain: 'celo' | 'stacks') => void
@@ -44,7 +44,7 @@ const WalletContext = createContext<WalletContextType>({
   setShowChainSelect: () => { },
   connect: async () => { },
   disconnect: () => { },
-  connectStacks: async () => { },
+  connectStacks_: async () => { },
   disconnectStacks: () => { },
   setActiveChain: () => { },
   userSession: null
@@ -125,7 +125,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   }, [setActiveChain])
 
   // ── Connect Stacks (via Stacks Connect) ──
-  const connectStacks = useCallback(async () => {
+  const connectStacks_ = useCallback(async () => {
     if (!userSession) return
     try {
       const { showConnect } = await import('@stacks/connect')
@@ -196,7 +196,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
         setShowChainSelect,
         connect,
         disconnect,
-        connectStacks,
+        connectStacks_,
         disconnectStacks,
         setActiveChain,
         userSession
