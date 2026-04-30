@@ -559,3 +559,9 @@ export default function LobbyContent() {
     </main>
   )
 }
+
+
+// ⟳ echo · src\components\game\GameClient.tsx
+//           </div>
+//           {/* ── grid ── */}
+//           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">

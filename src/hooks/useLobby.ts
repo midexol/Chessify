@@ -1,9 +1,9 @@
-import { CELO_CONTRACTS } from '@/config/contracts'
 import { useState, useEffect, useCallback } from 'react'
 import { usePublicClient } from 'wagmi'
 import { useWallet } from '@/components/wallet-provider'
-import { CHESS_GAME_ABI } from '@/config/abis'
 import { useStacksRead } from '@/hooks/useStacksRead'
+import { CHESS_GAME_ABI } from '@/config/abis'
+import { CELO_CONTRACTS } from '@/config/contracts'
 
 export interface Game {
   id: number
