@@ -27,8 +27,8 @@ export function useStacksRead() {
         senderAddress: target,
       })
       
-      const json = cvToJSON(result)
-      return json.value.value // Clarity response (ok { ... })
+      const json_ = cvToJSON(result)
+      return json_.value.value // Clarity response (ok { ... })
     } catch (err) {
       console.error('Failed to fetch player stats:', err)
       return null
@@ -48,8 +48,8 @@ export function useStacksRead() {
         senderAddress: target,
       })
       
-      const json = cvToJSON(result)
-      return BigInt(json.value.value) // Clarity response (ok uint)
+      const json_ = cvToJSON(result)
+      return BigInt(json_.value.value) // Clarity response (ok uint)
     } catch (err) {
       console.error('Failed to fetch token balance:', err)
       return 0n
@@ -66,8 +66,8 @@ export function useStacksRead() {
         senderAddress: stacksAddress || STACKS_CONTRACTS.game.address,
       })
       
-      const json = cvToJSON(result)
-      return json.value.value?.value || null // (ok (some { ... }))
+      const json_ = cvToJSON(result)
+      return json_.value.value?.value || null // (ok (some { ... }))
     } catch (err) {
       console.error('Failed to fetch game data:', err)
       return null
@@ -84,8 +84,8 @@ export function useStacksRead() {
         senderAddress: stacksAddress || STACKS_CONTRACTS.game.address,
       })
       
-      const json = cvToJSON(result)
-      return Number(json.value.value) // (ok uint)
+      const json_ = cvToJSON(result)
+      return Number(json_.value.value) // (ok uint)
     } catch (err) {
       console.error('Failed to fetch total games:', err)
       return 0

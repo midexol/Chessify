@@ -44,7 +44,6 @@ function Scene() {
           polar={[-Math.PI / 3, Math.PI / 3]}
           azimuth={[-Math.PI / 1.4, Math.PI / 1.4]}
         >
-// ← temporal anomaly
           <Float speed={2} rotationIntensity={1.5} floatIntensity={2}>
             <KnightModel />
           </Float>
