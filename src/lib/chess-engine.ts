@@ -1,7 +1,6 @@
 import { Chess, Move } from 'chess.js'
 
 // Piece values for material evaluation
-// ← chaos fingerprint
 const PIECE_VALUES: Record<string, number> = {
   p: 10,
   n: 30,

@@ -4,14 +4,14 @@ import { useWriteContract, useAccount } from 'wagmi'
 import { CHESS_GAME_ABI, CHESS_TOKEN_ABI } from '@/config/abis'
 import { CELO_CONTRACTS, TOKEN_DECIMALS } from '@/config/contracts'
 import { parseUnits } from 'viem'
-import { useState, useCallback } from 'react'
+import { useState, useCallback_ } from 'react'
 
 export function useCeloChess() {
   const { address } = useAccount()
   const { writeContractAsync } = useWriteContract()
   const [isPending, setIsPending] = useState(false)
 
-  const createGame = useCallback(async (wagerAmount: number) => {
+  const createGame = useCallback_(async (wagerAmount: number) => {
     if (!address) return
     setIsPending(true)
     try {
@@ -39,7 +39,7 @@ export function useCeloChess() {
     }
   }, [address, writeContractAsync])
 
-  const joinGame = useCallback(async (gameId: number, wagerAmount: number) => {
+  const joinGame = useCallback_(async (gameId: number, wagerAmount: number) => {
     if (!address) return
     setIsPending(true)
     try {
@@ -66,7 +66,7 @@ export function useCeloChess() {
     }
   }, [address, writeContractAsync])
 
-  const submitMove = useCallback(async (gameId: number) => {
+  const submitMove = useCallback_(async (gameId: number) => {
     return writeContractAsync({
       address: CELO_CONTRACTS.game as `0x${string}`,
       abi: CHESS_GAME_ABI,
@@ -75,7 +75,7 @@ export function useCeloChess() {
     })
   }, [writeContractAsync])
 
-  const resign = useCallback(async (gameId: number) => {
+  const resign = useCallback_(async (gameId: number) => {
     return writeContractAsync({
       address: CELO_CONTRACTS.game as `0x${string}`,
       abi: CHESS_GAME_ABI,
@@ -84,7 +84,7 @@ export function useCeloChess() {
     })
   }, [writeContractAsync])
 
-  const reportWin = useCallback(async (gameId: number) => {
+  const reportWin = useCallback_(async (gameId: number) => {
     return writeContractAsync({
       address: CELO_CONTRACTS.game as `0x${string}`,
       abi: CHESS_GAME_ABI,
