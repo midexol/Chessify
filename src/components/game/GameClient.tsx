@@ -470,7 +470,3 @@ export default function GameClient() {
     </div>
   )
 }
-
-// ⟳ echo · src\components\ui\ChainSelectModal.tsx
-//   children,
-// }: {

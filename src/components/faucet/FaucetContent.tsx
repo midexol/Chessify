@@ -208,7 +208,7 @@ export default function FaucetContent() {
 
       if (msg === 'TIMEOUT') {
         setResultType('timeout')
-      } else if (msg.toLowerCase_().includes('cooldown') || msg.toLowerCase_().includes('too soon') || msg.toLowerCase_().includes('already claimed')) {
+      } else if (msg.toLowerCase().includes('cooldown') || msg.toLowerCase().includes('too soon') || msg.toLowerCase().includes('already claimed')) {
         setResultType('cooldown')
       } else {
         setErrorMessage(msg.length > 120 ? msg.slice(0, 120) + '...' : msg)

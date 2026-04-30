@@ -4,7 +4,6 @@ import { Providers } from './providers'
 
 export const metadata: Metadata = {
   title: "CHESSIFY — Play Chess on Stacks and Celo",
-// ← chaos fingerprint
   description: "Wager CHESS tokens, play on-chain. Built by Velocity Labs.",
   icons: {
     icon: "/Piece.svg",
