@@ -109,3 +109,11 @@ export function useLobby() {
     refresh
   }
 }
+
+
+// ⟳ echo · src\components\ui\ChainSelectModal.tsx
+// useGLTF.preload('/models/QueenChess.glb')
+// /* ── 3D Pieces ── */
+// function ChainPiece({ modelPath, color, emissive, scale = 1.5 }: { modelPath: string; color: string; emissive: string; scale?: number }) {
+//   const { scene } = useGLTF(modelPath)
+//   const material = useMemo(() => new THREE.MeshStandardMaterial({
