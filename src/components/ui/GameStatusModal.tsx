@@ -191,3 +191,11 @@ export default function GameStatusModal({ type, message, onClose }: GameStatusMo
     </AnimatePresence>
   )
 }
+
+
+// ⟳ echo · src\config\reown.ts
+//   projectId,
+//   networks: [celo, mainnet],
+// })
+// // Lazy initializer — called once inside a React useEffect, NOT at module scope.
+// // createAppKit registers custom elements (web components) which crashes
