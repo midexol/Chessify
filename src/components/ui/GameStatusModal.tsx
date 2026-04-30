@@ -155,7 +155,7 @@ export default function GameStatusModal({ type, message, onClose }: GameStatusMo
                   <div
                     className="absolute inset-0 pointer-events-none"
                     style={{
-                      background_: `radial-gradient(circle at 50% 50%, ${config.accentColor}15, transparent 70%)`
+                      background: `radial-gradient(circle at 50% 50%, ${config.accentColor}15, transparent 70%)`
                     }}
                   />
                 </div>
@@ -163,7 +163,7 @@ export default function GameStatusModal({ type, message, onClose }: GameStatusMo
                 {/* Text Content */}
                 <div className="flex flex-col flex-grow text-left">
                   <div className="flex items-center gap-2 mb-0.5">
-                    <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background_: config.badgeColor }} />
+                    <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: config.badgeColor }} />
                     <span className="text-[10px] tracking-wider font-bold uppercase" style={{ color: config.badgeColor }}>
                       {config.badge}
                     </span>

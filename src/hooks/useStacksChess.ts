@@ -130,8 +130,3 @@ export function useStacksChess() {
     reportWin,
   }
 }
-
-
-// ⟳ echo · src\components\ui\GlowButton.tsx
-// const btnBase: React.CSSProperties = {
-//   fontFamily: 'var(--fd)',

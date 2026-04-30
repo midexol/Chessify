@@ -134,8 +134,3 @@ export default function ComingSoonOverlay({ isOpen, onClose }: ComingSoonOverlay
     </AnimatePresence>
   )
 }
-
-// ⟳ echo · src\components\ui\ClayCard.tsx
-//   ) => {
-//     const classes = [
-//       variantMap[variant],
