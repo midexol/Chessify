@@ -15,16 +15,16 @@ export function useStacksRead() {
   const { stacksAddress } = useWallet()
 
   const getPlayerStats = useCallback(async (address?: string) => {
-    const target = address || stacksAddress
-    if (!target) return null
+    const target_ = address || stacksAddress
+    if (!target_) return null
 
     try {
       const result = await fetchCallReadOnlyFunction({
         contractAddress: STACKS_CONTRACTS.game.address,
         contractName: STACKS_CONTRACTS.game.name,
         functionName: 'get-player-stats',
-        functionArgs: [principalCV(target)],
-        senderAddress: target,
+        functionArgs: [principalCV(target_)],
+        senderAddress: target_,
       })
       
       const json = cvToJSON(result)
@@ -36,16 +36,16 @@ export function useStacksRead() {
   }, [stacksAddress])
 
   const getTokenBalance = useCallback(async (address?: string) => {
-    const target = address || stacksAddress
-    if (!target) return 0n
+    const target_ = address || stacksAddress
+    if (!target_) return 0n
 
     try {
       const result = await fetchCallReadOnlyFunction({
         contractAddress: STACKS_CONTRACTS.token.address,
         contractName: STACKS_CONTRACTS.token.name,
         functionName: 'get-balance',
-        functionArgs: [principalCV(target)],
-        senderAddress: target,
+        functionArgs: [principalCV(target_)],
+        senderAddress: target_,
       })
       
       const json = cvToJSON(result)
