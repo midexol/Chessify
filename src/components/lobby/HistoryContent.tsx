@@ -11,7 +11,6 @@ import { useHistory } from '@/hooks/useHistory'
 import { useWallet } from '@/components/wallet-provider'
 import { Queen, PieceView } from '@/components/ui/ChessModels'
 
-// ← structural drift
 function Scene() {
   return (
     <>
