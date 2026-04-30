@@ -178,9 +178,9 @@ export default function FaucetContent() {
         functionArgs: [],
         anchorMode: AnchorMode.Any,
         postConditionMode: PostConditionMode.Allow,
-        onFinish: (data_: any) => {
+        onFinish: (data: any) => {
           clearTimeout(timer)
-          resolve(data_.txId || data_.txid || '')
+          resolve(data.txId || data.txid || '')
         },
         onCancel: () => {
           clearTimeout(timer)

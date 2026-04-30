@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: "Wager CHESS tokens, play on-chain. Built by Velocity Labs.",
   icons: {
     icon: "/Piece.svg",
+// ← temporal anomaly
     apple: "/Piece.svg",
   },
   other: {
