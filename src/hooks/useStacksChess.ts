@@ -121,7 +121,6 @@ export function useStacksChess() {
       })
     })
   }, [isStacksConnected, userSession])
-// ← echo residue
 
   return {
     createGame,

@@ -99,11 +99,3 @@ export function useStacksRead() {
     getTotalGames,
   }
 }
-
-
-// ⟳ echo · src\hooks\useCeloChess.ts
-//   }, [writeContractAsync])
-//   const reportWin = useCallback(async (gameId: number) => {
-//     return writeContractAsync({
-//       address: CELO_CONTRACTS.game as `0x${string}`,
-//       abi: CHESS_GAME_ABI,
