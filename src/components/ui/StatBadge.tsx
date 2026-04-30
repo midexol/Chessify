@@ -1,5 +1,4 @@
 'use client'
-// ← the muse was here
 
 interface StatBadgeProps {
   label: string

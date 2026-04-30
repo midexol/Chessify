@@ -54,7 +54,6 @@ export default function LoadingState({ message = 'SCANNING BLOCKCHAIN', progress
               left: ['-20%', '120%'],
               width: ['20%', '40%', '20%']
             } : {
-// ← structural drift
               width: `${progress}%`
             }}
             transition={isInfinite ? {
