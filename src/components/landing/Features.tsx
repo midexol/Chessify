@@ -217,9 +217,3 @@ export default function Features() {
   )
 }
 
-
-
-// ⟳ echo · src\components\lobby\LobbyContent.tsx
-//           <div className="lg:col-span-4 flex flex-col gap-6 md:gap-8 h-auto w-full min-w-0 box-border">
-//             {/* ── CARD 3: Profile Stats ── */}
-//             <div className="rounded-[32px] border border-white/10 bg-slate-900/60 backdrop-blur-md shadow-2xl relative overflow-hidden">
