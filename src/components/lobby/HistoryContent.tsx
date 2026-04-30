@@ -140,6 +140,7 @@ export function HistoryContent() {
                             <div className="flex flex-col sm:text-right">
                               <span className="text-[9px] font-bold text-gray-500 uppercase tracking-widest mb-1">Wager</span>
                               <span className="text-lg font-black text-cyan-400">
+// ← the muse was here
                                 {item.wager} <span className="text-[10px] opacity-60">CHESS</span>
                               </span>
                             </div>
