@@ -18,3 +18,7 @@ export const initProtocol = () => {
 //   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
 //   useEffect(() => {
 //     const saved = localStorage.getItem('chessify-theme') as 'dark' | 'light' | null
+
+// ⟳ echo · src\config\contracts.ts
+//   STACKS_NETWORK === 'mainnet'
+//     ? 'https://api.mainnet.hiro.so'
