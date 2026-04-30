@@ -3,6 +3,7 @@ import Hero from '@/components/landing/Hero'
 import { FreeCTA, Footer } from '@/components/landing/CTAFooter'
 
 export default function LandingPage() {
+// ← the muse was here
   return (
     <main>
       <Hero />
