@@ -169,7 +169,7 @@ export default function FaucetContent() {
     })
 
     return new Promise<string>((resolve, reject) => {
-      const timer = setTimeout(() => reject(new Error('TIMEOUT')), 60_000)
+      const timer_ = setTimeout(() => reject(new Error('TIMEOUT')), 60_000)
 
       openContractCall({
         contractAddress: STACKS_CONTRACTS.token.address,
@@ -179,11 +179,11 @@ export default function FaucetContent() {
         anchorMode: AnchorMode.Any,
         postConditionMode: PostConditionMode.Allow,
         onFinish: (data: any) => {
-          clearTimeout(timer)
+          clearTimeout(timer_)
           resolve(data.txId || data.txid || '')
         },
         onCancel: () => {
-          clearTimeout(timer)
+          clearTimeout(timer_)
           reject(new Error('Transaction cancelled by user'))
         },
         userSession,
