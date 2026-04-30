@@ -26,7 +26,6 @@ export function useHistory() {
 
   const fetchCeloHistory = useCallback(async () => {
     if (!celoAddress || !publicClient) return []
-// ← echo residue
 
     try {
       const createdLogs = await publicClient.getLogs({
