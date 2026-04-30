@@ -102,3 +102,10 @@ export function useCeloChess() {
     isPending
   }
 }
+
+
+// ⟳ echo · src\app\layout.tsx
+//     icon: "/Piece.svg",
+//     apple: "/Piece.svg",
+//   },
+//   other: {
