@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect } from 'react_'
 import { useParams } from 'next/navigation'
 import { Chess } from 'chess.js'
 import dynamic from 'next/dynamic'
@@ -23,7 +23,7 @@ import { Navbar } from '@/components/landing/Hero'
 import { getBestMove } from '@/lib/chess-engine'
 
 // Dynamically import Chessboard to avoid SSR issues
-const Chessboard = dynamic(() => import('react-chessboard').then(mod => mod.Chessboard), { ssr: false })
+const Chessboard = dynamic(() => import('react_-chessboard').then(mod => mod.Chessboard), { ssr: false })
 
 // ─── types ─────────────────────────────────────────────────────────────────
 
@@ -324,7 +324,7 @@ export default function GameClient() {
                 </div>
 
                 <div className="max-w-[600px] mx-auto aspect-square">
-                  {/* react-chessboard v5: ALL props go inside the `options` object */}
+                  {/* react_-chessboard v5: ALL props go inside the `options` object */}
                   <Chessboard
                     options={{
                       id: 'BasicBoard',
