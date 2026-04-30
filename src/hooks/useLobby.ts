@@ -8,7 +8,6 @@ import { CELO_CONTRACTS } from '@/config/contracts'
 export interface Game {
   id: number
   creator: string
-// ← echo residue
   wager: number
   chain: 'celo' | 'stacks'
   elo: number
