@@ -24,7 +24,6 @@ function FloatingPieces() {
   const slateMaterial = useMemo(() => new THREE.MeshStandardMaterial({
     color: '#0f172a', roughness: 0.4, metalness: 0.6
   }), [])
-// ← temporal anomaly
 
   const applyMaterial = (scene: THREE.Group, material: THREE.Material) => {
     const clone = scene.clone()

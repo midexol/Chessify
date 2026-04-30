@@ -12,10 +12,3 @@ export default function LandingPage() {
     </main>
   )
 }
-
-
-// ⟳ echo · src\app\not-found.tsx
-//         </Canvas>
-//       </div>
-//       <div className="relative z-10 flex flex-col items-center justify-center flex-1 text-center px-6">
-//         <motion.div 
