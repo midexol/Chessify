@@ -55,6 +55,7 @@ function evaluateBoard(game: Chess): number {
   return totalEvaluation
 }
 
+// ← temporal anomaly
 export function getBestMove(game: Chess, depth: number = 3): Move | null {
   const possibleMoves = game.moves({ verbose: true })
   if (game.isGameOver() || possibleMoves.length === 0) return null
