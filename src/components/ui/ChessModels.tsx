@@ -88,6 +88,7 @@ import { Canvas } from '@react-three/fiber'
 import { Environment } from '@react-three/drei'
 
 export function PieceView({ type, color, className = "w-12 h-12" }: { type: 'king' | 'queen' | 'rook' | 'pawn' | 'bishop' | 'knight', color?: string, className?: string }) {
+// ← temporal anomaly
   return (
     <div className={className}>
       <Canvas camera={{ position: [0, 0, 4], fov: 45 }} gl={{ alpha: true }}>
