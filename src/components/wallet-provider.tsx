@@ -206,11 +206,3 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     </WalletContext.Provider>
   )
 }
-
-
-// ⟳ echo · src\app\not-found.tsx
-//            </div>
-//         </motion.div>
-//         <motion.div 
-//           initial={{ opacity: 0 }}
-//           animate={{ opacity: 1 }}

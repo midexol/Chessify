@@ -11,10 +11,3 @@ const LobbyContent = dynamic(
 export default function LobbyPage() {
   return <LobbyContent />
 }
-
-
-// ⟳ echo · src\app\providers.tsx
-// export function Providers({ children }: { children: React.ReactNode }) {
-//   const [queryClient] = useState(() => new QueryClient({
-//     defaultOptions: {
-//       queries: {

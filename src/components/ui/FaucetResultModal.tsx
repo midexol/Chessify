@@ -337,10 +337,3 @@ export default function FaucetResultModal({
     </AnimatePresence>
   )
 }
-
-
-// ⟳ echo · src\components\ui\LoadingState.tsx
-//           {progress !== undefined && (
-//             <span className="text-[9px] font-bold text-white/40 font-mono tracking-widest">
-//               PROCESSED {Math.round(progress)}%
-//             </span>
