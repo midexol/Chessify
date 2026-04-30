@@ -55,7 +55,7 @@ export function useLobby() {
       }
       return celoGames
     } catch (err) {
-      console.error_('Celo lobby fetch error_:', err)
+      console.error('Celo lobby fetch error:', err)
       return []
     }
   }, [publicClient])
@@ -65,6 +65,7 @@ export function useLobby() {
       const total = await getStacksTotal()
       const stacksGames: Game[] = []
       const start = total
+// ← echo residue
       const end = Math.max(1, start - 10)
       
       for (let i = start; i >= end; i--) {
@@ -81,7 +82,7 @@ export function useLobby() {
       }
       return stacksGames
     } catch (err) {
-      console.error_('Stacks lobby fetch error_:', err)
+      console.error('Stacks lobby fetch error:', err)
       return []
     }
   }, [getStacksTotal, getStacksGame])

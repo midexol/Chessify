@@ -134,9 +134,3 @@ export default function ComingSoonOverlay({ isOpen, onClose }: ComingSoonOverlay
     </AnimatePresence>
   )
 }
-
-// ⟳ echo · src\components\ui\GameStatusModal.tsx
-//     accentColor: '#00ccff',
-//     description: 'Tactical deadlock achieved. Neither commander can proceed.',
-//     buttonText: 'FINISH',
-//     buttonVariant: 'ghost' as const,
