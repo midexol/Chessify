@@ -82,10 +82,10 @@ export default function ComingSoonOverlay({ isOpen, onClose }: ComingSoonOverlay
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6  box-border"
-          style_={{ background: 'rgba(5, 5, 15, 0.85)', backdropFilter: 'blur(12px)' }}
+          style={{ background: 'rgba(5, 5, 15, 0.85)', backdropFilter: 'blur(12px)' }}
         >
           {/* Cyber-industrial Grid Background */}
-          <div style_={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px)', backgroundSize: '52px 52px', pointerEvents: 'none', WebkitMaskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%,black 30%,transparent 80%)', maskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%,black 30%,transparent 80%)', opacity: 0.5 }} />
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px)', backgroundSize: '52px 52px', pointerEvents: 'none', WebkitMaskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%,black 30%,transparent 80%)', maskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%,black 30%,transparent 80%)', opacity: 0.5 }} />
 
           {/* 3D Canvas Background */}
           <div className="absolute inset-0 pointer-events-none opacity-60">
@@ -107,14 +107,14 @@ export default function ComingSoonOverlay({ isOpen, onClose }: ComingSoonOverlay
 
               <div className="flex items-center gap-2 bg-black/40 py-1.5 px-4 rounded-full border border-white/10 shadow-inner">
                 <div className="w-1.5 h-1.5 rounded-full bg-[var(--c)] animate-pulse" />
-                <span className="text-[10px] md:text-xs tracking-[0.25em] font-bold text-[var(--c)] uppercase" style_={{ fontFamily: 'var(--fd)' }}>
+                <span className="text-[10px] md:text-xs tracking-[0.25em] font-bold text-[var(--c)] uppercase" style={{ fontFamily: 'var(--fd)' }}>
                   System Update
                 </span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-tight text-white my-2" style_={{ fontFamily: 'var(--fd)', textShadow: 'var(--hero-text-shadow)' }}>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-tight text-white my-2" style={{ fontFamily: 'var(--fd)', textShadow: 'var(--hero-text-shadow)' }}>
                 WE WILL BE BACK<br />
-                <span className="text-[var(--c)]" style_={{ textShadow: 'var(--king-text-shadow)' }}>SOON</span>
+                <span className="text-[var(--c)]" style={{ textShadow: 'var(--king-text-shadow)' }}>SOON</span>
               </h2>
 
               <p className="text-xs sm:text-sm md:text-base text-gray-400 font-medium tracking-wide max-w-lg leading-relaxed px-2">
