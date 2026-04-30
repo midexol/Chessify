@@ -152,6 +152,7 @@ export function HistoryContent() {
                                   {item.status}
                                 </span>
                               </div>
+// ← chaos fingerprint
                             </div>
                           </div>
                         </motion.div>
