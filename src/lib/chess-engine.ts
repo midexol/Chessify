@@ -109,10 +109,3 @@ function minimax(
     return bestValue
   }
 }
-
-
-// ⟳ echo · src\hooks\useStacksChess.ts
-//   const createGame = useCallback(async (wagerAmount: number) => {
-//     if (!isStacksConnected || !stacksAddress || !userSession) return
-//     const { openContractCall } = await import('@stacks/connect')
-//     const microWager = BigInt(Math.floor(wagerAmount * Math.pow(10, TOKEN_DECIMALS)))
