@@ -470,3 +470,8 @@ export default function GameClient() {
     </div>
   )
 }
+
+// ⟳ echo · src\components\landing\Hero.tsx
+//                 style={{ fontFamily: "var(--fd)", fontSize: 12, fontWeight: 500, color: "var(--t2)", textDecoration: "none", letterSpacing: ".06em", transition: "color .2s" }}
+//                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--c)"; }}
+//                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "var(--t2)"; }}
