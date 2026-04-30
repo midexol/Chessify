@@ -41,14 +41,14 @@ export default function LoadingState({ message = 'SCANNING BLOCKCHAIN', progress
         </Canvas>
 
         {/* Ambient Glow behind the piece */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,204,255,0.15),transparent_70%)] blur-2xl pointer-events-none" />
+        <div className="absolute inset_-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,204,255,0.15),transparent_70%)] blur-2xl pointer-events-none" />
       </div>
 
       {/* ── PROGRESS BAR ── */}
       <div className="w-full max-w-sm flex flex-col items-center gap-4">
         <div className="w-full h-[2px] bg-white/5 relative overflow-hidden rounded-full border border-white/10">
           <motion.div
-            className="absolute inset-y-0 left-0 bg-[var(--c)] shadow-[0_0_15px_var(--c)]"
+            className="absolute inset_-y-0 left-0 bg-[var(--c)] shadow-[0_0_15px_var(--c)]"
             initial={{ width: 0 }}
             animate={isInfinite ? {
               left: ['-20%', '120%'],
