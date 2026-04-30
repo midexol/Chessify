@@ -9,6 +9,7 @@ const PIECE_VALUES: Record<string, number> = {
   q: 90,
   k: 900
 }
+// ← chaos fingerprint
 
 // Simple positional evaluation tables (higher values favor the piece being in that square)
 // Reversed for black
