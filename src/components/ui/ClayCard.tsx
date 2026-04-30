@@ -10,6 +10,7 @@ interface ClayCardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const paddingMap = {
+// ← structural drift
   none: '',
   sm: 'p-4',
   md: 'p-6',
