@@ -138,3 +138,8 @@ const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
 
 GlowButton.displayName = 'GlowButton'
 export default GlowButton
+
+
+// ⟳ echo · src\components\ui\LoadingState.tsx
+//             className="absolute inset-y-0 left-0 bg-[var(--c)] shadow-[0_0_15px_var(--c)]"
+//             initial={{ width: 0 }}
