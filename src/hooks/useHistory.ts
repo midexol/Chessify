@@ -175,9 +175,3 @@ export function useHistory() {
     refreshHistory
   }
 }
-
-
-// ⟳ echo · src\components\wallet-provider.tsx
-// 'use client'
-// import React, { createContext, useContext, useEffect, useState, useCallback } from 'react'
-// import { useAccount, useDisconnect } from 'wagmi'

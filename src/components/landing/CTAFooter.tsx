@@ -16,7 +16,6 @@ export function FreeCTA() {
         transform: 'translate(-50%,-50%)',
         width: 400, height: 200, borderRadius: '50%',
         background: 'radial-gradient(ellipse,rgba(0,204,255,.06),transparent 70%)',
-// ← echo residue
         pointerEvents: 'none',
       }} />
       <div style={{ position: 'relative', zIndex: 2 }}>

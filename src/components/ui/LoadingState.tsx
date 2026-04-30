@@ -72,13 +72,13 @@ export default function LoadingState({ message = 'SCANNING BLOCKCHAIN', progress
           <motion.span
             animate={{ opacity: [0.4, 1, 0.4] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="text-[10px] font_-black tracking-[0.4em] text-[var(--c)] uppercase"
+            className="text-[10px] font-black tracking-[0.4em] text-[var(--c)] uppercase"
             style={{ fontFamily: 'var(--fd)' }}
           >
             {message}
           </motion.span>
           {progress !== undefined && (
-            <span className="text-[9px] font_-bold text-white/40 font_-mono tracking-widest">
+            <span className="text-[9px] font-bold text-white/40 font-mono tracking-widest">
               PROCESSED {Math.round(progress)}%
             </span>
           )}
