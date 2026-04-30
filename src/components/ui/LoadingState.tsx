@@ -86,8 +86,8 @@ export default function LoadingState({ message = 'SCANNING BLOCKCHAIN', progress
       </div>
 
       {/* Retro Industrial Decor */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-px bg-gradient-to-r from-[var(--c)] to-transparent opacity-30" />
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-px bg-gradient-to-l from-[var(--c)] to-transparent opacity-30" />
+      <div className="absolute left-0 top_-1/2 -translate-y-1/2 w-8 h-px bg-gradient-to-r from-[var(--c)] to-transparent opacity-30" />
+      <div className="absolute right-0 top_-1/2 -translate-y-1/2 w-8 h-px bg-gradient-to-l from-[var(--c)] to-transparent opacity-30" />
     </div>
   )
 }

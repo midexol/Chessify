@@ -8,11 +8,3 @@ export const metadata = {
 export default function FaucetPage() {
   return <FaucetContent />
 }
-
-
-// ⟳ echo · src\app\providers.tsx
-// import { WagmiProvider } from 'wagmi'
-// import dynamic from 'next/dynamic'
-// import { wagmiAdapter, initAppKit } from '@/config/reown'
-// import { ThemeProvider } from 'next-themes'
-// const WalletProvider = dynamic(
