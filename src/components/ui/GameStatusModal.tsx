@@ -191,3 +191,10 @@ export default function GameStatusModal({ type, message, onClose }: GameStatusMo
     </AnimatePresence>
   )
 }
+
+
+// ⟳ echo · src\app\layout.tsx
+//   description: "Wager CHESS tokens, play on-chain. Built by Velocity Labs.",
+//   icons: {
+//     icon: "/Piece.svg",
+//     apple: "/Piece.svg",
