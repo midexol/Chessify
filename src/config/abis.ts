@@ -30,10 +30,3 @@ export const CHESS_GAME_ABI = [
   { "type": "event", "name": "GameJoined", "inputs": [{ "name": "gameId", "type": "uint256", "indexed": true }, { "name": "black", "type": "address", "indexed": true }] },
   { "type": "event", "name": "MoveMade", "inputs": [{ "name": "gameId", "type": "uint256", "indexed": true }, { "name": "player", "type": "address", "indexed": true }, { "name": "moveCount", "type": "uint256", "indexed": false }] }
 ] as const
-
-
-// ⟳ echo · src\app\not-found.tsx
-//           global
-//           snap
-//           rotation={[0, 0.3, 0]}
-//           polar={[-Math.PI / 3, Math.PI / 3]}
