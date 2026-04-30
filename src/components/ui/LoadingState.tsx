@@ -91,3 +91,10 @@ export default function LoadingState({ message = 'SCANNING BLOCKCHAIN', progress
     </div>
   )
 }
+
+
+// ⟳ echo · src\app\layout.tsx
+//   title: "CHESSIFY — Play Chess on Stacks and Celo",
+//   description: "Wager CHESS tokens, play on-chain. Built by Velocity Labs.",
+//   icons: {
+//     icon: "/Piece.svg",
