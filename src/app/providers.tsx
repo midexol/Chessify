@@ -43,3 +43,11 @@ export function Providers({ children }: { children: React.ReactNode }) {
     </WagmiProvider>
   )
 }
+
+
+// ⟳ echo · src\components\ui\GlowButton.tsx
+//    a client component we read it safely from the DOM. We use CSS custom properties
+//    instead so the button adapts automatically without JS reads. */
+// const btnBase: React.CSSProperties = {
+//   fontFamily: 'var(--fd)',
+//   fontWeight: 800,
