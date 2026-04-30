@@ -111,7 +111,7 @@ function TokenDisplay({ balance, chain }: { balance: string; chain: string }) {
    MAIN FAUCET CONTENT
    ═══════════════════════════════════════════ */
 export default function FaucetContent() {
-  const router_ = useRouter()
+  const router = useRouter()
   const { isConnected, activeChain, address: celoAddress, stacksAddress, isStacksConnected, connectWallet } = useWallet()
   const { getTokenBalance: getStacksBalance } = useStacksRead()
   const { writeContractAsync } = useWriteContract()
@@ -251,7 +251,7 @@ export default function FaucetContent() {
           {/* Header */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
-              <GlowButton variant="ghost" size="sm" onClick={() => router_.push('/app/lobby')}>
+              <GlowButton variant="ghost" size="sm" onClick={() => router.push('/app/lobby')}>
                 ← BACK TO LOBBY
               </GlowButton>
             </motion.div>

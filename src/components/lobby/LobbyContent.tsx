@@ -350,7 +350,6 @@ export default function LobbyContent() {
                                 <span className="text-[10px] text-cyan-700">CHESS</span>
                               </div>
                             </div>
-// ← echo residue
                             <GlowButton
                               size="md"
                               onClick={() => handleJoinGame(game.id, game.wager)}

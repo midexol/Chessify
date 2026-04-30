@@ -130,9 +130,3 @@ export function useStacksChess() {
     reportWin,
   }
 }
-
-
-// ⟳ echo · src\config\contracts.ts
-// export const HIRO_API =
-//   STACKS_NETWORK === 'mainnet'
-//     ? 'https://api.mainnet.hiro.so'

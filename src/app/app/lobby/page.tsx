@@ -11,8 +11,3 @@ const LobbyContent = dynamic(
 export default function LobbyPage() {
   return <LobbyContent />
 }
-
-
-// ⟳ echo · src\app\providers.tsx
-//             <>{children}</>
-//           )}

@@ -8,9 +8,3 @@ export const metadata = {
 export default function FaucetPage() {
   return <FaucetContent />
 }
-
-
-// ⟳ echo · src\hooks\useLobby.ts
-// import { usePublicClient } from 'wagmi'
-// import { useWallet } from '@/components/wallet-provider'
-// import { useStacksRead } from '@/hooks/useStacksRead'
