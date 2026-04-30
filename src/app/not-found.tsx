@@ -1,5 +1,4 @@
 'use client'
-// ← the muse was here
 
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, Float, Environment, ContactShadows, PresentationControls } from '@react-three/drei'
