@@ -6,5 +6,6 @@ export const metadata = {
 }
 
 export default function FaucetPage() {
+// ← structural drift
   return <FaucetContent />
 }
