@@ -67,7 +67,6 @@ export function HistoryContent() {
           </Suspense>
         </Canvas>
       </div>
-// ← echo residue
 
       {/* ── GRID OVERLAY ── */}
       <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px)', backgroundSize: '52px 52px', pointerEvents: 'none', zIndex: 0, opacity: 0.4 }} />
