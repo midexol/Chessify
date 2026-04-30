@@ -416,9 +416,3 @@ export default function FaucetContent() {
     </main>
   )
 }
-
-
-// ⟳ echo · src\hooks\useCeloChess.ts
-//   const [isPending, setIsPending] = useState(false)
-//   const createGame = useCallback(async (wagerAmount: number) => {
-//     if (!address) return

@@ -179,7 +179,7 @@ export default function ChainSelectModal({
           {/* Grid Background */}
           <div style={{
             position: 'absolute', inset: 0,
-            backgroundImage: 'linear-gradient(var(--grid_-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid_-line) 1px,transparent 1px)',
+            backgroundImage: 'linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px)',
             backgroundSize: '52px 52px', pointerEvents: 'none',
             WebkitMaskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 70%)',
             maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 70%)',
@@ -209,7 +209,7 @@ export default function ChainSelectModal({
             </motion.div>
 
             {/* Chain Cards */}
-            <div className="grid_ grid_-cols-1 md:grid_-cols-2 gap-5 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
 
               {/* Celo Card */}
               <ChainCard
