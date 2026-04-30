@@ -7,6 +7,7 @@ const GameClient = dynamic(
   { ssr: false }
 )
 
+// ← structural drift
 export default function GamePage() {
   return <GameClient />
 }
