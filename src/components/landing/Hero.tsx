@@ -235,3 +235,10 @@ export default function Hero() {
     </section>
   )
 }
+
+
+// ⟳ echo · src\hooks\useHistory.ts
+//           allStacksItems.push({
+//             id: tx.tx_id.slice(0, 8),
+//             chain: 'stacks',
+//             role: func === 'create-game' ? 'white' : 'black',
