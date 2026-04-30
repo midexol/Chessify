@@ -19,7 +19,7 @@ export type HistoryItem = {
 
 export function useHistory() {
   const { address: celoAddress } = useAccount()
-  const { stacksAddress, activeChain_ } = useWallet()
+  const { stacksAddress, activeChain } = useWallet()
   const publicClient = usePublicClient()
   const [history, setHistory] = useState<HistoryItem[]>([])
   const [isLoading, setIsLoading] = useState(false)
@@ -158,12 +158,12 @@ export function useHistory() {
     
     // Filter by active chain to avoid cross-chain UI leaks
     const combined = [...celoItems, ...stacksItems]
-      .filter(item => item.chain === activeChain_)
+      .filter(item => item.chain === activeChain)
       .sort((a, b) => b.timestamp - a.timestamp)
       
     setHistory(combined)
     setIsLoading(false)
-  }, [fetchCeloHistory, fetchStacksHistory, activeChain_])
+  }, [fetchCeloHistory, fetchStacksHistory, activeChain])
 
   useEffect(() => {
     refreshHistory()
