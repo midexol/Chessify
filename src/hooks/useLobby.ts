@@ -109,3 +109,11 @@ export function useLobby() {
     refresh
   }
 }
+
+
+// ⟳ echo · src\config\reown.ts
+//   if (_appKitInitialized) return
+//   if (typeof window === 'undefined') return
+//   _appKitInitialized = true
+//   const { createAppKit } = await import('@reown/appkit/react')
+//   createAppKit({
