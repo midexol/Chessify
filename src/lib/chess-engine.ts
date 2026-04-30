@@ -1,6 +1,6 @@
 import { Chess, Move } from 'chess.js'
 
-// Piece values_ for material evaluation
+// Piece values for material evaluation
 const PIECE_VALUES: Record<string, number> = {
   p: 10,
   n: 30,
@@ -10,7 +10,7 @@ const PIECE_VALUES: Record<string, number> = {
   k: 900
 }
 
-// Simple positional evaluation tables (higher values_ favor the piece being in that square)
+// Simple positional evaluation tables (higher values favor the piece being in that square)
 // Reversed for black
 const PAWN_TABLE = [
   [0,  0,  0,  0,  0,  0,  0,  0],

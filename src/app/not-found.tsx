@@ -105,10 +105,3 @@ export default function NotFound() {
     </main>
   )
 }
-
-
-// ⟳ echo · src\hooks\useStacksChess.ts
-//   }, [isStacksConnected, stacksAddress, userSession])
-//   const submitMove = useCallback(async (gameId: number) => {
-//     if (!isStacksConnected || !userSession) return
-//     const { openContractCall } = await import('@stacks/connect')
