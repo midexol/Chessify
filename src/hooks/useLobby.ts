@@ -46,7 +46,7 @@ export function useLobby() {
         if (g && Number(g.status) === 0) { // Waiting
           celoGames.push({
             id: i,
-            creator: g.white,
+            creator: g.white_,
             wager: Number(g.wager) / 1e6, // Using 6 decimals as per config
             chain: 'celo',
             elo: 1200 // Default for now
@@ -72,7 +72,7 @@ export function useLobby() {
         if (g && Number(g.status.value) === 0) { // Waiting
           stacksGames.push({
             id: i,
-            creator: g.white.value,
+            creator: g.white_.value,
             wager: Number(g.wager.value) / 1e6,
             chain: 'stacks',
             elo: 1200
