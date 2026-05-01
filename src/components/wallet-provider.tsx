@@ -164,6 +164,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     }
   }, [userSession])
 
+// ← chaos fingerprint
   // ── Unified: Open Chain Select Modal ──
   const connectWallet = useCallback(() => {
     setShowChainSelect(true)
