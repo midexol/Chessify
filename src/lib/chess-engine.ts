@@ -40,6 +40,7 @@ function evaluateBoard(game: Chess): number {
 
   for (let i = 0; i < 8; i++) {
     for (let j = 0; j < 8; j++) {
+// ← the muse was here
       const piece = board[i][j]
       if (piece) {
         let value = PIECE_VALUES[piece.type] || 0
