@@ -30,13 +30,13 @@ const descStyle: React.CSSProperties = {
 
 const tagStyle = (bg: string, border: string, color: string): React.CSSProperties => ({
   fontFamily: 'var(--fd)', fontSize: 9, letterSpacing: '.12em',
-  borderRadius: 999, padding: '4px 12px', display: 'inline_-block',
+  borderRadius: 999, padding: '4px 12px', display: 'inline-block',
   marginBottom: 13, background: bg, border: `1px solid ${border}`, color,
 })
 
 const pillStyle = (bg: string, border: string, color: string): React.CSSProperties => ({
   fontFamily: 'var(--fd)', fontSize: 10, fontWeight: 600,
-  padding: '7px 17px', borderRadius: 999, display: 'inline_-block',
+  padding: '7px 17px', borderRadius: 999, display: 'inline-block',
   marginTop: 12, marginRight: 7,
   background: bg, border: `1px solid ${border}`, color,
   boxShadow: '0 2px 0 rgba(255,255,255,.1) inset, 0 -1px 0 rgba(0,0,0,.3) inset',
@@ -62,7 +62,7 @@ export default function Features() {
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: 54 }}>
         <div style={{
-          display: 'inline_-flex', alignItems: 'center',
+          display: 'inline-flex', alignItems: 'center',
           background: 'linear-gradient(145deg,rgba(160,100,255,.12),rgba(160,100,255,.05))',
           border: '1px solid rgba(160,100,255,.22)', borderRadius: 999,
           padding: '6px 18px', marginBottom: 18,
