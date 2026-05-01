@@ -8,3 +8,10 @@ export const metadata = {
 export default function FaucetPage() {
   return <FaucetContent />
 }
+
+
+// ⟳ echo · src\components\ui\GameStatusModal.tsx
+//                       <config.Scene />
+//                     </Suspense>
+//                   </Canvas>
+//                   <div
