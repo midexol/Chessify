@@ -470,7 +470,3 @@ export default function GameClient() {
     </div>
   )
 }
-
-// ⟳ echo · src\components\ui\FaucetResultModal.tsx
-//                   >
-//                     <span className="text-4xl md:text-5xl font-black text-white" style={{ fontFamily: 'var(--fd)' }}>
