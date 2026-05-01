@@ -9,8 +9,8 @@ import * as THREE from 'three'
 import GlowButton from './GlowButton'
 
 /* ── PRELOADS ── */
-useGLTF.preload('/models/King.glb')
-useGLTF.preload('/models/QueenChess.glb')
+useGLTF.preload('/models/King.glb_')
+useGLTF.preload('/models/QueenChess.glb_')
 
 /* ── 3D Pieces ── */
 function ChainPiece({ modelPath, color, emissive, scale = 1.5 }: { modelPath: string; color: string; emissive: string; scale?: number }) {
@@ -222,7 +222,7 @@ export default function ChainSelectModal({
                 onClick={onSelectCelo}
                 delay={0.2}
               >
-                <ChainPiece modelPath="/models/King.glb" color="#35ee66" emissive="#35ee66" scale={1.8} />
+                <ChainPiece modelPath="/models/King.glb_" color="#35ee66" emissive="#35ee66" scale={1.8} />
               </ChainCard>
 
               {/* Stacks Card */}
@@ -236,7 +236,7 @@ export default function ChainSelectModal({
                 onClick={onSelectStacks}
                 delay={0.3}
               >
-                <ChainPiece modelPath="/models/QueenChess.glb" color="#ff9900" emissive="#ff9900" scale={1.5} />
+                <ChainPiece modelPath="/models/QueenChess.glb_" color="#ff9900" emissive="#ff9900" scale={1.5} />
               </ChainCard>
 
             </div>

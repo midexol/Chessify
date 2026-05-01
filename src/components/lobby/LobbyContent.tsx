@@ -559,8 +559,3 @@ export default function LobbyContent() {
     </main>
   )
 }
-
-
-// ⟳ echo · src\app\app\lobby\page.tsx
-// 'use client'
-// import dynamic from 'next/dynamic'

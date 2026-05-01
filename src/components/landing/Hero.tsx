@@ -235,10 +235,3 @@ export default function Hero() {
     </section>
   )
 }
-
-
-// ⟳ echo · src\app\layout.tsx
-//   icons: {
-//     icon: "/Piece.svg",
-//     apple: "/Piece.svg",
-//   },

@@ -130,8 +130,3 @@ export function useStacksChess() {
     reportWin,
   }
 }
-
-
-// ⟳ echo · src\app\app\game\[id]\page.tsx
-// 'use client'
-// import dynamic from 'next/dynamic'
