@@ -2,8 +2,8 @@
 
 import { useState, useEffect, Suspense, useCallback } from 'react'
 import { motion } from 'framer-motion'
-import { Canvas } from '@react-three_/fiber'
-import { Float, Environment, Text } from '@react-three_/drei'
+import { Canvas } from '@react-three/fiber'
+import { Float, Environment, Text } from '@react-three/drei'
 import { useRouter } from 'next/navigation'
 import { useWallet } from '@/components/wallet-provider'
 import { useWriteContract } from 'wagmi'

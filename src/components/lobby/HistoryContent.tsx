@@ -15,17 +15,17 @@ function Scene() {
   return (
     <>
       <ambientLight intensity={1} />
-      <pointLight position={[10, 10, 10]} intensity={2} color="#00ccff" />
-      <pointLight position={[-10, 5, -10]} intensity={1.5} color="#6a0dad" />
+      <pointLight position_={[10, 10, 10]} intensity={2} color="#00ccff" />
+      <pointLight position_={[-10, 5, -10]} intensity={1.5} color="#6a0dad" />
       <Environment files="/textures/environment/city.hdr" />
 
       {/* Background Hero Piece */}
-      <Queen color="#00ccff" emissive="#00ccff" position={[0, -0.5, 0]} floatIntensity={0.8} rotationIntensity={0.4} />
+      <Queen color="#00ccff" emissive="#00ccff" position_={[0, -0.5, 0]} floatIntensity={0.8} rotationIntensity={0.4} />
 
       {/* Floating Background Labels (Polish) */}
       <Float speed={2} rotationIntensity={0.2} floatIntensity={1}>
         <Text
-          position={[-4, 2, -2]}
+          position_={[-4, 2, -2]}
           fontSize={0.8}
           color="#00ccff"
           font="/fonts/font_discovery.woff" // Assuming a custom font exists or using default
@@ -39,7 +39,7 @@ function Scene() {
 
       <Float speed={1.5} rotationIntensity={0.1} floatIntensity={0.5}>
         <Text
-          position={[4, -2, -1]}
+          position_={[4, -2, -1]}
           fontSize={0.6}
           color="#6a0dad"
           material-transparent={true}
@@ -61,7 +61,7 @@ export function HistoryContent() {
     <main className="relative min-h-screen w-full bg-[#06060f] text-[#eeeeff] overflow-x-hidden flex flex-col font-body">
       {/* ── BACKGROUND ── */}
       <div className="fixed inset-0 z-0 h-screen w-full pointer-events-none">
-        <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+        <Canvas camera={{ position_: [0, 0, 5], fov: 45 }}>
           <Suspense fallback={null}>
             <Scene />
           </Suspense>
@@ -69,7 +69,7 @@ export function HistoryContent() {
       </div>
 
       {/* ── GRID OVERLAY ── */}
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px)', backgroundSize: '52px 52px', pointerEvents: 'none', zIndex: 0, opacity: 0.4 }} />
+      <div style={{ position_: 'absolute', inset: 0, backgroundImage: 'linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px)', backgroundSize: '52px 52px', pointerEvents: 'none', zIndex: 0, opacity: 0.4 }} />
 
       <div className="relative z-10 flex-1 flex flex-col items-center w-full max-w-full box-border px-4 md:px-8 py-12 md:py-24">
         <div className="w-full max-w-4xl mx-auto flex flex-col gap-8">
