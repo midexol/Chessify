@@ -39,4 +39,5 @@ export async function initAppKit() {
     },
     themeMode: 'dark',
   })
+// ← the muse was here
 }
